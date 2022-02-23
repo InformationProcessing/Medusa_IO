@@ -12,7 +12,7 @@ clock = Label(root)
 
 canvas_width = 1000
 canvas_height = 1000
-canvas = tk.Canvas(root, width = canvas_width, height = canvas_height)
+canvas = tk.Canvas(root, width = canvas_width, height = canvas_height,highlightthickness=3, highlightbackground="black")
 canvas.pack()
 
 class Snake:
@@ -42,17 +42,40 @@ class Snake:
             self.move = [10,0]
         
     def movesnake(self):
+        def abs_move(canvas, _object, new_x, new_y):
+            # Get the current object position
+            x = self.x 
+            y = self.y
+            # Move the object
+            canvas.move(_object, new_x-x, new_y-y)
+
         for j in range(len(self.moveblocks)-1,0,-1):
             self.moveblocks[j]=self.moveblocks[j-1]
         self.moveblocks[0]=self.move
+
+        print(self.x, " ", self.y)
+
         for j in range(len(self.moveblocks)):
-            canvas.move(self.snake[j],self.moveblocks[j][0],self.moveblocks[j][1])
-        print(self.move)
+            if self.y < 0 or self.y > 1000 or self.x < 0 or self.x > 1000:
+                if self.x < 0:       abs_move(canvas, self.snake[j], 1000, self.moveblocks[j][1])
+                elif self.x > 1000:  abs_move(canvas, self.snake[j], 0, self.moveblocks[j][1])
+                if self.y < 0:       abs_move(canvas, self.snake[j], self.moveblocks[j][0], 1000)
+                elif self.y > 1000:  abs_move(canvas, self.snake[j], self.moveblocks[j][0], 0)
+            else:
+                canvas.move(self.snake[j],self.moveblocks[j][0],self.moveblocks[j][1])
+
+        # print(self.moveblocks[0][0], "- ",self.moveblocks[0][1])
         self.x = self.x + int(self.move[0])
         self.y = self.y + int(self.move[1])
         if self.y < 0 or self.y>1000 or self.x<0 or self.x>1000:
-            sys.exit()
-                
+            if self.y < 0: self.y = 1000
+            elif self.y > 1000: self.y = 0
+            if self.x < 0: self.x = 1000
+            elif self.x > 1000: self.x = 0
+        
+            # sys.exit()
+
+
     def adjustspeed(self,speed):
         self.speed = speed
 
