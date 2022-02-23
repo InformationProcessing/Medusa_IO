@@ -67,12 +67,7 @@ class Snake:
         # print(self.moveblocks[0][0], "- ",self.moveblocks[0][1])
         self.x = self.x + int(self.move[0])
         self.y = self.y + int(self.move[1])
-        if self.y < 0 or self.y>1000 or self.x<0 or self.x>1000:
-            if self.y < 0: self.y = 1000
-            elif self.y > 1000: self.y = 0
-            if self.x < 0: self.x = 1000
-            elif self.x > 1000: self.x = 0
-        
+        if self.y < 0 or self.y>1000 or self.x<0 or self.x>1000:     
             # sys.exit()
 
 
