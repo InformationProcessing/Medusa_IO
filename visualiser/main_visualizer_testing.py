@@ -1,3 +1,4 @@
+from fpga_communicator import FPGACommunicator
 import tkinter as tk
 from tkinter import *
 import time
@@ -6,6 +7,7 @@ import random
 import os
 
 root = tk.Tk()
+communicator = FPGACommunicator()
 
 time1 = ''
 clock = Label(root)
@@ -99,16 +101,36 @@ button2 = tk.Button(text='Decrease Speed', command=decreasespeed)
 canvas.create_window(100, 18, window=button2)
 
 
+def process_raw_accelerometer(acc_value):
+    if acc_value > 200:
+        acc_value = acc_value - 4294967295
+    return acc_value + 20
+
+
 def tick():
     global time1
     time2 = time.strftime('%H:%M:%S')
     if time2 != time1:
         time1 = time2
         clock.config(text=time2)
+    acc_raw_reading = communicator.read_acc_raw()
+    acc_value_x = process_raw_accelerometer(acc_raw_reading['x'])
+    acc_value_y = process_raw_accelerometer(acc_raw_reading['y']) - 10
+
+    if acc_value_x > 120 > acc_value_y > -120:
+        player.changedir('Left')
+    elif acc_value_x < -120 < acc_value_y < 120:
+        player.changedir('Right')
+    elif acc_value_y < -120 < acc_value_x < 120:
+        player.changedir('Up')
+    elif acc_value_y > 120 > acc_value_x > -120:
+        player.changedir('Down')
+
     player.movesnake()
     clock.after(int(100 / (player.getspeed())), tick)
 
 
-root.bind("<Key>", kpress)
-tick()
-root.mainloop()
+if __name__ == '__main__':
+    root.bind("<Key>", kpress)
+    tick()
+    root.mainloop()
