@@ -16,6 +16,7 @@ canvas = tk.Canvas(root, width = canvas_width+1, height = canvas_height+1, highl
 canvas.pack()
 
 otherplayer = []
+otherplayerblocks=[]
 
 def mergearray(array1,array2):
       newarray=[]
@@ -163,9 +164,6 @@ button1 = tk.Button(text='Increase Speed',command=increasespeed)
 canvas.create_window(270,18,window=button1)
 button2 = tk.Button(text='Decrease Speed',command=decreasespeed)
 canvas.create_window(100,18,window=button2)
-
-
-otherplayerblocks=[]
 
 def tick(player):
     global time1
