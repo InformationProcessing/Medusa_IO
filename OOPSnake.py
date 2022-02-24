@@ -12,7 +12,7 @@ clock = Label(root)
 
 canvas_width = 700
 canvas_height = 700
-canvas = tk.Canvas(root, width = canvas_width+1, height = canvas_height+1,highlightthickness=10, highlightbackground="black")
+canvas = tk.Canvas(root, width = canvas_width+1, height = canvas_height+1, highlightthickness=10, highlightbackground="black")
 canvas.pack()
 
 class Snake:
@@ -28,11 +28,15 @@ class Snake:
     def __init__(self, xcord, ycord):
         self.x = xcord
         self.y = ycord
+        for i in range(10):
+            self.addblock(i)
 
     def addblock(self,i):
         self.moveblocks.append([0,-10])
-        self.snake.append(canvas.create_rectangle(self.x,10*(len(self.snake)+1)+self.y,self.x+10,10*(len(self.snake)+1)+self.y+10,fill='gray'+str(len(self.snake)*2+1)))
-        self.snakeblockscoordX.append(self.x) #vertical generation of the snake -> should look on how to make it general
+        block=tk.Canvas(canvas,width=10, height=10, bd=0, highlightthickness=0, relief='ridge', bg="gray"+str(i*3))
+        block.place(x=self.x, y=self.y-i*10)
+        self.snake.append(block)
+        self.snakeblockscoordX.append(self.x)
         self.snakeblockscoordY.append(self.y-i*10)
         # print("initialise: ", i, "----",self.snakeblockscoordX[i], "- ",self.snakeblockscoordY[i])
 
@@ -48,12 +52,7 @@ class Snake:
         
     def movesnake(self):
         def abs_move(new_x, new_y,j):
-            # Get the current object position
-            c_x = self.snakeblockscoordX[j] 
-            c_y = self.snakeblockscoordY[j]
-            # Move the object
-            print("loop: ", j, "----",new_x-c_x, "- ",new_y-c_y," /x ", new_x, ",", c_x, " /y ", new_y, ",", c_y)
-            canvas.move(self.snake[j], new_x-c_x, new_y-c_y)
+            self.snake[j].place(x=new_x, y=new_y)
             self.snakeblockscoordX[j] = new_x
             self.snakeblockscoordY[j] = new_y
             self.x = self.snakeblockscoordX[0]
@@ -65,24 +64,22 @@ class Snake:
             self.snakeblockscoordY[j]=self.snakeblockscoordY[j-1]
             print("pos:", j, "----",self.snakeblockscoordX[j], ": ",self.snakeblockscoordY[j])
         self.moveblocks[0]=self.move
-       
 
         print(self.x, " ", self.y)
-        self.x = self.x + int(self.move[0])
-        self.y = self.y + int(self.move[1])
-        self.snakeblockscoordX[0]=self.x
-        self.snakeblockscoordY[0]=self.y
-
-        for j in range(len(self.moveblocks)):
-            if self.snakeblockscoordX[j] < 0 or self.snakeblockscoordX[j] > canvas_width or self.snakeblockscoordY[j] < 0 or self.snakeblockscoordY[j] > canvas_height:
-                if  self.snakeblockscoordX[j] < 0:              abs_move(canvas_width, self.snakeblockscoordY[j],j)
-                if  self.snakeblockscoordX[j] > canvas_width:   abs_move(0,            self.snakeblockscoordY[j],j)
-                if  self.snakeblockscoordY[j] < 0:              abs_move(self.snakeblockscoordX[j],canvas_height,j)
-                if  self.snakeblockscoordY[j] > canvas_height:  abs_move(self.snakeblockscoordX[j],            0,j)
+        for j in range(len(self.snake)):
+            if self.snakeblockscoordX[j] < 10 or self.snakeblockscoordX[j] > canvas_width or self.snakeblockscoordY[j] < 10 or self.snakeblockscoordY[j] > canvas_height:
+                if  self.snakeblockscoordX[j] < 10:              abs_move(canvas_width, self.snakeblockscoordY[j],j)
+                if  self.snakeblockscoordX[j] > canvas_width:   abs_move(10,            self.snakeblockscoordY[j],j)
+                if  self.snakeblockscoordY[j] < 10:              abs_move(self.snakeblockscoordX[j],canvas_height,j)
+                if  self.snakeblockscoordY[j] > canvas_height:  abs_move(self.snakeblockscoordX[j],            10,j)
             else:
                 print(j, "----",self.moveblocks[j][0], "- ",self.moveblocks[j][1])
-                canvas.move(self.snake[j],self.moveblocks[j][0],self.moveblocks[j][1])
-            # print(self.moveblocks[0][0], "- ",self.moveblocks[0][1])
+                self.snake[j].place(x=self.snakeblockscoordX[j], y=self.snakeblockscoordY[j])
+
+        self.x = self.x + int(self.moveblocks[0][0])
+        self.y = self.y + int(self.moveblocks[0][1])
+        self.snakeblockscoordX[0]=self.x
+        self.snakeblockscoordY[0]=self.y
 
 
 
@@ -97,8 +94,6 @@ class Snake:
 
 player = Snake(500, 500)
 
-for i in range(10):
-    player.addblock(i)
 
 def kpress(event):
       if event.keysym == 'Up':
