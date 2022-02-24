@@ -16,7 +16,13 @@ def test_print_of_all_values():
         hextext_error_code = communicator.write_hextext(123)
         print("hextext error code: " + str(hextext_error_code))
         ledflash_error_code = communicator.write_ledflash(11)
-        print("ledflash error code: " + str(hextext_error_code))
+        print("ledflash error code: " + str(ledflash_error_code))
+        print("---using R ALL---")
+        all_readings = communicator.read_all()
+        print("accproc x: " + str(all_readings['ACCPROC']['x']) + " accproc y: " + str(all_readings['ACCPROC']['y'])
+              + " accproc z: " + str(all_readings['ACCPROC']['z']) + " accraw x: " + str(all_readings['ACCRAW']['x'])
+              + " accraw y: " + str(all_readings['ACCRAW']['y']) + " accraw z: " + str(all_readings['ACCRAW']['z'])
+              + " button: " + str(all_readings['BUTTON']) + " switch: " + str(all_readings['SWITCH']))
 
 
 if __name__ == '__main__':
