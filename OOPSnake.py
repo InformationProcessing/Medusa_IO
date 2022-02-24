@@ -21,7 +21,7 @@ class Snake:
     snakeblockscoordY = []
     x = 0
     y = 0
-    move = [0,-10]
+    move = [0,10]
     moveblocks = []
     speed = 1
     
@@ -64,7 +64,7 @@ class Snake:
             self.moveblocks[j]=self.moveblocks[j-1]
             self.snakeblockscoordX[j]=self.snakeblockscoordX[j-1]
             self.snakeblockscoordY[j]=self.snakeblockscoordY[j-1]
-            print("pos:", j, "----",self.snakeblockscoordX[j], ": ",self.snakeblockscoordY[j])
+            # print("pos:", j, "----",self.snakeblockscoordX[j], ": ",self.snakeblockscoordY[j])
         self.moveblocks[0]=self.move
         #blocking moving backwards and overlapping snake
         if self.moveblocks[0][0] == -self.moveblocks[1][0]:
@@ -72,7 +72,7 @@ class Snake:
         if self.moveblocks[0][1] == -self.moveblocks[1][1]:
             self.moveblocks[0][1] = self.moveblocks[1][1]
 
-        print(self.x, " ", self.y)
+        # print(self.x, " ", self.y)
         #for every block in the snake, move or teleport
         for j in range(len(self.snake)):
             if self.snakeblockscoordX[j] < 10 or self.snakeblockscoordX[j] > canvas_width or self.snakeblockscoordY[j] < 10 or self.snakeblockscoordY[j] > canvas_height:
@@ -89,6 +89,15 @@ class Snake:
         self.snakeblockscoordX[0]=self.x
         self.snakeblockscoordY[0]=self.y
 
+    def teleport(self,new_x,new_y,j):
+        self.snake[j].place(x=new_x, y=new_y)
+        self.snakeblockscoordX[j] = new_x
+        self.snakeblockscoordY[j] = new_y
+        self.x = self.snakeblockscoordX[0]
+        self.y = self.snakeblockscoordY[0]
+        self.movesnake()
+        
+
     def adjustspeed(self,speed):
         self.speed = speed
 
@@ -97,28 +106,68 @@ class Snake:
 
 
 class powerup:
-        xcoord = 0
-        ycoord = 0
-        id = 0 #= canvas.create_oval(500,500,500+6,500+6,fill='blue',tag="test")
-        #the id of food is a necessary parameter to have as it can be called
-        #simply can just create a new oval or new parameter rather than whole new class
-        def __init__(self):
-            x = random.randrange(30,500,10)
-            y = random.randrange(20,500,10) #using random num_gen for food. 
-            self.id = canvas.create_oval(x,y+5,x+5,y+10,fill='blue',tag="test")
-            self.xcoord=x
-            self.ycoord=y
-        def move(self):
+    # xcoord = 0
+    # ycoord = 0
+    # id = 0 #= canvas.create_oval(500,500,500+6,500+6,fill='blue',tag="test")
+    power_ups = []
+    power_upsX = []
+    power_upsY = []
+    foodTypes = ["grow", "portal", "ultra_speed"]
+    j = 1
+    #the id of food is a necessary parameter to have as it can be called
+    #simply can just create a new oval or new parameter rather than whole new class
+
+    def __init__(self):
+        x = random.randrange(30,500,10)
+        y = random.randrange(20,500,10) #using random num_gen for food. 
+        id = canvas.create_oval(x,y+5,x+5,y+10,fill='orange',tag="test0")
+        self.power_ups.append([id,random.choice(self.foodTypes)])
+        # self.xcoord=x
+        # self.ycoord=y
+        self.power_upsX.append(x)
+        self.power_upsY.append(y)
+
+    def generate(self):
+        for s in range (random.choice([1,2])):
             x = random.randrange(30,500,10)
             y = random.randrange(20,500,10) #using random num_gen for food.
-            canvas.delete("test")
-            self.id = canvas.create_oval(x,y+5,x+5,y+10,fill='blue',tag="test")
-            self.xcoord=x
-            self.ycoord=y
+            id = canvas.create_oval(x,y+5,x+5,y+10,fill='blue',tag="test"+str(self.j))
+            self.power_ups.append([id,random.choice(self.foodTypes)])
+            # self.xcoord=x
+            # self.ycoord=y
+            self.power_upsX.append(x)
+            self.power_upsY.append(y)
+            self.j = self.j+1
+    
+    def delete(self,j):
+        self.power_ups.remove(self.power_ups[j])
+        self.power_upsX.remove(self.power_upsX[j])
+        self.power_upsY.remove(self.power_upsY[j])
+        canvas.delete("test"+str(self.j-1))
+
+    def powerupType(self,p,type):
+        if type == "portal":
+            new_x = random.randrange(30,500,10)
+            new_y = random.randrange(20,500,10)
+            for j in range(len(p.snake)):
+                p.teleport(new_x,new_y,j)
+                new_x = new_x-10
+        if type == "grow":
+            p.addblock(len(p.snake)+1)
+            snakeAnnimation(p,"blue-red")
+            clock.after(200,lambda: snakeAnnimation(player,"return"))
+        if type == "ultra_speed":
+            p.adjustspeed(2)
+            snakeAnnimation(p,"yellow")
+            clock.after(200,lambda: snakeAnnimation(player,"return"))
+                
+
 
 
 player = Snake(500, 500)
 food = powerup()
+
+
 
 def kpress(event):
       if event.keysym == 'Up':
@@ -142,47 +191,49 @@ def decreasespeed():
     if player.getspeed()!=1:
         player.adjustspeed(player.getspeed()-1)
 
-def snakeAnnimation( player,animation ):
-    if animation == "blue":
-        for j in range(len(player.snake)):
-            player.snake[j].configure(bg="blue")
+def snakeAnnimation(p,animation):
+    if animation == "blue-red":
+        for j in range(len(p.snake)):
+            if j%2==0: p.snake[j].configure(bg="blue")
+            else: p.snake[j].configure(bg="red")
+    elif animation == "yellow":
+        for j in range(len(p.snake)):
+            p.snake[j].configure(bg="yellow")
     elif animation == "return":
-        for j in range(len(player.snake)):
-            player.snake[j].configure(bg="gray"+str(j*3))
+        for j in range(len(p.snake)):
+            p.snake[j].configure(bg="gray"+str(j*3))
 
 
-button1 = tk.Button(text='Increase Speed',command=increasespeed)
+button1 = tk.Button(root, text='Increase Speed',command=increasespeed)
 canvas.create_window(270,18,window=button1)
-button2 = tk.Button(text='Decrease Speed',command=decreasespeed)
+button2 = tk.Button(root, text='Decrease Speed',command=decreasespeed)
 canvas.create_window(100,18,window=button2)
 
-def tick(player):
+def tick(player,found):
     global time1
     time2 = time.strftime('%H:%M:%S')
     if time2 != time1:
             time1 = time2
             clock.config(text=time2)
     player.movesnake()
+    # global food
+    for j in range (len(food.power_ups)):
+        if (player.x == food.power_upsX[j]) and (player.y == food.power_upsY[j]):
+            #   print("Player's pos:",player.x,player.y)
+            #   print("Food Pos: ",food.xcoord,food.ycoord) 
+            foodTypes = ["grow", "portal", "ultra_speed"]
+            player.adjustspeed(1)
+            # food.powerupType(player,"portal")
+            food.powerupType(player,food.power_ups[j][1])
+            clock.after(100,lambda: tick(player,FALSE)) 
+            food.delete(j)
+            food.generate()
+            found = TRUE
 
-    global food
-    if (player.x == food.xcoord) and (player.y == food.ycoord):
-          print("Player's pos:",player.x,player.y)
-          print("Food Pos: ",food.xcoord,food.ycoord) 
-          food.move()
-          player.addblock(len(player.snake)+1)
-          animation = "blue"
-          snakeAnnimation(player,animation)
-          animation = "return"
-          snakeAnnimation(player,animation)
-          clock.after(int(100/player.getspeed()),lambda: tick(player))
-      
-    else:
-        # animation = "return"
-        # snakeAnnimation(player,animation)
-        clock.after(int(100/player.getspeed()),lambda: tick(player))
-
-
+    if found == FALSE : clock.after(int(100/player.getspeed()),lambda: tick(player,FALSE))
+    
+    
 
 root.bind("<Key>",kpress)
-tick(player)
+tick(player,FALSE)
 root.mainloop()
