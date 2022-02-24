@@ -64,6 +64,10 @@ class Snake:
             self.snakeblockscoordY[j]=self.snakeblockscoordY[j-1]
             print("pos:", j, "----",self.snakeblockscoordX[j], ": ",self.snakeblockscoordY[j])
         self.moveblocks[0]=self.move
+        if self.moveblocks[0][0] == -self.moveblocks[1][0]:
+            self.moveblocks[0][0] = self.moveblocks[1][0]
+        if self.moveblocks[0][1] == -self.moveblocks[1][1]:
+            self.moveblocks[0][1] = self.moveblocks[1][1]
 
         print(self.x, " ", self.y)
         for j in range(len(self.snake)):
