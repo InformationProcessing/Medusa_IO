@@ -113,6 +113,8 @@ class powerup:
     power_upsX = []
     power_upsY = []
     foodTypes = ["grow", "portal", "ultra_speed"]
+    colours = ["orange", "blue", "green"]
+    radius = 10
     j = 1
     #the id of food is a necessary parameter to have as it can be called
     #simply can just create a new oval or new parameter rather than whole new class
@@ -120,7 +122,7 @@ class powerup:
     def __init__(self):
         x = random.randrange(30,500,10)
         y = random.randrange(20,500,10) #using random num_gen for food. 
-        id = canvas.create_oval(x,y+5,x+5,y+10,fill='orange',tag="test0")
+        id = canvas.create_oval(x,y,x+self.radius,y+self.radius,fill=random.choice(self.colours),tag="test0")
         self.power_ups.append([id,random.choice(self.foodTypes)])
         # self.xcoord=x
         # self.ycoord=y
@@ -131,7 +133,7 @@ class powerup:
         for s in range (random.choice([1,2])):
             x = random.randrange(30,500,10)
             y = random.randrange(20,500,10) #using random num_gen for food.
-            id = canvas.create_oval(x,y+5,x+5,y+10,fill='blue',tag="test"+str(self.j))
+            id = canvas.create_oval(x,y,x+self.radius,y+self.radius,fill=random.choice(self.colours),tag="test"+str(self.j))
             self.power_ups.append([id,random.choice(self.foodTypes)])
             # self.xcoord=x
             # self.ycoord=y
