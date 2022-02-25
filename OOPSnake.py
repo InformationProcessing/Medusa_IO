@@ -118,6 +118,8 @@ class powerup:
     j = 1
     #the id of food is a necessary parameter to have as it can be called
     #simply can just create a new oval or new parameter rather than whole new class
+    
+    tagval = ["test0"]
 
     def __init__(self):
         x = random.randrange(30,500,10)
@@ -134,6 +136,7 @@ class powerup:
             x = random.randrange(30,500,10)
             y = random.randrange(20,500,10) #using random num_gen for food.
             id = canvas.create_oval(x,y,x+self.radius,y+self.radius,fill=random.choice(self.colours),tag="test"+str(self.j))
+            self.tagval.append("test"+str(self.j))
             self.power_ups.append([id,random.choice(self.foodTypes)])
             # self.xcoord=x
             # self.ycoord=y
@@ -142,10 +145,12 @@ class powerup:
             self.j = self.j+1
     
     def delete(self,j):
-        self.power_ups.remove(self.power_ups[j])
-        self.power_upsX.remove(self.power_upsX[j])
-        self.power_upsY.remove(self.power_upsY[j])
-        canvas.delete("test"+str(self.j-1))
+        self.power_ups.pop(j)
+        x = self.power_upsX.pop(j)
+        y = self.power_upsY.pop(j)
+        canvas.delete(self.tagval.pop(j))
+        print(self.power_ups)
+        print("test"+str(self.j))
 
     def powerupType(self,p,type):
         if type == "portal":
@@ -231,6 +236,7 @@ def tick(player,found):
             food.delete(j)
             food.generate()
             found = TRUE
+            break #not necesarry? but agree that is good for optimisation
 
     if found == FALSE : clock.after(int(100/player.getspeed()),lambda: tick(player,FALSE))
     
