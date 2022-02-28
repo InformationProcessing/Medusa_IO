@@ -12,9 +12,8 @@ clock = Label(root)
 
 canvas_width = 700
 canvas_height = 700
-canvas = tk.Canvas(root, width=canvas_width+1, height=canvas_height+1, highlightthickness=10, highlightbackground="black")
+canvas = tk.Canvas(root, width = canvas_width+1, height = canvas_height+1, highlightthickness=10, highlightbackground="black")
 canvas.pack()
-
 
 class Snake:
     snake = []
@@ -25,7 +24,7 @@ class Snake:
     move = [0,10]
     moveblocks = []
     speed = 1
-
+    
     def __init__(self, xcord, ycord):
         self.x = xcord
         self.y = ycord
@@ -41,16 +40,16 @@ class Snake:
         self.snakeblockscoordY.append(self.y-i*10)
         # print("initialise: ", i, "----",self.snakeblockscoordX[i], "- ",self.snakeblockscoordY[i])
 
-    def changedir(self, dir1):
-        if dir1 == 'Up':
-            self.move = [0, -10]
-        elif dir1 == 'Left':
-            self.move = [-10, 0]
-        elif dir1 == 'Down':
-            self.move = [0, 10]
-        elif dir1 == 'Right':
-            self.move = [10, 0]
-
+    def changedir(self,dir1):
+        if dir1=='Up':
+            self.move = [0,-10]
+        elif dir1=='Left':
+            self.move = [-10,0]
+        elif dir1=='Down':
+            self.move = [0,10]
+        elif dir1=='Right':
+            self.move = [10,0]
+        
     def movesnake(self):
         #special teleportation of a block
         def abs_move(new_x, new_y,j):
@@ -97,7 +96,7 @@ class Snake:
         self.x = self.snakeblockscoordX[0]
         self.y = self.snakeblockscoordY[0]
         self.movesnake()
-
+        
 
     def adjustspeed(self,speed):
         self.speed = speed
@@ -119,12 +118,12 @@ class powerup:
     j = 1
     #the id of food is a necessary parameter to have as it can be called
     #simply can just create a new oval or new parameter rather than whole new class
-
+    
     tagval = ["test0"]
 
     def __init__(self):
         x = random.randrange(30,500,10)
-        y = random.randrange(20,500,10) #using random num_gen for food.
+        y = random.randrange(20,500,10) #using random num_gen for food. 
         id = canvas.create_oval(x,y,x+self.radius,y+self.radius,fill=random.choice(self.colours),tag="test0")
         self.power_ups.append([id,random.choice(self.foodTypes)])
         # self.xcoord=x
@@ -144,7 +143,7 @@ class powerup:
             self.power_upsX.append(x)
             self.power_upsY.append(y)
             self.j = self.j+1
-
+    
     def delete(self,j):
         self.power_ups.pop(j)
         x = self.power_upsX.pop(j)
@@ -168,7 +167,7 @@ class powerup:
             p.adjustspeed(2)
             snakeAnnimation(p,"yellow")
             clock.after(200,lambda: snakeAnnimation(player,"return"))
-
+                
 
 
 
@@ -177,29 +176,27 @@ food = powerup()
 
 
 
-
 def kpress(event):
-    if event.keysym == 'Up':
-        player.changedir('Up')
-
-    if event.keysym == 'Left':
-        player.changedir('Left')
-
-    if event.keysym == 'Down':
-        player.changedir('Down')
-
-    if event.keysym == 'Right':
-        player.changedir('Right')
+      if event.keysym == 'Up':
+            player.changedir('Up')
+            
+      if event.keysym == 'Left':
+            player.changedir('Left')
+            
+      if event.keysym == 'Down':
+            player.changedir('Down')
+            
+      if event.keysym == 'Right':
+            player.changedir('Right')
 
 
 def increasespeed():
-    if player.getspeed() != 100:
-        player.adjustspeed(player.getspeed() + 1)
-
+    if player.getspeed()!=100:
+        player.adjustspeed(player.getspeed()+1)
 
 def decreasespeed():
-    if player.getspeed() != 1:
-        player.adjustspeed(player.getspeed() - 1)
+    if player.getspeed()!=1:
+        player.adjustspeed(player.getspeed()-1)
 
 def snakeAnnimation(p,animation):
     if animation == "blue-red":
@@ -223,27 +220,27 @@ def tick(player,found):
     global time1
     time2 = time.strftime('%H:%M:%S')
     if time2 != time1:
-        time1 = time2
-        clock.config(text=time2)
+            time1 = time2
+            clock.config(text=time2)
     player.movesnake()
     # global food
     for j in range (len(food.power_ups)):
         if (player.x == food.power_upsX[j]) and (player.y == food.power_upsY[j]):
             #   print("Player's pos:",player.x,player.y)
-            #   print("Food Pos: ",food.xcoord,food.ycoord)
+            #   print("Food Pos: ",food.xcoord,food.ycoord) 
             foodTypes = ["grow", "portal", "ultra_speed"]
             player.adjustspeed(1)
             # food.powerupType(player,"portal")
             food.powerupType(player,food.power_ups[j][1])
-            clock.after(100,lambda: tick(player,FALSE))
+            clock.after(100,lambda: tick(player,FALSE)) 
             food.delete(j)
             food.generate()
             found = TRUE
-            break #not necesarry? but agree that is good for optimisation
+            break
 
     if found == FALSE : clock.after(int(100/player.getspeed()),lambda: tick(player,FALSE))
-
-
+    
+    
 
 root.bind("<Key>",kpress)
 tick(player,FALSE)
