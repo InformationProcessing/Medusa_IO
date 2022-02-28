@@ -106,48 +106,42 @@ class Snake:
 
 
 class powerup:
-    # xcoord = 0
-    # ycoord = 0
-    # id = 0 #= canvas.create_oval(500,500,500+6,500+6,fill='blue',tag="test")
     power_ups = []
     power_upsX = []
     power_upsY = []
-    foodTypes = ["grow", "portal", "ultra_speed"]
-    colours = ["orange", "blue", "green"]
+    # foodTypes = ["grow", "portal", "ultra_speed","slow_down"]
+    # colours = ["red", "blue", "orange", "green"]
+    powerTypes = [["grow","red"] , ["portal", "blue"] , ["ultra_speed", "orange"] , ["slow_down", "green"]]
     radius = 10
     j = 1
-    #the id of food is a necessary parameter to have as it can be called
-    #simply can just create a new oval or new parameter rather than whole new class
     
     tagval = ["test0"]
 
     def __init__(self):
         x = random.randrange(30,500,10)
-        y = random.randrange(20,500,10) #using random num_gen for food. 
-        id = canvas.create_oval(x,y,x+self.radius,y+self.radius,fill=random.choice(self.colours),tag="test0")
-        self.power_ups.append([id,random.choice(self.foodTypes)])
-        # self.xcoord=x
-        # self.ycoord=y
+        y = random.randrange(20,500,10) #using random num_gen for food.
+        powerRandom = random.choice(self.powerTypes) 
+        id = canvas.create_oval(x,y,x+self.radius,y+self.radius,fill=powerRandom[1],tag="test0")
+        self.power_ups.append([id,powerRandom[0]])
         self.power_upsX.append(x)
         self.power_upsY.append(y)
 
     def generate(self):
         for s in range (random.choice([1,2])):
             x = random.randrange(30,500,10)
-            y = random.randrange(20,500,10) #using random num_gen for food.
-            id = canvas.create_oval(x,y,x+self.radius,y+self.radius,fill=random.choice(self.colours),tag="test"+str(self.j))
+            y = random.randrange(20,500,10)
+            powerRandom = random.choice(self.powerTypes) 
+            id = canvas.create_oval(x,y,x+self.radius,y+self.radius,fill=powerRandom[1],tag="test"+str(self.j))
             self.tagval.append("test"+str(self.j))
-            self.power_ups.append([id,random.choice(self.foodTypes)])
-            # self.xcoord=x
-            # self.ycoord=y
+            self.power_ups.append([id,powerRandom[0]])
             self.power_upsX.append(x)
             self.power_upsY.append(y)
             self.j = self.j+1
     
     def delete(self,j):
         self.power_ups.pop(j)
-        x = self.power_upsX.pop(j)
-        y = self.power_upsY.pop(j)
+        self.power_upsX.pop(j)
+        self.power_upsY.pop(j)
         canvas.delete(self.tagval.pop(j))
         print(self.power_ups)
         print("test"+str(self.j))
@@ -167,8 +161,25 @@ class powerup:
             p.adjustspeed(2)
             snakeAnnimation(p,"yellow")
             clock.after(200,lambda: snakeAnnimation(player,"return"))
+        if type == "slow_down":
+            p.adjustspeed(0.5)
+            snakeAnnimation(p,"green")
+            clock.after(200,lambda: snakeAnnimation(player,"return"))
                 
-
+def snakeAnnimation(p,animation):
+    if animation == "blue-red":
+        for j in range(len(p.snake)):
+            if j%2==0: p.snake[j].configure(bg="blue")
+            else: p.snake[j].configure(bg="red")
+    elif animation == "yellow":
+        for j in range(len(p.snake)):
+            p.snake[j].configure(bg="yellow")
+    elif animation == "green":
+        for j in range(len(p.snake)):
+            p.snake[j].configure(bg="lime green")
+    elif animation == "return":
+        for j in range(len(p.snake)):
+            p.snake[j].configure(bg="gray"+str(j*3))
 
 
 player = Snake(500, 500)
@@ -197,24 +208,16 @@ def increasespeed():
 def decreasespeed():
     if player.getspeed()!=1:
         player.adjustspeed(player.getspeed()-1)
-
-def snakeAnnimation(p,animation):
-    if animation == "blue-red":
-        for j in range(len(p.snake)):
-            if j%2==0: p.snake[j].configure(bg="blue")
-            else: p.snake[j].configure(bg="red")
-    elif animation == "yellow":
-        for j in range(len(p.snake)):
-            p.snake[j].configure(bg="yellow")
-    elif animation == "return":
-        for j in range(len(p.snake)):
-            p.snake[j].configure(bg="gray"+str(j*3))
-
+def restart():
+    for f in range(len(food.power_ups)):
+        food.delete(f)
 
 button1 = tk.Button(root, text='Increase Speed',command=increasespeed)
 canvas.create_window(270,18,window=button1)
 button2 = tk.Button(root, text='Decrease Speed',command=decreasespeed)
 canvas.create_window(100,18,window=button2)
+button3 = tk.Button(root, text='Restart',command=restart)
+canvas.create_window(380,18,window=button3)
 
 def tick(player,found):
     global time1
