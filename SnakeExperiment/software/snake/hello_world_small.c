@@ -181,7 +181,6 @@ int write_to_disp(char* str, int offset){
 
 	 //char_to_hex(str[0]);
 	IOWR_ALTERA_AVALON_PIO_DATA(HEX0_BASE, 127);
-	printf("wrotetodisp\n");
 
 
 //	IOWR_ALTERA_AVALON_PIO_DATA(HEX5_BASE, let5);
@@ -278,7 +277,7 @@ void parse_request(char* request){
 		//Copy first 6 characters
 		strncpy(disp_buf, tokens[2], DISP_BUF_SIZE);
 		int k = write_to_disp(&" ", 0);
-
+		throw_code("HEXTEXT", k);
 	}
 
 	if (strcmp(tokens[1], &"LEDFLASH") == 0){

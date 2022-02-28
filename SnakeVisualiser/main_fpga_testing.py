@@ -23,13 +23,15 @@ def test_print_of_all_values():
               + " accproc z: " + str(all_readings['ACCPROC']['z']) + " accraw x: " + str(all_readings['ACCRAW']['x'])
               + " accraw y: " + str(all_readings['ACCRAW']['y']) + " accraw z: " + str(all_readings['ACCRAW']['z'])
               + " button: " + str(all_readings['BUTTON']) + " switch: " + str(all_readings['SWITCH']))
+        print("error code: " + str(all_readings['error_code']))
 
 
 if __name__ == '__main__':
     counter = 0
     acc_sum = 0
     communicator = FPGACommunicator()
-
+    test_print_of_all_values()
+    """
     while True:
         acc_raw_reading = communicator.read_acc_raw()
         acc_value = acc_raw_reading['y']
@@ -43,3 +45,4 @@ if __name__ == '__main__':
             print("UP")
         else:
             print("MIDDLE")
+    """

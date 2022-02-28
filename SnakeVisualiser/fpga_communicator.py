@@ -6,16 +6,16 @@ READ_ACCPROC_COMMAND = "R ACCPROC"
 READ_ACCRAW_COMMAND = "R ACCRAW"
 READ_BUTTON_COMMAND = "R BUTTON"
 READ_SWITCH_COMMAND = "R SWITCH"
-WRITE_HEXTEXT = "W HEXTEXT"
-WRITE_LEDFLASH = "W LEDFLASH"
+WRITE_HEXTEXT = "R HEXTEXT"
+WRITE_LEDFLASH = "R LEDFLASH"
 
-ALL_REGEX = r"K ACCPROC X([\da-fA-F])Y([\da-fA-F])Z([\da-fA-F]) ACCRAW X([\da-fA-F]+)Y([\da-fA-F]+)Z([\da-fA-F]+) BUTTON ([\da-fA-F]+) SWITCH ([\da-fA-F]) ([\da-fA-F])"
-ACCPROC_REGEX = r"K ACCPROC X([\da-fA-F])Y([\da-fA-F])Z([\da-fA-F]) ([\da-fA-F])"
+ALL_REGEX = r"K ACCPROC X([\da-fA-F]+)Y([\da-fA-F]+)Z([\da-fA-F]+) ACCRAW X([\da-fA-F]+)Y([\da-fA-F]+)Z([\da-fA-F]+) BUTTON ([\da-fA-F]+) SWITCH ([\da-fA-F]+) ([\da-fA-F])"
+ACCPROC_REGEX = r"K ACCPROC X([\da-fA-F]+)Y([\da-fA-F]+)Z([\da-fA-F]+) ([\da-fA-F])"
 ACCRAW_REGEX = r"K ACCRAW X([\da-fA-F]+)Y([\da-fA-F]+)Z([\da-fA-F]+) ([\da-fA-F])"
 BUTTON_REGEX = r"K BUTTON ([\da-fA-F]+) ([\da-fA-F])"
-SWITCH_REGEX = r"K SWITCH ([\da-fA-F]) ([\da-fA-F])"
-HEXTEXT_REGEX = r"K HEXTEXT ([\da-fA-F])"
-LEDFLASH_REGEX = r"K LEDFLASH ([\da-fA-F])"
+SWITCH_REGEX = r"K SWITCH ([\da-fA-F]+) ([\da-fA-F])"
+HEXTEXT_REGEX = r"K HEXTEXT ([\da-fA-F]+)"
+LEDFLASH_REGEX = r"K LEDFLASH ([\da-fA-F]+)"
 
 
 class FPGACommunicator:
@@ -44,9 +44,9 @@ class FPGACommunicator:
         response = {"x": 0, "y": 0, "z": 0, "error_code": -1}
         re_match = re.match(regex, fpga_out)
         if re_match is not None:
-            response["x"] = int(re_match.group(1))
-            response["y"] = int(re_match.group(2))
-            response["z"] = int(re_match.group(3))
+            response["x"] = int(re_match.group(1), 16)
+            response["y"] = int(re_match.group(2), 16)
+            response["z"] = int(re_match.group(3), 16)
             response["error_code"] = int(re_match.group(4))
         return response
 
@@ -68,11 +68,12 @@ class FPGACommunicator:
             response["ACCPROC"]["x"] = int(re_match.group(1), 16)
             response["ACCPROC"]["y"] = int(re_match.group(2), 16)
             response["ACCPROC"]["z"] = int(re_match.group(3), 16)
-            response["ACCRAW"]["x"] = int(re_match.group(4))
-            response["ACCRAW"]["y"] = int(re_match.group(5))
-            response["ACCRAW"]["z"] = int(re_match.group(6))
-            response["BUTTON"] = int(re_match.group(7))
-            response["SWITCH"] = int(re_match.group(8))
+            response["ACCRAW"]["x"] = int(re_match.group(4), 16)
+            response["ACCRAW"]["y"] = int(re_match.group(5), 16)
+            response["ACCRAW"]["z"] = int(re_match.group(6), 16)
+            response["BUTTON"] = int(re_match.group(7), 16)
+            response["SWITCH"] = int(re_match.group(8), 16)
+            response["error_code"] = int(re_match.group(9))
 
         return response
 
