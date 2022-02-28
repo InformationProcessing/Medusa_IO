@@ -100,8 +100,8 @@ ACDS_VERSION := 18.1
 # used to generate this makefile. 
 # BUILD_NUMBER: 625
 
-SETTINGS_FILE := ../../../../Medusa_IO/SnakeQuartus/software/smolsnake_bsp/settings.bsp
-SOPC_FILE := ../../../../Medusa_IO/SnakeQuartus/snake.sopcinfo
+SETTINGS_FILE := settings.bsp
+SOPC_FILE := ../../snake.sopcinfo
 
 #-------------------------------------------------------------------------------
 #                             TOOL & COMMAND DEFINITIONS

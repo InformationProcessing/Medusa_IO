@@ -86,7 +86,7 @@ ACDS_VERSION := 18.1
 
 # Qsys--generated SOPCINFO file. Required for resolving node instance ID's with 
 # design component names. 
-SOPCINFO_FILE := $(ABS_BSP_ROOT_DIR)/../../../../Medusa_IO/SnakeQuartus/snake.sopcinfo
+SOPCINFO_FILE := $(ABS_BSP_ROOT_DIR)/../../snake.sopcinfo
 
 # Big-Endian operation. 
 # setting BIG_ENDIAN is false
@@ -157,9 +157,9 @@ SOPC_SYSID_FLAG += --sidp=0x1001160
 ELF_PATCH_FLAG  += --sidp 0x1001160
 
 # The SOPC Timestamp 
-# setting SOPC_TIMESTAMP is 1645883988
-SOPC_SYSID_FLAG += --timestamp=1645883988
-ELF_PATCH_FLAG  += --timestamp 1645883988
+# setting SOPC_TIMESTAMP is 1644511074
+SOPC_SYSID_FLAG += --timestamp=1644511074
+ELF_PATCH_FLAG  += --timestamp 1644511074
 
 # Enable JTAG UART driver to recover when host is inactive causing buffer to 
 # full without returning error. Printf will not fail with this recovery. none 

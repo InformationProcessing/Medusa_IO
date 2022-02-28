@@ -1,9 +1,9 @@
 # memory.gdb - GDB memory region definitions
 #
 # Machine generated for CPU 'cpu' in SOPC Builder design 'snake'
-# SOPC Builder design path: ../../../../Medusa_IO/SnakeQuartus/snake.sopcinfo
+# SOPC Builder design path: ../../snake.sopcinfo
 #
-# Generated: Fri Feb 25 19:26:51 UTC 2022
+# Generated: Mon Feb 28 10:30:47 UTC 2022
 
 # DO NOT MODIFY THIS FILE
 #

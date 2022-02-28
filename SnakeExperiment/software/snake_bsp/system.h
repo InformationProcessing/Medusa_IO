@@ -2,9 +2,9 @@
  * system.h - SOPC Builder system and BSP software package information
  *
  * Machine generated for CPU 'cpu' in SOPC Builder design 'snake'
- * SOPC Builder design path: ../../../../Medusa_IO/SnakeQuartus/snake.sopcinfo
+ * SOPC Builder design path: ../../snake.sopcinfo
  *
- * Generated: Sat Feb 26 14:05:36 UTC 2022
+ * Generated: Mon Feb 28 10:32:18 UTC 2022
  */
 
 /*
@@ -530,7 +530,7 @@
 #define SYSID_IRQ_INTERRUPT_CONTROLLER_ID -1
 #define SYSID_NAME "/dev/sysid"
 #define SYSID_SPAN 8
-#define SYSID_TIMESTAMP 1645883988
+#define SYSID_TIMESTAMP 1644511074
 #define SYSID_TYPE "altera_avalon_sysid_qsys"
 
 
