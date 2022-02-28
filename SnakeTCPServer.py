@@ -201,7 +201,7 @@ def tick(player):
     cmsg = connection_socket.recv(1024)  	
     cmsg = cmsg.decode()
     
-    f = open("input.txt","r")
+    # f = open("input.txt","r")
     msg = cmsg
     array=[]
     temparray = msg.split(";")

@@ -13,11 +13,6 @@ root = tk.Tk()
 time1 = ''
 clock = Label(root)
 
-# canvas_width = 700
-# canvas_height = 700
-# canvas = tk.Canvas(root, width = canvas_width+1, height = canvas_height+1, highlightthickness=10, highlightbackground="black")
-# canvas.pack()
-
 otherplayer = []
 otherplayerblocks=[]
 
@@ -39,7 +34,7 @@ def sendCoord():
       client_socket.send(msg.encode())
       client_socket.close()
 
-def tick(player):
+def tick(player,found):
     global time1
     global food
     global otherplayer
@@ -58,22 +53,24 @@ def tick(player):
             clock.config(text=time2)
     player.movesnake()
     
-    if (player.x == food.xcoord) and (player.y == food.ycoord):
-          print("Player's pos:",player.x,player.y)
-          print("Food Pos: ",food.xcoord,food.ycoord) 
-          food.move()
-          player.addblock(len(player.snake)+1)
-          animation = "blue"
-          SnakeGameMap.snakeAnnimation(player,animation)
-          animation = "return"
-          SnakeGameMap.snakeAnnimation(player,animation)
-          clock.after(int(100/player.getspeed()),lambda: tick(player))
-      
-    else:
-        clock.after(int(100/player.getspeed()),lambda: tick(player))
+    for j in range (len(food.power_ups)):
+        if (player.x == food.power_upsX[j]) and (player.y == food.power_upsY[j]):
+            #   print("Player's pos:",player.x,player.y)
+            #   print("Food Pos: ",food.xcoord,food.ycoord) 
+            foodTypes = ["grow", "portal", "ultra_speed"]
+            player.adjustspeed(1)
+            # food.powerupType(player,"portal")
+            food.powerupType(player,food.power_ups[j][1])
+            clock.after(100,lambda: tick(player,FALSE)) 
+            food.delete(j)
+            food.generate()
+            found = TRUE
+            break #not necesarry? but agree that is good for optimisation
+
+    if found == FALSE : clock.after(int(100/player.getspeed()),lambda: tick(player,FALSE))
 
 
 
 root.bind("<Key>",SnakeGameMap.kpress)
-tick(SnakeGameMap.player)
+tick(SnakeGameMap.player,FALSE)
 root.mainloop()
