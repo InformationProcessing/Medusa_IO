@@ -32,7 +32,19 @@ if __name__ == '__main__':
     counter = 0
     acc_sum = 0
     communicator = FPGACommunicator()
-    test_print_of_all_values()
+    #test_print_of_all_values()
+    while True:
+        acc_read = communicator.read_acc_proc()
+        print("accproc x: " + str(acc_read['x']))
+        print("accproc y: " + str(acc_read['y']))
+        if 75 < acc_read['x'] < 250 and not 75 <= acc_read['y'] <= 4021:
+            print('Left')
+        elif 3750 < acc_read['x'] < 4021 and not 75 <= acc_read['y'] <= 4021:
+            print('Right')
+        elif 3750 < acc_read['y'] < 4021 and not 75 <= acc_read['x'] <= 4021:
+            print('Up')
+        if 75 < acc_read['y'] < 250 and not 75 <= acc_read['x'] <= 4021:
+            print('Down')
     """
     while True:
         acc_raw_reading = communicator.read_acc_raw()
