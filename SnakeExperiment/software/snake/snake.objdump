@@ -1676,7 +1676,7 @@ void parse_request(char* request){
 		//Bitmask
 		alt_32 mask = 0x3;
 		button = button & mask;
-		alt_printf("K BUTTON %x 0", button);
+		alt_printf("K BUTTON %x 0\n", button);
   800890:	01002034 	movhi	r4,128
 
 	}
@@ -1690,7 +1690,7 @@ void parse_request(char* request){
 		//Bitmask
 		alt_32 mask = 0x3;
 		button = button & mask;
-		alt_printf("K BUTTON %x 0", button);
+		alt_printf("K BUTTON %x 0\n", button);
   800898:	294000cc 	andi	r5,r5,3
   80089c:	210fad04 	addi	r4,r4,16052
   8008a0:	08037840 	call	803784 <alt_printf>
@@ -1707,7 +1707,7 @@ void parse_request(char* request){
 		//Bitmask
 		alt_32 mask = 0x3;
 		button = button & mask;
-		alt_printf("K BUTTON %x 0", button);
+		alt_printf("K BUTTON %x 0\n", button);
 	}
 	if (is_all || strcmp(tokens[1], &"SWITCH") == 0){
   8008ac:	01402034 	movhi	r5,128
@@ -1745,7 +1745,7 @@ void parse_request(char* request){
   8008f0:	210fb304 	addi	r4,r4,16076
   8008f4:	08037840 	call	803784 <alt_printf>
 		button = button & mask;
-		alt_printf("K BUTTON %x 0", button);
+		alt_printf("K BUTTON %x 0\n", button);
 	}
 	if (is_all || strcmp(tokens[1], &"SWITCH") == 0){
 		//alt_printf("Tried to read switch");

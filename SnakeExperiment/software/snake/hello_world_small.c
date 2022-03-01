@@ -255,7 +255,7 @@ void parse_request(char* request){
 		//Bitmask
 		alt_32 mask = 0x3;
 		button = button & mask;
-		alt_printf("K BUTTON %x 0", button);
+		alt_printf("K BUTTON %x 0\n", button);
 	}
 	if (is_all || strcmp(tokens[1], &"SWITCH") == 0){
 		//alt_printf("Tried to read switch");
