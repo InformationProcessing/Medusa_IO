@@ -112,6 +112,10 @@
 					"strict" : false
 				},
 				{
+					"name" : "HEX0[7]",
+					"strict" : false
+				},
+				{
 					"name" : "HEX1[0]",
 					"strict" : false
 				},
@@ -137,6 +141,10 @@
 				},
 				{
 					"name" : "HEX1[6]",
+					"strict" : false
+				},
+				{
+					"name" : "HEX1[7]",
 					"strict" : false
 				},
 				{
@@ -168,6 +176,10 @@
 					"strict" : false
 				},
 				{
+					"name" : "HEX2[7]",
+					"strict" : false
+				},
+				{
 					"name" : "HEX3[0]",
 					"strict" : false
 				},
@@ -193,6 +205,10 @@
 				},
 				{
 					"name" : "HEX3[6]",
+					"strict" : false
+				},
+				{
+					"name" : "HEX3[7]",
 					"strict" : false
 				},
 				{
@@ -224,6 +240,10 @@
 					"strict" : false
 				},
 				{
+					"name" : "HEX4[7]",
+					"strict" : false
+				},
+				{
 					"name" : "HEX5[0]",
 					"strict" : false
 				},
@@ -249,6 +269,10 @@
 				},
 				{
 					"name" : "HEX5[6]",
+					"strict" : false
+				},
+				{
+					"name" : "HEX5[7]",
 					"strict" : false
 				},
 				{
@@ -384,11 +408,11 @@
 					"strict" : false
 				},
 				{
-					"name" : "SW[1]",
+					"name" : "KEY[1]",
 					"strict" : false
 				},
 				{
-					"name" : "KEY[1]",
+					"name" : "SW[1]",
 					"strict" : false
 				},
 				{

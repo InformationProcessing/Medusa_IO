@@ -39,7 +39,7 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY, DEBUGGING
  10 .debug_abbrev 000043a3  00000000  00000000  00012beb  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_line   00004d93  00000000  00000000  00016f8e  2**0
+ 11 .debug_line   00004d95  00000000  00000000  00016f8e  2**0
                   CONTENTS, READONLY, DEBUGGING
  12 .debug_frame  00000c64  00000000  00000000  0001bd24  2**2
                   CONTENTS, READONLY, DEBUGGING
@@ -77,7 +77,7 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY
  29 .jdi          0000433a  00000000  00000000  000280ea  2**0
                   CONTENTS, READONLY
- 30 .sopcinfo     00092485  00000000  00000000  0002c424  2**0
+ 30 .sopcinfo     000a5210  00000000  00000000  0002c424  2**0
                   CONTENTS, READONLY
 SYMBOL TABLE:
 00800000 l    d  .entry	00000000 .entry
@@ -743,7 +743,7 @@ void sys_timer_isr() {
 void sys_timer_isr() {
   8001fc:	dfc00315 	stw	ra,12(sp)
     IOWR_ALTERA_AVALON_TIMER_STATUS(TIMER_BASE, 0);
-  800200:	10842004 	addi	r2,r2,4224
+  800200:	10844004 	addi	r2,r2,4352
   800204:	10000035 	stwio	zero,0(r2)
 
 
@@ -999,12 +999,12 @@ void timer_init(void * isr) {
 
 
     IOWR_ALTERA_AVALON_TIMER_CONTROL(TIMER_BASE, 0x0003);
-  8003d8:	84042104 	addi	r16,r16,4228
+  8003d8:	84044104 	addi	r16,r16,4356
   8003dc:	00c000c4 	movi	r3,3
   8003e0:	80c00035 	stwio	r3,0(r16)
     IOWR_ALTERA_AVALON_TIMER_STATUS(TIMER_BASE, 0);
   8003e4:	00c04034 	movhi	r3,256
-  8003e8:	18c42004 	addi	r3,r3,4224
+  8003e8:	18c44004 	addi	r3,r3,4352
   8003ec:	18000035 	stwio	zero,0(r3)
     IOWR_ALTERA_AVALON_TIMER_PERIODL(TIMER_BASE, (alt_16) period );
   8003f0:	0140fa04 	movi	r5,1000
@@ -1014,14 +1014,14 @@ void timer_init(void * isr) {
   800400:	10a0001c 	xori	r2,r2,32768
   800404:	00c04034 	movhi	r3,256
   800408:	10a00004 	addi	r2,r2,-32768
-  80040c:	18c42204 	addi	r3,r3,4232
+  80040c:	18c44204 	addi	r3,r3,4360
   800410:	18800035 	stwio	r2,0(r3)
     IOWR_ALTERA_AVALON_TIMER_PERIODL(TIMER_BASE, 0xfbd0);
   800414:	00bef414 	movui	r2,64464
   800418:	18800035 	stwio	r2,0(r3)
     IOWR_ALTERA_AVALON_TIMER_PERIODH(TIMER_BASE, 0x0001);
   80041c:	00804034 	movhi	r2,256
-  800420:	10842304 	addi	r2,r2,4236
+  800420:	10844304 	addi	r2,r2,4364
   800424:	00c00044 	movi	r3,1
   800428:	10c00035 	stwio	r3,0(r2)
     alt_irq_register(TIMER_IRQ, 0, isr);
@@ -1128,7 +1128,7 @@ int write_to_disp(char* str, int offset){
 
 	 //char_to_hex(str[0]);
 	IOWR_ALTERA_AVALON_PIO_DATA(HEX0_BASE, 127);
-  8004e4:	10843804 	addi	r2,r2,4320
+  8004e4:	10845804 	addi	r2,r2,4448
   8004e8:	00c01fc4 	movi	r3,127
   8004ec:	10c00035 	stwio	r3,0(r2)
 	printf("wrotetodisp\n");
@@ -1683,7 +1683,7 @@ void parse_request(char* request){
 		matched = 1;
 		alt_32 button = ~IORD_ALTERA_AVALON_PIO_DATA(BUTTON_BASE);
   8008ac:	00804034 	movhi	r2,256
-  8008b0:	10843004 	addi	r2,r2,4288
+  8008b0:	10845004 	addi	r2,r2,4416
   8008b4:	11400037 	ldwio	r5,0(r2)
 
 		//Button response processing
@@ -1734,7 +1734,7 @@ void parse_request(char* request){
 
 		alt_32 switches = ~IORD_ALTERA_AVALON_PIO_DATA(SWITCH_BASE);
   8008e8:	00804034 	movhi	r2,256
-  8008ec:	10843404 	addi	r2,r2,4304
+  8008ec:	10845404 	addi	r2,r2,4432
   8008f0:	11000037 	ldwio	r4,0(r2)
 		switches &= 0x3ff;
 		to_hex(switches, 3, hexbuffers[0]);
@@ -1791,7 +1791,7 @@ int write_to_disp(char* str, int offset){
 	 //char_to_hex(str[0]);
 	IOWR_ALTERA_AVALON_PIO_DATA(HEX0_BASE, 127);
   800948:	00804034 	movhi	r2,256
-  80094c:	10843804 	addi	r2,r2,4320
+  80094c:	10845804 	addi	r2,r2,4448
   800950:	00c01fc4 	movi	r3,127
   800954:	10c00035 	stwio	r3,0(r2)
 	printf("wrotetodisp\n");
@@ -1824,7 +1824,7 @@ int write_to_disp(char* str, int offset){
   800980:	0801f980 	call	801f98 <atoi>
 		IOWR(LED_BASE, 0, k);
   800984:	00c04034 	movhi	r3,256
-  800988:	18c45004 	addi	r3,r3,4416
+  800988:	18c47004 	addi	r3,r3,4544
   80098c:	18800035 	stwio	r2,0(r3)
 		throw_code(&"LEDFLASH", 0);
   800990:	01002034 	movhi	r4,128
@@ -5751,14 +5751,14 @@ static ALT_INLINE void ALT_ALWAYS_INLINE
   803abc:	f800283a 	ret
 
 00803ac0 <alt_sys_init>:
-void alt_sys_init( void )
-{
+    ALTERA_AVALON_TIMER_INIT ( HEX_TIMER, hex_timer);
     ALTERA_AVALON_TIMER_INIT ( TIMER, timer);
+    ALTERA_AVALON_TIMER_INIT ( TIMER0, timer0);
     ALTERA_AVALON_TIMER_INIT ( TIMER1, timer1);
     ALTERA_AVALON_TIMER_INIT ( TIMER3, timer3);
     ALTERA_AVALON_TIMER_INIT ( TIMER4, timer4);
   803ac0:	00804034 	movhi	r2,256
-  803ac4:	10841004 	addi	r2,r2,4160
+  803ac4:	10842004 	addi	r2,r2,4224
   803ac8:	d0a0ba15 	stw	r2,-32024(gp)
 
 static ALT_INLINE int alt_dev_reg (alt_dev* dev)

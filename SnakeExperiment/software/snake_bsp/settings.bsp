@@ -2,8 +2,8 @@
 <sch:Settings xmlns:sch="http://www.altera.com/embeddedsw/bsp/schema">
         <BspType>hal</BspType>
         <BspVersion>default</BspVersion>
-        <BspGeneratedTimeStamp>Feb 28, 2022 10:33:38 AM</BspGeneratedTimeStamp>
-        <BspGeneratedUnixTimeStamp>1646044418514</BspGeneratedUnixTimeStamp>
+        <BspGeneratedTimeStamp>Mar 2, 2022 5:20:03 PM</BspGeneratedTimeStamp>
+        <BspGeneratedUnixTimeStamp>1646241603873</BspGeneratedUnixTimeStamp>
         <BspGeneratedLocation>C:\Users\micha\Desktop\Medusa_IO\SnakeExperiment\software\snake_bsp</BspGeneratedLocation>
         <BspSettingsFile>settings.bsp</BspSettingsFile>
         <SopcDesignFile>..\..\snake.sopcinfo</SopcDesignFile>
@@ -905,104 +905,122 @@
                 <attributes>memory</attributes>
         </MemoryMap>
         <MemoryMap>
-                <slaveDescriptor>timer3</slaveDescriptor>
+                <slaveDescriptor>timestamp_timer</slaveDescriptor>
                 <addressRange>0x01001000 - 0x0100103F</addressRange>
                 <addressSpan>64</addressSpan>
                 <attributes>timer</attributes>
         </MemoryMap>
         <MemoryMap>
-                <slaveDescriptor>timer4</slaveDescriptor>
+                <slaveDescriptor>timer3</slaveDescriptor>
                 <addressRange>0x01001040 - 0x0100107F</addressRange>
                 <addressSpan>64</addressSpan>
                 <attributes>timer</attributes>
         </MemoryMap>
         <MemoryMap>
+                <slaveDescriptor>timer4</slaveDescriptor>
+                <addressRange>0x01001080 - 0x010010BF</addressRange>
+                <addressSpan>64</addressSpan>
+                <attributes>timer</attributes>
+        </MemoryMap>
+        <MemoryMap>
+                <slaveDescriptor>hex_timer</slaveDescriptor>
+                <addressRange>0x010010C0 - 0x010010DF</addressRange>
+                <addressSpan>32</addressSpan>
+                <attributes>timer</attributes>
+        </MemoryMap>
+        <MemoryMap>
+                <slaveDescriptor>timer0</slaveDescriptor>
+                <addressRange>0x010010E0 - 0x010010FF</addressRange>
+                <addressSpan>32</addressSpan>
+                <attributes>timer</attributes>
+        </MemoryMap>
+        <MemoryMap>
                 <slaveDescriptor>timer</slaveDescriptor>
-                <addressRange>0x01001080 - 0x0100109F</addressRange>
+                <addressRange>0x01001100 - 0x0100111F</addressRange>
                 <addressSpan>32</addressSpan>
                 <attributes>timer</attributes>
         </MemoryMap>
         <MemoryMap>
                 <slaveDescriptor>timer1</slaveDescriptor>
-                <addressRange>0x010010A0 - 0x010010BF</addressRange>
+                <addressRange>0x01001120 - 0x0100113F</addressRange>
                 <addressSpan>32</addressSpan>
                 <attributes>timer</attributes>
         </MemoryMap>
         <MemoryMap>
                 <slaveDescriptor>button</slaveDescriptor>
-                <addressRange>0x010010C0 - 0x010010CF</addressRange>
-                <addressSpan>16</addressSpan>
-                <attributes/>
-        </MemoryMap>
-        <MemoryMap>
-                <slaveDescriptor>switch</slaveDescriptor>
-                <addressRange>0x010010D0 - 0x010010DF</addressRange>
-                <addressSpan>16</addressSpan>
-                <attributes/>
-        </MemoryMap>
-        <MemoryMap>
-                <slaveDescriptor>hex0</slaveDescriptor>
-                <addressRange>0x010010E0 - 0x010010EF</addressRange>
-                <addressSpan>16</addressSpan>
-                <attributes/>
-        </MemoryMap>
-        <MemoryMap>
-                <slaveDescriptor>hex1</slaveDescriptor>
-                <addressRange>0x010010F0 - 0x010010FF</addressRange>
-                <addressSpan>16</addressSpan>
-                <attributes/>
-        </MemoryMap>
-        <MemoryMap>
-                <slaveDescriptor>hex2</slaveDescriptor>
-                <addressRange>0x01001100 - 0x0100110F</addressRange>
-                <addressSpan>16</addressSpan>
-                <attributes/>
-        </MemoryMap>
-        <MemoryMap>
-                <slaveDescriptor>hex3</slaveDescriptor>
-                <addressRange>0x01001110 - 0x0100111F</addressRange>
-                <addressSpan>16</addressSpan>
-                <attributes/>
-        </MemoryMap>
-        <MemoryMap>
-                <slaveDescriptor>hex4</slaveDescriptor>
-                <addressRange>0x01001120 - 0x0100112F</addressRange>
-                <addressSpan>16</addressSpan>
-                <attributes/>
-        </MemoryMap>
-        <MemoryMap>
-                <slaveDescriptor>hex5</slaveDescriptor>
-                <addressRange>0x01001130 - 0x0100113F</addressRange>
-                <addressSpan>16</addressSpan>
-                <attributes/>
-        </MemoryMap>
-        <MemoryMap>
-                <slaveDescriptor>led</slaveDescriptor>
                 <addressRange>0x01001140 - 0x0100114F</addressRange>
                 <addressSpan>16</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
-                <slaveDescriptor>altpll</slaveDescriptor>
+                <slaveDescriptor>switch</slaveDescriptor>
                 <addressRange>0x01001150 - 0x0100115F</addressRange>
                 <addressSpan>16</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
+                <slaveDescriptor>hex0</slaveDescriptor>
+                <addressRange>0x01001160 - 0x0100116F</addressRange>
+                <addressSpan>16</addressSpan>
+                <attributes/>
+        </MemoryMap>
+        <MemoryMap>
+                <slaveDescriptor>hex1</slaveDescriptor>
+                <addressRange>0x01001170 - 0x0100117F</addressRange>
+                <addressSpan>16</addressSpan>
+                <attributes/>
+        </MemoryMap>
+        <MemoryMap>
+                <slaveDescriptor>hex2</slaveDescriptor>
+                <addressRange>0x01001180 - 0x0100118F</addressRange>
+                <addressSpan>16</addressSpan>
+                <attributes/>
+        </MemoryMap>
+        <MemoryMap>
+                <slaveDescriptor>hex3</slaveDescriptor>
+                <addressRange>0x01001190 - 0x0100119F</addressRange>
+                <addressSpan>16</addressSpan>
+                <attributes/>
+        </MemoryMap>
+        <MemoryMap>
+                <slaveDescriptor>hex4</slaveDescriptor>
+                <addressRange>0x010011A0 - 0x010011AF</addressRange>
+                <addressSpan>16</addressSpan>
+                <attributes/>
+        </MemoryMap>
+        <MemoryMap>
+                <slaveDescriptor>hex5</slaveDescriptor>
+                <addressRange>0x010011B0 - 0x010011BF</addressRange>
+                <addressSpan>16</addressSpan>
+                <attributes/>
+        </MemoryMap>
+        <MemoryMap>
+                <slaveDescriptor>led</slaveDescriptor>
+                <addressRange>0x010011C0 - 0x010011CF</addressRange>
+                <addressSpan>16</addressSpan>
+                <attributes/>
+        </MemoryMap>
+        <MemoryMap>
+                <slaveDescriptor>altpll</slaveDescriptor>
+                <addressRange>0x010011D0 - 0x010011DF</addressRange>
+                <addressSpan>16</addressSpan>
+                <attributes/>
+        </MemoryMap>
+        <MemoryMap>
                 <slaveDescriptor>sysid</slaveDescriptor>
-                <addressRange>0x01001160 - 0x01001167</addressRange>
+                <addressRange>0x010011E0 - 0x010011E7</addressRange>
                 <addressSpan>8</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
                 <slaveDescriptor>jtag_uart</slaveDescriptor>
-                <addressRange>0x01001168 - 0x0100116F</addressRange>
+                <addressRange>0x010011E8 - 0x010011EF</addressRange>
                 <addressSpan>8</addressSpan>
                 <attributes>printable</attributes>
         </MemoryMap>
         <MemoryMap>
                 <slaveDescriptor>accelerometer_spi</slaveDescriptor>
-                <addressRange>0x01001170 - 0x01001171</addressRange>
+                <addressRange>0x010011F0 - 0x010011F1</addressRange>
                 <addressSpan>2</addressSpan>
                 <attributes/>
         </MemoryMap>

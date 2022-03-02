@@ -37,12 +37,12 @@ module snake (
 	input	[1:0]	button_external_connection_export;
 	input		clk_clk;
 	output		clk_sdram_clk;
-	output	[6:0]	hex0_external_connection_export;
-	output	[6:0]	hex1_external_connection_export;
-	output	[6:0]	hex2_external_connection_export;
-	output	[6:0]	hex3_external_connection_export;
-	output	[6:0]	hex4_external_connection_export;
-	output	[6:0]	hex5_external_connection_export;
+	output	[7:0]	hex0_external_connection_export;
+	output	[7:0]	hex1_external_connection_export;
+	output	[7:0]	hex2_external_connection_export;
+	output	[7:0]	hex3_external_connection_export;
+	output	[7:0]	hex4_external_connection_export;
+	output	[7:0]	hex5_external_connection_export;
 	output	[9:0]	led_external_connection_export;
 	input		reset_reset_n;
 	output	[11:0]	sdram_wire_addr;

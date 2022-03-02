@@ -3,7 +3,7 @@
 # Machine generated for CPU 'cpu' in SOPC Builder design 'snake'
 # SOPC Builder design path: ../../snake.sopcinfo
 #
-# Generated: Mon Feb 28 10:30:47 UTC 2022
+# Generated: Wed Mar 02 16:28:06 UTC 2022
 
 # DO NOT MODIFY THIS FILE
 #

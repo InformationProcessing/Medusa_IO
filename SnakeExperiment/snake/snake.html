@@ -67,7 +67,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
   </table>
   <table class="blueBar">
    <tr>
-    <td class="l">2022.02.10.16:35:40</td>
+    <td class="l">2022.03.02.16:59:15</td>
     <td class="r">Datasheet</td>
    </tr>
   </table>
@@ -121,6 +121,9 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
      <a href="#module_hex5"><b>hex5</b>
      </a> altera_avalon_pio 18.1
      <br/>&#160;&#160;
+     <a href="#module_hex_timer"><b>hex_timer</b>
+     </a> altera_avalon_timer 18.1
+     <br/>&#160;&#160;
      <a href="#module_jtag_uart"><b>jtag_uart</b>
      </a> altera_avalon_jtag_uart 18.1
      <br/>&#160;&#160;
@@ -139,6 +142,9 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
      <a href="#module_timer"><b>timer</b>
      </a> altera_avalon_timer 18.1
      <br/>&#160;&#160;
+     <a href="#module_timer0"><b>timer0</b>
+     </a> altera_avalon_timer 18.1
+     <br/>&#160;&#160;
      <a href="#module_timer1"><b>timer1</b>
      </a> altera_avalon_timer 18.1
      <br/>&#160;&#160;
@@ -146,6 +152,9 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
      </a> altera_avalon_timer 18.1
      <br/>&#160;&#160;
      <a href="#module_timer4"><b>timer4</b>
+     </a> altera_avalon_timer 18.1
+     <br/>&#160;&#160;
+     <a href="#module_timestamp_timer"><b>timestamp_timer</b>
      </a> altera_avalon_timer 18.1</span>
    </div>
   </div>
@@ -173,7 +182,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
    </tr>
    <tr>
     <td class="slaveb">avalon_accelerometer_spi_mode_slave&#160;</td>
-    <td class="addr"><span style="color:#989898">0x</span>01001170</td>
+    <td class="addr"><span style="color:#989898">0x</span>010011f0</td>
     <td class="empty"></td>
    </tr>
    <tr>
@@ -186,7 +195,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
    </tr>
    <tr>
     <td class="slaveb">pll_slave&#160;</td>
-    <td class="addr"><span style="color:#989898">0x</span>01001150</td>
+    <td class="addr"><span style="color:#989898">0x</span>010011d0</td>
     <td class="empty"></td>
    </tr>
    <tr>
@@ -199,7 +208,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
    </tr>
    <tr>
     <td class="slaveb">s1&#160;</td>
-    <td class="addr"><span style="color:#989898">0x</span>010010c0</td>
+    <td class="addr"><span style="color:#989898">0x</span>01001140</td>
     <td class="empty"></td>
    </tr>
    <tr>
@@ -225,7 +234,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
    </tr>
    <tr>
     <td class="slaveb">s1&#160;</td>
-    <td class="addr"><span style="color:#989898">0x</span>010010e0</td>
+    <td class="addr"><span style="color:#989898">0x</span>01001160</td>
     <td class="empty"></td>
    </tr>
    <tr>
@@ -238,7 +247,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
    </tr>
    <tr>
     <td class="slaveb">s1&#160;</td>
-    <td class="addr"><span style="color:#989898">0x</span>010010f0</td>
+    <td class="addr"><span style="color:#989898">0x</span>01001170</td>
     <td class="empty"></td>
    </tr>
    <tr>
@@ -251,7 +260,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
    </tr>
    <tr>
     <td class="slaveb">s1&#160;</td>
-    <td class="addr"><span style="color:#989898">0x</span>01001100</td>
+    <td class="addr"><span style="color:#989898">0x</span>01001180</td>
     <td class="empty"></td>
    </tr>
    <tr>
@@ -264,7 +273,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
    </tr>
    <tr>
     <td class="slaveb">s1&#160;</td>
-    <td class="addr"><span style="color:#989898">0x</span>01001110</td>
+    <td class="addr"><span style="color:#989898">0x</span>01001190</td>
     <td class="empty"></td>
    </tr>
    <tr>
@@ -277,7 +286,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
    </tr>
    <tr>
     <td class="slaveb">s1&#160;</td>
-    <td class="addr"><span style="color:#989898">0x</span>01001120</td>
+    <td class="addr"><span style="color:#989898">0x</span>010011a0</td>
     <td class="empty"></td>
    </tr>
    <tr>
@@ -290,7 +299,20 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
    </tr>
    <tr>
     <td class="slaveb">s1&#160;</td>
-    <td class="addr"><span style="color:#989898">0x</span>01001130</td>
+    <td class="addr"><span style="color:#989898">0x</span>010011b0</td>
+    <td class="empty"></td>
+   </tr>
+   <tr>
+    <td class="slavemodule">&#160;
+     <a href="#module_hex_timer"><b>hex_timer</b>
+     </a>
+    </td>
+    <td class="empty"></td>
+    <td class="empty"></td>
+   </tr>
+   <tr>
+    <td class="slaveb">s1&#160;</td>
+    <td class="addr"><span style="color:#989898">0x</span>010010c0</td>
     <td class="empty"></td>
    </tr>
    <tr>
@@ -303,7 +325,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
    </tr>
    <tr>
     <td class="slaveb">avalon_jtag_slave&#160;</td>
-    <td class="addr"><span style="color:#989898">0x</span>01001168</td>
+    <td class="addr"><span style="color:#989898">0x</span>010011e8</td>
     <td class="empty"></td>
    </tr>
    <tr>
@@ -316,7 +338,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
    </tr>
    <tr>
     <td class="slaveb">s1&#160;</td>
-    <td class="addr"><span style="color:#989898">0x</span>01001140</td>
+    <td class="addr"><span style="color:#989898">0x</span>010011c0</td>
     <td class="empty"></td>
    </tr>
    <tr>
@@ -342,7 +364,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
    </tr>
    <tr>
     <td class="slaveb">s1&#160;</td>
-    <td class="addr"><span style="color:#989898">0x</span>010010d0</td>
+    <td class="addr"><span style="color:#989898">0x</span>01001150</td>
     <td class="empty"></td>
    </tr>
    <tr>
@@ -355,7 +377,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
    </tr>
    <tr>
     <td class="slaveb">control_slave&#160;</td>
-    <td class="addr"><span style="color:#989898">0x</span>01001160</td>
+    <td class="addr"><span style="color:#989898">0x</span>010011e0</td>
     <td class="empty"></td>
    </tr>
    <tr>
@@ -368,7 +390,20 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
    </tr>
    <tr>
     <td class="slaveb">s1&#160;</td>
-    <td class="addr"><span style="color:#989898">0x</span>01001080</td>
+    <td class="addr"><span style="color:#989898">0x</span>01001100</td>
+    <td class="empty"></td>
+   </tr>
+   <tr>
+    <td class="slavemodule">&#160;
+     <a href="#module_timer0"><b>timer0</b>
+     </a>
+    </td>
+    <td class="empty"></td>
+    <td class="empty"></td>
+   </tr>
+   <tr>
+    <td class="slaveb">s1&#160;</td>
+    <td class="addr"><span style="color:#989898">0x</span>010010e0</td>
     <td class="empty"></td>
    </tr>
    <tr>
@@ -381,7 +416,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
    </tr>
    <tr>
     <td class="slaveb">s1&#160;</td>
-    <td class="addr"><span style="color:#989898">0x</span>010010a0</td>
+    <td class="addr"><span style="color:#989898">0x</span>01001120</td>
     <td class="empty"></td>
    </tr>
    <tr>
@@ -394,7 +429,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
    </tr>
    <tr>
     <td class="slaveb">s1&#160;</td>
-    <td class="addr"><span style="color:#989898">0x</span>01001000</td>
+    <td class="addr"><span style="color:#989898">0x</span>01001040</td>
     <td class="empty"></td>
    </tr>
    <tr>
@@ -407,7 +442,20 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
    </tr>
    <tr>
     <td class="slaveb">s1&#160;</td>
-    <td class="addr"><span style="color:#989898">0x</span>01001040</td>
+    <td class="addr"><span style="color:#989898">0x</span>01001080</td>
+    <td class="empty"></td>
+   </tr>
+   <tr>
+    <td class="slavemodule">&#160;
+     <a href="#module_timestamp_timer"><b>timestamp_timer</b>
+     </a>
+    </td>
+    <td class="empty"></td>
+    <td class="empty"></td>
+   </tr>
+   <tr>
+    <td class="slaveb">s1&#160;</td>
+    <td class="addr"><span style="color:#989898">0x</span>01001000</td>
     <td class="empty"></td>
    </tr>
   </table>
@@ -506,7 +554,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        <a href="#module_cpu">cpu</a>
       </td>
       <td class="from">data_master&#160;&#160;</td>
-      <td class="main" rowspan="60">altpll</td>
+      <td class="main" rowspan="69">altpll</td>
      </tr>
      <tr>
       <td class="to">&#160;&#160;pll_slave</td>
@@ -807,6 +855,54 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
       <td class="from">c0&#160;&#160;</td>
       <td class="neighbor" rowspan="2">
        <a href="#module_jtag_uart">jtag_uart</a>
+      </td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="to">&#160;&#160;clk</td>
+     </tr>
+     <tr style="height:6px">
+      <td></td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="from">c0&#160;&#160;</td>
+      <td class="neighbor" rowspan="2">
+       <a href="#module_timer0">timer0</a>
+      </td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="to">&#160;&#160;clk</td>
+     </tr>
+     <tr style="height:6px">
+      <td></td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="from">c0&#160;&#160;</td>
+      <td class="neighbor" rowspan="2">
+       <a href="#module_timestamp_timer">timestamp_timer</a>
+      </td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="to">&#160;&#160;clk</td>
+     </tr>
+     <tr style="height:6px">
+      <td></td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="from">c0&#160;&#160;</td>
+      <td class="neighbor" rowspan="2">
+       <a href="#module_hex_timer">hex_timer</a>
       </td>
      </tr>
      <tr>
@@ -1765,7 +1861,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        <a href="#module_altpll">altpll</a>
       </td>
       <td class="from">c0&#160;&#160;</td>
-      <td class="main" rowspan="72">cpu</td>
+      <td class="main" rowspan="87">cpu</td>
      </tr>
      <tr>
       <td class="to">&#160;&#160;clk</td>
@@ -2120,6 +2216,84 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
       <td class="from">data_master&#160;&#160;</td>
       <td class="neighbor" rowspan="4">
        <a href="#module_timer">timer</a>
+      </td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="to">&#160;&#160;s1</td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="from">irq&#160;&#160;</td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="to">&#160;&#160;irq</td>
+     </tr>
+     <tr style="height:6px">
+      <td></td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="from">data_master&#160;&#160;</td>
+      <td class="neighbor" rowspan="4">
+       <a href="#module_timestamp_timer">timestamp_timer</a>
+      </td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="to">&#160;&#160;s1</td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="from">irq&#160;&#160;</td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="to">&#160;&#160;irq</td>
+     </tr>
+     <tr style="height:6px">
+      <td></td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="from">data_master&#160;&#160;</td>
+      <td class="neighbor" rowspan="4">
+       <a href="#module_timer0">timer0</a>
+      </td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="to">&#160;&#160;s1</td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="from">irq&#160;&#160;</td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="to">&#160;&#160;irq</td>
+     </tr>
+     <tr style="height:6px">
+      <td></td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="from">data_master&#160;&#160;</td>
+      <td class="neighbor" rowspan="4">
+       <a href="#module_hex_timer">hex_timer</a>
       </td>
      </tr>
      <tr>
@@ -2836,7 +3010,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        </tr>
        <tr>
         <td class="parametername">dataSlaveMapParam</td>
-        <td class="parametervalue">&lt;address-map&gt;&lt;slave name='sdram.s1' start='0x800000' end='0x1000000' type='altera_avalon_new_sdram_controller.s1' /&gt;&lt;slave name='cpu.debug_mem_slave' start='0x1000800' end='0x1001000' type='altera_nios2_gen2.debug_mem_slave' /&gt;&lt;slave name='timer3.s1' start='0x1001000' end='0x1001040' type='altera_avalon_timer.s1' /&gt;&lt;slave name='timer4.s1' start='0x1001040' end='0x1001080' type='altera_avalon_timer.s1' /&gt;&lt;slave name='timer.s1' start='0x1001080' end='0x10010A0' type='altera_avalon_timer.s1' /&gt;&lt;slave name='timer1.s1' start='0x10010A0' end='0x10010C0' type='altera_avalon_timer.s1' /&gt;&lt;slave name='button.s1' start='0x10010C0' end='0x10010D0' type='altera_avalon_pio.s1' /&gt;&lt;slave name='switch.s1' start='0x10010D0' end='0x10010E0' type='altera_avalon_pio.s1' /&gt;&lt;slave name='hex0.s1' start='0x10010E0' end='0x10010F0' type='altera_avalon_pio.s1' /&gt;&lt;slave name='hex1.s1' start='0x10010F0' end='0x1001100' type='altera_avalon_pio.s1' /&gt;&lt;slave name='hex2.s1' start='0x1001100' end='0x1001110' type='altera_avalon_pio.s1' /&gt;&lt;slave name='hex3.s1' start='0x1001110' end='0x1001120' type='altera_avalon_pio.s1' /&gt;&lt;slave name='hex4.s1' start='0x1001120' end='0x1001130' type='altera_avalon_pio.s1' /&gt;&lt;slave name='hex5.s1' start='0x1001130' end='0x1001140' type='altera_avalon_pio.s1' /&gt;&lt;slave name='led.s1' start='0x1001140' end='0x1001150' type='altera_avalon_pio.s1' /&gt;&lt;slave name='altpll.pll_slave' start='0x1001150' end='0x1001160' type='altpll.pll_slave' /&gt;&lt;slave name='sysid.control_slave' start='0x1001160' end='0x1001168' type='altera_avalon_sysid_qsys.control_slave' /&gt;&lt;slave name='jtag_uart.avalon_jtag_slave' start='0x1001168' end='0x1001170' type='altera_avalon_jtag_uart.avalon_jtag_slave' /&gt;&lt;slave name='accelerometer_spi.avalon_accelerometer_spi_mode_slave' start='0x1001170' end='0x1001172' type='altera_up_avalon_accelerometer_spi.avalon_accelerometer_spi_mode_slave' /&gt;&lt;/address-map&gt;</td>
+        <td class="parametervalue">&lt;address-map&gt;&lt;slave name='sdram.s1' start='0x800000' end='0x1000000' type='altera_avalon_new_sdram_controller.s1' /&gt;&lt;slave name='cpu.debug_mem_slave' start='0x1000800' end='0x1001000' type='altera_nios2_gen2.debug_mem_slave' /&gt;&lt;slave name='timestamp_timer.s1' start='0x1001000' end='0x1001040' type='altera_avalon_timer.s1' /&gt;&lt;slave name='timer3.s1' start='0x1001040' end='0x1001080' type='altera_avalon_timer.s1' /&gt;&lt;slave name='timer4.s1' start='0x1001080' end='0x10010C0' type='altera_avalon_timer.s1' /&gt;&lt;slave name='hex_timer.s1' start='0x10010C0' end='0x10010E0' type='altera_avalon_timer.s1' /&gt;&lt;slave name='timer0.s1' start='0x10010E0' end='0x1001100' type='altera_avalon_timer.s1' /&gt;&lt;slave name='timer.s1' start='0x1001100' end='0x1001120' type='altera_avalon_timer.s1' /&gt;&lt;slave name='timer1.s1' start='0x1001120' end='0x1001140' type='altera_avalon_timer.s1' /&gt;&lt;slave name='button.s1' start='0x1001140' end='0x1001150' type='altera_avalon_pio.s1' /&gt;&lt;slave name='switch.s1' start='0x1001150' end='0x1001160' type='altera_avalon_pio.s1' /&gt;&lt;slave name='hex0.s1' start='0x1001160' end='0x1001170' type='altera_avalon_pio.s1' /&gt;&lt;slave name='hex1.s1' start='0x1001170' end='0x1001180' type='altera_avalon_pio.s1' /&gt;&lt;slave name='hex2.s1' start='0x1001180' end='0x1001190' type='altera_avalon_pio.s1' /&gt;&lt;slave name='hex3.s1' start='0x1001190' end='0x10011A0' type='altera_avalon_pio.s1' /&gt;&lt;slave name='hex4.s1' start='0x10011A0' end='0x10011B0' type='altera_avalon_pio.s1' /&gt;&lt;slave name='hex5.s1' start='0x10011B0' end='0x10011C0' type='altera_avalon_pio.s1' /&gt;&lt;slave name='led.s1' start='0x10011C0' end='0x10011D0' type='altera_avalon_pio.s1' /&gt;&lt;slave name='altpll.pll_slave' start='0x10011D0' end='0x10011E0' type='altpll.pll_slave' /&gt;&lt;slave name='sysid.control_slave' start='0x10011E0' end='0x10011E8' type='altera_avalon_sysid_qsys.control_slave' /&gt;&lt;slave name='jtag_uart.avalon_jtag_slave' start='0x10011E8' end='0x10011F0' type='altera_avalon_jtag_uart.avalon_jtag_slave' /&gt;&lt;slave name='accelerometer_spi.avalon_accelerometer_spi_mode_slave' start='0x10011F0' end='0x10011F2' type='altera_up_avalon_accelerometer_spi.avalon_accelerometer_spi_mode_slave' /&gt;&lt;/address-map&gt;</td>
        </tr>
        <tr>
         <td class="parametername">tightlyCoupledDataMaster0MapParam</td>
@@ -2888,7 +3062,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        </tr>
        <tr>
         <td class="parametername">internalIrqMaskSystemInfo</td>
-        <td class="parametervalue">63</td>
+        <td class="parametervalue">511</td>
        </tr>
        <tr>
         <td class="parametername">customInstSlavesSystemInfo</td>
@@ -3140,7 +3314,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        </tr>
        <tr>
         <td class="parametername">resetValue</td>
-        <td class="parametervalue">0</td>
+        <td class="parametervalue">137</td>
        </tr>
        <tr>
         <td class="parametername">simDoTestBenchWiring</td>
@@ -3152,7 +3326,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        </tr>
        <tr>
         <td class="parametername">width</td>
-        <td class="parametervalue">7</td>
+        <td class="parametervalue">8</td>
        </tr>
        <tr>
         <td class="parametername">clockRate</td>
@@ -3221,7 +3395,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        </tr>
        <tr>
         <td class="parametername">DATA_WIDTH</td>
-        <td class="parametervalue">7</td>
+        <td class="parametervalue">8</td>
        </tr>
        <tr>
         <td class="parametername">DO_TEST_BENCH_WIRING</td>
@@ -3257,7 +3431,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        </tr>
        <tr>
         <td class="parametername">RESET_VALUE</td>
-        <td class="parametervalue">0</td>
+        <td class="parametervalue">137</td>
        </tr>
       </table>
      </td>
@@ -3344,7 +3518,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        </tr>
        <tr>
         <td class="parametername">resetValue</td>
-        <td class="parametervalue">0</td>
+        <td class="parametervalue">146</td>
        </tr>
        <tr>
         <td class="parametername">simDoTestBenchWiring</td>
@@ -3356,7 +3530,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        </tr>
        <tr>
         <td class="parametername">width</td>
-        <td class="parametervalue">7</td>
+        <td class="parametervalue">8</td>
        </tr>
        <tr>
         <td class="parametername">clockRate</td>
@@ -3425,7 +3599,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        </tr>
        <tr>
         <td class="parametername">DATA_WIDTH</td>
-        <td class="parametervalue">7</td>
+        <td class="parametervalue">8</td>
        </tr>
        <tr>
         <td class="parametername">DO_TEST_BENCH_WIRING</td>
@@ -3461,7 +3635,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        </tr>
        <tr>
         <td class="parametername">RESET_VALUE</td>
-        <td class="parametervalue">0</td>
+        <td class="parametervalue">146</td>
        </tr>
       </table>
      </td>
@@ -3548,7 +3722,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        </tr>
        <tr>
         <td class="parametername">resetValue</td>
-        <td class="parametervalue">0</td>
+        <td class="parametervalue">136</td>
        </tr>
        <tr>
         <td class="parametername">simDoTestBenchWiring</td>
@@ -3560,7 +3734,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        </tr>
        <tr>
         <td class="parametername">width</td>
-        <td class="parametervalue">7</td>
+        <td class="parametervalue">8</td>
        </tr>
        <tr>
         <td class="parametername">clockRate</td>
@@ -3629,7 +3803,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        </tr>
        <tr>
         <td class="parametername">DATA_WIDTH</td>
-        <td class="parametervalue">7</td>
+        <td class="parametervalue">8</td>
        </tr>
        <tr>
         <td class="parametername">DO_TEST_BENCH_WIRING</td>
@@ -3665,7 +3839,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        </tr>
        <tr>
         <td class="parametername">RESET_VALUE</td>
-        <td class="parametervalue">0</td>
+        <td class="parametervalue">136</td>
        </tr>
       </table>
      </td>
@@ -3752,7 +3926,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        </tr>
        <tr>
         <td class="parametername">resetValue</td>
-        <td class="parametervalue">0</td>
+        <td class="parametervalue">199</td>
        </tr>
        <tr>
         <td class="parametername">simDoTestBenchWiring</td>
@@ -3764,7 +3938,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        </tr>
        <tr>
         <td class="parametername">width</td>
-        <td class="parametervalue">7</td>
+        <td class="parametervalue">8</td>
        </tr>
        <tr>
         <td class="parametername">clockRate</td>
@@ -3833,7 +4007,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        </tr>
        <tr>
         <td class="parametername">DATA_WIDTH</td>
-        <td class="parametervalue">7</td>
+        <td class="parametervalue">8</td>
        </tr>
        <tr>
         <td class="parametername">DO_TEST_BENCH_WIRING</td>
@@ -3869,7 +4043,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        </tr>
        <tr>
         <td class="parametername">RESET_VALUE</td>
-        <td class="parametervalue">0</td>
+        <td class="parametervalue">199</td>
        </tr>
       </table>
      </td>
@@ -3956,7 +4130,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        </tr>
        <tr>
         <td class="parametername">resetValue</td>
-        <td class="parametervalue">0</td>
+        <td class="parametervalue">142</td>
        </tr>
        <tr>
         <td class="parametername">simDoTestBenchWiring</td>
@@ -3968,7 +4142,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        </tr>
        <tr>
         <td class="parametername">width</td>
-        <td class="parametervalue">7</td>
+        <td class="parametervalue">8</td>
        </tr>
        <tr>
         <td class="parametername">clockRate</td>
@@ -4037,7 +4211,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        </tr>
        <tr>
         <td class="parametername">DATA_WIDTH</td>
-        <td class="parametervalue">7</td>
+        <td class="parametervalue">8</td>
        </tr>
        <tr>
         <td class="parametername">DO_TEST_BENCH_WIRING</td>
@@ -4073,7 +4247,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        </tr>
        <tr>
         <td class="parametername">RESET_VALUE</td>
-        <td class="parametervalue">0</td>
+        <td class="parametervalue">142</td>
        </tr>
       </table>
      </td>
@@ -4160,7 +4334,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        </tr>
        <tr>
         <td class="parametername">resetValue</td>
-        <td class="parametervalue">0</td>
+        <td class="parametervalue">255</td>
        </tr>
        <tr>
         <td class="parametername">simDoTestBenchWiring</td>
@@ -4172,7 +4346,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        </tr>
        <tr>
         <td class="parametername">width</td>
-        <td class="parametervalue">7</td>
+        <td class="parametervalue">8</td>
        </tr>
        <tr>
         <td class="parametername">clockRate</td>
@@ -4241,7 +4415,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        </tr>
        <tr>
         <td class="parametername">DATA_WIDTH</td>
-        <td class="parametervalue">7</td>
+        <td class="parametervalue">8</td>
        </tr>
        <tr>
         <td class="parametername">DO_TEST_BENCH_WIRING</td>
@@ -4277,6 +4451,200 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        </tr>
        <tr>
         <td class="parametername">RESET_VALUE</td>
+        <td class="parametervalue">255</td>
+       </tr>
+      </table>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="module_hex_timer"> </a>
+  <div>
+   <hr/>
+   <h2>hex_timer</h2>altera_avalon_timer v18.1
+   <br/>
+   <div class="greydiv">
+    <table class="connectionboxes">
+     <tr>
+      <td class="neighbor" rowspan="4">
+       <a href="#module_cpu">cpu</a>
+      </td>
+      <td class="from">data_master&#160;&#160;</td>
+      <td class="main" rowspan="10">hex_timer</td>
+     </tr>
+     <tr>
+      <td class="to">&#160;&#160;s1</td>
+     </tr>
+     <tr>
+      <td class="from">irq&#160;&#160;</td>
+     </tr>
+     <tr>
+      <td class="to">&#160;&#160;irq</td>
+     </tr>
+     <tr style="height:6px">
+      <td></td>
+     </tr>
+     <tr>
+      <td class="neighbor" rowspan="2">
+       <a href="#module_altpll">altpll</a>
+      </td>
+      <td class="from">c0&#160;&#160;</td>
+     </tr>
+     <tr>
+      <td class="to">&#160;&#160;clk</td>
+     </tr>
+     <tr style="height:6px">
+      <td></td>
+     </tr>
+     <tr>
+      <td class="neighbor" rowspan="2">
+       <a href="#module_clk">clk</a>
+      </td>
+      <td class="from">clk_reset&#160;&#160;</td>
+     </tr>
+     <tr>
+      <td class="to">&#160;&#160;reset</td>
+     </tr>
+    </table>
+   </div>
+   <br/>
+   <br/>
+   <table class="flowbox">
+    <tr>
+     <td class="parametersbox">
+      <h2>Parameters</h2>
+      <table>
+       <tr>
+        <td class="parametername">alwaysRun</td>
+        <td class="parametervalue">false</td>
+       </tr>
+       <tr>
+        <td class="parametername">counterSize</td>
+        <td class="parametervalue">32</td>
+       </tr>
+       <tr>
+        <td class="parametername">fixedPeriod</td>
+        <td class="parametervalue">false</td>
+       </tr>
+       <tr>
+        <td class="parametername">period</td>
+        <td class="parametervalue">1</td>
+       </tr>
+       <tr>
+        <td class="parametername">periodUnits</td>
+        <td class="parametervalue">MSEC</td>
+       </tr>
+       <tr>
+        <td class="parametername">resetOutput</td>
+        <td class="parametervalue">false</td>
+       </tr>
+       <tr>
+        <td class="parametername">snapshot</td>
+        <td class="parametervalue">true</td>
+       </tr>
+       <tr>
+        <td class="parametername">timeoutPulseOutput</td>
+        <td class="parametervalue">false</td>
+       </tr>
+       <tr>
+        <td class="parametername">systemFrequency</td>
+        <td class="parametervalue">120000000</td>
+       </tr>
+       <tr>
+        <td class="parametername">watchdogPulse</td>
+        <td class="parametervalue">2</td>
+       </tr>
+       <tr>
+        <td class="parametername">timerPreset</td>
+        <td class="parametervalue">FULL_FEATURED</td>
+       </tr>
+       <tr>
+        <td class="parametername">periodUnitsString</td>
+        <td class="parametervalue">ms</td>
+       </tr>
+       <tr>
+        <td class="parametername">valueInSecond</td>
+        <td class="parametervalue">0.001</td>
+       </tr>
+       <tr>
+        <td class="parametername">loadValue</td>
+        <td class="parametervalue">119999</td>
+       </tr>
+       <tr>
+        <td class="parametername">mult</td>
+        <td class="parametervalue">0.001</td>
+       </tr>
+       <tr>
+        <td class="parametername">ticksPerSec</td>
+        <td class="parametervalue">1000.0</td>
+       </tr>
+       <tr>
+        <td class="parametername">slave_address_width</td>
+        <td class="parametervalue">3</td>
+       </tr>
+       <tr>
+        <td class="parametername">deviceFamily</td>
+        <td class="parametervalue">UNKNOWN</td>
+       </tr>
+       <tr>
+        <td class="parametername">generateLegacySim</td>
+        <td class="parametervalue">false</td>
+       </tr>
+      </table>
+     </td>
+    </tr>
+   </table>&#160;&#160;
+   <table class="flowbox">
+    <tr>
+     <td class="parametersbox">
+      <h2>Software Assignments</h2>
+      <table>
+       <tr>
+        <td class="parametername">ALWAYS_RUN</td>
+        <td class="parametervalue">0</td>
+       </tr>
+       <tr>
+        <td class="parametername">COUNTER_SIZE</td>
+        <td class="parametervalue">32</td>
+       </tr>
+       <tr>
+        <td class="parametername">FIXED_PERIOD</td>
+        <td class="parametervalue">0</td>
+       </tr>
+       <tr>
+        <td class="parametername">FREQ</td>
+        <td class="parametervalue">120000000</td>
+       </tr>
+       <tr>
+        <td class="parametername">LOAD_VALUE</td>
+        <td class="parametervalue">119999</td>
+       </tr>
+       <tr>
+        <td class="parametername">MULT</td>
+        <td class="parametervalue">0.001</td>
+       </tr>
+       <tr>
+        <td class="parametername">PERIOD</td>
+        <td class="parametervalue">1</td>
+       </tr>
+       <tr>
+        <td class="parametername">PERIOD_UNITS</td>
+        <td class="parametervalue">ms</td>
+       </tr>
+       <tr>
+        <td class="parametername">RESET_OUTPUT</td>
+        <td class="parametervalue">0</td>
+       </tr>
+       <tr>
+        <td class="parametername">SNAPSHOT</td>
+        <td class="parametervalue">1</td>
+       </tr>
+       <tr>
+        <td class="parametername">TICKS_PER_SEC</td>
+        <td class="parametervalue">1000</td>
+       </tr>
+       <tr>
+        <td class="parametername">TIMEOUT_PULSE_OUTPUT</td>
         <td class="parametervalue">0</td>
        </tr>
       </table>
@@ -5188,7 +5556,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        </tr>
        <tr>
         <td class="parametername">timestamp</td>
-        <td class="parametervalue">1644510939</td>
+        <td class="parametervalue">1646240355</td>
        </tr>
        <tr>
         <td class="parametername">deviceFamily</td>
@@ -5213,7 +5581,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        </tr>
        <tr>
         <td class="parametername">TIMESTAMP</td>
-        <td class="parametervalue">1644510939</td>
+        <td class="parametervalue">1646240355</td>
        </tr>
       </table>
      </td>
@@ -5233,6 +5601,200 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
       </td>
       <td class="from">data_master&#160;&#160;</td>
       <td class="main" rowspan="10">timer</td>
+     </tr>
+     <tr>
+      <td class="to">&#160;&#160;s1</td>
+     </tr>
+     <tr>
+      <td class="from">irq&#160;&#160;</td>
+     </tr>
+     <tr>
+      <td class="to">&#160;&#160;irq</td>
+     </tr>
+     <tr style="height:6px">
+      <td></td>
+     </tr>
+     <tr>
+      <td class="neighbor" rowspan="2">
+       <a href="#module_altpll">altpll</a>
+      </td>
+      <td class="from">c0&#160;&#160;</td>
+     </tr>
+     <tr>
+      <td class="to">&#160;&#160;clk</td>
+     </tr>
+     <tr style="height:6px">
+      <td></td>
+     </tr>
+     <tr>
+      <td class="neighbor" rowspan="2">
+       <a href="#module_clk">clk</a>
+      </td>
+      <td class="from">clk_reset&#160;&#160;</td>
+     </tr>
+     <tr>
+      <td class="to">&#160;&#160;reset</td>
+     </tr>
+    </table>
+   </div>
+   <br/>
+   <br/>
+   <table class="flowbox">
+    <tr>
+     <td class="parametersbox">
+      <h2>Parameters</h2>
+      <table>
+       <tr>
+        <td class="parametername">alwaysRun</td>
+        <td class="parametervalue">false</td>
+       </tr>
+       <tr>
+        <td class="parametername">counterSize</td>
+        <td class="parametervalue">32</td>
+       </tr>
+       <tr>
+        <td class="parametername">fixedPeriod</td>
+        <td class="parametervalue">false</td>
+       </tr>
+       <tr>
+        <td class="parametername">period</td>
+        <td class="parametervalue">1</td>
+       </tr>
+       <tr>
+        <td class="parametername">periodUnits</td>
+        <td class="parametervalue">MSEC</td>
+       </tr>
+       <tr>
+        <td class="parametername">resetOutput</td>
+        <td class="parametervalue">false</td>
+       </tr>
+       <tr>
+        <td class="parametername">snapshot</td>
+        <td class="parametervalue">true</td>
+       </tr>
+       <tr>
+        <td class="parametername">timeoutPulseOutput</td>
+        <td class="parametervalue">false</td>
+       </tr>
+       <tr>
+        <td class="parametername">systemFrequency</td>
+        <td class="parametervalue">120000000</td>
+       </tr>
+       <tr>
+        <td class="parametername">watchdogPulse</td>
+        <td class="parametervalue">2</td>
+       </tr>
+       <tr>
+        <td class="parametername">timerPreset</td>
+        <td class="parametervalue">FULL_FEATURED</td>
+       </tr>
+       <tr>
+        <td class="parametername">periodUnitsString</td>
+        <td class="parametervalue">ms</td>
+       </tr>
+       <tr>
+        <td class="parametername">valueInSecond</td>
+        <td class="parametervalue">0.001</td>
+       </tr>
+       <tr>
+        <td class="parametername">loadValue</td>
+        <td class="parametervalue">119999</td>
+       </tr>
+       <tr>
+        <td class="parametername">mult</td>
+        <td class="parametervalue">0.001</td>
+       </tr>
+       <tr>
+        <td class="parametername">ticksPerSec</td>
+        <td class="parametervalue">1000.0</td>
+       </tr>
+       <tr>
+        <td class="parametername">slave_address_width</td>
+        <td class="parametervalue">3</td>
+       </tr>
+       <tr>
+        <td class="parametername">deviceFamily</td>
+        <td class="parametervalue">UNKNOWN</td>
+       </tr>
+       <tr>
+        <td class="parametername">generateLegacySim</td>
+        <td class="parametervalue">false</td>
+       </tr>
+      </table>
+     </td>
+    </tr>
+   </table>&#160;&#160;
+   <table class="flowbox">
+    <tr>
+     <td class="parametersbox">
+      <h2>Software Assignments</h2>
+      <table>
+       <tr>
+        <td class="parametername">ALWAYS_RUN</td>
+        <td class="parametervalue">0</td>
+       </tr>
+       <tr>
+        <td class="parametername">COUNTER_SIZE</td>
+        <td class="parametervalue">32</td>
+       </tr>
+       <tr>
+        <td class="parametername">FIXED_PERIOD</td>
+        <td class="parametervalue">0</td>
+       </tr>
+       <tr>
+        <td class="parametername">FREQ</td>
+        <td class="parametervalue">120000000</td>
+       </tr>
+       <tr>
+        <td class="parametername">LOAD_VALUE</td>
+        <td class="parametervalue">119999</td>
+       </tr>
+       <tr>
+        <td class="parametername">MULT</td>
+        <td class="parametervalue">0.001</td>
+       </tr>
+       <tr>
+        <td class="parametername">PERIOD</td>
+        <td class="parametervalue">1</td>
+       </tr>
+       <tr>
+        <td class="parametername">PERIOD_UNITS</td>
+        <td class="parametervalue">ms</td>
+       </tr>
+       <tr>
+        <td class="parametername">RESET_OUTPUT</td>
+        <td class="parametervalue">0</td>
+       </tr>
+       <tr>
+        <td class="parametername">SNAPSHOT</td>
+        <td class="parametervalue">1</td>
+       </tr>
+       <tr>
+        <td class="parametername">TICKS_PER_SEC</td>
+        <td class="parametervalue">1000</td>
+       </tr>
+       <tr>
+        <td class="parametername">TIMEOUT_PULSE_OUTPUT</td>
+        <td class="parametervalue">0</td>
+       </tr>
+      </table>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="module_timer0"> </a>
+  <div>
+   <hr/>
+   <h2>timer0</h2>altera_avalon_timer v18.1
+   <br/>
+   <div class="greydiv">
+    <table class="connectionboxes">
+     <tr>
+      <td class="neighbor" rowspan="4">
+       <a href="#module_cpu">cpu</a>
+      </td>
+      <td class="from">data_master&#160;&#160;</td>
+      <td class="main" rowspan="10">timer0</td>
      </tr>
      <tr>
       <td class="to">&#160;&#160;s1</td>
@@ -5996,10 +6558,204 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
     </tr>
    </table>
   </div>
+  <a name="module_timestamp_timer"> </a>
+  <div>
+   <hr/>
+   <h2>timestamp_timer</h2>altera_avalon_timer v18.1
+   <br/>
+   <div class="greydiv">
+    <table class="connectionboxes">
+     <tr>
+      <td class="neighbor" rowspan="4">
+       <a href="#module_cpu">cpu</a>
+      </td>
+      <td class="from">data_master&#160;&#160;</td>
+      <td class="main" rowspan="10">timestamp_timer</td>
+     </tr>
+     <tr>
+      <td class="to">&#160;&#160;s1</td>
+     </tr>
+     <tr>
+      <td class="from">irq&#160;&#160;</td>
+     </tr>
+     <tr>
+      <td class="to">&#160;&#160;irq</td>
+     </tr>
+     <tr style="height:6px">
+      <td></td>
+     </tr>
+     <tr>
+      <td class="neighbor" rowspan="2">
+       <a href="#module_altpll">altpll</a>
+      </td>
+      <td class="from">c0&#160;&#160;</td>
+     </tr>
+     <tr>
+      <td class="to">&#160;&#160;clk</td>
+     </tr>
+     <tr style="height:6px">
+      <td></td>
+     </tr>
+     <tr>
+      <td class="neighbor" rowspan="2">
+       <a href="#module_clk">clk</a>
+      </td>
+      <td class="from">clk_reset&#160;&#160;</td>
+     </tr>
+     <tr>
+      <td class="to">&#160;&#160;reset</td>
+     </tr>
+    </table>
+   </div>
+   <br/>
+   <br/>
+   <table class="flowbox">
+    <tr>
+     <td class="parametersbox">
+      <h2>Parameters</h2>
+      <table>
+       <tr>
+        <td class="parametername">alwaysRun</td>
+        <td class="parametervalue">false</td>
+       </tr>
+       <tr>
+        <td class="parametername">counterSize</td>
+        <td class="parametervalue">64</td>
+       </tr>
+       <tr>
+        <td class="parametername">fixedPeriod</td>
+        <td class="parametervalue">false</td>
+       </tr>
+       <tr>
+        <td class="parametername">period</td>
+        <td class="parametervalue">1</td>
+       </tr>
+       <tr>
+        <td class="parametername">periodUnits</td>
+        <td class="parametervalue">MSEC</td>
+       </tr>
+       <tr>
+        <td class="parametername">resetOutput</td>
+        <td class="parametervalue">false</td>
+       </tr>
+       <tr>
+        <td class="parametername">snapshot</td>
+        <td class="parametervalue">true</td>
+       </tr>
+       <tr>
+        <td class="parametername">timeoutPulseOutput</td>
+        <td class="parametervalue">false</td>
+       </tr>
+       <tr>
+        <td class="parametername">systemFrequency</td>
+        <td class="parametervalue">120000000</td>
+       </tr>
+       <tr>
+        <td class="parametername">watchdogPulse</td>
+        <td class="parametervalue">2</td>
+       </tr>
+       <tr>
+        <td class="parametername">timerPreset</td>
+        <td class="parametervalue">FULL_FEATURED</td>
+       </tr>
+       <tr>
+        <td class="parametername">periodUnitsString</td>
+        <td class="parametervalue">ms</td>
+       </tr>
+       <tr>
+        <td class="parametername">valueInSecond</td>
+        <td class="parametervalue">0.001</td>
+       </tr>
+       <tr>
+        <td class="parametername">loadValue</td>
+        <td class="parametervalue">119999</td>
+       </tr>
+       <tr>
+        <td class="parametername">mult</td>
+        <td class="parametervalue">0.001</td>
+       </tr>
+       <tr>
+        <td class="parametername">ticksPerSec</td>
+        <td class="parametervalue">1000.0</td>
+       </tr>
+       <tr>
+        <td class="parametername">slave_address_width</td>
+        <td class="parametervalue">4</td>
+       </tr>
+       <tr>
+        <td class="parametername">deviceFamily</td>
+        <td class="parametervalue">UNKNOWN</td>
+       </tr>
+       <tr>
+        <td class="parametername">generateLegacySim</td>
+        <td class="parametervalue">false</td>
+       </tr>
+      </table>
+     </td>
+    </tr>
+   </table>&#160;&#160;
+   <table class="flowbox">
+    <tr>
+     <td class="parametersbox">
+      <h2>Software Assignments</h2>
+      <table>
+       <tr>
+        <td class="parametername">ALWAYS_RUN</td>
+        <td class="parametervalue">0</td>
+       </tr>
+       <tr>
+        <td class="parametername">COUNTER_SIZE</td>
+        <td class="parametervalue">64</td>
+       </tr>
+       <tr>
+        <td class="parametername">FIXED_PERIOD</td>
+        <td class="parametervalue">0</td>
+       </tr>
+       <tr>
+        <td class="parametername">FREQ</td>
+        <td class="parametervalue">120000000</td>
+       </tr>
+       <tr>
+        <td class="parametername">LOAD_VALUE</td>
+        <td class="parametervalue">119999</td>
+       </tr>
+       <tr>
+        <td class="parametername">MULT</td>
+        <td class="parametervalue">0.001</td>
+       </tr>
+       <tr>
+        <td class="parametername">PERIOD</td>
+        <td class="parametervalue">1</td>
+       </tr>
+       <tr>
+        <td class="parametername">PERIOD_UNITS</td>
+        <td class="parametervalue">ms</td>
+       </tr>
+       <tr>
+        <td class="parametername">RESET_OUTPUT</td>
+        <td class="parametervalue">0</td>
+       </tr>
+       <tr>
+        <td class="parametername">SNAPSHOT</td>
+        <td class="parametervalue">1</td>
+       </tr>
+       <tr>
+        <td class="parametername">TICKS_PER_SEC</td>
+        <td class="parametervalue">1000</td>
+       </tr>
+       <tr>
+        <td class="parametername">TIMEOUT_PULSE_OUTPUT</td>
+        <td class="parametervalue">0</td>
+       </tr>
+      </table>
+     </td>
+    </tr>
+   </table>
+  </div>
   <table class="blueBar">
    <tr>
     <td class="l">generation took 0.01 seconds</td>
-    <td class="r">rendering took 0.12 seconds</td>
+    <td class="r">rendering took 0.16 seconds</td>
    </tr>
   </table>
  </body>
