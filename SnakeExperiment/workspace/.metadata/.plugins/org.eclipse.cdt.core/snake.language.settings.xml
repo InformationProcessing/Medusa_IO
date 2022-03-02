@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <project>
-	<configuration id="preference.org.eclipse.cdt.managedbuilder.core.configurationDataProvider.2140328151" name="Nios II">
+	<configuration id="preference.org.eclipse.cdt.managedbuilder.core.configurationDataProvider.312633315" name="Nios II">
 		<extension point="org.eclipse.cdt.core.LanguageSettingsProvider">
 			<provider id="altera.tool.Nios2GCCBuiltinSpecsDetector">
 				<language id="org.eclipse.cdt.core.gcc">
@@ -1589,9 +1589,15 @@
 						<entry kind="macro" name="exit(a)" value="_exit(a)"/>
 					</resource>
 					<resource project-relative-path="hello_world_small.c">
-						<entry kind="includePath" name="C:/Users/vacla/Projects/Medusa_IO/SnakeExperiment/software/snake_bsp/HAL/inc"/>
-						<entry kind="includePath" name="C:/Users/vacla/Projects/Medusa_IO/SnakeExperiment/software/snake_bsp"/>
-						<entry kind="includePath" name="C:/Users/vacla/Projects/Medusa_IO/SnakeExperiment/software/snake_bsp/drivers/inc"/>
+						<entry kind="includePath" name="/snake_bsp/HAL/inc">
+							<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+						</entry>
+						<entry kind="includePath" name="/snake_bsp">
+							<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+						</entry>
+						<entry kind="includePath" name="/snake_bsp/drivers/inc">
+							<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+						</entry>
 						<entry kind="macro" name="ALT_NO_CLEAN_EXIT" value=""/>
 						<entry kind="macro" name="ALT_NO_C_PLUS_PLUS" value=""/>
 						<entry kind="macro" name="ALT_NO_EXIT" value=""/>
