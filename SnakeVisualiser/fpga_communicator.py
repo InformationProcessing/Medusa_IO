@@ -27,8 +27,11 @@ class FPGACommunicator:
             print(e)
 
     def __get_command_output(self, command):
-        self.ju.write((command + "\n").encode("utf-8"))
-        return self.ju.read().decode("utf-8")
+        if hasattr(self, 'ju'):
+            self.ju.write((command + "\n").encode("utf-8"))
+            return self.ju.read().decode("utf-8")
+        else:
+            return ''
 
     def __read_value_and_error(self, command, regex):
         fpga_out = self.__get_command_output(command)

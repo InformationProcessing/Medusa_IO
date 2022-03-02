@@ -7,20 +7,16 @@ class Score:
         if scores is None:
             scores = []
 
-        mainframe = ttk.Frame(root, padding="3 3 12 12")
-        mainframe.grid(column=0, row=0, sticky=(N, W, E, S))
-        root.columnconfigure(0, weight=1)
-        root.rowconfigure(0, weight=1)
-
+        self.root = root
         self.score_text = StringVar()
-        score_label = ttk.Label(mainframe, textvariable=self.score_text)
+        score_label = ttk.Label(root, textvariable=self.score_text)
         score_label.grid(column=0, row=0, sticky=W)
         score_label.grid_configure(padx=5, pady=5)
         self.score_text.set("Score: " + str(score))
-        self.score_frame = ttk.Frame(mainframe, padding="3 3 12 12")
+        self.score_frame = ttk.Frame(root, padding="3 3 12 12")
         self.score_frame.grid(column=0, row=1, sticky=(N, W, E, S))
-        mainframe.columnconfigure(0, weight=1)
-        mainframe.rowconfigure(0, weight=1)
+        root.columnconfigure(0, weight=1)
+        root.rowconfigure(0, weight=1)
 
         self.__create_score_list(scores)
 
