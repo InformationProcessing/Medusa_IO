@@ -8,10 +8,8 @@ import socket
 import SnakeGameMap
 
 
-root = tk.Tk()
-
 time1 = ''
-clock = Label(root)
+clock = Label(SnakeGameMap.root)
 
 otherplayer = []
 otherplayerblocks=[]
@@ -22,8 +20,8 @@ def mergearray(array1,array2):
             newarray.append([array1[i]+100,array2[i]+100])
       return newarray
 
-player = SnakeGameMap.Snake(500, 500)
-food = SnakeGameMap.powerup()
+player = SnakeGameMap.player
+food = SnakeGameMap.food
 
 def sendCoord():
       msg = ""
@@ -57,7 +55,7 @@ def tick(player,found):
         if (player.x == food.power_upsX[j]) and (player.y == food.power_upsY[j]):
             #   print("Player's pos:",player.x,player.y)
             #   print("Food Pos: ",food.xcoord,food.ycoord) 
-            foodTypes = ["grow", "portal", "ultra_speed"]
+            # foodTypes = ["grow", "portal", "ultra_speed"]
             player.adjustspeed(1)
             # food.powerupType(player,"portal")
             food.powerupType(player,food.power_ups[j][1])
@@ -71,6 +69,6 @@ def tick(player,found):
 
 
 
-root.bind("<Key>",SnakeGameMap.kpress)
-tick(SnakeGameMap.player,FALSE)
-root.mainloop()
+SnakeGameMap.root.bind("<Key>",SnakeGameMap.kpress)
+tick(player,FALSE)
+SnakeGameMap.root.mainloop()
