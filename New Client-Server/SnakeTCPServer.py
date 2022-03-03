@@ -1,9 +1,3 @@
-import tkinter as tk
-from tkinter import *
-import time
-import sys
-import random
-import os
 import socket
 
 time1 = ''
