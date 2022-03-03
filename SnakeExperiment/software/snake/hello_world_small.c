@@ -13,9 +13,6 @@
 #include <stdio.h>
 
 
-#define OFFSET -32
-#define PWM_PERIOD 16
-
 //UART input parsing
 #define TOKEN_SIZE 8
 #define BUFFER_SIZE 64
@@ -47,6 +44,10 @@ double h[] = {0.0030, 0.0114, -0.0179, -0.0011, 0.0223, -0.0225, -0.0109, 0.0396
 struct ring_buffer *x_buf;
 struct ring_buffer *y_buf;
 struct ring_buffer *z_buf;
+
+//Latency timer
+int debug = 0;
+alt_64 latency;
 
 //Forward declarations
 
@@ -143,14 +144,18 @@ void sys_timer_isr() {
 	static int count;
 	static alt_64 lasttime;
 
-    if(count%1024 == 0){
-    	//printf("%i\n", (alt_timestamp()-lasttime)/1024);
-    	count = 0;
-    	lasttime = alt_timestamp();
+    if(debug && ((count & 4095) == 0) ){
+    	printf("Avg sampling period (us): %i\n", (alt_timestamp()-lasttime)/4096 /(alt_timestamp_freq()/1000000) );
+		count = 1;
+		lasttime = alt_timestamp();
     }
     count++;
 
-	//alt_putstr("got here \n");
+
+
+
+
+
 
 }
 
@@ -166,6 +171,9 @@ void read_request(char* outbuf){
 
 	//Get first character
 	c = alt_getchar();
+
+	//Start timer after first char received
+	latency = alt_timestamp();
 
 	while(c != '\n'){
 		outbuf[idx] = c;
@@ -191,6 +199,14 @@ int write_to_disp(char* str, int offset){
 //	IOWR_ALTERA_AVALON_PIO_DATA(HEX1_BASE, let1);
 //	IOWR_ALTERA_AVALON_PIO_DATA(HEX0_BASE, let0);
 	return offset;
+}
+void clr_disp(){
+	IOWR_ALTERA_AVALON_PIO_DATA(HEX0_BASE, 255);
+	IOWR_ALTERA_AVALON_PIO_DATA(HEX1_BASE, 255);
+	IOWR_ALTERA_AVALON_PIO_DATA(HEX2_BASE, 255);
+	IOWR_ALTERA_AVALON_PIO_DATA(HEX3_BASE, 255);
+	IOWR_ALTERA_AVALON_PIO_DATA(HEX4_BASE, 255);
+	IOWR_ALTERA_AVALON_PIO_DATA(HEX5_BASE, 255);
 }
 
 void parse_request(char* request){
@@ -290,6 +306,13 @@ void parse_request(char* request){
 		throw_code(&"LEDFLASH", 0);
 		return;
 	}
+	if (strcmp(tokens[1], &"DEBUG") == 0){
+			matched = 1;
+
+			debug = atoi(tokens[2]);
+			throw_code(&"DEBUG", 0);
+			return;
+		}
 
 	if (!matched){
 		throw_code(&"ERR", 2);
@@ -381,6 +404,8 @@ void throw_code(char* regname, int code){
 
 
 int main() {
+	//Clear display from flash message
+	clr_disp();
 
 
 	//UART buffer instantiation
@@ -425,8 +450,13 @@ int main() {
 
 	//Command response loop
 	while(1){
-	read_request(cmdbuffer);
-	parse_request(cmdbuffer);
+		read_request(cmdbuffer);
+		parse_request(cmdbuffer);
+
+		//Request response timing: first char received to last char sent
+		if (debug){
+			printf("Response time (us) : %i \n",(alt_timestamp()-latency)/(alt_timestamp_freq()/1000000));
+		}
 	}
 
     return 0;
