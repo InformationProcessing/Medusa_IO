@@ -33,7 +33,7 @@ int disp_offset = 0;
 int disp_length = 0;
 
 //Led flash
-#define led_BUF_SIZE 100
+#define LED_BUF_SIZE 100
 char* led_buf;
 int led_offset = -1;
 int led_val = 0;
@@ -280,7 +280,13 @@ void parse_request(char* request){
 			to_hex(x, 3, hexbuffers[0]);
 			to_hex(y, 3, hexbuffers[1]);
 			to_hex(z, 3, hexbuffers[2]);
-			printf("K ACCPROC X%sY%sZ%s 0\n", hexbuffers[0], hexbuffers[1], hexbuffers[2]);
+
+			if (is_all){
+				alt_printf("K ACCPROC X%sY%sZ%s ", hexbuffers[0], hexbuffers[1], hexbuffers[2]);
+			}
+			else{
+				alt_printf("K ACCPROC X%sY%sZ%s 0\n", hexbuffers[0], hexbuffers[1], hexbuffers[2]);
+			}
 
 	}
 	if (is_all || strcmp(tokens[1], &"ACCRAW") == 0){
@@ -295,7 +301,13 @@ void parse_request(char* request){
 		to_hex(x, 3, hexbuffers[0]);
 		to_hex(y, 3, hexbuffers[1]);
 		to_hex(z, 3, hexbuffers[2]);
-		printf("K ACCRAW X%sY%sZ%s 0\n", hexbuffers[0], hexbuffers[1], hexbuffers[2]);
+
+		if (is_all){
+			printf("ACCRAW X%sY%sZ%s ", hexbuffers[0], hexbuffers[1], hexbuffers[2]);
+		}
+		else{
+			printf("K ACCRAW X%sY%sZ%s 0\n", hexbuffers[0], hexbuffers[1], hexbuffers[2]);
+		}
 
 	}
 	if (is_all || strcmp(tokens[1], &"BUTTON") == 0){
@@ -307,7 +319,14 @@ void parse_request(char* request){
 		//Bitmask
 		alt_32 mask = 0x3;
 		button = button & mask;
-		alt_printf("K BUTTON %x 0", button);
+
+		if (is_all){
+			alt_printf("BUTTON %x ", button);
+		}
+		else{
+			alt_printf("K BUTTON %x 0\n", button);
+		}
+
 	}
 	if (is_all || strcmp(tokens[1], &"SWITCH") == 0){
 		//alt_printf("Tried to read switch");
@@ -316,8 +335,20 @@ void parse_request(char* request){
 		alt_32 switches = ~IORD_ALTERA_AVALON_PIO_DATA(SWITCH_BASE);
 		switches &= 0x3ff;
 		to_hex(switches, 3, hexbuffers[0]);
-		alt_printf("K SWITCH %x 0", hexbuffers[0]);
 
+		if (is_all){
+			alt_printf("SWITCH %x ", switches);
+		}
+		else{
+			alt_printf("K SWITCH %x 0\n", switches);
+		}
+
+	}
+
+	//Saves unnecessary comparisons
+	if (is_all){
+		alt_printf(" 0\n");
+		return;
 	}
 
 
@@ -332,39 +363,38 @@ void parse_request(char* request){
 		disp_offset = 0;
 		disp_length = strlen(disp_buf);
 
+		throw_code(&"HEXTEXT", 0);
 	}
 
 	if (strcmp(tokens[1], &"LEDWRITE") == 0){
-		//alt_printf("Tried to write LEDWRITE");
-		matched = 1;
 
-		led_val = atoi(tokens[2]);
+		//alt_printf("Tried to write LEDWRITE");
+		led_val = (int) strtol(tokens[2], 0, 16);
 		IOWR(LED_BASE, 0, led_val);
-		throw_code(&"LEDFLASH", 0);
-		return;
+		throw_code(&"LEDWRITE", 0);
+		matched = 1;
 
 	}
 	if (strcmp(tokens[1], &"LEDFLASH") == 0){
-			//alt_printf("Tried to write LEDFLASH");
-			matched = 1;
 
-			int k = atoi(tokens[2]);
-			IOWR(LED_BASE, 0, k);
-			throw_code(&"LEDFLASH", 0);
-			return;
+		//alt_printf("Tried to write LEDFLASH");
+		memset(led_buf, 0,(LED_BUF_SIZE) * sizeof(char));
+		strncpy(led_buf, tokens[2], LED_BUF_SIZE);
+		led_offset = 0;
+		throw_code(&"LEDWRITE", 0);
+		matched = 1;
 
 		}
 	if (strcmp(tokens[1], &"DEBUG") == 0){
-			matched = 1;
 
-			debug = atoi(tokens[2]);
+			debug = (int) strtol(tokens[2], 0, 16);
 			throw_code(&"DEBUG", 0);
-			return;
+			matched = 1;
 		}
 
 	if (!matched){
 		throw_code(&"ERR", 2);
-		return;
+		matched = 1;
 	}
 
 }
@@ -440,6 +470,45 @@ void disp_timer_isr() {
     }
     write_to_disp(disp_buf,disp_offset);
 
+
+
+}
+
+void led_timer_init(void * isr) {
+	//Calculate necessary cycles for 1 ms period
+//	alt_32 freq = 5;
+//	alt_32 period = alt_timestamp_freq()/freq;
+
+
+    IOWR_ALTERA_AVALON_TIMER_CONTROL(TIMER_BASE, 0x0003);
+    IOWR_ALTERA_AVALON_TIMER_STATUS(TIMER_BASE, 0);
+    IOWR_ALTERA_AVALON_TIMER_PERIODL(TIMER_BASE, 0x5d40);
+    IOWR_ALTERA_AVALON_TIMER_PERIODH(TIMER_BASE, 0x00c6);
+    alt_irq_register(TIMER_IRQ, 0, isr);
+    IOWR_ALTERA_AVALON_TIMER_CONTROL(TIMER_BASE, 0x0007);
+
+}
+
+void led_timer_isr() {
+	IOWR_ALTERA_AVALON_TIMER_STATUS(TIMER_BASE, 0);
+
+	if (led_offset != -1){
+
+
+		if (led_buf[led_offset] == '\0'){
+			led_offset = -1;
+			IOWR(LED_BASE, 0, led_val);
+
+		}
+		else if (led_buf[led_offset] == '1'){
+			led_offset++;
+			IOWR(LED_BASE, 0, 1023);
+		}
+		else{
+			led_offset++;
+			IOWR(LED_BASE, 0, 0);
+		}
+	}
 
 
 }
@@ -535,6 +604,12 @@ int main() {
 	clr_disp();
 	disp_timer_init(disp_timer_isr);
 	disp_length = 6;
+
+	//Ledflash initialization
+	led_buf = malloc(LED_BUF_SIZE * sizeof(char));
+	led_timer_init(led_timer_isr);
+	led_offset = -1;
+	IOWR(LED_BASE, 0, 0);
 
 
 	//UART buffer instantiation
