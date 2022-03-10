@@ -18,7 +18,7 @@
 // altera message_level Level1 
 // altera message_off 10034 10035 10036 10037 10230 10240 10030 
 
-module snake_hex_timer (
+module snake_acc_timer (
                          // inputs:
                           address,
                           chipselect,

@@ -33,7 +33,7 @@ module snake (
 		input  wire [9:0]  switch_external_connection_export                   //           switch_external_connection.export
 	);
 
-	wire         altpll_c0_clk;                                                                       // altpll:c0 -> [accelerometer_spi:clk, button:clk, cpu:clk, hex0:clk, hex1:clk, hex2:clk, hex3:clk, hex4:clk, hex5:clk, hex_timer:clk, irq_mapper:clk, jtag_uart:clk, led:clk, mm_interconnect_0:altpll_c0_clk, rst_controller:clk, sdram:clk, switch:clk, sysid:clock, timer0:clk, timer1:clk, timer3:clk, timer4:clk, timer:clk, timestamp_timer:clk]
+	wire         altpll_c0_clk;                                                                       // altpll:c0 -> [acc_timer:clk, accelerometer_spi:clk, button:clk, cpu:clk, hex0:clk, hex1:clk, hex2:clk, hex3:clk, hex4:clk, hex5:clk, hex_timer:clk, irq_mapper:clk, jtag_uart:clk, led:clk, mm_interconnect_0:altpll_c0_clk, rst_controller:clk, sdram:clk, switch:clk, sysid:clock, timer0:clk, timer1:clk, timer3:clk, timer4:clk, timer:clk, timestamp_timer:clk]
 	wire  [31:0] cpu_data_master_readdata;                                                            // mm_interconnect_0:cpu_data_master_readdata -> cpu:d_readdata
 	wire         cpu_data_master_waitrequest;                                                         // mm_interconnect_0:cpu_data_master_waitrequest -> cpu:d_waitrequest
 	wire         cpu_data_master_debugaccess;                                                         // cpu:debug_mem_slave_debugaccess_to_roms -> mm_interconnect_0:cpu_data_master_debugaccess
@@ -158,6 +158,11 @@ module snake (
 	wire   [2:0] mm_interconnect_0_hex_timer_s1_address;                                              // mm_interconnect_0:hex_timer_s1_address -> hex_timer:address
 	wire         mm_interconnect_0_hex_timer_s1_write;                                                // mm_interconnect_0:hex_timer_s1_write -> hex_timer:write_n
 	wire  [15:0] mm_interconnect_0_hex_timer_s1_writedata;                                            // mm_interconnect_0:hex_timer_s1_writedata -> hex_timer:writedata
+	wire         mm_interconnect_0_acc_timer_s1_chipselect;                                           // mm_interconnect_0:acc_timer_s1_chipselect -> acc_timer:chipselect
+	wire  [15:0] mm_interconnect_0_acc_timer_s1_readdata;                                             // acc_timer:readdata -> mm_interconnect_0:acc_timer_s1_readdata
+	wire   [2:0] mm_interconnect_0_acc_timer_s1_address;                                              // mm_interconnect_0:acc_timer_s1_address -> acc_timer:address
+	wire         mm_interconnect_0_acc_timer_s1_write;                                                // mm_interconnect_0:acc_timer_s1_write -> acc_timer:write_n
+	wire  [15:0] mm_interconnect_0_acc_timer_s1_writedata;                                            // mm_interconnect_0:acc_timer_s1_writedata -> acc_timer:writedata
 	wire         irq_mapper_receiver0_irq;                                                            // accelerometer_spi:irq -> irq_mapper:receiver0_irq
 	wire         irq_mapper_receiver1_irq;                                                            // jtag_uart:av_irq -> irq_mapper:receiver1_irq
 	wire         irq_mapper_receiver2_irq;                                                            // timer4:irq -> irq_mapper:receiver2_irq
@@ -167,10 +172,22 @@ module snake (
 	wire         irq_mapper_receiver6_irq;                                                            // timestamp_timer:irq -> irq_mapper:receiver6_irq
 	wire         irq_mapper_receiver7_irq;                                                            // timer0:irq -> irq_mapper:receiver7_irq
 	wire         irq_mapper_receiver8_irq;                                                            // hex_timer:irq -> irq_mapper:receiver8_irq
+	wire         irq_mapper_receiver9_irq;                                                            // acc_timer:irq -> irq_mapper:receiver9_irq
 	wire  [31:0] cpu_irq_irq;                                                                         // irq_mapper:sender_irq -> cpu:irq
-	wire         rst_controller_reset_out_reset;                                                      // rst_controller:reset_out -> [accelerometer_spi:reset, button:reset_n, cpu:reset_n, hex0:reset_n, hex1:reset_n, hex2:reset_n, hex3:reset_n, hex4:reset_n, hex5:reset_n, hex_timer:reset_n, irq_mapper:reset, jtag_uart:rst_n, led:reset_n, mm_interconnect_0:cpu_reset_reset_bridge_in_reset_reset, rst_translator:in_reset, sdram:reset_n, switch:reset_n, sysid:reset_n, timer0:reset_n, timer1:reset_n, timer3:reset_n, timer4:reset_n, timer:reset_n, timestamp_timer:reset_n]
+	wire         rst_controller_reset_out_reset;                                                      // rst_controller:reset_out -> [acc_timer:reset_n, accelerometer_spi:reset, button:reset_n, cpu:reset_n, hex0:reset_n, hex1:reset_n, hex2:reset_n, hex3:reset_n, hex4:reset_n, hex5:reset_n, hex_timer:reset_n, irq_mapper:reset, jtag_uart:rst_n, led:reset_n, mm_interconnect_0:cpu_reset_reset_bridge_in_reset_reset, rst_translator:in_reset, sdram:reset_n, switch:reset_n, sysid:reset_n, timer0:reset_n, timer1:reset_n, timer3:reset_n, timer4:reset_n, timer:reset_n, timestamp_timer:reset_n]
 	wire         rst_controller_reset_out_reset_req;                                                  // rst_controller:reset_req -> [cpu:reset_req, rst_translator:reset_req_in]
 	wire         rst_controller_001_reset_out_reset;                                                  // rst_controller_001:reset_out -> [altpll:reset, mm_interconnect_0:altpll_inclk_interface_reset_reset_bridge_in_reset_reset]
+
+	snake_acc_timer acc_timer (
+		.clk        (altpll_c0_clk),                             //   clk.clk
+		.reset_n    (~rst_controller_reset_out_reset),           // reset.reset_n
+		.address    (mm_interconnect_0_acc_timer_s1_address),    //    s1.address
+		.writedata  (mm_interconnect_0_acc_timer_s1_writedata),  //      .writedata
+		.readdata   (mm_interconnect_0_acc_timer_s1_readdata),   //      .readdata
+		.chipselect (mm_interconnect_0_acc_timer_s1_chipselect), //      .chipselect
+		.write_n    (~mm_interconnect_0_acc_timer_s1_write),     //      .write_n
+		.irq        (irq_mapper_receiver9_irq)                   //   irq.irq
+	);
 
 	snake_accelerometer_spi accelerometer_spi (
 		.clk           (altpll_c0_clk),                                                                       //                                 clk.clk
@@ -319,7 +336,7 @@ module snake (
 		.out_port   (hex5_external_connection_export)       // external_connection.export
 	);
 
-	snake_hex_timer hex_timer (
+	snake_acc_timer hex_timer (
 		.clk        (altpll_c0_clk),                             //   clk.clk
 		.reset_n    (~rst_controller_reset_out_reset),           // reset.reset_n
 		.address    (mm_interconnect_0_hex_timer_s1_address),    //    s1.address
@@ -392,7 +409,7 @@ module snake (
 		.address  (mm_interconnect_0_sysid_control_slave_address)   //              .address
 	);
 
-	snake_hex_timer timer (
+	snake_acc_timer timer (
 		.clk        (altpll_c0_clk),                         //   clk.clk
 		.reset_n    (~rst_controller_reset_out_reset),       // reset.reset_n
 		.address    (mm_interconnect_0_timer_s1_address),    //    s1.address
@@ -403,7 +420,7 @@ module snake (
 		.irq        (irq_mapper_receiver5_irq)               //   irq.irq
 	);
 
-	snake_hex_timer timer0 (
+	snake_acc_timer timer0 (
 		.clk        (altpll_c0_clk),                          //   clk.clk
 		.reset_n    (~rst_controller_reset_out_reset),        // reset.reset_n
 		.address    (mm_interconnect_0_timer0_s1_address),    //    s1.address
@@ -414,7 +431,7 @@ module snake (
 		.irq        (irq_mapper_receiver7_irq)                //   irq.irq
 	);
 
-	snake_hex_timer timer1 (
+	snake_acc_timer timer1 (
 		.clk        (altpll_c0_clk),                          //   clk.clk
 		.reset_n    (~rst_controller_reset_out_reset),        // reset.reset_n
 		.address    (mm_interconnect_0_timer1_s1_address),    //    s1.address
@@ -475,6 +492,11 @@ module snake (
 		.cpu_instruction_master_waitrequest                                (cpu_instruction_master_waitrequest),                                                  //                                                      .waitrequest
 		.cpu_instruction_master_read                                       (cpu_instruction_master_read),                                                         //                                                      .read
 		.cpu_instruction_master_readdata                                   (cpu_instruction_master_readdata),                                                     //                                                      .readdata
+		.acc_timer_s1_address                                              (mm_interconnect_0_acc_timer_s1_address),                                              //                                          acc_timer_s1.address
+		.acc_timer_s1_write                                                (mm_interconnect_0_acc_timer_s1_write),                                                //                                                      .write
+		.acc_timer_s1_readdata                                             (mm_interconnect_0_acc_timer_s1_readdata),                                             //                                                      .readdata
+		.acc_timer_s1_writedata                                            (mm_interconnect_0_acc_timer_s1_writedata),                                            //                                                      .writedata
+		.acc_timer_s1_chipselect                                           (mm_interconnect_0_acc_timer_s1_chipselect),                                           //                                                      .chipselect
 		.accelerometer_spi_avalon_accelerometer_spi_mode_slave_address     (mm_interconnect_0_accelerometer_spi_avalon_accelerometer_spi_mode_slave_address),     // accelerometer_spi_avalon_accelerometer_spi_mode_slave.address
 		.accelerometer_spi_avalon_accelerometer_spi_mode_slave_write       (mm_interconnect_0_accelerometer_spi_avalon_accelerometer_spi_mode_slave_write),       //                                                      .write
 		.accelerometer_spi_avalon_accelerometer_spi_mode_slave_read        (mm_interconnect_0_accelerometer_spi_avalon_accelerometer_spi_mode_slave_read),        //                                                      .read
@@ -601,6 +623,7 @@ module snake (
 		.receiver6_irq (irq_mapper_receiver6_irq),       // receiver6.irq
 		.receiver7_irq (irq_mapper_receiver7_irq),       // receiver7.irq
 		.receiver8_irq (irq_mapper_receiver8_irq),       // receiver8.irq
+		.receiver9_irq (irq_mapper_receiver9_irq),       // receiver9.irq
 		.sender_irq    (cpu_irq_irq)                     //    sender.irq
 	);
 

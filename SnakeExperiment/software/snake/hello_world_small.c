@@ -7,6 +7,8 @@
 #include "sys/alt_irq.h"
 #include "sys/alt_timestamp.h"
 
+#include "other.h"
+
 
 #include <stdlib.h>
 #include <string.h>
@@ -106,58 +108,7 @@ alt_32 convolve_float(struct ring_buffer* buf, double coefficients[]  ){
 	return (alt_32)sum;
 
 }
-// Timer code
-//---------------------------------------------------------------
 
-
-
-void timer_init(void * isr) {
-	//Calculate necessary cycles for 1 ms period
-	alt_32 period = alt_timestamp_freq()/1000;
-
-
-    IOWR_ALTERA_AVALON_TIMER_CONTROL(TIMER_BASE, 0x0003);
-    IOWR_ALTERA_AVALON_TIMER_STATUS(TIMER_BASE, 0);
-    IOWR_ALTERA_AVALON_TIMER_PERIODL(TIMER_BASE, (alt_16) period );
-    IOWR_ALTERA_AVALON_TIMER_PERIODL(TIMER_BASE, 0xfbd0);
-    IOWR_ALTERA_AVALON_TIMER_PERIODH(TIMER_BASE, 0x0001);
-    alt_irq_register(TIMER_IRQ, 0, isr);
-    IOWR_ALTERA_AVALON_TIMER_CONTROL(TIMER_BASE, 0x0007);
-
-}
-
-void sys_timer_isr() {
-    IOWR_ALTERA_AVALON_TIMER_STATUS(TIMER_BASE, 0);
-
-
-    alt_32 x,y,z;
-
-    alt_up_accelerometer_spi_read_x_axis(acc_dev, & x);
-	alt_up_accelerometer_spi_read_y_axis(acc_dev, & y);
-	alt_up_accelerometer_spi_read_z_axis(acc_dev, & z);
-
-	ring_buf_push(x_buf, x);
-	ring_buf_push(y_buf, y);
-	ring_buf_push(z_buf, z);
-
-	//iNTERRUPT FREQUENCY MONITORING
-	static int count;
-	static alt_64 lasttime;
-
-    if(debug && ((count & 4095) == 0) ){
-    	printf("Avg sampling period (us): %i\n", (alt_timestamp()-lasttime)/4096 /(alt_timestamp_freq()/1000000) );
-		count = 1;
-		lasttime = alt_timestamp();
-    }
-    count++;
-
-
-
-
-
-
-
-}
 
 
 //Input tokenization and parsing
@@ -407,6 +358,8 @@ int main() {
 	//Clear display from flash message
 	clr_disp();
 
+	f();
+
 
 	//UART buffer instantiation
 	cmdbuffer = malloc( BUFFER_SIZE * sizeof(char));
@@ -445,7 +398,7 @@ int main() {
 
 
 	//1kHz routine initialization
-	timer_init(sys_timer_isr);
+	acc_timer_init(acc_timer_isr);
 	alt_timestamp_start();
 
 	//Command response loop

@@ -142,7 +142,9 @@ ACDS_VERSION := 18.1
 ELF := snake.elf
 
 # Paths to C, C++, and assembly source files.
-C_SRCS := hello_world_small.c
+C_SRCS += hello_world_small.c
+C_SRCS += other.c
+C_SRCS += timers.c
 CXX_SRCS :=
 ASM_SRCS :=
 

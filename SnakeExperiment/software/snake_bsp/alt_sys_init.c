@@ -4,7 +4,7 @@
  * Machine generated for CPU 'cpu' in SOPC Builder design 'snake'
  * SOPC Builder design path: ../../snake.sopcinfo
  *
- * Generated: Wed Mar 02 17:20:04 UTC 2022
+ * Generated: Thu Mar 10 14:25:42 UTC 2022
  */
 
 /*
@@ -71,6 +71,7 @@
 ALTERA_NIOS2_GEN2_IRQ_INSTANCE ( CPU, cpu);
 ALTERA_AVALON_JTAG_UART_INSTANCE ( JTAG_UART, jtag_uart);
 ALTERA_AVALON_SYSID_QSYS_INSTANCE ( SYSID, sysid);
+ALTERA_AVALON_TIMER_INSTANCE ( ACC_TIMER, acc_timer);
 ALTERA_AVALON_TIMER_INSTANCE ( HEX_TIMER, hex_timer);
 ALTERA_AVALON_TIMER_INSTANCE ( TIMER, timer);
 ALTERA_AVALON_TIMER_INSTANCE ( TIMER0, timer0);
@@ -101,6 +102,7 @@ void alt_irq_init ( const void* base )
 
 void alt_sys_init( void )
 {
+    ALTERA_AVALON_TIMER_INIT ( ACC_TIMER, acc_timer);
     ALTERA_AVALON_TIMER_INIT ( HEX_TIMER, hex_timer);
     ALTERA_AVALON_TIMER_INIT ( TIMER, timer);
     ALTERA_AVALON_TIMER_INIT ( TIMER0, timer0);
