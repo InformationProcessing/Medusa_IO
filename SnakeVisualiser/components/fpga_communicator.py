@@ -22,8 +22,10 @@ class FPGACommunicator:
     def __init__(self):
         try:
             self.ju = intel_jtag_uart.intel_jtag_uart()
+            self.initialized = True
 
         except Exception as e:
+            self.initialized = False
             print(e)
 
     def __get_command_output(self, command):

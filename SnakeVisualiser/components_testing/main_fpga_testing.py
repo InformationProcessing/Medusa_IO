@@ -1,4 +1,4 @@
-from fpga_communicator import FPGACommunicator
+from SnakeVisualiser.components.fpga_communicator import FPGACommunicator
 
 
 def test_print_of_all_values():

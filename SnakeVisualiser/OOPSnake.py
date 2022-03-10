@@ -1,5 +1,5 @@
-from fpga_communicator import FPGACommunicator
-from score_component import Score
+from SnakeVisualiser.components.fpga_communicator import FPGACommunicator
+from SnakeVisualiser.components.score_component import Score
 import tkinter as tk
 from tkinter import *
 from tkinter import ttk

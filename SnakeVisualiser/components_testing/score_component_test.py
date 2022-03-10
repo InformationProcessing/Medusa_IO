@@ -1,6 +1,6 @@
 from tkinter import *
 from tkinter import ttk
-from score_component import Score
+from SnakeVisualiser.components.score_component import Score
 from time import sleep
 
 root = Tk()
