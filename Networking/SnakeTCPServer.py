@@ -18,21 +18,19 @@ c2connected = False
 saved_message = None
 saved_message_dest = None
 
-# nextcoord = random.randrange(30,500,10)+','+random.randrange(30,500,10)+','+random.randint(0,3)+''
-
 while 1:
-    print("While")
     try:
         cmsg, cadd = welcome_socket.recvfrom(2048)
         cmsg = cmsg.decode()
 
-        print("Message: " + cmsg + " from client: " + str(cadd[0]) + " " + str(cadd[1]))
         if cadd[1] == 13000:
             msg1 = cmsg
             c1connected = True
 
             if saved_message_dest == 'Client 1':
                 welcome_socket.sendto(saved_message.encode(), c1add)
+                saved_message = None
+                saved_message_dest = None
 
             if c2connected:
                 welcome_socket.sendto(msg1.encode(), c2add)
@@ -45,6 +43,8 @@ while 1:
 
             if saved_message_dest == 'Client 2':
                 welcome_socket.sendto(saved_message.encode(), c2add)
+                saved_message = None
+                saved_message_dest = None
 
             if c1connected:
                 welcome_socket.sendto(msg2.encode(), c1add)
@@ -53,5 +53,5 @@ while 1:
                 saved_message_dest = 'Client 1'
         else:
             print("Unknown client connected")
-    except:
-        print("Error occurred.")
+    except Exception as e:
+        print("Error occurred: " + str(e))

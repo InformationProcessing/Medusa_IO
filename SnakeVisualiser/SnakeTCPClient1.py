@@ -1,13 +1,10 @@
-import tkinter as tk
 from tkinter import *
 import time
-import sys
 import random
-import os
 import socket
 import SnakeGameMap
 
-my_port = 14000
+my_port = 13000
 time1 = ''
 clock = Label(SnakeGameMap.root)
 
@@ -59,7 +56,8 @@ def updateothers():
       global otherplayerblocks
       for i in range(len(otherplayer)):
               for j in range(len(otherplayer[i])):
-                    otherplayerblocks.append(SnakeGameMap.canvas.create_rectangle(int(otherplayer[i][j][0]),int(otherplayer[i][j][1]),int(otherplayer[i][j][0])+10,int(otherplayer[i][j][1])+10))
+                    otherplayerblocks.append(
+                        SnakeGameMap.canvas.create_rectangle(int(otherplayer[i][j][0]), int(otherplayer[i][j][1]), int(otherplayer[i][j][0]) + 10, int(otherplayer[i][j][1]) + 10))
       
 
 def tick(player,found):
@@ -74,7 +72,6 @@ def tick(player,found):
     time2 = time.strftime('%H:%M:%S')
     
     msg = sendCoord()
-    print(msg)
     
     array = []
     temparray = msg.split(";")
@@ -111,6 +108,6 @@ def tick(player,found):
 
 
 
-SnakeGameMap.root.bind("<Key>",SnakeGameMap.kpress)
+SnakeGameMap.root.bind("<Key>", SnakeGameMap.kpress)
 tick(player,FALSE)
 SnakeGameMap.root.mainloop()
