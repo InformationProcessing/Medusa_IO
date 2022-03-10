@@ -13,7 +13,9 @@ clock = Label(root)
 canvas_width = 700
 canvas_height = 700
 canvas = tk.Canvas(root, width = canvas_width+1, height = canvas_height+1, highlightthickness=10, highlightbackground="black")
-canvas.pack()
+bg = PhotoImage(file = "map4.png")
+canvas.pack(fill = "both", expand = True)
+canvas.create_image( 0, 0, image = bg, anchor = "nw")
 
 class Snake:
     snake = []
@@ -33,7 +35,7 @@ class Snake:
 
     def addblock(self,i):
         self.moveblocks.append([0,0])
-        block=tk.Canvas(canvas,width=10, height=10, bd=0, highlightthickness=0.5, highlightbackground="white", relief='ridge', bg="gray"+str(i*3))
+        block=tk.Canvas(canvas,width=10, height=10, bd=0, highlightthickness=0.5, highlightbackground="white", relief='ridge', bg="yellow")
         block.place(x=self.x, y=self.y-i*10)
         self.snake.append(block)
         self.snakeblockscoordX.append(self.x)
@@ -127,6 +129,7 @@ class powerup:
         self.power_upsY.append(y)
 
     def generate(self,_x,_y,_r):
+        print("Generated")
         for s in range (random.choice([1,2])):
             x = _x
             y = _y
@@ -144,8 +147,7 @@ class powerup:
             self.power_upsX.pop(j)
             self.power_upsY.pop(j)
             canvas.delete(self.tagval.pop(j))
-            print(self.power_ups)
-            print("test"+str(self.j))
+            print("Deleted")
 
     def powerupType(self,p,type):
         if type == "portal":
@@ -180,11 +182,11 @@ def snakeAnnimation(p,animation):
             p.snake[j].configure(bg="lime green")
     elif animation == "return":
         for j in range(len(p.snake)):
-            p.snake[j].configure(bg="gray"+str(j*3))
+            p.snake[j].configure(bg="yellow")
 
 
 allplayers = []
-player = Snake(500, 500)
+player = Snake(random.randint(100,900), random.randint(100,900))
 allplayers.append(player)
 food = powerup()
 
