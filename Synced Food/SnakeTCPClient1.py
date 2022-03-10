@@ -46,6 +46,7 @@ def sendCoord():
             global food
             food.delete(int(foodinfo[3]))
             food.generate(int(foodinfo[0]),int(foodinfo[1]),int(foodinfo[2]))
+            food.generate(int(foodinfo[0]),int(foodinfo[1]),int(foodinfo[2]))
       
       return msg[0]
 
@@ -59,7 +60,7 @@ def updateothers():
       global otherplayerblocks
       for i in range(len(otherplayer)):
               for j in range(len(otherplayer[i])):
-                    otherplayerblocks.append(SnakeGameMap.canvas.create_rectangle(int(otherplayer[i][j][0]),int(otherplayer[i][j][1]),int(otherplayer[i][j][0])+10,int(otherplayer[i][j][1])+10))
+                    otherplayerblocks.append(SnakeGameMap.canvas.create_rectangle(int(otherplayer[i][j][0]),int(otherplayer[i][j][1]),int(otherplayer[i][j][0])+10,int(otherplayer[i][j][1])+10,fill='violetred1'))
       
 
 def tick(player,found):
@@ -74,7 +75,6 @@ def tick(player,found):
     time2 = time.strftime('%H:%M:%S')
     
     msg = sendCoord()
-    print(msg)
     
     array = []
     temparray = msg.split(";")
@@ -103,11 +103,12 @@ def tick(player,found):
             _r = random.randint(0,3)
             _j = j
             food.generate(_x,_y,_r)
+            food.generate(_x,_y,_r)
             found = TRUE
             wefoundfood = 1
             break
 
-    if found == FALSE : clock.after(int(100/player.getspeed()),lambda: tick(player,FALSE))
+    if found == FALSE : clock.after(int(50/player.getspeed()),lambda: tick(player,FALSE))
 
 
 
