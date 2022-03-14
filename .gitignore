@@ -30,3 +30,5 @@
 *.exe
 *.out
 *.app
+
+SnakeVisualier/__pycache__
