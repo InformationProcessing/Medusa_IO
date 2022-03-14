@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="a592c02d-0639-4f2f-b0de-9351e3670891" name="Changes" comment="feat(networking) - add FPGA control to the TCP client">
+      <change beforePath="$PROJECT_DIR$/FPGAController/SnakeExperiment.qws" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FPGAController/db/SnakeExperiment.db_info" beforeDir="false" afterPath="$PROJECT_DIR$/FPGAController/db/SnakeExperiment.db_info" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FPGAController/software/snake/.cproject" beforeDir="false" afterPath="$PROJECT_DIR$/FPGAController/software/snake/.cproject" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FPGAController/software/snake/.settings/language.settings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/FPGAController/software/snake/.settings/language.settings.xml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="26CON5SsTJjeeK9tIsTNKGqFeyc" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\vacla\Projects\Medusa_IO\SnakeVisualiser\assets" />
+      <recent name="C:\Users\vacla\Projects\Medusa_IO\SnakeVisualiser" />
+      <recent name="C:\Users\vacla\Projects\Medusa_IO\SnakeVisualiser\components" />
+      <recent name="C:\Users\vacla\Projects\Medusa_IO\SnakeVisualiser\components_testing" />
+      <recent name="C:\Users\vacla\Projects\Medusa_IO\" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Python.SnakeTCPClient2">
+    <configuration name="SnakeTCPClient1" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Medusa_IO" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/SnakeVisualiser" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/SnakeVisualiser/SnakeTCPClient1.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="SnakeTCPClient2" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Medusa_IO" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/SnakeVisualiser" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/SnakeVisualiser/SnakeTCPClient2.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="main_visualizer_testing" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Medusa_IO" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/SnakeVisualiser" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/SnakeVisualiser/main_visualizer_testing.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Python.main_visualizer_testing" />
+      <item itemvalue="Python.SnakeTCPClient1" />
+      <item itemvalue="Python.SnakeTCPClient2" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.SnakeTCPClient2" />
+        <item itemvalue="Python.SnakeTCPClient1" />
+        <item itemvalue="Python.main_visualizer_testing" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="a592c02d-0639-4f2f-b0de-9351e3670891" name="Changes" comment="" />
+      <created>1646924062359</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1646924062359</updated>
+      <workItem from="1646924065959" duration="35000" />
+      <workItem from="1646924215645" duration="3576000" />
+      <workItem from="1647255944211" duration="743000" />
+    </task>
+    <task id="LOCAL-00001" summary="fix(networking) - fix message propagation from one client to another">
+      <created>1646925626350</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1646925626350</updated>
+    </task>
+    <task id="LOCAL-00002" summary="feat(networking) - add FPGA control to the TCP client">
+      <created>1646927271730</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1646927271730</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="feat(networking) - add message saving to the server when one of the clients is unavailable" />
+    <MESSAGE value="fix(networking) - fix message propagation from one client to another" />
+    <MESSAGE value="feat(networking) - add FPGA control to the TCP client" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat(networking) - add FPGA control to the TCP client" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/Medusa_IO$SnakeTCPServer.coverage" NAME="SnakeTCPServer Coverage Results" MODIFIED="1646319092078" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Networking" />
+    <SUITE FILE_PATH="coverage/Medusa_IO$main_visualizer_testing.coverage" NAME="main_visualizer_testing Coverage Results" MODIFIED="1646925701186" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SnakeVisualiser" />
+    <SUITE FILE_PATH="coverage/Medusa_IO$SnakeTCPClient1.coverage" NAME="SnakeTCPClient1 Coverage Results" MODIFIED="1647255953212" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SnakeVisualiser" />
+    <SUITE FILE_PATH="coverage/Medusa_IO$SnakeTCPClient1__1_.coverage" NAME="SnakeTCPClient1 (1) Coverage Results" MODIFIED="1646926223162" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SnakeVisualiser" />
+    <SUITE FILE_PATH="coverage/Medusa_IO$SnakeTCPClient2.coverage" NAME="SnakeTCPClient2 Coverage Results" MODIFIED="1647255959830" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SnakeVisualiser" />
+    <SUITE FILE_PATH="coverage/Medusa_IO$SnakeGameMap.coverage" NAME="SnakeGameMap Coverage Results" MODIFIED="1646318954077" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Networking" />
+    <SUITE FILE_PATH="coverage/Medusa_IO$SnakeTCPClient2__1_.coverage" NAME="SnakeTCPClient2 (1) Coverage Results" MODIFIED="1646926096455" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SnakeVisualiser" />
+  </component>
+</project>
