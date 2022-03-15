@@ -11,7 +11,7 @@ def spawn_program_and_die(program, exit_code=0):
     sys.exit(exit_code)
 
 def StartC1():
-   spawn_program_and_die(['python3','New/SnakeTCPClient1.py'])
+   spawn_program_and_die(['python3','New/SnakeTCPClient2.py'])
 
 canvas_width = 400
 canvas_height = 200
@@ -22,7 +22,7 @@ canvas.pack()
 B1 = tk.Button(root, text = "Play Again", command = StartC1)
 canvas.create_window(200,100,window=B1)
 
-f = open("New/client1.txt","r")
+f = open("client2.txt", "r")
 
 T = tk.Text(root, height=2, width=15)
 T.pack()

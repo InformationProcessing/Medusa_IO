@@ -3,7 +3,7 @@ from tkinter import *
 import time
 import sys
 import random
-import os
+import subprocess
 import socket
 import components.SnakeGameMap as SnakeGameMap
 from components.fpga_communicator import FPGACommunicator
@@ -15,6 +15,16 @@ clock = Label(SnakeGameMap.root)
 
 otherplayer = []
 otherplayerblocks = []
+
+T = tk.Text(SnakeGameMap.root, height=2, width=15)
+T.pack()
+T.insert(tk.END, "Client 1")
+T.place(x=350, y=35)
+
+
+def spawn_program_and_die(program, exit_code=0):
+    subprocess.Popen(program)
+    sys.exit(exit_code)
 
 
 def mergearray(array1, array2):
@@ -44,7 +54,15 @@ def sendCoord():
     client_socket.bind(('', my_port))
     client_socket.sendto(msg.encode(), ('localhost', 12001))
     msg, sadd = client_socket.recvfrom(2048)
+
     msg = msg.decode().split('|')
+    print(msg)
+
+    if len(msg) < 2:
+        f = open("New/client2.txt", "w")
+        f.write("Score: " + str(len(player.snakeblockscoordX)) + "\n" + "You " + ["Won", "Lost"][(msg[0][3] != "2")])
+        f.close()
+        spawn_program_and_die(["python3", "New/Launcher2.py"])
 
     foodinfo = msg[1].split(",")
     if foodinfo[4] == '1':
@@ -97,7 +115,6 @@ def tick(player, found):
     if time2 != time1:
         time1 = time2
         clock.config(text=time2)
-
     if fpga_communicator.initialized:
         acc_read = fpga_communicator.read_acc_proc()
         if 75 < acc_read['x'] < 250 and not 75 <= acc_read['y'] <= 4021:
@@ -128,7 +145,7 @@ def tick(player, found):
             wefoundfood = 1
             break
 
-    if found == FALSE: clock.after(int(50 / player.getspeed()), lambda: tick(player, FALSE))
+    if found == FALSE: clock.after(int(30 / player.getspeed()), lambda: tick(player, FALSE))
 
 
 SnakeGameMap.root.bind("<Key>", SnakeGameMap.kpress)
