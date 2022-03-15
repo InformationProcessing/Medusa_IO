@@ -381,7 +381,7 @@ void parse_request(char* request){
 		memset(led_buf, 0,(LED_BUF_SIZE) * sizeof(char));
 		strncpy(led_buf, tokens[2], LED_BUF_SIZE);
 		led_offset = 0;
-		throw_code(&"LEDWRITE", 0);
+		throw_code(&"LEDFLASH", 0);
 		matched = 1;
 
 		}
