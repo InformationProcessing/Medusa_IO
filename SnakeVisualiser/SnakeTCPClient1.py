@@ -10,8 +10,10 @@ from components.fpga_communicator import FPGACommunicator
 
 fpga_communicator = FPGACommunicator()
 my_port = 13000
+username = "Client 1"
 time1 = ''
 clock = Label(SnakeGameMap.root)
+game_over = False
 
 otherplayer = []
 otherplayerblocks = []
@@ -44,7 +46,7 @@ _j = 0
 
 
 def sendCoord():
-    global my_port, wefoundfood
+    global my_port, wefoundfood, game_over
     msg = ""
     for i in range(len(player.snakeblockscoordX)):
         msg += str(player.snakeblockscoordX[i]) + "," + str(player.snakeblockscoordY[i]) + ";"
@@ -56,20 +58,18 @@ def sendCoord():
     msg, sadd = client_socket.recvfrom(2048)
 
     msg = msg.decode().split('|')
-    print(msg)
 
     if len(msg) < 2:
-        f = open("New/client2.txt", "w")
-        f.write("Score: " + str(len(player.snakeblockscoordX)) + "\n" + "You " + ["Won", "Lost"][(msg[0][3] != "2")])
-        f.close()
-        spawn_program_and_die(["python3", "New/Launcher2.py"])
-
-    foodinfo = msg[1].split(",")
-    if foodinfo[4] == '1':
-        global food
-        food.delete(int(foodinfo[3]))
-        food.generate(int(foodinfo[0]), int(foodinfo[1]), int(foodinfo[2]))
-        food.generate(int(foodinfo[0]), int(foodinfo[1]), int(foodinfo[2]))
+        print("Game should end now!")
+        game_over = True
+        SnakeGameMap.show_game_over(username)
+    else:
+        foodinfo = msg[1].split(",")
+        if foodinfo[4] == '1':
+            global food
+            food.delete(int(foodinfo[3]))
+            food.generate(int(foodinfo[0]), int(foodinfo[1]), int(foodinfo[2]))
+            food.generate(int(foodinfo[0]), int(foodinfo[1]), int(foodinfo[2]))
 
     return msg[0]
 
@@ -103,6 +103,9 @@ def tick(player, found):
 
     msg = sendCoord()
 
+    if game_over:
+        return
+
     array = []
     temparray = msg.split(";")
 
@@ -133,7 +136,8 @@ def tick(player, found):
         if (player.x == food.power_upsX[j]) and (player.y == food.power_upsY[j]):
             player.adjustspeed(1)
             food.powerupType(player, food.power_ups[j][1])
-            clock.after(100, lambda: tick(player, FALSE))
+            if not game_over:
+                clock.after(100, lambda: tick(player, FALSE))
             food.delete(j)
             _x = random.randrange(30, 500, 10)
             _y = random.randrange(20, 500, 10)
@@ -145,7 +149,8 @@ def tick(player, found):
             wefoundfood = 1
             break
 
-    if found == FALSE: clock.after(int(30 / player.getspeed()), lambda: tick(player, FALSE))
+    if found == FALSE and not game_over:
+        clock.after(int(30 / player.getspeed()), lambda: tick(player, FALSE))
 
 
 SnakeGameMap.root.bind("<Key>", SnakeGameMap.kpress)

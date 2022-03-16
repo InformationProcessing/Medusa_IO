@@ -2,6 +2,7 @@ import tkinter as tk
 from tkinter import ttk
 from tkinter import *
 from components.score_component import Score
+from components.game_over_component import GameOver
 import random
 
 root = tk.Tk()
@@ -248,6 +249,19 @@ def decreasespeed():
 def restart():
     for f in range(len(food.power_ups)):
         food.delete(f)
+
+
+def show_game_over(username):
+    for widget in mainframe.winfo_children():
+        widget.destroy()
+
+    mainframe.grid(column=0, row=0, sticky=(N, W, E, S))
+    game_over_frame = ttk.Frame(mainframe, padding="3 3 12 12")
+    game_over_frame.grid(column=0, row=0, sticky=(N, W, E, S))
+    mainframe.columnconfigure(0, weight=1)
+    mainframe.rowconfigure(0, weight=1)
+
+    GameOver(game_over_frame, username, 10)
 
 
 button1 = tk.Button(root, text='Increase Speed', command=increasespeed)
