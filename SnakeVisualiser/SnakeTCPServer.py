@@ -27,7 +27,7 @@ while 1:
     delivermsg = ""
     for i in range(5):
       if i!=int(c):
-            f = open("New/snakecoordinates/"+str(i)+".txt","r")
+            f = open("snakecoordinates/"+str(i)+".txt","r")
             delivermsg = delivermsg + f.read() + "\n"
             f.close()
                  
