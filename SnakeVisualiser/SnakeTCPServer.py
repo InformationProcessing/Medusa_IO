@@ -20,7 +20,7 @@ result = ""
 while 1:
     cmsg, cadd = welcome_socket.recvfrom(2048)  	
     msg1 = cmsg.decode()
-    f = open("New/snakecoordinates/"+c+".txt","w")
+    f = open("snakecoordinates/"+c+".txt","w")
     f.write(msg1)
     f.close()
     
