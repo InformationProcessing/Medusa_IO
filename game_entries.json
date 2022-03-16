@@ -1,0 +1,45 @@
+[
+    {
+        "username": "lollycraft",
+        "other_key":"a75",
+        "totalscore": 20,
+	"highestscore": 0,
+        "kills": 7  
+    },
+    {
+        "username": "ccl",
+        "other_key":"a75",
+        "totalscore": 331,
+	"highestscore": 0,
+        "kills": 4  
+    },
+    {
+        "username": "jjo",
+        "other_key":"a75",
+        "totalscore": 81,
+	"highestscore": 0,
+        "kills": 12
+    },
+    {
+        "username": "ms",
+        "other_key":"a75",
+        "totalscore": 89,
+	"highestscore": 0,
+        "kills": 17
+    },
+    {
+        "username": "mpidk",
+        "other_key":"a75",
+        "totalscore": 81,
+	"highestscore": 0,
+        "kills": 21
+    },
+    {
+        "username": "vpnum",
+        "other_key":"a75",
+        "totalscore": 31,
+	"highestscore": 0,
+        "kills": 13
+    }        
+
+]
