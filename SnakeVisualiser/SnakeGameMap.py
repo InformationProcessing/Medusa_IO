@@ -13,7 +13,7 @@ clock = Label(root)
 canvas_width = 700
 canvas_height = 700
 canvas = tk.Canvas(root, width = canvas_width+1, height = canvas_height+1, highlightthickness=10, highlightbackground="black")
-bg = PhotoImage(file = "map4.png")
+bg = PhotoImage(file = "assets/map4.png")
 canvas.pack(fill = "both", expand = True)
 canvas.create_image( 0, 0, image = bg, anchor = "nw")
 
