@@ -22,7 +22,7 @@ canvas.pack()
 B1 = tk.Button(root, text = "Play Again", command = StartC1)
 canvas.create_window(200,100,window=B1)
 
-f = open("client1.txt", "r")
+f = open("New/client1.txt","r")
 
 T = tk.Text(root, height=2, width=15)
 T.pack()

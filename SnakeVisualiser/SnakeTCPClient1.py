@@ -8,6 +8,7 @@ import socket
 import SnakeGameMap
 import subprocess
 import sys
+import atexit
 
 a = int(input("Enter Your Port:"))
 b = int(input("Enter Server Port:"))
@@ -25,6 +26,14 @@ T.pack()
 T.insert(tk.END, "Client 1")
 T.place(x = 350,y = 35)
 
+def exit_handler():
+      msg = "0,0;|0,0,0,0,0"
+      client_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+      client_socket.bind(('',my_port))
+      client_socket.sendto(msg.encode(),('localhost',b))
+      
+atexit.register(exit_handler)
+
 def spawn_program_and_die(program, exit_code=0):
     subprocess.Popen(program)
     sys.exit(exit_code)
@@ -36,6 +45,7 @@ def mergearray(array1,array2):
       return newarray
 
 player = SnakeGameMap.player
+# playerShadow = SnakeGameMap.snakeShadow
 food = SnakeGameMap.food
 wefoundfood = 0
 _x = 0
@@ -54,12 +64,27 @@ def sendCoord():
       client_socket.bind(('',my_port))
       client_socket.sendto(msg.encode(),('localhost',b))
       msg, sadd = client_socket.recvfrom(2048)
+      
+      if msg.decode() == "dead":
+            #Client is DEAD
+            quit()
+            
       users = msg.decode().split("\n")
       message = []
+      foodinfo = []
       
       for i in range(len(users)):
             if len(users[i].split('|'))>1:
                   message.append(users[i].split('|')[0])
+                  foodinfo.append(users[i].split('|')[1])
+                  
+      for i in range(len(foodinfo)):
+            tempfood = foodinfo[i].split(",")
+            if tempfood[4]=='1':
+                  global food
+                  food.delete(int(tempfood[3]))
+                  food.generate(int(tempfood[0]), int(tempfood[1]), int(tempfood[2]))
+                  food.generate(int(tempfood[0]), int(tempfood[1]), int(tempfood[2]))
       
       return message
 
@@ -100,6 +125,9 @@ def tick(player,found):
             time1 = time2
             clock.config(text=time2)
     player.movesnake()
+#     playerShadow.movesnake()
+#     if player.shadowCreated == True:
+#           player.moveShadow()
     
     updateothers()
     
@@ -111,7 +139,7 @@ def tick(player,found):
             food.delete(j)
             _x = random.randrange(30,500,10)
             _y = random.randrange(20,500,10)
-            _r = random.randint(0,3)
+            _r = 4
             _j = j
             food.generate(_x,_y,_r)
             food.generate(_x,_y,_r)
@@ -126,4 +154,3 @@ def tick(player,found):
 SnakeGameMap.root.bind("<Key>",SnakeGameMap.kpress)
 tick(player,FALSE)
 SnakeGameMap.root.mainloop()
-
