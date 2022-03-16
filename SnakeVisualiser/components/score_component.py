@@ -10,7 +10,7 @@ class Score:
         self.root = root
         self.score_text = StringVar()
         score_label = ttk.Label(root, textvariable=self.score_text)
-        score_label.grid(column=0, row=0, sticky=W)
+        score_label.grid(column=0, row=0, sticky=(N, W))
         score_label.grid_configure(padx=5, pady=5)
         self.score_text.set("Score: " + str(score))
         self.score_frame = ttk.Frame(root, padding="3 3 12 12")

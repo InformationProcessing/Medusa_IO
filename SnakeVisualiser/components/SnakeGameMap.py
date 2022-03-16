@@ -1,21 +1,44 @@
 import tkinter as tk
+from tkinter import ttk
 from tkinter import *
-import time
-import sys
+from components.score_component import Score
 import random
-import os
 
 root = tk.Tk()
+
+mainframe = ttk.Frame(root, padding="3 3 12 12")
+mainframe.grid(column=0, row=0, sticky=(N, W, E, S))
+root.columnconfigure(0, weight=1)
+root.rowconfigure(0, weight=1)
+
+score_frame = ttk.Frame(mainframe, padding="3 3 12 12")
+score_frame.grid(column=1, row=0, sticky=(N, W, E, S))
+mainframe.columnconfigure(0, weight=1)
+mainframe.rowconfigure(0, weight=1)
+
+scores = [
+    {'player': 'VendaskyCZ1', 'score': 255},
+    {'player': 'VendaskyCZ2', 'score': 200},
+    {'player': 'VendaskyCZ3', 'score': 0}
+]
+
+score = Score(score_frame, 0, scores)
 
 time1 = ''
 clock = Label(root)
 
 canvas_width = 700
 canvas_height = 700
-canvas = tk.Canvas(root, width=canvas_width + 1, height=canvas_height + 1, highlightthickness=10,
+
+game_frame = ttk.Frame(mainframe, padding="3 3 12 12")
+game_frame.grid(column=0, row=0, sticky=(N, W, E, S))
+root.columnconfigure(0, weight=1)
+root.rowconfigure(0, weight=1)
+
+canvas = tk.Canvas(game_frame, width=canvas_width + 1, height=canvas_height + 1, highlightthickness=10,
                    highlightbackground="black")
-bg = PhotoImage(file="map4.png")
-canvas.pack(fill="both", expand=True)
+canvas.pack()
+bg = PhotoImage(file="assets/map4.png")
 canvas.create_image(0, 0, image=bg, anchor="nw")
 
 

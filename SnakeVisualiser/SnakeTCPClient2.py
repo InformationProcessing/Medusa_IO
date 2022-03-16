@@ -16,11 +16,6 @@ clock = Label(SnakeGameMap.root)
 otherplayer = []
 otherplayerblocks = []
 
-T = tk.Text(SnakeGameMap.root, height=2, width=15)
-T.pack()
-T.insert(tk.END, "Client 2")
-T.place(x=350, y=35)
-
 
 def spawn_program_and_die(program, exit_code=0):
     subprocess.Popen(program)

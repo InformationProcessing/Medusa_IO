@@ -4,94 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a592c02d-0639-4f2f-b0de-9351e3670891" name="Changes" comment="resolve merge conflicts">
+    <list default="true" id="a592c02d-0639-4f2f-b0de-9351e3670891" name="Changes" comment="integrate FPGA control">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Networking/SnakeTCPServer.py" beforeDir="false" afterPath="$PROJECT_DIR$/SnakeVisualiser/SnakeTCPServer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SnakeExperiment/workspace/.metadata/.lock" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SnakeExperiment/workspace/.metadata/.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SnakeExperiment/workspace/.metadata/.mylyn/repositories.xml.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SnakeExperiment/workspace/.metadata/.plugins/org.eclipse.cdt.core/.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SnakeExperiment/workspace/.metadata/.plugins/org.eclipse.cdt.core/snake.1647255833043.pdom" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SnakeExperiment/workspace/.metadata/.plugins/org.eclipse.cdt.core/snake.language.settings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SnakeExperiment/workspace/.metadata/.plugins/org.eclipse.cdt.make.core/specs.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SnakeExperiment/workspace/.metadata/.plugins/org.eclipse.cdt.make.core/specs.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SnakeExperiment/workspace/.metadata/.plugins/org.eclipse.cdt.managedbuilder.core/spec.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SnakeExperiment/workspace/.metadata/.plugins/org.eclipse.cdt.ui/global-build.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SnakeExperiment/workspace/.metadata/.plugins/org.eclipse.cdt.ui/snake.build.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SnakeExperiment/workspace/.metadata/.plugins/org.eclipse.core.resources/.projects/RemoteSystemsTempFiles/.indexes/properties.index" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SnakeExperiment/workspace/.metadata/.plugins/org.eclipse.core.resources/.projects/RemoteSystemsTempFiles/org.eclipse.egit.core/GitProjectData.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SnakeExperiment/workspace/.metadata/.plugins/org.eclipse.core.resources/.projects/snake/.indexes/properties.index" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SnakeExperiment/workspace/.metadata/.plugins/org.eclipse.core.resources/.projects/snake/.location" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SnakeExperiment/workspace/.metadata/.plugins/org.eclipse.core.resources/.projects/snake/org.eclipse.egit.core/GitProjectData.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SnakeExperiment/workspace/.metadata/.plugins/org.eclipse.core.resources/.root/.indexes/history.version" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SnakeExperiment/workspace/.metadata/.plugins/org.eclipse.core.resources/.root/.indexes/properties.index" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SnakeExperiment/workspace/.metadata/.plugins/org.eclipse.core.resources/.root/.indexes/properties.version" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SnakeExperiment/workspace/.metadata/.plugins/org.eclipse.core.resources/.root/1.tree" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SnakeExperiment/workspace/.metadata/.plugins/org.eclipse.core.resources/.safetable/org.eclipse.core.resources" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SnakeExperiment/workspace/.metadata/.plugins/org.eclipse.core.runtime/.settings/com.altera.sbtgui.project.prefs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SnakeExperiment/workspace/.metadata/.plugins/org.eclipse.core.runtime/.settings/org.eclipse.cdt.core.prj-snake.prefs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SnakeExperiment/workspace/.metadata/.plugins/org.eclipse.core.runtime/.settings/org.eclipse.cdt.debug.core.prefs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SnakeExperiment/workspace/.metadata/.plugins/org.eclipse.core.runtime/.settings/org.eclipse.cdt.managedbuilder.core.prefs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SnakeExperiment/workspace/.metadata/.plugins/org.eclipse.core.runtime/.settings/org.eclipse.cdt.ui.prefs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SnakeExperiment/workspace/.metadata/.plugins/org.eclipse.core.runtime/.settings/org.eclipse.core.resources.prefs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SnakeExperiment/workspace/.metadata/.plugins/org.eclipse.core.runtime/.settings/org.eclipse.debug.core.prefs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SnakeExperiment/workspace/.metadata/.plugins/org.eclipse.core.runtime/.settings/org.eclipse.debug.ui.prefs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SnakeExperiment/workspace/.metadata/.plugins/org.eclipse.core.runtime/.settings/org.eclipse.egit.core.prefs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SnakeExperiment/workspace/.metadata/.plugins/org.eclipse.core.runtime/.settings/org.eclipse.epp.logging.aeri.ide.prefs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SnakeExperiment/workspace/.metadata/.plugins/org.eclipse.core.runtime/.settings/org.eclipse.mylyn.context.core.prefs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SnakeExperiment/workspace/.metadata/.plugins/org.eclipse.core.runtime/.settings/org.eclipse.mylyn.monitor.ui.prefs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SnakeExperiment/workspace/.metadata/.plugins/org.eclipse.core.runtime/.settings/org.eclipse.mylyn.tasks.ui.prefs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SnakeExperiment/workspace/.metadata/.plugins/org.eclipse.core.runtime/.settings/org.eclipse.rse.core.prefs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SnakeExperiment/workspace/.metadata/.plugins/org.eclipse.core.runtime/.settings/org.eclipse.rse.ui.prefs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SnakeExperiment/workspace/.metadata/.plugins/org.eclipse.core.runtime/.settings/org.eclipse.team.ui.prefs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SnakeExperiment/workspace/.metadata/.plugins/org.eclipse.core.runtime/.settings/org.eclipse.ui.ide.prefs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SnakeExperiment/workspace/.metadata/.plugins/org.eclipse.core.runtime/.settings/org.eclipse.ui.workbench.prefs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SnakeExperiment/workspace/.metadata/.plugins/org.eclipse.debug.core/.launches/snake Nios II Hardware configuration.launch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SnakeExperiment/workspace/.metadata/.plugins/org.eclipse.debug.ui/launchConfigurationHistory.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SnakeExperiment/workspace/.metadata/.plugins/org.eclipse.e4.workbench/workbench.xmi" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SnakeExperiment/workspace/.metadata/.plugins/org.eclipse.epp.logging.aeri.ide/org.eclipse.epp.logging.aeri.ide.server/local-history/_0.fdt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SnakeExperiment/workspace/.metadata/.plugins/org.eclipse.epp.logging.aeri.ide/org.eclipse.epp.logging.aeri.ide.server/local-history/_0.fdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SnakeExperiment/workspace/.metadata/.plugins/org.eclipse.epp.logging.aeri.ide/org.eclipse.epp.logging.aeri.ide.server/local-history/_0.fnm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SnakeExperiment/workspace/.metadata/.plugins/org.eclipse.epp.logging.aeri.ide/org.eclipse.epp.logging.aeri.ide.server/local-history/_0.frq" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SnakeExperiment/workspace/.metadata/.plugins/org.eclipse.epp.logging.aeri.ide/org.eclipse.epp.logging.aeri.ide.server/local-history/_0.nrm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SnakeExperiment/workspace/.metadata/.plugins/org.eclipse.epp.logging.aeri.ide/org.eclipse.epp.logging.aeri.ide.server/local-history/_0.tii" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SnakeExperiment/workspace/.metadata/.plugins/org.eclipse.epp.logging.aeri.ide/org.eclipse.epp.logging.aeri.ide.server/local-history/_0.tis" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SnakeExperiment/workspace/.metadata/.plugins/org.eclipse.epp.logging.aeri.ide/org.eclipse.epp.logging.aeri.ide.server/local-history/segments.gen" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SnakeExperiment/workspace/.metadata/.plugins/org.eclipse.epp.logging.aeri.ide/org.eclipse.epp.logging.aeri.ide.server/local-history/segments_1" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SnakeExperiment/workspace/.metadata/.plugins/org.eclipse.epp.logging.aeri.ide/org.eclipse.epp.logging.aeri.ide.server/local-history/write.lock" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SnakeExperiment/workspace/.metadata/.plugins/org.eclipse.epp.logging.aeri.ide/org.eclipse.epp.logging.aeri.ide.server/remote-history/_0.fdt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SnakeExperiment/workspace/.metadata/.plugins/org.eclipse.epp.logging.aeri.ide/org.eclipse.epp.logging.aeri.ide.server/remote-history/_0.fdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SnakeExperiment/workspace/.metadata/.plugins/org.eclipse.epp.logging.aeri.ide/org.eclipse.epp.logging.aeri.ide.server/remote-history/_0.fnm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SnakeExperiment/workspace/.metadata/.plugins/org.eclipse.epp.logging.aeri.ide/org.eclipse.epp.logging.aeri.ide.server/remote-history/_0.frq" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SnakeExperiment/workspace/.metadata/.plugins/org.eclipse.epp.logging.aeri.ide/org.eclipse.epp.logging.aeri.ide.server/remote-history/_0.nrm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SnakeExperiment/workspace/.metadata/.plugins/org.eclipse.epp.logging.aeri.ide/org.eclipse.epp.logging.aeri.ide.server/remote-history/_0.tii" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SnakeExperiment/workspace/.metadata/.plugins/org.eclipse.epp.logging.aeri.ide/org.eclipse.epp.logging.aeri.ide.server/remote-history/_0.tis" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SnakeExperiment/workspace/.metadata/.plugins/org.eclipse.epp.logging.aeri.ide/org.eclipse.epp.logging.aeri.ide.server/remote-history/segments.gen" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SnakeExperiment/workspace/.metadata/.plugins/org.eclipse.epp.logging.aeri.ide/org.eclipse.epp.logging.aeri.ide.server/remote-history/segments_1" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SnakeExperiment/workspace/.metadata/.plugins/org.eclipse.oomph.setup/workspace.setup" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SnakeExperiment/workspace/.metadata/.plugins/org.eclipse.rse.core/.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SnakeExperiment/workspace/.metadata/.plugins/org.eclipse.rse.core/initializerMarks/org.eclipse.rse.internal.core.RSELocalConnectionInitializer.mark" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SnakeExperiment/workspace/.metadata/.plugins/org.eclipse.rse.core/profiles/PRF.desktop-a64d9e0_32586/FP.local.files_0/node.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SnakeExperiment/workspace/.metadata/.plugins/org.eclipse.rse.core/profiles/PRF.desktop-a64d9e0_32586/H.local_16/node.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SnakeExperiment/workspace/.metadata/.plugins/org.eclipse.rse.core/profiles/PRF.desktop-a64d9e0_32586/node.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SnakeExperiment/workspace/.metadata/.plugins/org.eclipse.rse.ui/.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SnakeExperiment/workspace/.metadata/.plugins/org.eclipse.ui.workbench/dialog_settings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SnakeExperiment/workspace/.metadata/.plugins/org.eclipse.ui.workbench/workingsets.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SnakeExperiment/workspace/.metadata/version.ini" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SnakeExperiment/workspace/RemoteSystemsTempFiles/.project" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SnakeTCPClient/New/Launcher1.py" beforeDir="false" afterPath="$PROJECT_DIR$/SnakeVisualiser/Launcher1.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SnakeTCPClient/New/Launcher2.py" beforeDir="false" afterPath="$PROJECT_DIR$/SnakeVisualiser/Launcher2.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SnakeTCPClient/New/SnakeGameMap.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SnakeTCPClient/New/SnakeTCPClient1.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SnakeTCPClient/New/SnakeTCPClient2.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SnakeTCPClient/New/SnakeTCPServer.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SnakeTCPClient/New/client1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/SnakeVisualiser/client1.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SnakeTCPClient/New/client2.txt" beforeDir="false" afterPath="$PROJECT_DIR$/SnakeVisualiser/client2.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SnakeTCPClient/New/readme.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SnakeTCPClient/map4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SnakeVisualiser/OOPSnake.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/SnakeVisualiser/SnakeTCPClient1.py" beforeDir="false" afterPath="$PROJECT_DIR$/SnakeVisualiser/SnakeTCPClient1.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SnakeVisualiser/SnakeTCPClient2.py" beforeDir="false" afterPath="$PROJECT_DIR$/SnakeVisualiser/SnakeTCPClient2.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SnakeVisualiser/components/SnakeGameMap.py" beforeDir="false" afterPath="$PROJECT_DIR$/SnakeVisualiser/components/SnakeGameMap.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SnakeVisualiser/components/score_component.py" beforeDir="false" afterPath="$PROJECT_DIR$/SnakeVisualiser/components/score_component.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -99,6 +19,11 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitSEFilterConfiguration">
@@ -132,8 +57,8 @@
       <recent name="C:\Users\vacla\Projects\Medusa_IO\SnakeVisualiser\components_testing" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.SnakeTCPClient2">
-    <configuration name="Launcher1" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Python.SnakeTCPClient2 (1)">
+    <configuration name="OOPSnake" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Medusa_IO" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -141,12 +66,12 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/SnakeTCPClient/New" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/SnakeVisualiser" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="C:\Users\vacla\Projects\Medusa_IO\SnakeVisualiser\Launcher1.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/SnakeVisualiser/OOPSnake.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -155,7 +80,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="Launcher2" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="SnakeTCPClient1 (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Medusa_IO" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -163,12 +88,12 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/SnakeTCPClient/New" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/SnakeVisualiser" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="C:\Users\vacla\Projects\Medusa_IO\SnakeVisualiser\Launcher2.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/SnakeVisualiser/SnakeTCPClient1.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -199,6 +124,28 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="SnakeTCPClient2 (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Medusa_IO" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/SnakeVisualiser" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/SnakeVisualiser/SnakeTCPClient2.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="SnakeTCPClient2" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="Medusa_IO" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -221,42 +168,20 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="main_fpga_testing" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="Medusa_IO" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/SnakeVisualiser/components_testing" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/SnakeVisualiser/components_testing/main_fpga_testing.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
     <list>
-      <item itemvalue="Python.main_fpga_testing" />
-      <item itemvalue="Python.Launcher1" />
-      <item itemvalue="Python.Launcher2" />
       <item itemvalue="Python.SnakeTCPClient1" />
       <item itemvalue="Python.SnakeTCPClient2" />
+      <item itemvalue="Python.OOPSnake" />
+      <item itemvalue="Python.SnakeTCPClient1 (1)" />
+      <item itemvalue="Python.SnakeTCPClient2 (1)" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.SnakeTCPClient2 (1)" />
+        <item itemvalue="Python.SnakeTCPClient1 (1)" />
+        <item itemvalue="Python.OOPSnake" />
         <item itemvalue="Python.SnakeTCPClient2" />
         <item itemvalue="Python.SnakeTCPClient1" />
-        <item itemvalue="Python.Launcher2" />
-        <item itemvalue="Python.Launcher1" />
-        <item itemvalue="Python.main_fpga_testing" />
       </list>
     </recent_temporary>
   </component>
@@ -273,7 +198,8 @@
       <workItem from="1647255944211" duration="743000" />
       <workItem from="1647257245788" duration="1389000" />
       <workItem from="1647258763396" duration="194000" />
-      <workItem from="1647359475130" duration="3987000" />
+      <workItem from="1647359475130" duration="4108000" />
+      <workItem from="1647435413680" duration="2974000" />
     </task>
     <task id="LOCAL-00001" summary="fix(networking) - fix message propagation from one client to another">
       <created>1646925626350</created>
@@ -296,7 +222,14 @@
       <option name="project" value="LOCAL" />
       <updated>1647257315295</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="integrate FPGA control">
+      <created>1647363581643</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1647363581643</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -319,18 +252,20 @@
     <MESSAGE value="fix(networking) - fix message propagation from one client to another" />
     <MESSAGE value="feat(networking) - add FPGA control to the TCP client" />
     <MESSAGE value="resolve merge conflicts" />
-    <option name="LAST_COMMIT_MESSAGE" value="resolve merge conflicts" />
+    <MESSAGE value="integrate FPGA control" />
+    <option name="LAST_COMMIT_MESSAGE" value="integrate FPGA control" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Medusa_IO$SnakeTCPServer.coverage" NAME="SnakeTCPServer Coverage Results" MODIFIED="1646319092078" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Networking" />
     <SUITE FILE_PATH="coverage/Medusa_IO$Launcher1.coverage" NAME="Launcher1 Coverage Results" MODIFIED="1647360131189" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SnakeTCPClient/New" />
     <SUITE FILE_PATH="coverage/Medusa_IO$main_visualizer_testing.coverage" NAME="main_visualizer_testing Coverage Results" MODIFIED="1646925701186" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SnakeVisualiser" />
     <SUITE FILE_PATH="coverage/Medusa_IO$SnakeTCPClient1.coverage" NAME="SnakeTCPClient1 Coverage Results" MODIFIED="1647255953212" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SnakeVisualiser" />
-    <SUITE FILE_PATH="coverage/Medusa_IO$SnakeTCPClient1__1_.coverage" NAME="SnakeTCPClient1 Coverage Results" MODIFIED="1647362794778" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SnakeTCPClient/New" />
+    <SUITE FILE_PATH="coverage/Medusa_IO$OOPSnake.coverage" NAME="OOPSnake Coverage Results" MODIFIED="1647435689280" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SnakeVisualiser" />
+    <SUITE FILE_PATH="coverage/Medusa_IO$SnakeTCPClient1__1_.coverage" NAME="SnakeTCPClient1 (1) Coverage Results" MODIFIED="1647438176221" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SnakeVisualiser" />
     <SUITE FILE_PATH="coverage/Medusa_IO$main_fpga_testing.coverage" NAME="main_fpga_testing Coverage Results" MODIFIED="1647258913107" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SnakeVisualiser/components_testing" />
     <SUITE FILE_PATH="coverage/Medusa_IO$SnakeTCPClient2.coverage" NAME="SnakeTCPClient2 Coverage Results" MODIFIED="1647255959830" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SnakeVisualiser" />
     <SUITE FILE_PATH="coverage/Medusa_IO$Launcher2.coverage" NAME="Launcher2 Coverage Results" MODIFIED="1647360140688" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SnakeTCPClient/New" />
     <SUITE FILE_PATH="coverage/Medusa_IO$SnakeGameMap.coverage" NAME="SnakeGameMap Coverage Results" MODIFIED="1646318954077" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Networking" />
-    <SUITE FILE_PATH="coverage/Medusa_IO$SnakeTCPClient2__1_.coverage" NAME="SnakeTCPClient2 Coverage Results" MODIFIED="1647362801351" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SnakeTCPClient/New" />
+    <SUITE FILE_PATH="coverage/Medusa_IO$SnakeTCPClient2__1_.coverage" NAME="SnakeTCPClient2 (1) Coverage Results" MODIFIED="1647438179542" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SnakeVisualiser" />
   </component>
 </project>
