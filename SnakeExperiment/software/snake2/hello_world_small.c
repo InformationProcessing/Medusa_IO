@@ -43,10 +43,12 @@ alt_up_accelerometer_spi_dev * acc_dev;
 
 //Buffer typing & coeffs
 #define RING_T alt_32
-#define RING_SIZE 29
-double h[] = {0.0030, 0.0114, -0.0179, -0.0011, 0.0223, -0.0225, -0.0109, 0.0396, -0.0263,\
-		-0.0338, 0.0752, -0.0289, -0.1204, 0.2879, 0.6369, 0.2879, -0.1204, -0.0289, 0.0752, \
-		-0.0338, -0.0263, 0.0396, -0.0109, -0.0225, 0.0223, -0.0011, -0.0179, 0.0114, 0.0030};
+#define RING_SIZE 59
+double h[] = {0.0046, 0.0074, -0.0024, -0.0071, 0.0033, 0.0001, -0.0094, 0.0040, 0.0044, -0.0133, 0.0030, 0.0114, -0.0179,
+		-0.0011, 0.0223, -0.0225, -0.0109, 0.0396, -0.0263, -0.0338, 0.0752, -0.0289, -0.1204, 0.2879, 0.6369, 0.2879, -0.1204,
+		-0.0289, 0.0752, -0.0338, -0.0263, 0.0396, -0.0109, -0.0225, 0.0223, -0.0011, -0.0179, 0.0114, 0.0030, -0.0133, 0.0044,
+		0.0040, -0.0094, 0.0001, 0.0033, -0.0071, -0.0024, 0.0074, 0.0046};
+
 
 //X,Y,Z accelerometer buffers
 struct ring_buffer *x_buf;
@@ -57,13 +59,17 @@ struct ring_buffer *z_buf;
 int debug = 0;
 alt_64 latency;
 
-
+//Fixed point related declarations
+#define FIXED alt_32
+alt_32* hfixed = NULL;
+#define POINT 11
+alt_32 quality = 20;
+alt_32 norm_const;
 
 //Forward declarations
 
 void timer_init(void * isr);
 void throw_code(char* regname, int code);
-alt_32 get_input(char x);
 void read_request();
 void to_hex(alt_32 val, int length, char* buf );
 void parse_request(char* request);
@@ -99,21 +105,57 @@ RING_T ring_buf_read(struct ring_buffer* buf, RING_T idx){
 	return buf->values[mapped_idx];
 }
 
-alt_32 convolve_float(struct ring_buffer* buf, double coefficients[]  ){
+alt_32 convolve_fixed(struct ring_buffer* buf, alt_32 coefficients[]  ){
 
 	//Disabling interrupts prevents accelerometer buffers being overwritten while value is calculated
 	//alt_irq_context state = alt_irq_disable_all ();
 	alt_irq_disable(TIMER_IRQ);
 
-	double sum = 0;
-	for(int i = 0; i < buf->size; i ++){
-		sum += ring_buf_read(buf, i)* coefficients[i];
+	alt_32 sum = 0;
+	for(int i = 0; i < quality; i ++){
+		sum += (coefficients[i]*ring_buf_read(buf, i)>>POINT);
 	}
 
 	//Re-enable interrupts from state
 	//alt_irq_enable_all(state);
 	alt_irq_enable(TIMER_IRQ);
-	return (alt_32)sum;
+	return ((sum*norm_const)>>POINT);
+
+}
+void coeffs_to_fixed(){
+	if (hfixed == NULL){
+		hfixed = malloc(RING_SIZE * sizeof(FIXED));
+	}
+	else{
+		memset(hfixed, 0, RING_SIZE);
+	}
+
+	double sum = 0;
+	int real_index = 0;
+
+	//Multiply to shift for fixed point
+	int scalefactor = 1 << POINT;
+
+	//Re-indexing
+	int lower_bound = RING_SIZE/2 - quality/2;
+	int upper_bound = RING_SIZE/2 + quality/2;
+
+	//Indexing system for taking values from center of impulse response array
+
+	for(int i = lower_bound; i< upper_bound; i++){
+
+		hfixed[real_index]= (FIXED)(h[i]*scalefactor);
+		sum += h[i];
+
+		//Index calculation for hselect
+		real_index++;
+	}
+
+	//Floating point scaling factor
+	 sum = 1/sum;
+
+	 //Fixed point conversion of normalization constant
+	 norm_const = (FIXED)((int)(sum*scalefactor));
 
 }
 
@@ -273,9 +315,9 @@ void parse_request(char* request){
 		matched = 1;
 
 		alt_32 x,y,z;
-			x = convolve_float(x_buf, h);
-			y = convolve_float(y_buf, h);
-			z = convolve_float(z_buf, h);
+			x = convolve_fixed(x_buf, hfixed);
+			y = convolve_fixed(y_buf, hfixed);
+			z = convolve_fixed(z_buf, hfixed);
 
 			to_hex(x, 3, hexbuffers[0]);
 			to_hex(y, 3, hexbuffers[1]);
@@ -375,6 +417,28 @@ void parse_request(char* request){
 		matched = 1;
 
 	}
+	if (strcmp(tokens[1], &"ACCQUAL") == 0){
+
+			//alt_printf("Tried to write LEDWRITE");
+			quality = (int) strtol(tokens[2], 0, 10);
+
+			if (quality<0) {
+				quality = 0;
+				throw_code(&"ACCQUAL", 1);
+			}
+			else if (quality > RING_SIZE){
+				quality = RING_SIZE;
+				throw_code(&"ACCQUAL", 1);
+			}
+			else {
+				throw_code(&"ACCQUAL", 0);
+			}
+
+			coeffs_to_fixed();
+
+			matched = 1;
+
+		}
 	if (strcmp(tokens[1], &"LEDFLASH") == 0){
 
 		//alt_printf("Tried to write LEDFLASH");
@@ -549,45 +613,6 @@ void to_hex(alt_32 val, int length, char* buf ){
 }
 
 
-alt_32 get_input(char x){
-
-	alt_32 thresh = 150;
-
-	//Temp gating code
-	if(x == 'x'){
-		alt_32 x = convolve_float(x_buf, h);
-		if(x<-thresh)x = 15;
-		else if(x>thresh) x = 1;
-		else x = 0;
-
-		return x;
-
-	}
-	else if(x == 'y'){
-		alt_32 y = alt_up_accelerometer_spi_read_y_axis(acc_dev, & y);
-		if(y<-thresh)y = 15;
-		else if(y>thresh) y = 1;
-		else y = 0;
-
-		return y;
-
-	}
-	else if(x == 'z'){
-		alt_32 z = alt_up_accelerometer_spi_read_z_axis(acc_dev, & z);
-		if(z<-thresh)z = 15;
-		else if(z>thresh) z = 1;
-		else z = 0;
-
-		return z;
-
-	}
-	else{
-		//throw_code(3);
-		return 16;
-	}
-}
-
-
 void throw_code(char* regname, int code){
 	printf("K %s %x\n", regname, code);
 }
@@ -597,6 +622,9 @@ void throw_code(char* regname, int code){
 
 
 int main() {
+
+	//Initialize fixed point coefficients
+	coeffs_to_fixed();
 
 	//Clear display from flash message and add
 	disp_buf = malloc(DISP_BUF_SIZE * sizeof(char));
