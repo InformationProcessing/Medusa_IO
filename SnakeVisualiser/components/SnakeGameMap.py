@@ -257,7 +257,7 @@ def restart():
         food.delete(f)
 
 
-def show_game_over(username):
+def show_game_over(username, score):
     for widget in mainframe.winfo_children():
         widget.destroy()
 

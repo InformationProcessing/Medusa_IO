@@ -1,5 +1,6 @@
 from tkinter import *
 from tkinter import ttk
+from SnakeVisualiser.components.global_leaderboard import GlobalLeaderboard
 
 
 class GameOver:
@@ -22,3 +23,12 @@ class GameOver:
         score_label = ttk.Label(self.game_over_frame, text=f"Your score: {score}")
         score_label.grid(column=1, row=3, sticky=(N, W, E))
         score_label.grid_configure(padx=5, pady=5)
+
+        self.leader_board_button = Button(root, text="Show global leaderboard",
+                                          command=self.__show_global_leader_board)
+        self.leader_board_button.grid(column=0, row=2, sticky=(W, E, S))
+
+    def __show_global_leader_board(self):
+        for widget in self.root.winfo_children():
+            widget.destroy()
+        GlobalLeaderboard(self.root)

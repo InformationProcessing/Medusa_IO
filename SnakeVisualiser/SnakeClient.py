@@ -73,7 +73,7 @@ def calculate_score_table(other_players, client_name):
 
 
 def sendCoord():
-    global my_port, wefoundfood, server_port
+    global my_port, wefoundfood, server_port, game_over
     msg = ""
     for i in range(len(player.snakeblockscoordX)):
         msg += str(player.snakeblockscoordX[i]) + "," + str(player.snakeblockscoordY[i]) + ";"
@@ -85,8 +85,8 @@ def sendCoord():
     msg, sadd = client_socket.recvfrom(2048)
 
     if msg.decode() == "dead":
-        # Client is DEAD
-        quit()
+        game_over = True
+        return []
 
     users = msg.decode().split("\n")
     snakes = []
@@ -138,9 +138,11 @@ def tick(player, found):
     snakes = sendCoord()
 
     scores = calculate_score_table(snakes, username)
-    SnakeGameMap.update_score(player.calculate_score(), username, scores)
+    player_score = player.calculate_score()
+    SnakeGameMap.update_score(player_score, username, scores)
 
     if game_over:
+        SnakeGameMap.show_game_over(username, player_score)
         return
 
     array = []

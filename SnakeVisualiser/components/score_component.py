@@ -49,4 +49,3 @@ class Score:
 
         self.__clear_score_list()
         self.__create_score_list(scores)
-

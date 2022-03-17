@@ -51,14 +51,15 @@ msg1 = ""
 gamestate = 'none'
 result = ""
 collided = False
-
+counter = 0
 while 1:
     cmsg, cadd = welcome_socket.recvfrom(2048)
+    counter = counter + 1
     msg1 = cmsg.decode()
     msg_to_send = ""
     if checkcollision(gethead(msg1), converttoarray(getcoordsofallsnake())):
-        collided = False
-    if collided:
+        collided = True
+    if collided or counter > 100:
         msg1 = "0,0;|0,0,0,0,0"
         f = open("snakecoordinates/" + client_number + ".txt", "w")
         f.write(msg1)

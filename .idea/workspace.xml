@@ -4,19 +4,30 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a592c02d-0639-4f2f-b0de-9351e3670891" name="Changes" comment="add FPGA control to the client">
+    <list default="true" id="a592c02d-0639-4f2f-b0de-9351e3670891" name="Changes" comment="add score update to each tick">
+      <change afterPath="$PROJECT_DIR$/SnakeVisualiser/components/global_leaderboard.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SnakeVisualiser/components/scrollable_frame.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SnakeVisualiser/components_testing/global_leaderboard_testing.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SnakeVisualiser/components_testing/scrollable_testing.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SnakeVisualiser/SnakeClient.py" beforeDir="false" afterPath="$PROJECT_DIR$/SnakeVisualiser/SnakeClient.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SnakeVisualiser/SnakeServer.py" beforeDir="false" afterPath="$PROJECT_DIR$/SnakeVisualiser/SnakeServer.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SnakeVisualiser/components/SnakeGameMap.py" beforeDir="false" afterPath="$PROJECT_DIR$/SnakeVisualiser/components/SnakeGameMap.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SnakeVisualiser/components/game_over_component.py" beforeDir="false" afterPath="$PROJECT_DIR$/SnakeVisualiser/components/game_over_component.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SnakeVisualiser/components/score_component.py" beforeDir="false" afterPath="$PROJECT_DIR$/SnakeVisualiser/components/score_component.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SnakeVisualiser/snakecoordinates/0.txt" beforeDir="false" afterPath="$PROJECT_DIR$/SnakeVisualiser/snakecoordinates/0.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SnakeVisualiser/snakecoordinates/1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/SnakeVisualiser/snakecoordinates/1.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -75,7 +86,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="SnakeTCPClient1 (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="global_leaderboard_testing" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Medusa_IO" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -83,56 +94,12 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/SnakeVisualiser" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/SnakeVisualiser/components_testing" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/SnakeVisualiser/SnakeTCPClient1.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="SnakeTCPClient1" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="Medusa_IO" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/SnakeTCPClient/New" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/SnakeTCPClient/New/SnakeTCPClient1.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="SnakeTCPClient2" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="Medusa_IO" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/SnakeTCPClient/New" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/SnakeTCPClient/New/SnakeTCPClient2.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/SnakeVisualiser/components_testing/global_leaderboard_testing.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -163,20 +130,64 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="score_component_test" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Medusa_IO" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/SnakeVisualiser/components_testing" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/SnakeVisualiser/components_testing/score_component_test.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="scrollable_testing" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Medusa_IO" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/SnakeVisualiser/components_testing" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/SnakeVisualiser/components_testing/scrollable_testing.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <list>
-      <item itemvalue="Python.SnakeTCPClient1" />
-      <item itemvalue="Python.SnakeTCPClient2" />
-      <item itemvalue="Python.SnakeTCPClient1 (1)" />
       <item itemvalue="Python.SnakeClient (1)" />
       <item itemvalue="Python.score_component" />
+      <item itemvalue="Python.score_component_test" />
+      <item itemvalue="Python.scrollable_testing" />
+      <item itemvalue="Python.global_leaderboard_testing" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Python.SnakeClient (1)" />
+        <item itemvalue="Python.global_leaderboard_testing" />
+        <item itemvalue="Python.scrollable_testing" />
+        <item itemvalue="Python.score_component_test" />
         <item itemvalue="Python.score_component" />
-        <item itemvalue="Python.SnakeTCPClient1 (1)" />
-        <item itemvalue="Python.SnakeTCPClient2" />
-        <item itemvalue="Python.SnakeTCPClient1" />
       </list>
     </recent_temporary>
   </component>
@@ -194,7 +205,7 @@
       <workItem from="1647257245788" duration="1389000" />
       <workItem from="1647258763396" duration="194000" />
       <workItem from="1647359475130" duration="3987000" />
-      <workItem from="1647552270581" duration="1665000" />
+      <workItem from="1647552270581" duration="6621000" />
     </task>
     <task id="LOCAL-00001" summary="fix(networking) - fix message propagation from one client to another">
       <created>1646925626350</created>
@@ -217,7 +228,14 @@
       <option name="project" value="LOCAL" />
       <updated>1647257315295</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="add score update to each tick">
+      <created>1647554070501</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1647554070502</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -240,22 +258,26 @@
     <MESSAGE value="fix(networking) - fix message propagation from one client to another" />
     <MESSAGE value="feat(networking) - add FPGA control to the TCP client" />
     <MESSAGE value="resolve merge conflicts" />
-    <option name="LAST_COMMIT_MESSAGE" value="resolve merge conflicts" />
+    <MESSAGE value="add score update to each tick" />
+    <option name="LAST_COMMIT_MESSAGE" value="add score update to each tick" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Medusa_IO$Launcher1.coverage" NAME="Launcher1 Coverage Results" MODIFIED="1647360131189" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SnakeTCPClient/New" />
     <SUITE FILE_PATH="coverage/Medusa_IO$SnakeTCPServer.coverage" NAME="SnakeTCPServer Coverage Results" MODIFIED="1647531710165" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SnakeVisualiser" />
-    <SUITE FILE_PATH="coverage/Medusa_IO$SnakeClient__1_.coverage" NAME="SnakeClient (1) Coverage Results" MODIFIED="1647553868858" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SnakeVisualiser" />
+    <SUITE FILE_PATH="coverage/Medusa_IO$SnakeClient__1_.coverage" NAME="SnakeClient (1) Coverage Results" MODIFIED="1647558883731" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SnakeVisualiser" />
     <SUITE FILE_PATH="coverage/Medusa_IO$SnakeTCPClient1__1_.coverage" NAME="SnakeTCPClient1 (1) Coverage Results" MODIFIED="1647534436983" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SnakeVisualiser" />
     <SUITE FILE_PATH="coverage/Medusa_IO$SnakeTCPClient2.coverage" NAME="SnakeTCPClient2 Coverage Results" MODIFIED="1647255959830" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SnakeVisualiser" />
     <SUITE FILE_PATH="coverage/Medusa_IO$Launcher2.coverage" NAME="Launcher2 Coverage Results" MODIFIED="1647360140688" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SnakeTCPClient/New" />
     <SUITE FILE_PATH="coverage/Medusa_IO$SnakeGameMap.coverage" NAME="SnakeGameMap Coverage Results" MODIFIED="1646318954077" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Networking" />
     <SUITE FILE_PATH="coverage/Medusa_IO$SnakeClient1.coverage" NAME="SnakeClient1 Coverage Results" MODIFIED="1647537949857" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SnakeVisualiser" />
     <SUITE FILE_PATH="coverage/Medusa_IO$SnakeClient2__1_.coverage" NAME="SnakeClient2 (1) Coverage Results" MODIFIED="1647532433536" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SnakeVisualiser" />
+    <SUITE FILE_PATH="coverage/Medusa_IO$score_component_test.coverage" NAME="score_component_test Coverage Results" MODIFIED="1647555317542" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SnakeVisualiser/components_testing" />
     <SUITE FILE_PATH="coverage/Medusa_IO$score_component.coverage" NAME="score_component Coverage Results" MODIFIED="1647553228934" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SnakeVisualiser/components" />
     <SUITE FILE_PATH="coverage/Medusa_IO$main_visualizer_testing.coverage" NAME="main_visualizer_testing Coverage Results" MODIFIED="1646925701186" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SnakeVisualiser" />
+    <SUITE FILE_PATH="coverage/Medusa_IO$global_leaderboard_testing.coverage" NAME="global_leaderboard_testing Coverage Results" MODIFIED="1647558567521" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SnakeVisualiser/components_testing" />
     <SUITE FILE_PATH="coverage/Medusa_IO$SnakeTCPClient1.coverage" NAME="SnakeTCPClient1 Coverage Results" MODIFIED="1647255953212" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SnakeVisualiser" />
     <SUITE FILE_PATH="coverage/Medusa_IO$OOPSnake.coverage" NAME="OOPSnake Coverage Results" MODIFIED="1647435689280" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SnakeVisualiser" />
+    <SUITE FILE_PATH="coverage/Medusa_IO$scrollable_testing.coverage" NAME="scrollable_testing Coverage Results" MODIFIED="1647556812354" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SnakeVisualiser/components_testing" />
     <SUITE FILE_PATH="coverage/Medusa_IO$main_fpga_testing.coverage" NAME="main_fpga_testing Coverage Results" MODIFIED="1647258913107" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SnakeVisualiser/components_testing" />
     <SUITE FILE_PATH="coverage/Medusa_IO$SnakeTCPClient2__1_.coverage" NAME="SnakeTCPClient2 (1) Coverage Results" MODIFIED="1647532156629" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SnakeVisualiser" />
   </component>
