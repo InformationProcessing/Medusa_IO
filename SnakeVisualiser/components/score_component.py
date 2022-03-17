@@ -33,8 +33,20 @@ class Score:
         for widget in self.score_frame.winfo_children():
             widget.destroy()
 
-    def update(self, player_score, scores):
+    def update(self, player_score, player_name, scores):
         self.score_text.set("Score: " + str(player_score))
+        player_record = {"player": player_name, "score": player_score}
+
+        inserted = False
+        for i in range(0, len(scores)):
+            if scores[i]["score"] < player_score:
+                scores.insert(i, player_record)
+                inserted = True
+                break
+
+        if not inserted:
+            scores.insert(len(scores), player_record)
+
         self.__clear_score_list()
         self.__create_score_list(scores)
 

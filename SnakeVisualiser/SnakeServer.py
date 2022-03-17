@@ -55,7 +55,7 @@ collided = False
 while 1:
     cmsg, cadd = welcome_socket.recvfrom(2048)
     msg1 = cmsg.decode()
-    delivermsg = ""
+    msg_to_send = ""
     if checkcollision(gethead(msg1), converttoarray(getcoordsofallsnake())):
         collided = False
     if collided:
@@ -63,7 +63,7 @@ while 1:
         f = open("snakecoordinates/" + client_number + ".txt", "w")
         f.write(msg1)
         f.close()
-        delivermsg = "dead"
+        msg_to_send = "dead"
     else:
         f = open("snakecoordinates/" + client_number + ".txt", "w")
         f.write(msg1)
@@ -71,7 +71,10 @@ while 1:
         for i in range(5):
             if i != int(client_number):
                 f = open("snakecoordinates/" + str(i) + ".txt", "r")
-                delivermsg = delivermsg + f.read() + "\n"
+                client_info = f.read()
+                split_client_info = client_info.split("|")
+                if not split_client_info[1] == "0,0;":
+                    msg_to_send = msg_to_send + client_info + "\n"
                 f.close()
 
-    welcome_socket.sendto(delivermsg.encode(), c1add)
+    welcome_socket.sendto(msg_to_send.encode(), c1add)

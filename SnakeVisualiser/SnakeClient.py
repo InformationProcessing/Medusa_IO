@@ -12,7 +12,7 @@ import components.SnakeGameMap as SnakeGameMap
 from components.fpga_communicator import FPGACommunicator
 
 fpga_communicator = FPGACommunicator()
-username = "Client 1"
+username = "Client 0"
 
 my_port = int(input("Enter Your Port:"))
 server_port = int(input("Enter Server Port:"))
@@ -138,8 +138,7 @@ def tick(player, found):
     snakes = sendCoord()
 
     scores = calculate_score_table(snakes, username)
-    SnakeGameMap.update_score(player.calculate_score(), scores)
-    print(food)
+    SnakeGameMap.update_score(player.calculate_score(), username, scores)
 
     if game_over:
         return

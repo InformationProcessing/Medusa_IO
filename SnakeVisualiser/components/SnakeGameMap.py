@@ -137,7 +137,8 @@ class powerup:
     power_upsY = []
     # foodTypes = ["grow", "portal", "ultra_speed","slow_down"]
     # colours = ["red", "blue", "orange", "green"]
-    powerTypes = [["grow", "red"], ["portal", "blue"], ["ultra_speed", "orange"], ["slow_down", "green"]]
+    powerTypes = [["grow", "red"], ["portal", "blue"], ["ultra_speed", "orange"], ["slow_down", "green"],
+                  ["Ultra-Power", "yellow"]]
     radius = 10
     j = 1
 
@@ -153,7 +154,6 @@ class powerup:
         self.power_upsY.append(y)
 
     def generate(self, _x, _y, _r):
-        print("Generated")
         for s in range(random.choice([1, 2])):
             x = _x
             y = _y
@@ -192,6 +192,15 @@ class powerup:
         if type == "slow_down":
             p.adjustspeed(0.5)
             snakeAnnimation(p, "green")
+            clock.after(200, lambda: snakeAnnimation(player, "return"))
+        if type == "Ultra-Power":
+            p.addblock(len(p.snake) + 1)
+            p.addblock(len(p.snake) + 1)
+            p.addblock(len(p.snake) + 1)
+            p.addblock(len(p.snake) + 1)
+            p.addblock(len(p.snake) + 1)
+            # p.widen()
+            snakeAnnimation(p, "red")
             clock.after(200, lambda: snakeAnnimation(player, "return"))
 
 
@@ -261,8 +270,8 @@ def show_game_over(username):
     GameOver(game_over_frame, username, 10)
 
 
-def update_score(player_score, scores):
-    score_board.update(player_score, scores)
+def update_score(player_score, player_name, scores):
+    score_board.update(player_score, player_name, scores)
 
 
 button1 = tk.Button(root, text='Increase Speed', command=increasespeed)
