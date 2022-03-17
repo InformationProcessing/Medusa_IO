@@ -15,7 +15,7 @@ def getcoordsofallsnake():
   strng = ""
   for i in range(5):
     if i!=int(c):
-      f = open("New/snakecoordinates/"+str(i)+".txt","r")
+      f = open("SnakeVisualiser/snakecoordinates/"+str(i)+".txt","r")
       coords = f.read().split("|")
       strng = strng + coords[0]
   
@@ -59,17 +59,17 @@ while 1:
       collided = True
     if collided == True:
       msg1 = "0,0;|0,0,0,0,0"
-      f = open("New/snakecoordinates/"+c+".txt","w")
+      f = open("SnakeVisualiser/snakecoordinates/"+c+".txt","w")
       f.write(msg1)
       f.close()
       delivermsg = "dead"
     else:
-      f = open("New/snakecoordinates/"+c+".txt","w")
+      f = open("SnakeVisualiser/snakecoordinates/"+c+".txt","w")
       f.write(msg1)
       f.close()
       for i in range(5):
         if i!=int(c):
-              f = open("New/snakecoordinates/"+str(i)+".txt","r")
+              f = open("SnakeVisualiser/snakecoordinates/"+str(i)+".txt","r")
               delivermsg = delivermsg + f.read() + "\n"
               f.close()
     print('3')            
