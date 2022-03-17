@@ -14,6 +14,7 @@ username = "Client 2"
 time1 = ''
 clock = Label(SnakeGameMap.root)
 game_over = False
+server_port = 12010
 
 otherplayer = []
 otherplayerblocks = []
@@ -49,7 +50,7 @@ def sendCoord():
     wefoundfood = 0
     client_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
     client_socket.bind(('', my_port))
-    client_socket.sendto(msg.encode(), ('localhost', 12001))
+    client_socket.sendto(msg.encode(), ('localhost', server_port))
     msg, sadd = client_socket.recvfrom(2048)
 
     msg = msg.decode().split('|')

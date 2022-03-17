@@ -36,11 +36,11 @@ def check_collision():
 
 time1 = ''
 
-server_port = 12001
+server_port = 12010
 welcome_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 welcome_socket.bind(('', server_port))
 
-c1add = ('localhost', 13000)  # 146.169.165.26
+c1add = ('146.169.192.141', 514)  # 146.169.165.26
 c2add = ('localhost', 14000)
 
 result = ""
@@ -56,7 +56,7 @@ while 1:
     try:
         cmsg, cadd = welcome_socket.recvfrom(2048)
         cmsg = cmsg.decode()
-        if cadd[1] == 13000:
+        if cadd[1] == 514:
             msg1 = cmsg
             c1connected = True
 

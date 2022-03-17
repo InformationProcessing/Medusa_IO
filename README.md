@@ -11,13 +11,13 @@ To run the project, following pip packages must be installed
 In order run the game, firstly run the server by running the following command from the `SnakeVisualiser` directory.
 
 ````shell
-python3 SnakeTCPServer.py
+python3 SnakeServer.py
 ````
 
 To run the game client, run the following command from the `SnakeVisualiser` directory.
 
 ````shell
-python3 SnakeTCPClient1.py
+python3 SnakeClient1.py
 ````
 
 ## Notes
