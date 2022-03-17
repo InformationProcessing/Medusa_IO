@@ -9,16 +9,13 @@ import SnakeGameMap
 import subprocess
 import sys
 import atexit
-from components.fpga_communicator import FPGACommunicator
-
-fpga_communicator = FPGACommunicator()
 
 a = int(input("Enter Your Port:"))
 b = int(input("Enter Server Port:"))
+c = input("Enter Server IP: ")
 
 my_port = a
 
-server_ip = '146.169.159.117'
 time1 = ''
 clock = Label(SnakeGameMap.root)
 
@@ -34,7 +31,7 @@ def exit_handler():
       msg = "0,0;|0,0,0,0,0"
       client_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
       client_socket.bind(('',my_port))
-      client_socket.sendto(msg.encode(),(server_ip,b))
+      client_socket.sendto(msg.encode(),(c,b))
       
 atexit.register(exit_handler)
 
@@ -66,7 +63,7 @@ def sendCoord():
       wefoundfood = 0
       client_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
       client_socket.bind(('',my_port))
-      client_socket.sendto(msg.encode(),(server_ip,b))
+      client_socket.sendto(msg.encode(),(c,b))
       msg, sadd = client_socket.recvfrom(2048)
       
       if msg.decode() == "dead":
@@ -106,6 +103,7 @@ def updateothers():
       
 
 def tick(player,found):
+      
     deleteblocks()    
     global time1
     global food
@@ -127,16 +125,6 @@ def tick(player,found):
     if time2 != time1:
             time1 = time2
             clock.config(text=time2)
-    if fpga_communicator.initialized:
-        acc_read = fpga_communicator.read_acc_proc()
-        if 75 < acc_read['x'] < 250 and not 75 <= acc_read['y'] <= 4021:
-            player.changedir('Left')
-        elif 3750 < acc_read['x'] < 4021 and not 75 <= acc_read['y'] <= 4021:
-            player.changedir('Right')
-        elif 3750 < acc_read['y'] < 4021 and not 75 <= acc_read['x'] <= 4021:
-            player.changedir('Up')
-        elif 75 < acc_read['y'] < 250 and not 75 <= acc_read['x'] <= 4021:
-            player.changedir('Down')
     player.movesnake()
 #     playerShadow.movesnake()
 #     if player.shadowCreated == True:
