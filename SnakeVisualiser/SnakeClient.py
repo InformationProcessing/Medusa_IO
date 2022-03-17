@@ -54,13 +54,22 @@ def mergearray(array1, array2):
 
 
 player = SnakeGameMap.player
-# playerShadow = SnakeGameMap.snakeShadow
 food = SnakeGameMap.food
 wefoundfood = 0
 _x = 0
 _y = 0
 _r = 0
 _j = 0
+
+
+def calculate_score_table(other_players, client_name):
+    score_table = []
+
+    for other_player in other_players:
+        score = len(other_player["blocks"].split(";"))
+        score_table.append({"player": other_player["name"], "score": score})
+
+    return score_table
 
 
 def sendCoord():
@@ -80,13 +89,13 @@ def sendCoord():
         quit()
 
     users = msg.decode().split("\n")
-    message = []
+    snakes = []
     foodinfo = []
 
     for i in range(len(users)):
         if len(users[i].split('|')) > 1:
-            message.append(users[i].split('|')[0])
-            foodinfo.append(users[i].split('|')[1])
+            snakes.append({'name': users[i].split('|')[0], 'blocks': users[i].split('|')[1]})
+            foodinfo.append(users[i].split('|')[2])
 
     for i in range(len(foodinfo)):
         tempfood = foodinfo[i].split(",")
@@ -96,7 +105,7 @@ def sendCoord():
             food.generate(int(tempfood[0]), int(tempfood[1]), int(tempfood[2]))
             food.generate(int(tempfood[0]), int(tempfood[1]), int(tempfood[2]))
 
-    return message
+    return snakes
 
 
 def deleteblocks():
@@ -126,14 +135,18 @@ def tick(player, found):
     global _x, _y, _r, _j
     time2 = time.strftime('%H:%M:%S')
 
-    msg = sendCoord()
+    snakes = sendCoord()
+
+    scores = calculate_score_table(snakes, username)
+    SnakeGameMap.update_score(player.calculate_score(), scores)
+    print(food)
 
     if game_over:
         return
 
     array = []
-    for i in range(len(msg)):
-        temparray = msg[i].split(";")
+    for i in range(len(snakes)):
+        temparray = snakes[i]['blocks'].split(";")
         for j in range(len(temparray)):
             if len(temparray[j]) > 0:
                 array.append([temparray[j].split(",")[0], temparray[j].split(",")[1]])

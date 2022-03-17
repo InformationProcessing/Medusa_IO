@@ -17,13 +17,7 @@ score_frame.grid(column=1, row=0, sticky=(N, W, E, S))
 mainframe.columnconfigure(0, weight=1)
 mainframe.rowconfigure(0, weight=1)
 
-scores = [
-    {'player': 'VendaskyCZ1', 'score': 255},
-    {'player': 'VendaskyCZ2', 'score': 200},
-    {'player': 'VendaskyCZ3', 'score': 0}
-]
-
-score = Score(score_frame, 0, scores)
+score_board = Score(score_frame, 0, [])
 
 time1 = ''
 clock = Label(root)
@@ -132,6 +126,9 @@ class Snake:
 
     def getspeed(self):
         return self.speed
+
+    def calculate_score(self):
+        return len(self.moveblocks)
 
 
 class powerup:
@@ -262,6 +259,10 @@ def show_game_over(username):
     mainframe.rowconfigure(0, weight=1)
 
     GameOver(game_over_frame, username, 10)
+
+
+def update_score(player_score, scores):
+    score_board.update(player_score, scores)
 
 
 button1 = tk.Button(root, text='Increase Speed', command=increasespeed)

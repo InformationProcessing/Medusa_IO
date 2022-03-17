@@ -17,7 +17,7 @@ python3 SnakeServer.py
 To run the game client, run the following command from the `SnakeVisualiser` directory.
 
 ````shell
-python3 SnakeClient1.py
+python3 SnakeClient.py
 ````
 
 ## Notes
@@ -47,6 +47,14 @@ In order to setup the networking on Windows go to Windows Defender Firewall with
 
 The following setup was introduced for each member of the team. 
 
-Alex: inbound - 12000 (local main server); outbound - 514 (client side server)
-Vaclav: inbound - 12010 (local main server); outbound - 515 (client side server)
-James: inbound - 12020 (local main server); outbound - 516 (client side server)
+- Alex: inbound - 12000 (local main server); outbound - 514 (client side server)
+- Vaclav: inbound - 12010 (local main server); outbound - 515 (client side server)
+- James: inbound - 12020 (local main server); outbound - 516 (client side server)
+
+# Snake coordinates protocol
+
+The snake coordinates file protocol has the following format: `client name|snake coordinates|food configuration`
+Example of the coordinates file protocol
+````
+Client 0|190,200;190,190;190,180;190,170;190,160;190,150;190,140;190,130;190,120;190,110;|0,0,0,0,0
+````
