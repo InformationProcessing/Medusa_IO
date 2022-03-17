@@ -28,12 +28,9 @@ class FPGACommunicator:
 
         except Exception as e:
             self.initialized = False
-            print(e)
 
     def __get_command_output(self, command):
         if hasattr(self, 'ju'):
-            print("command")
-            print(command)
             self.ju.write((command + "\n").encode("utf-8"))
             return self.ju.read().decode("utf-8")
         else:

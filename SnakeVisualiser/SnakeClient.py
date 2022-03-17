@@ -3,14 +3,21 @@ from tkinter import *
 import time
 import sys
 import random
-import subprocess
+import os
 import socket
+import subprocess
+import sys
+import atexit
 import components.SnakeGameMap as SnakeGameMap
 from components.fpga_communicator import FPGACommunicator
 
 fpga_communicator = FPGACommunicator()
-my_port = 13000
 username = "Client 1"
+
+my_port = int(input("Enter Your Port:"))
+server_port = int(input("Enter Server Port:"))
+
+server_ip = 'localhost'
 time1 = ''
 clock = Label(SnakeGameMap.root)
 game_over = False
@@ -18,10 +25,20 @@ game_over = False
 otherplayer = []
 otherplayerblocks = []
 
-#T = tk.Text(SnakeGameMap.root, height=2, width=15)
-#T.pack()
-#T.insert(tk.END, "Client 1")
-#T.place(x=350, y=35)
+
+# T = tk.Text(SnakeGameMap.root, height=2, width=15)
+# T.pack()
+# T.insert(tk.END, "Client 1")
+# T.place(x=350, y=35)
+
+def exit_handler():
+    msg = "0,0;|0,0,0,0,0"
+    client_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+    client_socket.bind(('', my_port))
+    client_socket.sendto(msg.encode(), (server_ip, server_port))
+
+
+atexit.register(exit_handler)
 
 
 def spawn_program_and_die(program, exit_code=0):
@@ -37,6 +54,7 @@ def mergearray(array1, array2):
 
 
 player = SnakeGameMap.player
+# playerShadow = SnakeGameMap.snakeShadow
 food = SnakeGameMap.food
 wefoundfood = 0
 _x = 0
@@ -46,7 +64,7 @@ _j = 0
 
 
 def sendCoord():
-    global my_port, wefoundfood, game_over
+    global my_port, wefoundfood, server_port
     msg = ""
     for i in range(len(player.snakeblockscoordX)):
         msg += str(player.snakeblockscoordX[i]) + "," + str(player.snakeblockscoordY[i]) + ";"
@@ -54,24 +72,31 @@ def sendCoord():
     wefoundfood = 0
     client_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
     client_socket.bind(('', my_port))
-    client_socket.sendto(msg.encode(), ('localhost', 12001))
+    client_socket.sendto(msg.encode(), (server_ip, server_port))
     msg, sadd = client_socket.recvfrom(2048)
 
-    msg = msg.decode().split('|')
+    if msg.decode() == "dead":
+        # Client is DEAD
+        quit()
 
-    if len(msg) < 2:
-        print("Game should end now!")
-        game_over = True
-        SnakeGameMap.show_game_over(username)
-    else:
-        foodinfo = msg[1].split(",")
-        if foodinfo[4] == '1':
+    users = msg.decode().split("\n")
+    message = []
+    foodinfo = []
+
+    for i in range(len(users)):
+        if len(users[i].split('|')) > 1:
+            message.append(users[i].split('|')[0])
+            foodinfo.append(users[i].split('|')[1])
+
+    for i in range(len(foodinfo)):
+        tempfood = foodinfo[i].split(",")
+        if tempfood[4] == '1':
             global food
-            food.delete(int(foodinfo[3]))
-            food.generate(int(foodinfo[0]), int(foodinfo[1]), int(foodinfo[2]))
-            food.generate(int(foodinfo[0]), int(foodinfo[1]), int(foodinfo[2]))
+            food.delete(int(tempfood[3]))
+            food.generate(int(tempfood[0]), int(tempfood[1]), int(tempfood[2]))
+            food.generate(int(tempfood[0]), int(tempfood[1]), int(tempfood[2]))
 
-    return msg[0]
+    return message
 
 
 def deleteblocks():
@@ -107,12 +132,11 @@ def tick(player, found):
         return
 
     array = []
-    temparray = msg.split(";")
-
-    for i in range(len(temparray)):
-        if len(temparray[i]) > 2:
-            array.append([temparray[i].split(",")[0], temparray[i].split(",")[1]])
-
+    for i in range(len(msg)):
+        temparray = msg[i].split(";")
+        for j in range(len(temparray)):
+            if len(temparray[j]) > 0:
+                array.append([temparray[j].split(",")[0], temparray[j].split(",")[1]])
     otherplayer = [array]
 
     if time2 != time1:
@@ -129,6 +153,9 @@ def tick(player, found):
         elif 75 < acc_read['y'] < 250 and not 75 <= acc_read['x'] <= 4021:
             player.changedir('Down')
     player.movesnake()
+    #     playerShadow.movesnake()
+    #     if player.shadowCreated == True:
+    #           player.moveShadow()
 
     updateothers()
 
@@ -141,7 +168,7 @@ def tick(player, found):
             food.delete(j)
             _x = random.randrange(30, 500, 10)
             _y = random.randrange(20, 500, 10)
-            _r = random.randint(0, 3)
+            _r = 4
             _j = j
             food.generate(_x, _y, _r)
             food.generate(_x, _y, _r)
