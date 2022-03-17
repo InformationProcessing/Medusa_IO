@@ -3,6 +3,7 @@ import random
 
 a = int(input("Enter Server Port To Use: "))
 b = int(input("Enter Client Port To Use: "))
+d = input("Enter Client IP: ")
 c = input("Enter Client Number (0-5): ")
 
 def gethead(strng):
@@ -41,7 +42,7 @@ server_port = a
 welcome_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 welcome_socket.bind(('',server_port))
 
-c1add = ('localhost',b)#146.169.165.26
+c1add = (d,b)#146.169.165.26
 
 msg1 = ""
 gamestate = 'none'
@@ -49,11 +50,13 @@ result = ""
 collided = False
 
 while 1:
-    cmsg, cadd = welcome_socket.recvfrom(2048)  	
+    print('1')
+    cmsg, cadd = welcome_socket.recvfrom(1024)
+    print('2')  	
     msg1 = cmsg.decode()
     delivermsg = ""
     if checkcollision(gethead(msg1),converttoarray(getcoordsofallsnake())):
-      collided = False
+      collided = True
     if collided == True:
       msg1 = "0,0;|0,0,0,0,0"
       f = open("New/snakecoordinates/"+c+".txt","w")
@@ -69,5 +72,6 @@ while 1:
               f = open("New/snakecoordinates/"+str(i)+".txt","r")
               delivermsg = delivermsg + f.read() + "\n"
               f.close()
-                 
+    print('3')            
     welcome_socket.sendto(delivermsg.encode(), c1add)
+    print('4')
