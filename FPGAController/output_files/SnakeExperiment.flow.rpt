@@ -1,5 +1,5 @@
 Flow report for SnakeExperiment
-Sat Mar 19 15:24:21 2022
+Sat Mar 19 18:46:25 2022
 Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
 
 
@@ -40,17 +40,17 @@ refer to the applicable agreement for further details.
 +----------------------------------------------------------------------------------+
 ; Flow Summary                                                                     ;
 +------------------------------------+---------------------------------------------+
-; Flow Status                        ; Successful - Sat Mar 19 15:24:00 2022       ;
+; Flow Status                        ; Successful - Sat Mar 19 18:45:45 2022       ;
 ; Quartus Prime Version              ; 18.1.0 Build 625 09/12/2018 SJ Lite Edition ;
 ; Revision Name                      ; SnakeExperiment                             ;
 ; Top-level Entity Name              ; DE10_LITE_Golden_Top                        ;
 ; Family                             ; MAX 10                                      ;
 ; Device                             ; 10M50DAF484C6GES                            ;
 ; Timing Models                      ; Preliminary                                 ;
-; Total logic elements               ; 17,134 / 49,760 ( 34 % )                    ;
-;     Total combinational functions  ; 16,428 / 49,760 ( 33 % )                    ;
-;     Dedicated logic registers      ; 6,667 / 49,760 ( 13 % )                     ;
-; Total registers                    ; 6735                                        ;
+; Total logic elements               ; 47,196 / 49,760 ( 95 % )                    ;
+;     Total combinational functions  ; 46,348 / 49,760 ( 93 % )                    ;
+;     Dedicated logic registers      ; 10,141 / 49,760 ( 20 % )                    ;
+; Total registers                    ; 10209                                       ;
 ; Total pins                         ; 185 / 360 ( 51 % )                          ;
 ; Total virtual pins                 ; 0                                           ;
 ; Total memory bits                  ; 11,264 / 1,677,312 ( < 1 % )                ;
@@ -66,7 +66,7 @@ refer to the applicable agreement for further details.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 03/19/2022 15:18:22 ;
+; Start date & time ; 03/19/2022 18:34:12 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; SnakeExperiment     ;
 +-------------------+---------------------+
@@ -77,7 +77,7 @@ refer to the applicable agreement for further details.
 +-------------------------------------+----------------------------------------+-----------------+----------------------+------------+
 ; Assignment Name                     ; Value                                  ; Default Value   ; Entity Name          ; Section Id ;
 +-------------------------------------+----------------------------------------+-----------------+----------------------+------------+
-; COMPILER_SIGNATURE_ID               ; 10995770589189.164770310105784         ; --              ; --                   ; --         ;
+; COMPILER_SIGNATURE_ID               ; 10995770589189.164771485111860         ; --              ; --                   ; --         ;
 ; MAX_CORE_JUNCTION_TEMP              ; 85                                     ; --              ; --                   ; --         ;
 ; MIN_CORE_JUNCTION_TEMP              ; 0                                      ; --              ; --                   ; --         ;
 ; PARTITION_COLOR                     ; -- (Not supported for targeted family) ; --              ; DE10_LITE_Golden_Top ; Top        ;
@@ -95,11 +95,11 @@ refer to the applicable agreement for further details.
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name          ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis ; 00:03:40     ; 1.0                     ; 5135 MB             ; 00:04:51                           ;
-; Fitter               ; 00:01:33     ; 2.4                     ; 6331 MB             ; 00:04:40                           ;
-; Assembler            ; 00:00:07     ; 1.0                     ; 4751 MB             ; 00:00:06                           ;
-; Timing Analyzer      ; 00:00:20     ; 4.9                     ; 5014 MB             ; 00:01:23                           ;
-; Total                ; 00:05:40     ; --                      ; --                  ; 00:11:00                           ;
+; Analysis & Synthesis ; 00:06:27     ; 1.0                     ; 5504 MB             ; 00:08:01                           ;
+; Fitter               ; 00:04:25     ; 2.1                     ; 6524 MB             ; 00:16:21                           ;
+; Assembler            ; 00:00:07     ; 1.0                     ; 4830 MB             ; 00:00:07                           ;
+; Timing Analyzer      ; 00:00:38     ; 5.3                     ; 5176 MB             ; 00:02:58                           ;
+; Total                ; 00:11:37     ; --                      ; --                  ; 00:27:27                           ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 

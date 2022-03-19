@@ -1,59 +1,67 @@
 # # File gsaved with Nlview version 6.3.8  2013-12-19 bk=1.2992 VDI=34 GEI=35
 # 
-preplace inst snake.sdram -pg 1 -lvl 3 -y 1630
-preplace inst snake.hex0 -pg 1 -lvl 3 -y 1830
-preplace inst snake.hardware_in -pg 1 -lvl 4 -y 670
-preplace inst snake.clk -pg 1 -lvl 1 -y 100
-preplace inst snake.button -pg 1 -lvl 3 -y 210
-preplace inst snake.timestamp_timer -pg 1 -lvl 4 -y 370
-preplace inst snake.led -pg 1 -lvl 3 -y 1530
-preplace inst snake.hex1 -pg 1 -lvl 3 -y 950
-preplace inst snake.sysid -pg 1 -lvl 3 -y 1250
-preplace inst snake.hex2 -pg 1 -lvl 3 -y 1050
-preplace inst snake.timer -pg 1 -lvl 4 -y 170
-preplace inst snake.jtag_uart -pg 1 -lvl 3 -y 450
-preplace inst snake.hex_timer -pg 1 -lvl 4 -y 30
-preplace inst snake.hex3 -pg 1 -lvl 3 -y 1150
-preplace inst snake.cpu -pg 1 -lvl 2 -y 220
-preplace inst snake.acc_timer -pg 1 -lvl 4 -y 270
-preplace inst snake.hex4 -pg 1 -lvl 3 -y 1330
-preplace inst snake.timer0 -pg 1 -lvl 4 -y 470
-preplace inst snake.hex5 -pg 1 -lvl 3 -y 1430
-preplace inst snake.timer1 -pg 1 -lvl 3 -y 610
+preplace inst snake.sdram -pg 1 -lvl 3 -y 1730
+preplace inst snake.hardware_out_y -pg 1 -lvl 4 -y 1070
+preplace inst snake.hardware_in_y -pg 1 -lvl 4 -y 770
+preplace inst snake.hex0 -pg 1 -lvl 3 -y 1930
+preplace inst snake.hardware_out_z -pg 1 -lvl 4 -y 1170
+preplace inst snake.hardware_in_z -pg 1 -lvl 4 -y 870
+preplace inst snake.clk -pg 1 -lvl 1 -y 200
+preplace inst snake.button -pg 1 -lvl 3 -y 270
+preplace inst snake.timestamp_timer -pg 1 -lvl 4 -y 470
+preplace inst snake.led -pg 1 -lvl 3 -y 1630
+preplace inst snake.hex1 -pg 1 -lvl 3 -y 1050
+preplace inst snake.sysid -pg 1 -lvl 3 -y 1350
+preplace inst snake.hex2 -pg 1 -lvl 3 -y 1150
+preplace inst snake.timer -pg 1 -lvl 4 -y 270
+preplace inst snake.jtag_uart -pg 1 -lvl 3 -y 530
+preplace inst snake.hex_timer -pg 1 -lvl 4 -y 130
+preplace inst snake.hex3 -pg 1 -lvl 3 -y 1250
+preplace inst snake.cpu -pg 1 -lvl 2 -y 320
+preplace inst snake.acc_timer -pg 1 -lvl 4 -y 370
+preplace inst snake.hex4 -pg 1 -lvl 3 -y 1430
+preplace inst snake.timer0 -pg 1 -lvl 4 -y 570
+preplace inst snake.hex5 -pg 1 -lvl 3 -y 1530
+preplace inst snake.timer1 -pg 1 -lvl 3 -y 690
 preplace inst snake.cpu.clock_bridge -pg 1
-preplace inst snake.altpll -pg 1 -lvl 3 -y 30
-preplace inst snake.timer3 -pg 1 -lvl 3 -y 750
+preplace inst snake.altpll -pg 1 -lvl 3 -y 130
+preplace inst snake.timer3 -pg 1 -lvl 3 -y 810
 preplace inst snake.cpu.reset_bridge -pg 1
-preplace inst snake.timer4 -pg 1 -lvl 3 -y 850
+preplace inst snake.timer4 -pg 1 -lvl 3 -y 930
 preplace inst snake.cpu.cpu -pg 1
 preplace inst snake -pg 1 -lvl 1 -y 40 -regy -20
-preplace inst snake.switch -pg 1 -lvl 3 -y 1730
-preplace inst snake.hardware_out -pg 1 -lvl 4 -y 770
-preplace inst snake.hardware_clocks -pg 1 -lvl 4 -y 570
-preplace inst snake.accelerometer_spi -pg 1 -lvl 3 -y 330
-preplace netloc EXPORT<net_container>snake</net_container>(SLAVE)snake.led_external_connection,(SLAVE)led.external_connection) 1 0 3 NJ 1560 NJ 1560 NJ
-preplace netloc FAN_OUT<net_container>snake</net_container>(SLAVE)hardware_in.clk,(SLAVE)led.clk,(SLAVE)timer4.clk,(SLAVE)timer3.clk,(SLAVE)sysid.clk,(SLAVE)hex0.clk,(SLAVE)timer.clk,(SLAVE)switch.clk,(SLAVE)sdram.clk,(SLAVE)timer0.clk,(SLAVE)hardware_clocks.clk,(MASTER)altpll.c0,(SLAVE)hex1.clk,(SLAVE)timer1.clk,(SLAVE)hex3.clk,(SLAVE)accelerometer_spi.clk,(SLAVE)button.clk,(SLAVE)hardware_out.clk,(SLAVE)hex_timer.clk,(SLAVE)timestamp_timer.clk,(SLAVE)hex4.clk,(SLAVE)cpu.clk,(SLAVE)jtag_uart.clk,(SLAVE)hex2.clk,(SLAVE)acc_timer.clk,(SLAVE)hex5.clk) 1 1 3 470 160 850 560 1350
-preplace netloc EXPORT<net_container>snake</net_container>(SLAVE)switch.external_connection,(SLAVE)snake.switch_external_connection) 1 0 3 NJ 1760 NJ 1760 NJ
-preplace netloc EXPORT<net_container>snake</net_container>(SLAVE)hardware_out.external_connection,(SLAVE)snake.hardware_out_external_connection) 1 0 4 NJ 740 NJ 740 NJ 740 NJ
-preplace netloc EXPORT<net_container>snake</net_container>(SLAVE)snake.hardware_in_external_connection,(SLAVE)hardware_in.external_connection) 1 0 4 NJ 600 NJ 600 NJ 600 NJ
+preplace inst snake.switch -pg 1 -lvl 3 -y 1830
+preplace inst snake.hardware_out_x -pg 1 -lvl 4 -y 970
+preplace inst snake.hardware_in_x -pg 1 -lvl 4 -y 30
+preplace inst snake.hardware_clocks -pg 1 -lvl 4 -y 670
+preplace inst snake.accelerometer_spi -pg 1 -lvl 3 -y 410
+preplace netloc EXPORT<net_container>snake</net_container>(SLAVE)snake.clk,(SLAVE)clk.clk_in) 1 0 1 NJ
+preplace netloc FAN_OUT<net_container>snake</net_container>(SLAVE)hardware_in_x.clk,(SLAVE)acc_timer.clk,(SLAVE)hex0.clk,(SLAVE)timestamp_timer.clk,(SLAVE)sdram.clk,(SLAVE)hex_timer.clk,(SLAVE)hex2.clk,(SLAVE)timer0.clk,(SLAVE)hex5.clk,(SLAVE)hardware_out_y.clk,(SLAVE)hardware_in_z.clk,(SLAVE)accelerometer_spi.clk,(SLAVE)switch.clk,(SLAVE)timer1.clk,(SLAVE)sysid.clk,(MASTER)altpll.c0,(SLAVE)hardware_in_y.clk,(SLAVE)cpu.clk,(SLAVE)hex4.clk,(SLAVE)hardware_out_x.clk,(SLAVE)hex1.clk,(SLAVE)timer4.clk,(SLAVE)hex3.clk,(SLAVE)timer3.clk,(SLAVE)jtag_uart.clk,(SLAVE)timer.clk,(SLAVE)hardware_out_z.clk,(SLAVE)led.clk,(SLAVE)button.clk,(SLAVE)hardware_clocks.clk) 1 1 3 430 460 950 380 1390
+preplace netloc EXPORT<net_container>snake</net_container>(SLAVE)snake.hardware_out_z_external_connection,(SLAVE)hardware_out_z.external_connection) 1 0 4 NJ 1040 NJ 1040 NJ 1040 NJ
+preplace netloc EXPORT<net_container>snake</net_container>(SLAVE)snake.hardware_in_x_external_connection,(SLAVE)hardware_in_x.external_connection) 1 0 4 NJ 60 NJ 60 NJ 60 NJ
+preplace netloc EXPORT<net_container>snake</net_container>(SLAVE)snake.hardware_clocks_external_connection,(SLAVE)hardware_clocks.external_connection) 1 0 4 NJ 640 NJ 640 NJ 640 NJ
+preplace netloc EXPORT<net_container>snake</net_container>(SLAVE)snake.hardware_in_y_external_connection,(SLAVE)hardware_in_y.external_connection) 1 0 4 NJ 660 NJ 660 NJ 660 NJ
+preplace netloc EXPORT<net_container>snake</net_container>(SLAVE)accelerometer_spi.external_interface,(SLAVE)snake.accelerometer_spi_external_interface) 1 0 3 NJ 500 NJ 500 NJ
+preplace netloc FAN_OUT<net_container>snake</net_container>(SLAVE)timer0.irq,(SLAVE)accelerometer_spi.interrupt,(MASTER)cpu.irq,(SLAVE)timer1.irq,(SLAVE)timer.irq,(SLAVE)hex_timer.irq,(SLAVE)timer4.irq,(SLAVE)timer3.irq,(SLAVE)acc_timer.irq,(SLAVE)jtag_uart.irq,(SLAVE)timestamp_timer.irq) 1 2 2 990 400 1410
 preplace netloc EXPORT<net_container>snake</net_container>(SLAVE)clk.clk_in_reset,(SLAVE)snake.reset) 1 0 1 NJ
-preplace netloc FAN_OUT<net_container>snake</net_container>(SLAVE)accelerometer_spi.interrupt,(SLAVE)timer0.irq,(SLAVE)timer4.irq,(SLAVE)hex_timer.irq,(SLAVE)jtag_uart.irq,(SLAVE)acc_timer.irq,(MASTER)cpu.irq,(SLAVE)timer3.irq,(SLAVE)timer1.irq,(SLAVE)timer.irq,(SLAVE)timestamp_timer.irq) 1 2 2 950 160 1370
-preplace netloc EXPORT<net_container>snake</net_container>(SLAVE)hardware_clocks.external_connection,(SLAVE)snake.hardware_clocks_external_connection) 1 0 4 NJ 580 NJ 580 NJ 580 NJ
-preplace netloc EXPORT<net_container>snake</net_container>(SLAVE)clk.clk_in,(SLAVE)snake.clk) 1 0 1 NJ
-preplace netloc EXPORT<net_container>snake</net_container>(SLAVE)snake.hex5_external_connection,(SLAVE)hex5.external_connection) 1 0 3 NJ 1460 NJ 1460 NJ
-preplace netloc EXPORT<net_container>snake</net_container>(SLAVE)snake.button_external_connection,(SLAVE)button.external_connection) 1 0 3 NJ 170 NJ 140 NJ
-preplace netloc POINT_TO_POINT<net_container>snake</net_container>(MASTER)clk.clk,(SLAVE)altpll.inclk_interface) 1 1 2 NJ 100 850
-preplace netloc EXPORT<net_container>snake</net_container>(SLAVE)hex2.external_connection,(SLAVE)snake.hex2_external_connection) 1 0 3 NJ 1080 NJ 1080 NJ
-preplace netloc EXPORT<net_container>snake</net_container>(SLAVE)snake.accelerometer_spi_external_interface,(SLAVE)accelerometer_spi.external_interface) 1 0 3 NJ 400 NJ 400 NJ
-preplace netloc EXPORT<net_container>snake</net_container>(SLAVE)snake.sdram_wire,(SLAVE)sdram.wire) 1 0 3 NJ 1700 NJ 1700 NJ
-preplace netloc EXPORT<net_container>snake</net_container>(SLAVE)snake.hex4_external_connection,(SLAVE)hex4.external_connection) 1 0 3 NJ 1360 NJ 1360 NJ
-preplace netloc EXPORT<net_container>snake</net_container>(MASTER)snake.clk_sdram,(MASTER)altpll.c1) 1 3 2 NJ 140 NJ
-preplace netloc INTERCONNECT<net_container>snake</net_container>(SLAVE)hardware_clocks.s1,(SLAVE)hardware_out.s1,(SLAVE)acc_timer.s1,(SLAVE)cpu.debug_mem_slave,(SLAVE)hardware_in.s1,(MASTER)cpu.data_master,(SLAVE)hex2.s1,(SLAVE)switch.s1,(SLAVE)jtag_uart.avalon_jtag_slave,(SLAVE)sysid.control_slave,(SLAVE)timer3.s1,(SLAVE)led.s1,(SLAVE)button.s1,(MASTER)cpu.instruction_master,(SLAVE)altpll.pll_slave,(SLAVE)sdram.s1,(SLAVE)timer1.s1,(SLAVE)timer.s1,(SLAVE)hex4.s1,(SLAVE)timestamp_timer.s1,(SLAVE)accelerometer_spi.avalon_accelerometer_spi_mode_slave,(SLAVE)hex0.s1,(SLAVE)hex3.s1,(SLAVE)timer4.s1,(SLAVE)hex1.s1,(SLAVE)hex_timer.s1,(SLAVE)timer0.s1,(SLAVE)hex5.s1) 1 1 3 490 180 910 720 1270
-preplace netloc EXPORT<net_container>snake</net_container>(SLAVE)hex0.external_connection,(SLAVE)snake.hex0_external_connection) 1 0 3 NJ 1860 NJ 1860 NJ
-preplace netloc EXPORT<net_container>snake</net_container>(SLAVE)snake.hex3_external_connection,(SLAVE)hex3.external_connection) 1 0 3 NJ 1180 NJ 1180 NJ
-preplace netloc EXPORT<net_container>snake</net_container>(SLAVE)snake.hex1_external_connection,(SLAVE)hex1.external_connection) 1 0 3 NJ 980 NJ 980 NJ
-preplace netloc EXPORT<net_container>snake</net_container>(SLAVE)snake.altpll_locked_conduit,(SLAVE)altpll.locked_conduit) 1 0 3 NJ 80 NJ 80 NJ
-preplace netloc EXPORT<net_container>snake</net_container>(SLAVE)altpll.areset_conduit,(SLAVE)snake.altpll_areset_conduit) 1 0 3 NJ 40 NJ 40 NJ
-preplace netloc FAN_OUT<net_container>snake</net_container>(SLAVE)accelerometer_spi.reset,(SLAVE)switch.reset,(SLAVE)altpll.inclk_interface_reset,(SLAVE)hex_timer.reset,(SLAVE)timer0.reset,(SLAVE)timestamp_timer.reset,(SLAVE)hex5.reset,(SLAVE)timer4.reset,(SLAVE)led.reset,(SLAVE)hex3.reset,(SLAVE)timer1.reset,(SLAVE)sysid.reset,(SLAVE)hardware_clocks.reset,(SLAVE)button.reset,(SLAVE)hex0.reset,(SLAVE)timer3.reset,(SLAVE)sdram.reset,(SLAVE)hex4.reset,(SLAVE)timer.reset,(SLAVE)jtag_uart.reset,(SLAVE)hardware_out.reset,(SLAVE)hex2.reset,(MASTER)clk.clk_reset,(SLAVE)acc_timer.reset,(SLAVE)hardware_in.reset,(SLAVE)cpu.reset,(SLAVE)hex1.reset) 1 1 3 430 120 890 180 1310
-levelinfo -pg 1 0 200 1660
-levelinfo -hier snake 210 240 610 1000 1420 1570
+preplace netloc INTERCONNECT<net_container>snake</net_container>(SLAVE)hex_timer.s1,(SLAVE)hex4.s1,(SLAVE)hardware_in_y.s1,(SLAVE)switch.s1,(SLAVE)hardware_out_x.s1,(SLAVE)hex2.s1,(SLAVE)sysid.control_slave,(SLAVE)timer1.s1,(SLAVE)timestamp_timer.s1,(SLAVE)altpll.pll_slave,(SLAVE)button.s1,(SLAVE)hex1.s1,(SLAVE)hardware_in_z.s1,(SLAVE)acc_timer.s1,(SLAVE)sdram.s1,(SLAVE)timer3.s1,(SLAVE)hardware_in_x.s1,(SLAVE)timer.s1,(SLAVE)hardware_clocks.s1,(SLAVE)timer0.s1,(SLAVE)accelerometer_spi.avalon_accelerometer_spi_mode_slave,(SLAVE)led.s1,(MASTER)cpu.data_master,(SLAVE)hex0.s1,(MASTER)cpu.instruction_master,(SLAVE)timer4.s1,(SLAVE)hex5.s1,(SLAVE)hardware_out_z.s1,(SLAVE)jtag_uart.avalon_jtag_slave,(SLAVE)hardware_out_y.s1,(SLAVE)cpu.debug_mem_slave,(SLAVE)hex3.s1) 1 1 3 450 480 930 120 1370
+preplace netloc EXPORT<net_container>snake</net_container>(SLAVE)snake.hex0_external_connection,(SLAVE)hex0.external_connection) 1 0 3 NJ 1960 NJ 1960 NJ
+preplace netloc EXPORT<net_container>snake</net_container>(SLAVE)snake.hex5_external_connection,(SLAVE)hex5.external_connection) 1 0 3 NJ 1560 NJ 1560 NJ
+preplace netloc EXPORT<net_container>snake</net_container>(SLAVE)hex3.external_connection,(SLAVE)snake.hex3_external_connection) 1 0 3 NJ 1280 NJ 1280 NJ
+preplace netloc POINT_TO_POINT<net_container>snake</net_container>(MASTER)clk.clk,(SLAVE)altpll.inclk_interface) 1 1 2 NJ 200 890
+preplace netloc EXPORT<net_container>snake</net_container>(SLAVE)hex2.external_connection,(SLAVE)snake.hex2_external_connection) 1 0 3 NJ 1180 NJ 1180 NJ
+preplace netloc EXPORT<net_container>snake</net_container>(SLAVE)hex1.external_connection,(SLAVE)snake.hex1_external_connection) 1 0 3 NJ 1080 NJ 1080 NJ
+preplace netloc EXPORT<net_container>snake</net_container>(SLAVE)hardware_out_y.external_connection,(SLAVE)snake.hardware_out_y_external_connection) 1 0 4 NJ 920 NJ 920 NJ 920 NJ
+preplace netloc EXPORT<net_container>snake</net_container>(SLAVE)snake.hardware_in_z_external_connection,(SLAVE)hardware_in_z.external_connection) 1 0 4 NJ 680 NJ 680 NJ 680 NJ
+preplace netloc EXPORT<net_container>snake</net_container>(SLAVE)snake.sdram_wire,(SLAVE)sdram.wire) 1 0 3 NJ 1800 NJ 1800 NJ
+preplace netloc EXPORT<net_container>snake</net_container>(SLAVE)snake.hex4_external_connection,(SLAVE)hex4.external_connection) 1 0 3 NJ 1460 NJ 1460 NJ
+preplace netloc EXPORT<net_container>snake</net_container>(MASTER)snake.clk_sdram,(MASTER)altpll.c1) 1 3 2 NJ 240 NJ
+preplace netloc EXPORT<net_container>snake</net_container>(SLAVE)snake.hardware_out_x_external_connection,(SLAVE)hardware_out_x.external_connection) 1 0 4 NJ 800 NJ 800 NJ 800 NJ
+preplace netloc EXPORT<net_container>snake</net_container>(SLAVE)snake.altpll_locked_conduit,(SLAVE)altpll.locked_conduit) 1 0 3 NJ 160 NJ 160 NJ
+preplace netloc EXPORT<net_container>snake</net_container>(SLAVE)altpll.areset_conduit,(SLAVE)snake.altpll_areset_conduit) 1 0 3 NJ 140 NJ 140 NJ
+preplace netloc FAN_OUT<net_container>snake</net_container>(MASTER)clk.clk_reset,(SLAVE)hardware_in_y.reset,(SLAVE)hardware_clocks.reset,(SLAVE)led.reset,(SLAVE)hardware_out_x.reset,(SLAVE)hardware_in_z.reset,(SLAVE)hex0.reset,(SLAVE)hardware_out_z.reset,(SLAVE)hardware_out_y.reset,(SLAVE)jtag_uart.reset,(SLAVE)acc_timer.reset,(SLAVE)timer3.reset,(SLAVE)hex1.reset,(SLAVE)accelerometer_spi.reset,(SLAVE)sysid.reset,(SLAVE)button.reset,(SLAVE)timer.reset,(SLAVE)hex4.reset,(SLAVE)hex_timer.reset,(SLAVE)hex3.reset,(SLAVE)timer1.reset,(SLAVE)switch.reset,(SLAVE)hex2.reset,(SLAVE)timer4.reset,(SLAVE)timestamp_timer.reset,(SLAVE)altpll.inclk_interface_reset,(SLAVE)timer0.reset,(SLAVE)sdram.reset,(SLAVE)hex5.reset,(SLAVE)cpu.reset,(SLAVE)hardware_in_x.reset) 1 1 3 410 230 910 100 1350
+preplace netloc EXPORT<net_container>snake</net_container>(SLAVE)snake.switch_external_connection,(SLAVE)switch.external_connection) 1 0 3 NJ 1860 NJ 1860 NJ
+preplace netloc EXPORT<net_container>snake</net_container>(SLAVE)led.external_connection,(SLAVE)snake.led_external_connection) 1 0 3 NJ 1660 NJ 1660 NJ
+preplace netloc EXPORT<net_container>snake</net_container>(SLAVE)button.external_connection,(SLAVE)snake.button_external_connection) 1 0 3 NJ 180 NJ 180 NJ
+levelinfo -pg 1 0 200 1700
+levelinfo -hier snake 210 240 610 1020 1460 1610
