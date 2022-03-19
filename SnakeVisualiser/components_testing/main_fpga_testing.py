@@ -1,3 +1,4 @@
+import time
 from SnakeVisualiser.components.fpga_communicator import FPGACommunicator
 
 TEST_ALL_PRINTS = True
@@ -16,7 +17,7 @@ def test_print_of_all_values():
         print("button value: " + str(button_response['value']) + " error_code " + str(button_response['error_code']))
         switch_response = communicator.read_switch()
         print("switch value: " + str(switch_response['value']) + " error_code " + str(switch_response['error_code']))
-        hextext_error_code = communicator.write_hextext(123)
+        hextext_error_code = communicator.write_hextext("GAME_OVER_SCORE_10")
         print("hextext error code: " + str(hextext_error_code))
         ledflash_error_code = communicator.write_ledflash("100010001")
         print("ledflash error code: " + str(ledflash_error_code))

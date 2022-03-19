@@ -25,12 +25,6 @@ game_over = False
 otherplayer = []
 otherplayerblocks = []
 
-
-# T = tk.Text(SnakeGameMap.root, height=2, width=15)
-# T.pack()
-# T.insert(tk.END, "Client 1")
-# T.place(x=350, y=35)
-
 def exit_handler():
     msg = "0,0;|0,0,0,0,0"
     client_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
@@ -144,6 +138,8 @@ def tick(player, found):
 
     if game_over:
         SnakeGameMap.show_game_over(username, player_score)
+        fpga_communicator.write_ledflash("10000100001")
+        fpga_communicator.write_hextext("GAME_OVER_SCORE_" + str(player_score))
         return
 
     array = []
@@ -168,9 +164,6 @@ def tick(player, found):
         elif 75 < acc_read['y'] < 250 and not 75 <= acc_read['x'] <= 4021:
             player.changedir('Down')
     player.movesnake()
-    #     playerShadow.movesnake()
-    #     if player.shadowCreated == True:
-    #           player.moveShadow()
 
     updateothers()
 
@@ -180,6 +173,7 @@ def tick(player, found):
             food.powerupType(player, food.power_ups[j][1])
             if not game_over:
                 clock.after(100, lambda: tick(player, FALSE))
+            fpga_communicator.write_ledflash("1100110011")
             food.delete(j)
             _x = random.randrange(30, 500, 10)
             _y = random.randrange(20, 500, 10)
