@@ -8,6 +8,9 @@ import socket
 import subprocess
 import sys
 import atexit
+from threading import Thread
+from pydub import AudioSegment
+from pydub.playback import play
 import components.SnakeGameMap as SnakeGameMap
 from components.game_intro import GameIntro
 from components.fpga_communicator import FPGACommunicator
@@ -21,6 +24,7 @@ server_port = None
 username = None
 player = None
 food = None
+localFood = None
 wefoundfood = 0
 _x = 0
 _y = 0
@@ -33,10 +37,11 @@ game_over = False
 
 otherplayer = []
 otherplayerblocks = []
+coin_sound = AudioSegment.from_wav('SnakeVisualiser/assets/coinhit.wav')
 
 
 def exit_handler():
-    msg = "0,0;|0,0,0,0,0"
+    msg = username + "|0,0;|0,0,0,0,0"
     client_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
     client_socket.bind(('', client_port))
     client_socket.sendto(msg.encode(), (server_ip, server_port))
@@ -45,17 +50,11 @@ def exit_handler():
 atexit.register(exit_handler)
 
 
-def spawn_program_and_die(program, exit_code=0):
-    subprocess.Popen(program)
-    sys.exit(exit_code)
-
-
 def mergearray(array1, array2):
     newarray = []
     for i in range(len(array1)):
         newarray.append([array1[i] + 100, array2[i] + 100])
     return newarray
-
 
 
 def calculate_score_table(other_players, client_name):
@@ -97,9 +96,9 @@ def sendCoord():
         tempfood = foodinfo[i].split(",")
         if tempfood[4] == '1':
             global food
-            food.delete(int(tempfood[3]))
-            food.generate(int(tempfood[0]), int(tempfood[1]), int(tempfood[2]))
-            food.generate(int(tempfood[0]), int(tempfood[1]), int(tempfood[2]))
+            food.deleteShared()
+            food.generateShared(int(tempfood[0]), int(tempfood[1]))
+            food.generateShared(int(tempfood[0]), int(tempfood[1]))
 
     return snakes
 
@@ -118,13 +117,27 @@ def updateothers():
             otherplayerblocks.append(
                 SnakeGameMap.canvas.create_rectangle(int(otherplayer[i][j][0]), int(otherplayer[i][j][1]),
                                                      int(otherplayer[i][j][0]) + 10, int(otherplayer[i][j][1]) + 10,
-                                                     fill='violetred1'))
+                                                     fill='#C7FFFD'))
 
+
+def food_collected_notification():
+    try:
+        t = Thread(target=fpga_communicator.write_ledflash, args=("101",), daemon=True)
+        t.start()
+    except Exception as ex:
+        print("Error with led flash: " + str(ex))
+
+    try:
+        t = Thread(target=play, args=(coin_sound,), daemon=True)
+        t.start()
+    except Exception as ex:
+        print("Error playing the sound: " + str(ex))
 
 def tick(player, found):
     deleteblocks()
     global time1
     global food
+    global localFood
     global otherplayer
     global otherplayerblocks
     global wefoundfood
@@ -169,30 +182,32 @@ def tick(player, found):
 
     updateothers()
 
-    for j in range(len(food.power_ups)):
-        if (player.x == food.power_upsX[j]) and (player.y == food.power_upsY[j]):
+    if (abs(player.x - food.shared_power_upX) < food.radius and abs(player.y - food.shared_power_upY) < food.radius):
+        player.adjustspeed(1)
+        food.powerupType(player, "Ultra-Power")
+        food.deleteShared()
+        food_collected_notification()
+        _x = random.randrange(30, 500, 10)
+        _y = random.randrange(20, 500, 10)
+        food.generateShared(_x, _y)
+        wefoundfood = 1
+
+    for i in range(0, len(localFood.power_ups)):
+        if (player.x == localFood.power_upsX[i]) and (player.y == localFood.power_upsY[i]):
             player.adjustspeed(1)
-            food.powerupType(player, food.power_ups[j][1])
-            if not game_over:
-                clock.after(100, lambda: tick(player, FALSE))
-            fpga_communicator.write_ledflash("1100110011")
-            food.delete(j)
-            _x = random.randrange(30, 500, 10)
-            _y = random.randrange(20, 500, 10)
-            _r = 4
-            _j = j
-            food.generate(_x, _y, _r)
-            food.generate(_x, _y, _r)
+            localFood.powerupType(player, localFood.power_ups[i][1])
+            clock.after(200, lambda: tick(player, FALSE))
+            localFood.delete(i)
+            food_collected_notification()
+            localFood.generate()
             found = TRUE
-            wefoundfood = 1
             break
 
-    if found == FALSE and not game_over:
-        clock.after(int(30 / player.getspeed()), lambda: tick(player, FALSE))
+    if found == FALSE and not game_over: clock.after(int(100 / player.getspeed()), lambda: tick(player, FALSE))
 
 
 def start_game(_server_ip, _server_port, _client_port, _username):
-    global server_ip, server_port, client_port, username, player, food, clock
+    global server_ip, server_port, client_port, username, player, food, clock, localFood
     server_ip = _server_ip
     server_port = _server_port
     client_port = _client_port
@@ -205,7 +220,8 @@ def start_game(_server_ip, _server_port, _client_port, _username):
     SnakeGameMap.init_game()
     clock = Label(SnakeGameMap.root)
     player = SnakeGameMap.player
-    food = SnakeGameMap.food
+    food = SnakeGameMap.sharedFood
+    localFood = SnakeGameMap.localFood
 
     SnakeGameMap.root.bind("<Key>", SnakeGameMap.kpress)
     tick(player, FALSE)

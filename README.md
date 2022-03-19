@@ -6,6 +6,8 @@ To run the project, following pip packages must be installed
 - `intel_jtag_uart`
 - `tkinter`
 - `tk`
+- `simpleaudio`
+- `pydub`
 
 ## Setup
 In order run the game, firstly run the server by running the following command from the `SnakeVisualiser` directory.

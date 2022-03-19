@@ -3,8 +3,8 @@ import random
 
 server_port = int(input("Enter Server Port To Use: "))
 client_port = int(input("Enter Client Port To Use: "))
+client_ip = input("Enter Client IP: ")
 client_number = input("Enter Client Number (0-5): ")
-
 
 def gethead(msg):
     head = msg.split("|")[1].split(";")[0]
@@ -18,7 +18,7 @@ def getcoordsofallsnake():
         if i != int(client_number):
             f = open("snakecoordinates/" + str(i) + ".txt", "r")
             coords = f.read().split("|")
-            strng = strng + coords[0]
+            strng = strng + coords[1]
 
     return strng
 
@@ -43,27 +43,25 @@ def checkcollision(head, snake):
 time1 = ''
 
 welcome_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+
 welcome_socket.bind(('', server_port))
 
-c1add = ('localhost', client_port)  # 146.169.165.26
+c1add = (client_ip, client_port)  # 146.169.165.26
 
 msg1 = ""
 gamestate = 'none'
 result = ""
 collided = False
-counter = 0
+
 while 1:
-    cmsg, cadd = welcome_socket.recvfrom(2048)
-    counter = counter + 1
+    cmsg, cadd = welcome_socket.recvfrom(1024)
     msg1 = cmsg.decode()
     name = msg1.split("|")[0]
     msg_to_send = ""
     if checkcollision(gethead(msg1), converttoarray(getcoordsofallsnake())):
         collided = True
-    if collided:
-        print("msg1: " + msg1)
-        print("name: " + name)
-        msg1 = name + "|0,0;|0,0,0,0,0"
+    if collided == True:
+        msg1 = name + "0,0;|0,0,0,0,0"
         f = open("snakecoordinates/" + client_number + ".txt", "w")
         f.write(msg1)
         f.close()
@@ -80,5 +78,4 @@ while 1:
                 if not split_client_info[1] == "0,0;":
                     msg_to_send = msg_to_send + client_info + "\n"
                 f.close()
-
     welcome_socket.sendto(msg_to_send.encode(), c1add)
