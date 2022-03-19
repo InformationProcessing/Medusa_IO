@@ -8,6 +8,9 @@ import socket
 import subprocess
 import sys
 import atexit
+from threading import Thread
+from pydub import AudioSegment
+from pydub.playback import play
 import components.SnakeGameMap as SnakeGameMap
 from components.game_intro import GameIntro
 from components.fpga_communicator import FPGACommunicator
@@ -33,6 +36,7 @@ game_over = False
 
 otherplayer = []
 otherplayerblocks = []
+coin_sound = AudioSegment.from_wav('SnakeVisualiser/assets/coinhit.wav')
 
 
 def exit_handler():
@@ -175,7 +179,18 @@ def tick(player, found):
             food.powerupType(player, food.power_ups[j][1])
             if not game_over:
                 clock.after(100, lambda: tick(player, FALSE))
-            fpga_communicator.write_ledflash("1100110011")
+            try:
+                t = Thread(target=fpga_communicator.write_ledflash, args=("101",), daemon=True)
+                t.start()
+            except Exception as ex:
+                print("Error with led flash: " + str(ex))
+
+            try:
+                t = Thread(target=play, args=(coin_sound,), daemon=True)
+                t.start()
+            except Exception as ex:
+                print("Error playing the sound: " + str(ex))
+
             food.delete(j)
             _x = random.randrange(30, 500, 10)
             _y = random.randrange(20, 500, 10)
