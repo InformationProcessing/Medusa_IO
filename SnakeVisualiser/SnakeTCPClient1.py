@@ -95,7 +95,7 @@ def updateothers():
       global otherplayerblocks
       for i in range(len(otherplayer)):
               for j in range(len(otherplayer[i])):
-                    otherplayerblocks.append(SnakeGameMap.canvas.create_rectangle(int(otherplayer[i][j][0]),int(otherplayer[i][j][1]),int(otherplayer[i][j][0])+10,int(otherplayer[i][j][1])+10,fill='violetred1'))
+                    otherplayerblocks.append(SnakeGameMap.canvas.create_rectangle(int(otherplayer[i][j][0]),int(otherplayer[i][j][1]),int(otherplayer[i][j][0])+10,int(otherplayer[i][j][1])+10,fill='#C7FFFD'))
       
 
 def tick(player,found):
@@ -123,21 +123,18 @@ def tick(player,found):
             time1 = time2
             clock.config(text=time2)
     player.movesnake()
-    #     playerShadow.movesnake()
-    #     if player.shadowCreated == True:
-    #     player.moveShadow()
+#     if player.shadowCreated == True:
+#         playerShadow.moveShadow()
     
     updateothers()
     
     if (abs(player.x - food.shared_power_upX)<food.radius and abs(player.y - food.shared_power_upY)<food.radius):
             player.adjustspeed(1)
             food.powerupType(player,"Ultra-Power")
-            # clock.after(200,lambda: tick(player,FALSE)) 
             food.deleteShared()
             _x = random.randrange(30,500,10)
             _y = random.randrange(20,500,10)
             food.generateShared(_x,_y)
-            # found = TRUE
             wefoundfood = 1
             
       
@@ -156,5 +153,8 @@ def tick(player,found):
 
 
 SnakeGameMap.root.bind("<Key>",SnakeGameMap.kpress)
-tick(player,FALSE)
+try:
+      tick(player,FALSE)
+except:
+      print("error, try - catch")
 SnakeGameMap.root.mainloop()
