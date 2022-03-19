@@ -5,37 +5,15 @@ from components.score import Score
 from components.game_over import GameOver
 import random
 
-root = tk.Tk()
-
-mainframe = ttk.Frame(root, padding="3 3 12 12")
-mainframe.grid(column=0, row=0, sticky=(N, W, E, S))
-root.columnconfigure(0, weight=1)
-root.rowconfigure(0, weight=1)
-
-score_frame = ttk.Frame(mainframe, padding="3 3 12 12")
-score_frame.grid(column=1, row=0, sticky=(N, W, E, S))
-mainframe.columnconfigure(0, weight=1)
-mainframe.rowconfigure(0, weight=1)
-
-score_board = Score(score_frame, 0, [])
-
-time1 = ''
-clock = Label(root)
-
-canvas_width = 700
-canvas_height = 700
-
-game_frame = ttk.Frame(mainframe, padding="3 3 12 12")
-game_frame.grid(column=0, row=0, sticky=(N, W, E, S))
-root.columnconfigure(0, weight=1)
-root.rowconfigure(0, weight=1)
-
-canvas = tk.Canvas(game_frame, width=canvas_width + 1, height=canvas_height + 1, highlightthickness=10,
-                   highlightbackground="black")
-canvas.pack()
-bg = PhotoImage(file="assets/map4.png")
-canvas.create_image(0, 0, image=bg, anchor="nw")
-
+root = None
+mainframe = None
+score_board = None
+canvas = None
+player = None
+clock = None
+food = None
+CANVAS_WIDTH = 700
+CANVAS_HEIGHT = 700
 
 class Snake:
     snake = []
@@ -98,12 +76,12 @@ class Snake:
         # print(self.x, " ", self.y)
         # for every block in the snake, move or teleport
         for j in range(len(self.snake)):
-            if self.snakeblockscoordX[j] < 10 or self.snakeblockscoordX[j] > canvas_width or self.snakeblockscoordY[
-                j] < 10 or self.snakeblockscoordY[j] > canvas_height:
-                if self.snakeblockscoordX[j] < 10:             abs_move(canvas_width, self.snakeblockscoordY[j], j)
-                if self.snakeblockscoordX[j] > canvas_width:   abs_move(10, self.snakeblockscoordY[j], j)
-                if self.snakeblockscoordY[j] < 10:             abs_move(self.snakeblockscoordX[j], canvas_height, j)
-                if self.snakeblockscoordY[j] > canvas_height:  abs_move(self.snakeblockscoordX[j], 10, j)
+            if self.snakeblockscoordX[j] < 10 or self.snakeblockscoordX[j] > CANVAS_WIDTH or self.snakeblockscoordY[
+                j] < 10 or self.snakeblockscoordY[j] > CANVAS_HEIGHT:
+                if self.snakeblockscoordX[j] < 10:             abs_move(CANVAS_WIDTH, self.snakeblockscoordY[j], j)
+                if self.snakeblockscoordX[j] > CANVAS_WIDTH:   abs_move(10, self.snakeblockscoordY[j], j)
+                if self.snakeblockscoordY[j] < 10:             abs_move(self.snakeblockscoordX[j], CANVAS_HEIGHT, j)
+                if self.snakeblockscoordY[j] > CANVAS_HEIGHT:  abs_move(self.snakeblockscoordX[j], 10, j)
             else:
                 # print(j, "----",self.moveblocks[j][0], "- ",self.moveblocks[j][1])
                 self.snake[j].place(x=self.snakeblockscoordX[j], y=self.snakeblockscoordY[j])
@@ -223,9 +201,6 @@ def snakeAnnimation(p, animation):
 
 
 allplayers = []
-player = Snake((random.randint(100, 700) // 10) * 10, (random.randint(100, 700) // 10) * 10)
-allplayers.append(player)
-food = powerup()
 
 
 def kpress(event):
@@ -274,9 +249,41 @@ def update_score(player_score, player_name, scores):
     score_board.update(player_score, player_name, scores)
 
 
-button1 = tk.Button(root, text='Increase Speed', command=increasespeed)
-canvas.create_window(270, 18, window=button1)
-button2 = tk.Button(root, text='Decrease Speed', command=decreasespeed)
-canvas.create_window(100, 18, window=button2)
-button3 = tk.Button(root, text='Restart', command=restart)
-canvas.create_window(380, 18, window=button3)
+def init_game():
+    global mainframe, score_board, canvas, clock, player, food, bg
+    mainframe = ttk.Frame(root, padding="3 3 12 12")
+    mainframe.grid(column=0, row=0, sticky=(N, W, E, S))
+    root.columnconfigure(0, weight=1)
+    root.rowconfigure(0, weight=1)
+
+    score_frame = ttk.Frame(mainframe, padding="3 3 12 12")
+    score_frame.grid(column=1, row=0, sticky=(N, W, E, S))
+    mainframe.columnconfigure(0, weight=1)
+    mainframe.rowconfigure(0, weight=1)
+
+    score_board = Score(score_frame, 0, [])
+
+    time1 = ''
+    clock = Label(root)
+
+    game_frame = ttk.Frame(mainframe, padding="3 3 12 12")
+    game_frame.grid(column=0, row=0, sticky=(N, W, E, S))
+    root.columnconfigure(0, weight=1)
+    root.rowconfigure(0, weight=1)
+
+    canvas = tk.Canvas(game_frame, width=CANVAS_WIDTH + 1, height=CANVAS_HEIGHT + 1, highlightthickness=10,
+                       highlightbackground="black")
+    bg = PhotoImage(file="assets/map4.png")
+    canvas.create_image(0, 0, image=bg, anchor="nw")
+    canvas.pack()
+
+    player = Snake((random.randint(100, 700) // 10) * 10, (random.randint(100, 700) // 10) * 10)
+    allplayers.append(player)
+    food = powerup()
+
+    button1 = tk.Button(root, text='Increase Speed', command=increasespeed)
+    canvas.create_window(270, 18, window=button1)
+    button2 = tk.Button(root, text='Decrease Speed', command=decreasespeed)
+    canvas.create_window(100, 18, window=button2)
+    button3 = tk.Button(root, text='Restart', command=restart)
+    canvas.create_window(380, 18, window=button3)

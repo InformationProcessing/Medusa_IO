@@ -4,22 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a592c02d-0639-4f2f-b0de-9351e3670891" name="Changes" comment="add buttons for changing orders in the global leader board">
-      <change afterPath="$PROJECT_DIR$/SnakeVisualiser/components/database_connection.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SnakeVisualiser/components_testing/game_over_testing.py" afterDir="false" />
+    <list default="true" id="a592c02d-0639-4f2f-b0de-9351e3670891" name="Changes" comment="integrate sending data to the database after the game ends">
+      <change afterPath="$PROJECT_DIR$/SnakeVisualiser/components/game_intro.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SnakeVisualiser/components_testing/game_intro_testing.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SnakeVisualiser/DatabaseConnection.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SnakeVisualiser/ServerClient1.py" beforeDir="false" afterPath="$PROJECT_DIR$/SnakeVisualiser/ServerClient1-mathew.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SnakeVisualiser/SnakeTCPClient1.py" beforeDir="false" afterPath="$PROJECT_DIR$/SnakeVisualiser/SnakeTCPClient1-mathew.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SnakeVisualiser/callingDBconnection.py" beforeDir="false" afterPath="$PROJECT_DIR$/SnakeVisualiser/components_testing/calling_db.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SnakeVisualiser/SnakeClient.py" beforeDir="false" afterPath="$PROJECT_DIR$/SnakeVisualiser/SnakeClient.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SnakeVisualiser/SnakeTCPClient1-mathew.py" beforeDir="false" afterPath="$PROJECT_DIR$/SnakeVisualiser/SnakeTCPClient1-mathew.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SnakeVisualiser/components/SnakeGameMap.py" beforeDir="false" afterPath="$PROJECT_DIR$/SnakeVisualiser/components/SnakeGameMap.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SnakeVisualiser/components/fpga_communicator.py" beforeDir="false" afterPath="$PROJECT_DIR$/SnakeVisualiser/components/fpga_communicator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SnakeVisualiser/components/game_over_component.py" beforeDir="false" afterPath="$PROJECT_DIR$/SnakeVisualiser/components/game_over.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SnakeVisualiser/components/global_leaderboard.py" beforeDir="false" afterPath="$PROJECT_DIR$/SnakeVisualiser/components/global_leaderboard.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SnakeVisualiser/components/score_component.py" beforeDir="false" afterPath="$PROJECT_DIR$/SnakeVisualiser/components/score.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SnakeVisualiser/components_testing/score_component_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/SnakeVisualiser/components_testing/score_component_test.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SnakeVisualiser/components_testing/scrollable_testing.py" beforeDir="false" afterPath="$PROJECT_DIR$/SnakeVisualiser/components_testing/scrollable_testing.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SnakeVisualiser/snakecoordinates/localscores.txt" beforeDir="false" afterPath="$PROJECT_DIR$/SnakeVisualiser/snakecoordinates/localscores.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SnakeVisualiser/components_testing/game_over_testing.py" beforeDir="false" afterPath="$PROJECT_DIR$/SnakeVisualiser/components_testing/game_over_testing.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -82,6 +74,28 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/SnakeVisualiser/SnakeClient.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="game_intro_testing" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Medusa_IO" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/SnakeVisualiser/components_testing" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/SnakeVisualiser/components_testing/game_intro_testing.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -156,42 +170,20 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="scrollable_testing" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="Medusa_IO" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/SnakeVisualiser/components_testing" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/SnakeVisualiser/components_testing/scrollable_testing.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
     <list>
       <item itemvalue="Python.SnakeClient (1)" />
       <item itemvalue="Python.global_leaderboard_testing" />
-      <item itemvalue="Python.scrollable_testing" />
       <item itemvalue="Python.main_fpga_testing" />
       <item itemvalue="Python.game_over_testing" />
+      <item itemvalue="Python.game_intro_testing" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Python.SnakeClient (1)" />
+        <item itemvalue="Python.game_intro_testing" />
         <item itemvalue="Python.game_over_testing" />
         <item itemvalue="Python.main_fpga_testing" />
         <item itemvalue="Python.global_leaderboard_testing" />
-        <item itemvalue="Python.scrollable_testing" />
       </list>
     </recent_temporary>
   </component>
@@ -240,7 +232,14 @@
       <option name="project" value="LOCAL" />
       <updated>1647554070502</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="integrate sending data to the database after the game ends">
+      <created>1647689377747</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1647689377747</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -264,12 +263,13 @@
     <MESSAGE value="feat(networking) - add FPGA control to the TCP client" />
     <MESSAGE value="resolve merge conflicts" />
     <MESSAGE value="add score update to each tick" />
-    <option name="LAST_COMMIT_MESSAGE" value="add score update to each tick" />
+    <MESSAGE value="integrate sending data to the database after the game ends" />
+    <option name="LAST_COMMIT_MESSAGE" value="integrate sending data to the database after the game ends" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Medusa_IO$Launcher1.coverage" NAME="Launcher1 Coverage Results" MODIFIED="1647360131189" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SnakeTCPClient/New" />
     <SUITE FILE_PATH="coverage/Medusa_IO$SnakeTCPServer.coverage" NAME="SnakeTCPServer Coverage Results" MODIFIED="1647531710165" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SnakeVisualiser" />
-    <SUITE FILE_PATH="coverage/Medusa_IO$SnakeClient__1_.coverage" NAME="SnakeClient (1) Coverage Results" MODIFIED="1647689153002" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SnakeVisualiser" />
+    <SUITE FILE_PATH="coverage/Medusa_IO$SnakeClient__1_.coverage" NAME="SnakeClient (1) Coverage Results" MODIFIED="1647692191600" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SnakeVisualiser" />
     <SUITE FILE_PATH="coverage/Medusa_IO$SnakeTCPClient1__1_.coverage" NAME="SnakeTCPClient1 (1) Coverage Results" MODIFIED="1647534436983" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SnakeVisualiser" />
     <SUITE FILE_PATH="coverage/Medusa_IO$game_over_testing.coverage" NAME="game_over_testing Coverage Results" MODIFIED="1647688994472" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SnakeVisualiser/components_testing" />
     <SUITE FILE_PATH="coverage/Medusa_IO$SnakeTCPClient2.coverage" NAME="SnakeTCPClient2 Coverage Results" MODIFIED="1647255959830" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SnakeVisualiser" />
@@ -286,5 +286,6 @@
     <SUITE FILE_PATH="coverage/Medusa_IO$scrollable_testing.coverage" NAME="scrollable_testing Coverage Results" MODIFIED="1647556812354" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SnakeVisualiser/components_testing" />
     <SUITE FILE_PATH="coverage/Medusa_IO$main_fpga_testing.coverage" NAME="main_fpga_testing Coverage Results" MODIFIED="1647684829886" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SnakeVisualiser/components_testing" />
     <SUITE FILE_PATH="coverage/Medusa_IO$SnakeTCPClient2__1_.coverage" NAME="SnakeTCPClient2 (1) Coverage Results" MODIFIED="1647532156629" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SnakeVisualiser" />
+    <SUITE FILE_PATH="coverage/Medusa_IO$game_intro_testing.coverage" NAME="game_intro_testing Coverage Results" MODIFIED="1647690942623" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SnakeVisualiser/components_testing" />
   </component>
 </project>

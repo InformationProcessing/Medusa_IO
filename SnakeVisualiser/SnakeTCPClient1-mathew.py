@@ -14,7 +14,7 @@ a = int(input("Enter Your Port:"))
 b = int(input("Enter Server Port:"))
 c = input("Enter Server IP: ")
 
-my_port = a
+client_port = a
 
 time1 = ''
 clock = Label(SnakeGameMap.root)
@@ -30,7 +30,7 @@ T.place(x = 350,y = 35)
 def exit_handler():
       msg = "0,0;|0,0,0,0,0"
       client_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-      client_socket.bind(('',my_port))
+      client_socket.bind(('', client_port))
       client_socket.sendto(msg.encode(),(c,b))
       
 atexit.register(exit_handler)
@@ -55,7 +55,7 @@ _r = 0
 _j = 0
 
 def sendCoord():
-      global my_port, wefoundfood, b
+      global client_port, wefoundfood, b
       msg = ""
       for i in range(len(player.snakeblockscoordX)):
             msg += str(player.snakeblockscoordX[i]) + "," + str(player.snakeblockscoordY[i]) + ";"

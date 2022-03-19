@@ -9,26 +9,36 @@ import subprocess
 import sys
 import atexit
 import components.SnakeGameMap as SnakeGameMap
+from components.game_intro import GameIntro
 from components.fpga_communicator import FPGACommunicator
 
+root = tk.Tk()
 fpga_communicator = FPGACommunicator()
-username = "Client 0"
 
-my_port = int(input("Enter Your Port:"))
-server_port = int(input("Enter Server Port:"))
+client_port = None
+server_ip = None
+server_port = None
+username = None
+player = None
+food = None
+wefoundfood = 0
+_x = 0
+_y = 0
+_r = 0
+_j = 0
 
-server_ip = 'localhost'
 time1 = ''
-clock = Label(SnakeGameMap.root)
+clock = None
 game_over = False
 
 otherplayer = []
 otherplayerblocks = []
 
+
 def exit_handler():
     msg = "0,0;|0,0,0,0,0"
     client_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-    client_socket.bind(('', my_port))
+    client_socket.bind(('', client_port))
     client_socket.sendto(msg.encode(), (server_ip, server_port))
 
 
@@ -47,14 +57,6 @@ def mergearray(array1, array2):
     return newarray
 
 
-player = SnakeGameMap.player
-food = SnakeGameMap.food
-wefoundfood = 0
-_x = 0
-_y = 0
-_r = 0
-_j = 0
-
 
 def calculate_score_table(other_players, client_name):
     score_table = []
@@ -67,14 +69,14 @@ def calculate_score_table(other_players, client_name):
 
 
 def sendCoord():
-    global my_port, wefoundfood, server_port, game_over
+    global client_port, wefoundfood, server_port, game_over
     msg = ""
     for i in range(len(player.snakeblockscoordX)):
         msg += str(player.snakeblockscoordX[i]) + "," + str(player.snakeblockscoordY[i]) + ";"
     msg = msg + "|" + str(_x) + "," + str(_y) + "," + str(_r) + "," + str(_j) + "," + str(wefoundfood)
     wefoundfood = 0
     client_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-    client_socket.bind(('', my_port))
+    client_socket.bind(('', client_port))
     client_socket.sendto(msg.encode(), (server_ip, server_port))
     msg, sadd = client_socket.recvfrom(2048)
 
@@ -189,6 +191,25 @@ def tick(player, found):
         clock.after(int(30 / player.getspeed()), lambda: tick(player, FALSE))
 
 
-SnakeGameMap.root.bind("<Key>", SnakeGameMap.kpress)
-tick(player, FALSE)
-SnakeGameMap.root.mainloop()
+def start_game(_server_ip, _server_port, _client_port, _username):
+    global server_ip, server_port, client_port, username, player, food, clock
+    server_ip = _server_ip
+    server_port = _server_port
+    client_port = _client_port
+    username = username
+
+    for child in root.winfo_children():
+        child.destroy()
+
+    SnakeGameMap.root = root
+    SnakeGameMap.init_game()
+    clock = Label(SnakeGameMap.root)
+    player = SnakeGameMap.player
+    food = SnakeGameMap.food
+
+    SnakeGameMap.root.bind("<Key>", SnakeGameMap.kpress)
+    tick(player, FALSE)
+
+
+game_intro = GameIntro(root, start_game)
+root.mainloop()

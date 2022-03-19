@@ -1,8 +1,6 @@
 from tkinter import *
 from tkinter import ttk
 from SnakeVisualiser.components.game_over import GameOver
-import json
-from time import sleep
 
 root = Tk()
 root.title("Game over component testing")
