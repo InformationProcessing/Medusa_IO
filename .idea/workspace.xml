@@ -5,17 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a592c02d-0639-4f2f-b0de-9351e3670891" name="Changes" comment="add game intro component that sets server and client parameters">
-      <change afterPath="$PROJECT_DIR$/SnakeVisualiser/SnakeClient-my.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SnakeVisualiser/SnakeServer-my.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SnakeVisualiser/components/SnakeGameMap-my.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SnakeVisualiser/ServerClient1-mathew.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SnakeVisualiser/SnakeClient.py" beforeDir="false" afterPath="$PROJECT_DIR$/SnakeVisualiser/SnakeClient.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SnakeVisualiser/SnakeGameMap.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SnakeVisualiser/SnakeServer.py" beforeDir="false" afterPath="$PROJECT_DIR$/SnakeVisualiser/SnakeServer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SnakeVisualiser/SnakeTCPClient1-mathew.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SnakeVisualiser/components/SnakeGameMap.py" beforeDir="false" afterPath="$PROJECT_DIR$/SnakeVisualiser/components/SnakeGameMap.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SnakeVisualiser/snakecoordinates/0.txt" beforeDir="false" afterPath="$PROJECT_DIR$/SnakeVisualiser/snakecoordinates/0.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -175,11 +165,11 @@
       <method v="2" />
     </configuration>
     <list>
+      <item itemvalue="Python.SnakeClient-my" />
+      <item itemvalue="Python.game_intro_testing" />
+      <item itemvalue="Python.game_over_testing" />
       <item itemvalue="Python.global_leaderboard_testing" />
       <item itemvalue="Python.main_fpga_testing" />
-      <item itemvalue="Python.game_over_testing" />
-      <item itemvalue="Python.game_intro_testing" />
-      <item itemvalue="Python.SnakeClient-my" />
     </list>
     <recent_temporary>
       <list>

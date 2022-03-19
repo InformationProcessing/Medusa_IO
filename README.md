@@ -16,10 +16,10 @@ In order run the game, firstly run the server by running the following command f
 python3 SnakeServer.py
 ````
 
-To run the game client, run the following command from the `SnakeVisualiser` directory.
+To run the game client, run the following command from the root diretory `Medusa_IO` directory.
 
 ````shell
-python3 SnakeClient.py
+python3 SnakeVisualiser/SnakeClient.py
 ````
 
 ## Notes
