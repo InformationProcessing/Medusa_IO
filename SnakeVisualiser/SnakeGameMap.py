@@ -190,27 +190,27 @@ class powerup:
     power_upsY = []
     # foodTypes = ["grow", "portal", "ultra_speed","slow_down"]
     # colours = ["red", "blue", "orange", "green"]
-    powerTypes = [["grow","red"] , ["portal", "blue"] , ["ultra_speed", "orange"] , ["slow_down", "green"],["Ultra-Power","yellow"]]
+    powerTypes = [["grow","red"] , ["portal", "blue"] , ["ultra_speed", "orange"] , ["slow_down", "green"]]
     radius = 10
     j = 1
     
     tagval = ["test0"]
 
     def __init__(self):
-        x = 200
-        y = 200 #using random num_gen for food.
+        x = random.randrange(30,500,10)
+        y = random.randrange(30,500,10) #using random num_gen for food.
         powerRandom = ["grow","red"]
         id = canvas.create_oval(x,y,x+self.radius,y+self.radius,fill=powerRandom[1],tag="test0")
         self.power_ups.append([id,powerRandom[0]])
         self.power_upsX.append(x)
         self.power_upsY.append(y)
+        # self.tagval.append("test0")
 
-    def generate(self,_x,_y,_r):
-        print("Generated")
+    def generate(self):
         for s in range (random.choice([1,2])):
-            x = _x
-            y = _y
-            powerRandom = self.powerTypes[_r]
+            x = random.randrange(30,500,10)
+            y = random.randrange(20,500,10)
+            powerRandom = random.choice(self.powerTypes) 
             id = canvas.create_oval(x,y,x+self.radius,y+self.radius,fill=powerRandom[1],tag="test"+str(self.j))
             self.tagval.append("test"+str(self.j))
             self.power_ups.append([id,powerRandom[0]])
@@ -219,43 +219,36 @@ class powerup:
             self.j = self.j+1
     
     def delete(self,j):
-        for i in range(len(self.power_ups)):
-            self.power_ups.pop(j)
-            self.power_upsX.pop(j)
-            self.power_upsY.pop(j)
-            canvas.delete(self.tagval.pop(j))
-            print("Deleted")
+        self.power_ups.pop(j)
+        self.power_upsX.pop(j)
+        self.power_upsY.pop(j)
+        canvas.delete(self.tagval.pop(j))
+        print("Deleted")
 
     def powerupType(self,p,type):
         # p.createdShadow = False
         if type == "portal":
             new_x = random.randrange(30,500,10)
             new_y = random.randrange(20,500,10)
+            p.adjustspeed(1)
             for j in range(len(p.snake)):
                 p.teleport(new_x,new_y,j)
-                p.teleportShadow(new_x,new_y,j)
                 new_x = new_x-10
-        if type == "grow":
+        elif type == "grow":
             p.addblock(len(p.snake)+1)
+            p.adjustspeed(1)
             snakeAnnimation(p,"blue-red")
-            clock.after(200,lambda: snakeAnnimation(player,"return"))
-        if type == "ultra_speed":
+            clock.after(int(200/player.getspeed()),lambda: snakeAnnimation(player,"return"))
+        elif type == "ultra_speed":
             p.adjustspeed(2)
             snakeAnnimation(p,"yellow")
-            clock.after(200,lambda: snakeAnnimation(player,"return"))
-        if type == "slow_down":
+            clock.after(int(200/player.getspeed()),lambda: snakeAnnimation(player,"return"))
+        elif type == "slow_down":
             p.adjustspeed(0.5)
             snakeAnnimation(p,"green")
-            clock.after(200,lambda: snakeAnnimation(player,"return"))
-        if type == "Ultra-Power":
-            p.addblock(len(p.snake)+1)
-            p.addblock(len(p.snake)+1)
-            p.addblock(len(p.snake)+1)
-            p.addblock(len(p.snake)+1)
-            p.addblock(len(p.snake)+1)
-            # p.widen()
-            snakeAnnimation(p,"red")
-            clock.after(200,lambda: snakeAnnimation(player,"return"))
+            clock.after(int(200/player.getspeed()),lambda: snakeAnnimation(player,"return"))
+            
+
                 
 def snakeAnnimation(p,animation):
     if animation == "blue-red":
@@ -272,12 +265,65 @@ def snakeAnnimation(p,animation):
         for j in range(len(p.snake)):
             p.snake[j].configure(bg="yellow")
 
+class SharedPowerup:
+    shared_power_upX = 0
+    shared_power_upY = 0
+    # foodTypes = ["grow", "portal", "ultra_speed","slow_down"]
+    # colours = ["red", "blue", "orange", "green"]
+    radius = 30
+    tagval = "shared0"
+
+    def __init__(self):
+        x = 200
+        y = 200 #using random num_gen for food.
+        power = [["Ultra-Power","yellow"]]
+        id = canvas.create_oval(x,y,x+self.radius,y+self.radius,fill="yellow",tag="shared0")
+        self.shared_power_upX = x
+        self.shared_power_upY = y
+
+    def generateShared(self,_x,_y):
+        print("Generated")
+        x = _x
+        y = _y
+        power = [["Ultra-Power","yellow"]]
+        id = canvas.create_oval(x,y,x+self.radius,y+self.radius,fill="yellow",tag="shared0")
+        self.shared_power_upX = x
+        self.shared_power_upY = y
+    
+    def deleteShared(self):
+        self.shared_power_upX = 0
+        self.shared_power_upY = 0
+        canvas.delete(self.tagval)
+        print("Deleted")
+
+    def powerupType(self,p,type):
+        if type == "Ultra-Power":
+            p.adjustspeed(1)
+            p.addblock(len(p.snake)+1)
+            p.addblock(len(p.snake)+1)
+            p.addblock(len(p.snake)+1)
+            p.addblock(len(p.snake)+1)
+            p.addblock(len(p.snake)+1)
+            # p.widen()
+            snakeAnnimation(p,"blue-red")
+            clock.after(int(200/player.getspeed()),lambda: snakeAnnimation(player,"return"))
+                
+def snakeAnnimation(p,animation):
+    if animation == "blue-red":
+        for j in range(len(p.snake)):
+            if j%2==0: p.snake[j].configure(bg="blue")
+            else: p.snake[j].configure(bg="red")
+    elif animation == "return":
+        for j in range(len(p.snake)):
+            p.snake[j].configure(bg="yellow")
+
 
 allplayers = []
 player = Snake((random.randint(100,700)//10)*10,(random.randint(100,700)//10)*10)
 # snakeShadow = Snake((random.randint(100,700)//10)*10,(random.randint(100,700)//10)*10)
 allplayers.append(player)
-food = powerup()
+sharedFood = SharedPowerup()
+localFood = powerup()
 
 
 
@@ -295,16 +341,16 @@ def kpress(event):
             player.changedir('Right')
 
 
-def increasespeed():
-    if player.getspeed()!=100:
-        player.adjustspeed(player.getspeed()+1)
+# def increasespeed():
+#     if player.getspeed()!=100:
+#         player.adjustspeed(player.getspeed()+1)
 
-def decreasespeed():
-    if player.getspeed()!=1:
-        player.adjustspeed(player.getspeed()-1)
-def restart():
-    for f in range(len(food.power_ups)):
-        food.delete(f)
+# def decreasespeed():
+#     if player.getspeed()!=1:
+#         player.adjustspeed(player.getspeed()-1)
+# def restart():
+#     for f in range(len(food.power_ups)):
+#         food.delete(f)
 
 # button1 = tk.Button(root, text='Increase Speed',command=increasespeed)
 # canvas.create_window(270,18,window=button1)
