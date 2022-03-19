@@ -6,6 +6,7 @@ class GameIntro:
     def __init__(self, root, start_game):
         self.root = root
         self.start_game = start_game
+
         self.main_frame = ttk.Frame(root, padding=str(0.43*root.winfo_screenwidth())+" "+str(0.35*root.winfo_screenheight()))
         self.main_frame.grid(row=0, column=0)
         ttk.Label(self.main_frame, text="Medusa IO", font=("Arial",30)).grid(row=0)
