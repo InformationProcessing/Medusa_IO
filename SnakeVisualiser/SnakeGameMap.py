@@ -42,7 +42,7 @@ class Snake:
 
     def addblock(self,i):
         self.moveblocks.append([0,0])
-        block=tk.Canvas(canvas,width=10, height=10, bd=0, highlightthickness=0.5, highlightbackground="white", relief='ridge', bg="yellow")
+        block=tk.Canvas(canvas,width=10, height=10, bd=0, highlightthickness=0.5, highlightbackground="#870083", relief='ridge', bg="#FF00B7")
         block.place(x=self.x, y=self.y-i*10)
         self.snake.append(block)
         self.snakeblockscoordX.append(self.x)
@@ -60,7 +60,7 @@ class Snake:
         #     self.snake.append(block)
         if self.shadowCreated == False:
             for i in range(temp):
-                block=tk.Canvas(canvas,width=10, height=10, bd=0, highlightthickness=0.5, highlightbackground="white", relief='ridge', bg="yellow")
+                block=tk.Canvas(canvas,width=10, height=10, bd=0, highlightthickness=0.5, highlightbackground="#870083", relief='ridge', bg="#FF00B7")
                 block.place(x=self.snakeblockscoordX[i], y=self.snakeblockscoordY[i]+10)
                 self.snakeShadow.append(block)
                 self.snakeblockscoordXShadow.append(self.snakeblockscoordX[i]+10)
@@ -127,53 +127,53 @@ class Snake:
         self.y = self.snakeblockscoordY[0]
         self.movesnake()
         
-    # def moveShadow(self):
-    #     #special teleportation of a block
-    #     def abs_move(new_x, new_y,j):
-    #         self.snakeShadow[j].place(x=new_x, y=new_y)
-    #         self.snakeblockscoordXShadow[j] = new_x
-    #         self.snakeblockscoordYShadow[j] = new_y
-    #         self.x_s = self.snakeblockscoordXShadow[0]
-    #         self.y_s = self.snakeblockscoordYShadow[0]
+    def moveShadow(self):
+        #special teleportation of a block
+        def abs_move(new_x, new_y,j):
+            self.snakeShadow[j].place(x=new_x, y=new_y)
+            self.snakeblockscoordXShadow[j] = new_x
+            self.snakeblockscoordYShadow[j] = new_y
+            self.x_s = self.snakeblockscoordXShadow[0]
+            self.y_s = self.snakeblockscoordYShadow[0]
 
-    #     #passing on block movement orientation.step to the following block
-    #     for j in range(len(self.snakeShadow)-1,1,-1):
-    #         # self.moveblocks[j]=self.moveblocks[j-1]
-    #         self.snakeblockscoordXShadow[j]=self.snakeblockscoordXShadow[j-1]
-    #         self.snakeblockscoordYShadow[j]=self.snakeblockscoordYShadow[j-1]
-    #         # print("pos:", j, "----",self.snakeblockscoordXShadow[j], ": ",self.snakeblockscoordYShadow[j])
-    #     # self.moveblocks[0]=self.move
-    #     #blocking moving backwards and overlapping snakeShadow
-    #     # if self.moveblocks[0][0] == -self.moveblocks[1][0]:
-    #     #     self.moveblocks[0][0] = self.moveblocks[1][0]
-    #     # if self.moveblocks[0][1] == -self.moveblocks[1][1]:
-    #     #     self.moveblocks[0][1] = self.moveblocks[1][1]
+        #passing on block movement orientation.step to the following block
+        for j in range(len(self.snakeShadow)-1,1,-1):
+            # self.moveblocks[j]=self.moveblocks[j-1]
+            self.snakeblockscoordXShadow[j]=self.snakeblockscoordXShadow[j-1]
+            self.snakeblockscoordYShadow[j]=self.snakeblockscoordYShadow[j-1]
+            # print("pos:", j, "----",self.snakeblockscoordXShadow[j], ": ",self.snakeblockscoordYShadow[j])
+        # self.moveblocks[0]=self.move
+        #blocking moving backwards and overlapping snakeShadow
+        # if self.moveblocks[0][0] == -self.moveblocks[1][0]:
+        #     self.moveblocks[0][0] = self.moveblocks[1][0]
+        # if self.moveblocks[0][1] == -self.moveblocks[1][1]:
+        #     self.moveblocks[0][1] = self.moveblocks[1][1]
 
-    #     # print(self.x, " ", self.y)
-    #     #for every block in the snakeShadow, move or teleport
-    #     for j in range(len(self.snakeShadow)):
-    #         if self.snakeblockscoordXShadow[j] < 10 or self.snakeblockscoordXShadow[j] > canvas_width or self.snakeblockscoordYShadow[j] < 10 or self.snakeblockscoordYShadow[j] > canvas_height:
-    #             if  self.snakeblockscoordXShadow[j] < 10:             abs_move(canvas_width, self.snakeblockscoordYShadow[j],j)
-    #             if  self.snakeblockscoordXShadow[j] > canvas_width:   abs_move(10,            self.snakeblockscoordYShadow[j],j)
-    #             if  self.snakeblockscoordYShadow[j] < 10:             abs_move(self.snakeblockscoordXShadow[j],canvas_height,j)
-    #             if  self.snakeblockscoordYShadow[j] > canvas_height:  abs_move(self.snakeblockscoordXShadow[j],            10,j)
-    #         else:
-    #             # print(j, "----",self.moveblocks[j][0], "- ",self.moveblocks[j][1])
-    #             self.snakeShadow[j].place(x=self.snakeblockscoordXShadow[j], y=self.snakeblockscoordYShadow[j])
+        # print(self.x, " ", self.y)
+        #for every block in the snakeShadow, move or teleport
+        for j in range(len(self.snakeShadow)):
+            if self.snakeblockscoordXShadow[j] < 10 or self.snakeblockscoordXShadow[j] > canvas_width or self.snakeblockscoordYShadow[j] < 10 or self.snakeblockscoordYShadow[j] > canvas_height:
+                if  self.snakeblockscoordXShadow[j] < 10:             abs_move(canvas_width, self.snakeblockscoordYShadow[j],j)
+                if  self.snakeblockscoordXShadow[j] > canvas_width:   abs_move(10,            self.snakeblockscoordYShadow[j],j)
+                if  self.snakeblockscoordYShadow[j] < 10:             abs_move(self.snakeblockscoordXShadow[j],canvas_height,j)
+                if  self.snakeblockscoordYShadow[j] > canvas_height:  abs_move(self.snakeblockscoordXShadow[j],            10,j)
+            else:
+                # print(j, "----",self.moveblocks[j][0], "- ",self.moveblocks[j][1])
+                self.snakeShadow[j].place(x=self.snakeblockscoordXShadow[j], y=self.snakeblockscoordYShadow[j])
 
-    #     self.x_s = self.x_s + int(self.moveblocks[0][0])
-    #     self.y_s = self.y_s + int(self.moveblocks[0][1])
-    #     self.snakeblockscoordXShadow[0]=self.x_s
-    #     self.snakeblockscoordYShadow[0]=self.y_s
-    #     print(self.x_s, "   ", self.y_s)
+        self.x_s = self.x_s + int(self.moveblocks[0][0])
+        self.y_s = self.y_s + int(self.moveblocks[0][1])
+        self.snakeblockscoordXShadow[0]=self.x_s
+        self.snakeblockscoordYShadow[0]=self.y_s
+        print(self.x_s, "   ", self.y_s)
 
-    # def teleportShadow(self,new_x,new_y,j):
-    #     self.snakeShadow[j].place(x=new_x, y=new_y)
-    #     self.snakeblockscoordXShadow[j] = new_x
-    #     self.snakeblockscoordYShadow[j] = new_y
-    #     self.x_s = self.snakeblockscoordXShadow[0]
-    #     self.y_s = self.snakeblockscoordYShadow[0]
-    #     self.moveShadow()
+    def teleportShadow(self,new_x,new_y,j):
+        self.snakeShadow[j].place(x=new_x, y=new_y)
+        self.snakeblockscoordXShadow[j] = new_x
+        self.snakeblockscoordYShadow[j] = new_y
+        self.x_s = self.snakeblockscoordXShadow[0]
+        self.y_s = self.snakeblockscoordYShadow[0]
+        self.moveShadow()
         
 
 
@@ -190,7 +190,7 @@ class powerup:
     power_upsY = []
     # foodTypes = ["grow", "portal", "ultra_speed","slow_down"]
     # colours = ["red", "blue", "orange", "green"]
-    powerTypes = [["grow","red"] , ["portal", "blue"] , ["ultra_speed", "orange"] , ["slow_down", "green"]]
+    powerTypes = [["grow","#FF0000"] , ["portal", "#73FF00"] , ["ultra_speed", "#FFAC00"] , ["slow_down", "#9D67FF"]]
     radius = 10
     j = 1
     
@@ -199,7 +199,7 @@ class powerup:
     def __init__(self):
         x = random.randrange(30,500,10)
         y = random.randrange(30,500,10) #using random num_gen for food.
-        powerRandom = ["grow","red"]
+        powerRandom = ["grow","#FF0000"]
         id = canvas.create_oval(x,y,x+self.radius,y+self.radius,fill=powerRandom[1],tag="test0")
         self.power_ups.append([id,powerRandom[0]])
         self.power_upsX.append(x)
@@ -237,33 +237,33 @@ class powerup:
         elif type == "grow":
             p.addblock(len(p.snake)+1)
             p.adjustspeed(1)
-            snakeAnnimation(p,"blue-red")
+            snakeAnnimation(p,"grow")
             clock.after(int(200/player.getspeed()),lambda: snakeAnnimation(player,"return"))
         elif type == "ultra_speed":
             p.adjustspeed(2)
-            snakeAnnimation(p,"yellow")
+            snakeAnnimation(p,"ultra_speed")
             clock.after(int(200/player.getspeed()),lambda: snakeAnnimation(player,"return"))
         elif type == "slow_down":
             p.adjustspeed(0.5)
-            snakeAnnimation(p,"green")
+            snakeAnnimation(p,"slow_down")
             clock.after(int(200/player.getspeed()),lambda: snakeAnnimation(player,"return"))
             
 
                 
 def snakeAnnimation(p,animation):
-    if animation == "blue-red":
+    if animation == "grow":
         for j in range(len(p.snake)):
             if j%2==0: p.snake[j].configure(bg="blue")
             else: p.snake[j].configure(bg="red")
-    elif animation == "yellow":
+    elif animation == "ultra_speed":
         for j in range(len(p.snake)):
-            p.snake[j].configure(bg="yellow")
-    elif animation == "green":
+            p.snake[j].configure(bg="#FFAC00")
+    elif animation == "slow_down":
         for j in range(len(p.snake)):
-            p.snake[j].configure(bg="lime green")
+            p.snake[j].configure(bg="#9D67FF")
     elif animation == "return":
         for j in range(len(p.snake)):
-            p.snake[j].configure(bg="yellow")
+            p.snake[j].configure(bg="#FF00B7")
 
 class SharedPowerup:
     shared_power_upX = 0
@@ -276,8 +276,8 @@ class SharedPowerup:
     def __init__(self):
         x = 200
         y = 200 #using random num_gen for food.
-        power = [["Ultra-Power","yellow"]]
-        id = canvas.create_oval(x,y,x+self.radius,y+self.radius,fill="yellow",tag="shared0")
+        power = [["Ultra-Power","#FFAC00"]]
+        id = canvas.create_oval(x,y,x+self.radius,y+self.radius,fill="#FFAC00",tag="shared0")
         self.shared_power_upX = x
         self.shared_power_upY = y
 
@@ -285,8 +285,8 @@ class SharedPowerup:
         print("Generated")
         x = _x
         y = _y
-        power = [["Ultra-Power","yellow"]]
-        id = canvas.create_oval(x,y,x+self.radius,y+self.radius,fill="yellow",tag="shared0")
+        power = [["Ultra-Power","#FFAC00"]]
+        id = canvas.create_oval(x,y,x+self.radius,y+self.radius,fill="#FFAC00",tag="shared0")
         self.shared_power_upX = x
         self.shared_power_upY = y
     
@@ -305,17 +305,17 @@ class SharedPowerup:
             p.addblock(len(p.snake)+1)
             p.addblock(len(p.snake)+1)
             # p.widen()
-            snakeAnnimation(p,"blue-red")
+            snakeAnnimation(p,"grow")
             clock.after(int(200/player.getspeed()),lambda: snakeAnnimation(player,"return"))
                 
 def snakeAnnimation(p,animation):
-    if animation == "blue-red":
+    if animation == "grow":
         for j in range(len(p.snake)):
             if j%2==0: p.snake[j].configure(bg="blue")
             else: p.snake[j].configure(bg="red")
     elif animation == "return":
         for j in range(len(p.snake)):
-            p.snake[j].configure(bg="yellow")
+            p.snake[j].configure(bg="#FF00B7")
 
 
 allplayers = []
