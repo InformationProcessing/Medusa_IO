@@ -8,6 +8,9 @@
 		.button_external_connection_export                  (<connected-to-button_external_connection_export>),                  //           button_external_connection.export
 		.clk_clk                                            (<connected-to-clk_clk>),                                            //                                  clk.clk
 		.clk_sdram_clk                                      (<connected-to-clk_sdram_clk>),                                      //                            clk_sdram.clk
+		.hardware_clocks_external_connection_export         (<connected-to-hardware_clocks_external_connection_export>),         //  hardware_clocks_external_connection.export
+		.hardware_in_external_connection_export             (<connected-to-hardware_in_external_connection_export>),             //      hardware_in_external_connection.export
+		.hardware_out_external_connection_export            (<connected-to-hardware_out_external_connection_export>),            //     hardware_out_external_connection.export
 		.hex0_external_connection_export                    (<connected-to-hex0_external_connection_export>),                    //             hex0_external_connection.export
 		.hex1_external_connection_export                    (<connected-to-hex1_external_connection_export>),                    //             hex1_external_connection.export
 		.hex2_external_connection_export                    (<connected-to-hex2_external_connection_export>),                    //             hex2_external_connection.export

@@ -9,6 +9,9 @@ module snake (
 	button_external_connection_export,
 	clk_clk,
 	clk_sdram_clk,
+	hardware_clocks_external_connection_export,
+	hardware_in_external_connection_export,
+	hardware_out_external_connection_export,
 	hex0_external_connection_export,
 	hex1_external_connection_export,
 	hex2_external_connection_export,
@@ -37,6 +40,9 @@ module snake (
 	input	[1:0]	button_external_connection_export;
 	input		clk_clk;
 	output		clk_sdram_clk;
+	output	[3:0]	hardware_clocks_external_connection_export;
+	input	[30:0]	hardware_in_external_connection_export;
+	output	[30:0]	hardware_out_external_connection_export;
 	output	[7:0]	hex0_external_connection_export;
 	output	[7:0]	hex1_external_connection_export;
 	output	[7:0]	hex2_external_connection_export;

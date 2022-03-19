@@ -9,6 +9,9 @@
 			button_external_connection_export                  : in    std_logic_vector(1 downto 0)  := (others => 'X'); -- export
 			clk_clk                                            : in    std_logic                     := 'X';             -- clk
 			clk_sdram_clk                                      : out   std_logic;                                        -- clk
+			hardware_clocks_external_connection_export         : out   std_logic_vector(3 downto 0);                     -- export
+			hardware_in_external_connection_export             : in    std_logic_vector(30 downto 0) := (others => 'X'); -- export
+			hardware_out_external_connection_export            : out   std_logic_vector(30 downto 0);                    -- export
 			hex0_external_connection_export                    : out   std_logic_vector(7 downto 0);                     -- export
 			hex1_external_connection_export                    : out   std_logic_vector(7 downto 0);                     -- export
 			hex2_external_connection_export                    : out   std_logic_vector(7 downto 0);                     -- export
@@ -41,6 +44,9 @@
 			button_external_connection_export                  => CONNECTED_TO_button_external_connection_export,                  --           button_external_connection.export
 			clk_clk                                            => CONNECTED_TO_clk_clk,                                            --                                  clk.clk
 			clk_sdram_clk                                      => CONNECTED_TO_clk_sdram_clk,                                      --                            clk_sdram.clk
+			hardware_clocks_external_connection_export         => CONNECTED_TO_hardware_clocks_external_connection_export,         --  hardware_clocks_external_connection.export
+			hardware_in_external_connection_export             => CONNECTED_TO_hardware_in_external_connection_export,             --      hardware_in_external_connection.export
+			hardware_out_external_connection_export            => CONNECTED_TO_hardware_out_external_connection_export,            --     hardware_out_external_connection.export
 			hex0_external_connection_export                    => CONNECTED_TO_hex0_external_connection_export,                    --             hex0_external_connection.export
 			hex1_external_connection_export                    => CONNECTED_TO_hex1_external_connection_export,                    --             hex1_external_connection.export
 			hex2_external_connection_export                    => CONNECTED_TO_hex2_external_connection_export,                    --             hex2_external_connection.export

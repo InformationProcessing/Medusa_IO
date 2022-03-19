@@ -1,18 +1,18 @@
-Fitter Status : Successful - Thu Mar 10 14:46:04 2022
+Fitter Status : Successful - Sat Mar 19 15:23:47 2022
 Quartus Prime Version : 18.1.0 Build 625 09/12/2018 SJ Lite Edition
 Revision Name : SnakeExperiment
 Top-level Entity Name : DE10_LITE_Golden_Top
 Family : MAX 10
 Device : 10M50DAF484C6GES
 Timing Models : Preliminary
-Total logic elements : 4,802 / 49,760 ( 10 % )
-    Total combinational functions : 4,220 / 49,760 ( 8 % )
-    Dedicated logic registers : 3,249 / 49,760 ( 7 % )
-Total registers : 3317
+Total logic elements : 17,134 / 49,760 ( 34 % )
+    Total combinational functions : 16,428 / 49,760 ( 33 % )
+    Dedicated logic registers : 6,667 / 49,760 ( 13 % )
+Total registers : 6735
 Total pins : 185 / 360 ( 51 % )
 Total virtual pins : 0
 Total memory bits : 11,264 / 1,677,312 ( < 1 % )
-Embedded Multiplier 9-bit elements : 0 / 288 ( 0 % )
+Embedded Multiplier 9-bit elements : 288 / 288 ( 100 % )
 Total PLLs : 1 / 4 ( 25 % )
 UFM blocks : 0 / 1 ( 0 % )
 ADC blocks : 0 / 2 ( 0 % )

@@ -126,13 +126,16 @@ module DE10_LITE_Golden_Top(
 //=======================================================
 //  REG/WIRE declarations
 //=======================================================
-
+	logic [31:0] hard_in;
+	logic [31:0] hard_out;
+	logic [3:0] hard_control;
 
 
 
 //=======================================================
 //  Structural coding
 //=======================================================
+hard filter(.reset(hard_control[2]), .clk_coeff(hard_control[1]), .clk_sample(hard_control[0]), .in(hard_in), .out(hard_out));
 
 snake u0 (
         .clk_clk                           (MAX10_CLK2_50),                           //                        clk.clk
@@ -168,7 +171,13 @@ snake u0 (
 		.hex2_external_connection_export   (HEX2),   //   hex2_external_connection.export
 		.hex3_external_connection_export   (HEX3),   //   hex3_external_connection.export
 		.hex4_external_connection_export   (HEX4),   //   hex4_external_connection.export
-		.hex5_external_connection_export   (HEX5)    //   hex5_external_connection.export
+		.hex5_external_connection_export   (HEX5),    //   hex5_external_connection.export
+		
+		.hardware_out_external_connection_export            (hard_in),            //     hardware_out_external_connection.export
+		.hardware_in_external_connection_export             (hard_out),             //      hardware_in_external_connection.export
+		.hardware_clocks_external_connection_export         (hard_control)          //  hardware_clocks_external_connection.export
+	
 	 );
+	 
 
 endmodule
