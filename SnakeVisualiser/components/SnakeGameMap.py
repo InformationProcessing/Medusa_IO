@@ -371,7 +371,7 @@ def show_game_over(username, score):
     mainframe.columnconfigure(0, weight=1)
     mainframe.rowconfigure(0, weight=1)
 
-    GameOver(game_over_frame, username, 10)
+    GameOver(game_over_frame, username, score)
 
 
 def update_score(player_score, player_name, scores):
