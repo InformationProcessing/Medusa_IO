@@ -140,6 +140,7 @@ def tick(player, found):
     scores = calculate_score_table(snakes, username)
     player_score = player.calculate_score()
     SnakeGameMap.update_score(player_score, username, scores)
+    fpga_communicator.write_hextext(str(player_score))
 
     if game_over:
         SnakeGameMap.show_game_over(username, player_score)

@@ -4,7 +4,7 @@ JedecChain;
 	DefaultMfr(6E);
 
 	P ActionCode(Cfg)
-		Device PartName(10M50DAF484ES) Path("C:/Users/micha/Desktop/InfoProcLabs/SnakeExperiment/output_files/") File("SnakeExperiment.sof") MfrSpec(OpMask(1));
+		Device PartName(10M50DAF484ES) Path("C:/Users/micha/Desktop/Medusa_IO/SnakeExperiment/output_files/") File("SnakeExperiment.sof") MfrSpec(OpMask(1));
 
 ChainEnd;
 
