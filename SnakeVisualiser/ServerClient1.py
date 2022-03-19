@@ -62,17 +62,17 @@ while 1:
       collided = False
     if collided == True:
       msg1 = "0,0;|0,0,0,0,0"
-      f = open("New/snakecoordinates/"+c+".txt","w")
+      f = open("snakecoordinates/"+c+".txt","w")
       f.write(msg1)
       f.close()
       delivermsg = "dead"
     else:
-      f = open("New/snakecoordinates/"+c+".txt","w")
+      f = open("snakecoordinates/"+c+".txt","w")
       f.write(msg1)
       f.close()
       for i in range(5):
         if i!=int(c):
-              f = open("New/snakecoordinates/"+str(i)+".txt","r")
+              f = open("snakecoordinates/"+str(i)+".txt","r")
               delivermsg = delivermsg + f.read() + "\n"
               f.close()
     print('3')            
