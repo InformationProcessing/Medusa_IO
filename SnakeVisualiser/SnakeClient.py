@@ -70,7 +70,7 @@ def calculate_score_table(other_players, client_name):
 
 def sendCoord():
     global client_port, wefoundfood, server_port, game_over
-    msg = ""
+    msg = username + "|"
     for i in range(len(player.snakeblockscoordX)):
         msg += str(player.snakeblockscoordX[i]) + "," + str(player.snakeblockscoordY[i]) + ";"
     msg = msg + "|" + str(_x) + "," + str(_y) + "," + str(_r) + "," + str(_j) + "," + str(wefoundfood)
@@ -196,7 +196,7 @@ def start_game(_server_ip, _server_port, _client_port, _username):
     server_ip = _server_ip
     server_port = _server_port
     client_port = _client_port
-    username = username
+    username = _username
 
     for child in root.winfo_children():
         child.destroy()

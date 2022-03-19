@@ -273,7 +273,7 @@ def init_game():
 
     canvas = tk.Canvas(game_frame, width=CANVAS_WIDTH + 1, height=CANVAS_HEIGHT + 1, highlightthickness=10,
                        highlightbackground="black")
-    bg = PhotoImage(file="assets/map4.png")
+    bg = PhotoImage(file="SnakeVisualiser/assets/map4.png")
     canvas.create_image(0, 0, image=bg, anchor="nw")
     canvas.pack()
 

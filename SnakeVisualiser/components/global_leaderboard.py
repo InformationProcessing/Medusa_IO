@@ -1,6 +1,6 @@
 from tkinter import *
 from tkinter import ttk
-from SnakeVisualiser.components.scrollable_frame import ScrollableFrame
+from components.scrollable_frame import ScrollableFrame
 
 
 class GlobalLeaderboard:

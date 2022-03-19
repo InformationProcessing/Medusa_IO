@@ -6,8 +6,8 @@ client_port = int(input("Enter Client Port To Use: "))
 client_number = input("Enter Client Number (0-5): ")
 
 
-def gethead(strng):
-    head = strng.split(";")[0]
+def gethead(msg):
+    head = msg.split("|")[1].split(";")[0]
     return [int(head.split(',')[0]), int(head.split(',')[1])]
 
 
@@ -56,11 +56,14 @@ while 1:
     cmsg, cadd = welcome_socket.recvfrom(2048)
     counter = counter + 1
     msg1 = cmsg.decode()
+    name = msg1.split("|")[0]
     msg_to_send = ""
     if checkcollision(gethead(msg1), converttoarray(getcoordsofallsnake())):
         collided = True
-    if collided or counter > 100:
-        msg1 = "0,0;|0,0,0,0,0"
+    if collided:
+        print("msg1: " + msg1)
+        print("name: " + name)
+        msg1 = name + "|0,0;|0,0,0,0,0"
         f = open("snakecoordinates/" + client_number + ".txt", "w")
         f.write(msg1)
         f.close()

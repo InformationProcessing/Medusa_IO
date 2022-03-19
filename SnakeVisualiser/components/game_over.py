@@ -1,7 +1,7 @@
 from tkinter import *
 from tkinter import ttk
-from SnakeVisualiser.components.global_leaderboard import GlobalLeaderboard
-from SnakeVisualiser.components.database_connection import update_score
+from components.global_leaderboard import GlobalLeaderboard
+from components.database_connection import update_score
 
 
 #TODO: detect that the string is cut and request the new message
