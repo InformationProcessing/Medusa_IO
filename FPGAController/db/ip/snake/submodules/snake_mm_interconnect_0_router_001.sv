@@ -47,12 +47,12 @@ module snake_mm_interconnect_0_router_001_default_decode
      parameter DEFAULT_CHANNEL = 1,
                DEFAULT_WR_CHANNEL = -1,
                DEFAULT_RD_CHANNEL = -1,
-               DEFAULT_DESTID = 12 
+               DEFAULT_DESTID = 14 
    )
   (output [91 - 87 : 0] default_destination_id,
-   output [19-1 : 0] default_wr_channel,
-   output [19-1 : 0] default_rd_channel,
-   output [19-1 : 0] default_src_channel
+   output [23-1 : 0] default_wr_channel,
+   output [23-1 : 0] default_rd_channel,
+   output [23-1 : 0] default_src_channel
   );
 
   assign default_destination_id = 
@@ -63,7 +63,7 @@ module snake_mm_interconnect_0_router_001_default_decode
       assign default_src_channel = '0;
     end
     else begin : default_channel_assignment
-      assign default_src_channel = 19'b1 << DEFAULT_CHANNEL;
+      assign default_src_channel = 23'b1 << DEFAULT_CHANNEL;
     end
   endgenerate
 
@@ -73,8 +73,8 @@ module snake_mm_interconnect_0_router_001_default_decode
       assign default_rd_channel = '0;
     end
     else begin : default_rw_channel_assignment
-      assign default_wr_channel = 19'b1 << DEFAULT_WR_CHANNEL;
-      assign default_rd_channel = 19'b1 << DEFAULT_RD_CHANNEL;
+      assign default_wr_channel = 23'b1 << DEFAULT_WR_CHANNEL;
+      assign default_rd_channel = 23'b1 << DEFAULT_RD_CHANNEL;
     end
   endgenerate
 
@@ -103,7 +103,7 @@ module snake_mm_interconnect_0_router_001
     // -------------------
     output                          src_valid,
     output reg [105-1    : 0] src_data,
-    output reg [19-1 : 0] src_channel,
+    output reg [23-1 : 0] src_channel,
     output                          src_startofpacket,
     output                          src_endofpacket,
     input                           src_ready
@@ -119,7 +119,7 @@ module snake_mm_interconnect_0_router_001
     localparam PKT_PROTECTION_H = 95;
     localparam PKT_PROTECTION_L = 93;
     localparam ST_DATA_W = 105;
-    localparam ST_CHANNEL_W = 19;
+    localparam ST_CHANNEL_W = 23;
     localparam DECODER_TYPE = 0;
 
     localparam PKT_TRANS_WRITE = 63;
@@ -165,7 +165,7 @@ module snake_mm_interconnect_0_router_001
     assign src_startofpacket = sink_startofpacket;
     assign src_endofpacket   = sink_endofpacket;
     wire [PKT_DEST_ID_W-1:0] default_destid;
-    wire [19-1 : 0] default_src_channel;
+    wire [23-1 : 0] default_src_channel;
 
 
 
@@ -191,14 +191,14 @@ module snake_mm_interconnect_0_router_001
 
     // ( 0x800000 .. 0x1000000 )
     if ( {address[RG:PAD0],{PAD0{1'b0}}} == 25'h800000   ) begin
-            src_channel = 19'b10;
-            src_data[PKT_DEST_ID_H:PKT_DEST_ID_L] = 12;
+            src_channel = 23'b10;
+            src_data[PKT_DEST_ID_H:PKT_DEST_ID_L] = 14;
     end
 
     // ( 0x1000800 .. 0x1001000 )
     if ( {address[RG:PAD1],{PAD1{1'b0}}} == 25'h1000800   ) begin
-            src_channel = 19'b01;
-            src_data[PKT_DEST_ID_H:PKT_DEST_ID_L] = 3;
+            src_channel = 23'b01;
+            src_data[PKT_DEST_ID_H:PKT_DEST_ID_L] = 4;
     end
 
 end

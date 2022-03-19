@@ -7,6 +7,7 @@ READ_ACCRAW_COMMAND = "R ACCRAW"
 READ_BUTTON_COMMAND = "R BUTTON"
 READ_SWITCH_COMMAND = "R SWITCH"
 WRITE_HEXTEXT = "R HEXTEXT"
+WRITE_LED = "R LEDWRITE"
 WRITE_LEDFLASH = "R LEDFLASH"
 
 ALL_REGEX = r"K ACCPROC X([\da-fA-F]+)Y([\da-fA-F]+)Z([\da-fA-F]+) ([\da-fA-F]+)\nK ACCRAW X([\da-fA-F]+)Y([\da-fA-F]+)Z([\da-fA-F]+) ([\da-fA-F]+)\nK BUTTON ([\da-fA-F]+) ([\da-fA-F]+)\nK SWITCH ([\da-fA-F]+) ([\da-fA-F]+)"
@@ -15,7 +16,8 @@ ACCRAW_REGEX = r"K ACCRAW X([\da-fA-F]+)Y([\da-fA-F]+)Z([\da-fA-F]+) ([\da-fA-F]
 BUTTON_REGEX = r"K BUTTON ([\da-fA-F]+) ([\da-fA-F])"
 SWITCH_REGEX = r"K SWITCH ([\da-fA-F]+) ([\da-fA-F])"
 HEXTEXT_REGEX = r"K HEXTEXT ([\da-fA-F]+)"
-LEDFLASH_REGEX = r"K LEDFLASH ([\da-fA-F]+)"
+LEDWRITE_REGEX = r"K LEDWRITE ([\da-fA-F]+)"
+LEDFLASH_REGEX = r"K LEDWRITE ([\da-fA-F]+)"
 
 
 class FPGACommunicator:
@@ -26,7 +28,6 @@ class FPGACommunicator:
 
         except Exception as e:
             self.initialized = False
-            print(e)
 
     def __get_command_output(self, command):
         if hasattr(self, 'ju'):
@@ -56,7 +57,7 @@ class FPGACommunicator:
         return response
 
     def __write_request(self, command, value, regex):
-        final_command = command + " " + str(value) + "\n"
+        final_command = command + " " + str(value)
         fpga_out = self.__get_command_output(final_command)
         re_match = re.match(regex, fpga_out)
         if re_match is not None:
@@ -64,7 +65,7 @@ class FPGACommunicator:
         return -1
 
     def read_all(self):
-        fpga_out = self.__get_command_output(READ_ALL_COMMAND + "\n")
+        fpga_out = self.__get_command_output(READ_ALL_COMMAND)
         re_match = re.match(ALL_REGEX, fpga_out)
         response = {
             "ACCPROC": {"x": 0, "y": 0, "z": 0, "error_code": -1},
@@ -103,6 +104,9 @@ class FPGACommunicator:
 
     def write_hextext(self, value):
         return self.__write_request(WRITE_HEXTEXT, value, HEXTEXT_REGEX)
+
+    def write_led(self, value):
+        return self.__write_request(WRITE_LED, value, LEDWRITE_REGEX)
 
     def write_ledflash(self, value):
         return self.__write_request(WRITE_LEDFLASH, value, LEDFLASH_REGEX)

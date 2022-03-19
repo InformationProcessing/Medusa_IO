@@ -31,4 +31,4 @@
 *.out
 *.app
 
-SnakeVisualier/__pycache__
+SnakeVisualier/components/__pycache__
