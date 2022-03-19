@@ -1,6 +1,6 @@
 import tkinter as tk
 from tkinter import ttk
-from SnakeVisualiser.components.score_component import ScrollableFrame
+from SnakeVisualiser.components.score import ScrollableFrame
 
 root = tk.Tk()
 

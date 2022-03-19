@@ -1,8 +1,8 @@
 import tkinter as tk
 from tkinter import ttk
 from tkinter import *
-from components.score_component import Score
-from components.game_over_component import GameOver
+from components.score import Score
+from components.game_over import GameOver
 import random
 
 root = tk.Tk()

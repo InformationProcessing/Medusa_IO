@@ -59,7 +59,6 @@ class FPGACommunicator:
     def __write_request(self, command, value, regex):
         final_command = command + " " + str(value)
         fpga_out = self.__get_command_output(final_command)
-        print("fpga_out: " + fpga_out)
         re_match = re.match(regex, fpga_out)
         if re_match is not None:
             return int(re_match.group(1), 16)
