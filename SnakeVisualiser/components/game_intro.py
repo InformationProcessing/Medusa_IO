@@ -6,10 +6,10 @@ class GameIntro:
     def __init__(self, root, start_game):
         self.root = root
         self.start_game = start_game
-        self.main_frame = ttk.Frame(root, padding="3 3 12 12")
+        self.main_frame = ttk.Frame(root, padding="3 300 12 12")
         self.main_frame.grid(row=0, column=0)
-        ttk.Label(self.main_frame, text="Medusa IO").grid(row=0)
-        self.form_frame = ttk.Frame(self.main_frame, padding="3 3 12 12")
+        ttk.Label(self.main_frame, text="Medusa IO", font=("Arial",30)).grid(row=0)
+        self.form_frame = ttk.Frame(self.main_frame, padding="500 12 500 12")
         self.form_frame.grid(row=1, column=0)
 
         ttk.Label(self.form_frame, text="Server IP:").grid(row=0)
@@ -27,7 +27,7 @@ class GameIntro:
         self.client_port_entry.grid(row=2, column=1)
         self.username_entry.grid(row=3, column=1)
 
-        self.play_button = Button(self.main_frame, text="Play!", command=self.play_button_pressed)
+        self.play_button = Button(self.main_frame, text="Play!", command=self.play_button_pressed, width=10)
         self.play_button.grid(column=0, row=2, sticky=(N, W, E, S))
 
     def play_button_pressed(self):
