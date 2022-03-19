@@ -15,7 +15,7 @@ def getcoordsofallsnake():
   strng = ""
   for i in range(5):
     if i!=int(c):
-      f = open("SnakeVisualiser/snakecoordinates/"+str(i)+".txt","r")
+      f = open("New/snakecoordinates/"+str(i)+".txt","r")
       coords = f.read().split("|")
       strng = strng + coords[0]
   
@@ -40,6 +40,7 @@ time1 = ''
 
 server_port = a
 welcome_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+
 welcome_socket.bind(('',server_port))
 
 c1add = (d,b)#146.169.165.26
@@ -49,6 +50,8 @@ gamestate = 'none'
 result = ""
 collided = False
 
+
+
 while 1:
     print('1')
     cmsg, cadd = welcome_socket.recvfrom(1024)
@@ -56,20 +59,20 @@ while 1:
     msg1 = cmsg.decode()
     delivermsg = ""
     if checkcollision(gethead(msg1),converttoarray(getcoordsofallsnake())):
-      collided = True
+      collided = False
     if collided == True:
       msg1 = "0,0;|0,0,0,0,0"
-      f = open("SnakeVisualiser/snakecoordinates/"+c+".txt","w")
+      f = open("snakecoordinates/"+c+".txt","w")
       f.write(msg1)
       f.close()
       delivermsg = "dead"
     else:
-      f = open("SnakeVisualiser/snakecoordinates/"+c+".txt","w")
+      f = open("snakecoordinates/"+c+".txt","w")
       f.write(msg1)
       f.close()
       for i in range(5):
         if i!=int(c):
-              f = open("SnakeVisualiser/snakecoordinates/"+str(i)+".txt","r")
+              f = open("snakecoordinates/"+str(i)+".txt","r")
               delivermsg = delivermsg + f.read() + "\n"
               f.close()
     print('3')            

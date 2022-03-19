@@ -22,11 +22,6 @@ clock = Label(SnakeGameMap.root)
 otherplayer = []
 otherplayerblocks=[]
 
-T = tk.Text(SnakeGameMap.root, height=2, width=15)
-T.pack()
-T.insert(tk.END, "Client 1")
-T.place(x = 350,y = 35)
-
 def exit_handler():
       msg = "0,0;|0,0,0,0,0"
       client_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
@@ -47,7 +42,8 @@ def mergearray(array1,array2):
 
 player = SnakeGameMap.player
 # playerShadow = SnakeGameMap.snakeShadow
-food = SnakeGameMap.food
+food = SnakeGameMap.sharedFood
+localFood = SnakeGameMap.localFood
 wefoundfood = 0
 _x = 0
 _y = 0
@@ -83,9 +79,9 @@ def sendCoord():
             tempfood = foodinfo[i].split(",")
             if tempfood[4]=='1':
                   global food
-                  food.delete(int(tempfood[3]))
-                  food.generate(int(tempfood[0]), int(tempfood[1]), int(tempfood[2]))
-                  food.generate(int(tempfood[0]), int(tempfood[1]), int(tempfood[2]))
+                  food.deleteShared()
+                  food.generateShared(int(tempfood[0]), int(tempfood[1]))
+                  food.generateShared(int(tempfood[0]), int(tempfood[1]))
       
       return message
 
@@ -99,7 +95,7 @@ def updateothers():
       global otherplayerblocks
       for i in range(len(otherplayer)):
               for j in range(len(otherplayer[i])):
-                    otherplayerblocks.append(SnakeGameMap.canvas.create_rectangle(int(otherplayer[i][j][0]),int(otherplayer[i][j][1]),int(otherplayer[i][j][0])+10,int(otherplayer[i][j][1])+10,fill='violetred1'))
+                    otherplayerblocks.append(SnakeGameMap.canvas.create_rectangle(int(otherplayer[i][j][0]),int(otherplayer[i][j][1]),int(otherplayer[i][j][0])+10,int(otherplayer[i][j][1])+10,fill='#C7FFFD'))
       
 
 def tick(player,found):
@@ -107,6 +103,7 @@ def tick(player,found):
     deleteblocks()    
     global time1
     global food
+    global localFood
     global otherplayer
     global otherplayerblocks
     global wefoundfood
@@ -126,32 +123,38 @@ def tick(player,found):
             time1 = time2
             clock.config(text=time2)
     player.movesnake()
-#     playerShadow.movesnake()
 #     if player.shadowCreated == True:
-#           player.moveShadow()
+#         playerShadow.moveShadow()
     
     updateothers()
     
-    for j in range (len(food.power_ups)):
-        if (player.x == food.power_upsX[j]) and (player.y == food.power_upsY[j]):
+    if (abs(player.x - food.shared_power_upX)<food.radius and abs(player.y - food.shared_power_upY)<food.radius):
             player.adjustspeed(1)
-            food.powerupType(player,food.power_ups[j][1])
-            clock.after(100,lambda: tick(player,FALSE)) 
-            food.delete(j)
+            food.powerupType(player,"Ultra-Power")
+            food.deleteShared()
             _x = random.randrange(30,500,10)
             _y = random.randrange(20,500,10)
-            _r = 4
-            _j = j
-            food.generate(_x,_y,_r)
-            food.generate(_x,_y,_r)
-            found = TRUE
+            food.generateShared(_x,_y)
             wefoundfood = 1
+            
+      
+    for i in range (0, len(localFood.power_ups)):
+        if (player.x == localFood.power_upsX[i]) and (player.y == localFood.power_upsY[i]):
+            player.adjustspeed(1)
+            localFood.powerupType(player,localFood.power_ups[i][1])
+            clock.after(200,lambda: tick(player,FALSE)) 
+            localFood.delete(i)
+            localFood.generate()
+            found = TRUE
             break
 
-    if found == FALSE : clock.after(int(30/player.getspeed()),lambda: tick(player,FALSE))
+    if found == FALSE : clock.after(int(100/player.getspeed()),lambda: tick(player,FALSE))
 
 
 
 SnakeGameMap.root.bind("<Key>",SnakeGameMap.kpress)
-tick(player,FALSE)
+try:
+      tick(player,FALSE)
+except:
+      print("error, try - catch")
 SnakeGameMap.root.mainloop()
