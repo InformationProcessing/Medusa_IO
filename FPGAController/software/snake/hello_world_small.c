@@ -42,18 +42,11 @@ int led_val = 0;
 alt_up_accelerometer_spi_dev * acc_dev;
 
 //Buffer typing & coeffs
-#define RING_T alt_32
 #define RING_SIZE 59
 double h[] = {0.0046, 0.0074, -0.0024, -0.0071, 0.0033, 0.0001, -0.0094, 0.0040, 0.0044, -0.0133, 0.0030, 0.0114, -0.0179,
 		-0.0011, 0.0223, -0.0225, -0.0109, 0.0396, -0.0263, -0.0338, 0.0752, -0.0289, -0.1204, 0.2879, 0.6369, 0.2879, -0.1204,
 		-0.0289, 0.0752, -0.0338, -0.0263, 0.0396, -0.0109, -0.0225, 0.0223, -0.0011, -0.0179, 0.0114, 0.0030, -0.0133, 0.0044,
 		0.0040, -0.0094, 0.0001, 0.0033, -0.0071, -0.0024, 0.0074, 0.0046};
-
-
-//X,Y,Z accelerometer buffers
-struct ring_buffer *x_buf;
-struct ring_buffer *y_buf;
-struct ring_buffer *z_buf;
 
 //Latency timer
 int debug = 0;
@@ -61,86 +54,32 @@ alt_64 latency;
 
 //Fixed point related declarations
 #define FIXED alt_32
-alt_32* hfixed = NULL;
 #define POINT 11
 alt_32 quality = 50;
 alt_32 norm_const;
 
 //Forward declarations
-
-void timer_init(void * isr);
 void throw_code(char* regname, int code);
 void read_request();
 void to_hex(alt_32 val, int length, char* buf );
 void parse_request(char* request);
 
-
 void hw_push_value(alt_32 xvalue, alt_32 yvalue);
 void hw_push_coefficients(alt_32 xvalue, alt_32 yvalue);
 alt_32 hw_x_read();
 alt_32 hw_y_read();
-//int write_to_disp(char* str, int offset);
 
 
 //Ring buffer
 //---------------------------------------------------------------
-struct ring_buffer {
-	int size;
-	int next_free;
-	RING_T* values;
-};
 
-//Buffer functions
-void ring_buf_push(struct ring_buffer* buf, RING_T in){
-	if (buf->next_free < 0){
-		buf->next_free = buf ->size-1;
-	}
-	(buf->values)[buf->next_free] = in;
-	(buf->next_free)--;
-}
-
-RING_T ring_buf_read(struct ring_buffer* buf, RING_T idx){
-	int mapped_idx;
-	if (buf->next_free+1+idx >= buf->size){
-		mapped_idx = buf->next_free+1+idx - buf->size;
-	}
-	else {
-		mapped_idx = buf->next_free+1+idx;
-	}
-
-	return buf->values[mapped_idx];
-}
-
-alt_32 convolve_fixed(struct ring_buffer* buf, alt_32 coefficients[]  ){
-
-	//Disabling interrupts prevents accelerometer buffers being overwritten while value is calculated
-	//alt_irq_context state = alt_irq_disable_all ();
-	alt_irq_disable(TIMER_IRQ);
-
-	alt_32 sum = 0;
-	for(int i = 0; i < quality; i ++){
-		sum += (coefficients[i]*ring_buf_read(buf, i)>>POINT);
-	}
-
-	//Re-enable interrupts from state
-	//alt_irq_enable_all(state);
-	alt_irq_enable(TIMER_IRQ);
-	return ((sum*norm_const)>>POINT);
-
-}
 void coeffs_to_fixed(){
 
 	hw_reset();
 
-	if (hfixed == NULL){
-		hfixed = malloc(RING_SIZE * sizeof(FIXED));
-	}
-	else{
-		memset(hfixed, 0, RING_SIZE);
-	}
-
 	double sum = 0;
 	int real_index = 0;
+	alt_32 temp;
 
 	//Multiply to shift for fixed point
 	int scalefactor = 1 << POINT;
@@ -153,8 +92,8 @@ void coeffs_to_fixed(){
 
 	for(int i = lower_bound; i< upper_bound; i++){
 
-		hfixed[real_index]= (FIXED)(h[i]*scalefactor);
-		hw_push_coefficients(hfixed[real_index], hfixed[real_index]);
+		temp = (FIXED)(h[i]*scalefactor);
+		hw_push_coefficients(temp, temp);
 		sum += h[i];
 
 		//Index calculation for hselect
@@ -169,8 +108,16 @@ void coeffs_to_fixed(){
 	 hw_push_coefficients(norm_const, norm_const);
 }
 
+int second_letter_to_hex(char in){
+	switch(in){
+		case 'M':
+			return 0b10101011;
+	};
+	return 0b11111111;
+}
 
-int letter_to_hex(char in){
+
+int letter_to_hex(char in, int* second){
 
 	switch(in){
 		case '0':
@@ -217,6 +164,9 @@ int letter_to_hex(char in){
 			return 0b10001010;
 		case 'L':
 			return 0b11000111;
+		case 'M':
+			*second = 1;
+			return 0b10101011;
 		case 'N':
 			return 0b10101011;
 		case 'O':
@@ -250,15 +200,61 @@ int letter_to_hex(char in){
 	return 0;
 }
 
+void write_char(alt_32 code, int index){
+	if (index == 5){
+		IOWR_ALTERA_AVALON_PIO_DATA(HEX5_BASE, code);
+	} else if (index == 4){
+		IOWR_ALTERA_AVALON_PIO_DATA(HEX4_BASE, code);
+	}else if (index == 3){
+		IOWR_ALTERA_AVALON_PIO_DATA(HEX3_BASE, code);
+	}else if (index == 2){
+		IOWR_ALTERA_AVALON_PIO_DATA(HEX2_BASE, code);
+	}else if (index == 1){
+		IOWR_ALTERA_AVALON_PIO_DATA(HEX1_BASE, code);
+	}else if (index == 0){
+		IOWR_ALTERA_AVALON_PIO_DATA(HEX0_BASE, code);
+	}
+}
 //Display processing
 void write_to_disp(char* str, int offset){
+	int second = 0;
+	int code;
+	int char_offset = 0;
+	int flag = 0;
 
-	IOWR_ALTERA_AVALON_PIO_DATA(HEX5_BASE, letter_to_hex(str[offset]));
-	IOWR_ALTERA_AVALON_PIO_DATA(HEX4_BASE, letter_to_hex(str[offset+1]));
-	IOWR_ALTERA_AVALON_PIO_DATA(HEX3_BASE, letter_to_hex(str[offset+2]));
-	IOWR_ALTERA_AVALON_PIO_DATA(HEX2_BASE, letter_to_hex(str[offset+3]));
-	IOWR_ALTERA_AVALON_PIO_DATA(HEX1_BASE, letter_to_hex(str[offset+4]));
-	IOWR_ALTERA_AVALON_PIO_DATA(HEX0_BASE, letter_to_hex(str[offset+5]));
+	for(int i = 5; i>=0; i--){
+		if (second){
+			code = second_letter_to_hex(str[offset+char_offset]);
+			write_char(code, i);
+			second = 0;
+			char_offset++;
+		}else{
+			second = 0;
+			if(offset !=0 && char_offset == 0 && !flag){
+				letter_to_hex(str[offset-1], &second);
+				if(second){
+					code = second_letter_to_hex(str[offset-1]);
+					write_char(code, i);
+					second = 0;
+					flag = 1;
+				}else{
+					second = 0;
+					code = letter_to_hex(str[offset+char_offset], &second);
+					write_char(code, i);
+
+					if(second == 0){char_offset++;}
+				}
+
+			}else{
+				second = 0;
+				flag = 0;
+				code = letter_to_hex(str[offset+char_offset], &second);
+				write_char(code, i);
+
+				if(second == 0){char_offset++;}
+			}
+		}
+	}
 }
 
 
@@ -327,7 +323,7 @@ void parse_request(char* request){
 		alt_32 x,y,z;
 			x = hw_x_read();
 			y = hw_y_read();
-			z = convolve_fixed(z_buf, hfixed);
+			alt_up_accelerometer_spi_read_z_axis(acc_dev, & z);
 
 			to_hex(x, 3, hexbuffers[0]);
 			to_hex(y, 3, hexbuffers[1]);
@@ -412,6 +408,17 @@ void parse_request(char* request){
 		matched = 1;
 		memset(disp_buf, 0,(DISP_BUF_SIZE) * sizeof(char));
 		strncpy(disp_buf, tokens[2], DISP_BUF_SIZE);
+		disp_length = strlen(disp_buf);
+		if(strlen(disp_buf)>6){
+
+			memmove((disp_buf+5),disp_buf,disp_length);
+			disp_buf[0] = '_';
+			disp_buf[1] = '_';
+			disp_buf[2] = '_';
+			disp_buf[3] = '_';
+			disp_buf[4] = '_';
+			strcat(disp_buf, &"_____");
+		}
 		disp_offset = 0;
 		disp_length = strlen(disp_buf);
 
@@ -479,9 +486,6 @@ void parse_request(char* request){
 
 
 void acc_timer_init(void * isr) {
-	//Calculate necessary cycles for 1 ms period
-//	alt_32 freq = 1000;
-//	alt_32 period = alt_timestamp_freq()/freq;
 
     IOWR_ALTERA_AVALON_TIMER_CONTROL(ACC_TIMER_BASE, 0x0003);
     IOWR_ALTERA_AVALON_TIMER_STATUS(ACC_TIMER_BASE, 0);
@@ -496,15 +500,13 @@ void acc_timer_isr() {
     IOWR_ALTERA_AVALON_TIMER_STATUS(ACC_TIMER_BASE, 0);
 
 
-    alt_32 x,y,z;
+    alt_32 x,y;
 
     alt_up_accelerometer_spi_read_x_axis(acc_dev, & x);
 	alt_up_accelerometer_spi_read_y_axis(acc_dev, & y);
-	alt_up_accelerometer_spi_read_z_axis(acc_dev, & z);
 
 	hw_push_value(x,y);
 
-	ring_buf_push(z_buf, z);
 
 	//iNTERRUPT FREQUENCY MONITORING
 	static int count;
@@ -519,11 +521,6 @@ void acc_timer_isr() {
 }
 
 void disp_timer_init(void * isr) {
-	//Calculate necessary cycles for 1 ms period
-//	alt_32 freq = 5;
-//	alt_32 period = alt_timestamp_freq()/freq;
-
-
     IOWR_ALTERA_AVALON_TIMER_CONTROL(HEX_TIMER_BASE, 0x0003);
     IOWR_ALTERA_AVALON_TIMER_STATUS(HEX_TIMER_BASE, 0);
     IOWR_ALTERA_AVALON_TIMER_PERIODL(HEX_TIMER_BASE, 0x5a00);
@@ -549,11 +546,6 @@ void disp_timer_isr() {
 }
 
 void led_timer_init(void * isr) {
-	//Calculate necessary cycles for 1 ms period
-//	alt_32 freq = 5;
-//	alt_32 period = alt_timestamp_freq()/freq;
-
-
     IOWR_ALTERA_AVALON_TIMER_CONTROL(TIMER_BASE, 0x0003);
     IOWR_ALTERA_AVALON_TIMER_STATUS(TIMER_BASE, 0);
     IOWR_ALTERA_AVALON_TIMER_PERIODL(TIMER_BASE, 0x5d40);
@@ -687,22 +679,6 @@ int main() {
 	hexbuffers[1] = malloc( HEX_BUF_SIZE * sizeof(char));
 	hexbuffers[2] = malloc( HEX_BUF_SIZE * sizeof(char));
 
-	//Initialize accelerometer buffers
-	struct ring_buffer x,y,z;
-
-	x = (struct ring_buffer){.size = RING_SIZE, .next_free = 0, .values = 0};
-	y = (struct ring_buffer){.size = RING_SIZE, .next_free = 0, .values = 0};
-	z = (struct ring_buffer){.size = RING_SIZE, .next_free = 0, .values = 0};
-	x_buf = &x;
-	y_buf = &y;
-	z_buf = &z;
-
-	x_buf->values = malloc((RING_SIZE) * sizeof(RING_T));
-	memset(x_buf->values, 0,(RING_SIZE) * sizeof(RING_T));
-	y_buf->values = malloc((RING_SIZE) * sizeof(RING_T));
-	memset(y_buf->values, 0,(RING_SIZE) * sizeof(RING_T));
-	z_buf->values = malloc((RING_SIZE) * sizeof(RING_T));
-	memset(x_buf->values, 0,(RING_SIZE) * sizeof(RING_T));
 
 	//Display buffer
 	disp_buf  = malloc((DISP_BUF_SIZE) * sizeof(char));
@@ -710,9 +686,6 @@ int main() {
 
 	//Accelerometer initialization
 	acc_dev = alt_up_accelerometer_spi_open_dev("/dev/accelerometer_spi");
-
-
-	//to_hex(16,3,hexbuffers[0]);
 
 
 	//1kHz timer routine initialization
