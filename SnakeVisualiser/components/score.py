@@ -61,6 +61,8 @@ class Score:
                 scores.insert(i, player_record)
                 inserted = True
                 break
+            else:
+                scores[i]["score"]
 
         if not inserted:
             scores.insert(len(scores), player_record)

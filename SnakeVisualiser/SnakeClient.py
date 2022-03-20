@@ -57,7 +57,7 @@ def calculate_score_table(other_players, client_name):
     score_table = []
 
     for other_player in other_players:
-        score = len(other_player["blocks"].split(";"))
+        score = len(other_player["blocks"].split(";")) - 10
         score_table.append({"player": other_player["name"], "score": score})
 
     return score_table

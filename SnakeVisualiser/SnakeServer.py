@@ -97,6 +97,8 @@ while 1:
         if check_collision(head_cords, convert_to_int_blocks(snakes_cords_str)):
             msg1 = name + "|0,0;|0,0,0,0,0"
             f = open("snakecoordinates/" + client_number + ".txt", "w")
+            while f.closed:
+                f = open("snakecoordinates/" + client_number + ".txt", "w")
             f.write(msg1)
             f.close()
             msg_to_send = "dead"
@@ -104,6 +106,8 @@ while 1:
             client_info = None
             try:
                 f = open("snakecoordinates/" + client_number + ".txt", "w")
+                while f.closed:
+                    f = open("snakecoordinates/" + client_number + ".txt", "w")
                 f.write(msg1)
                 f.close()
                 for i in range(6):
@@ -118,6 +122,9 @@ while 1:
                         f.close()
             except Exception as error:
                 print("Error in else: " + str(error) + " client info: " + str(client_info))
-        welcome_socket.sendto(msg_to_send.encode(), c1add)
+        try:
+            welcome_socket.sendto(msg_to_send.encode(), c1add)
+        except Exception as error:
+            print("Error in sendto socket: " + str(error))
     except Exception as error:
         print("Error in the tick: " + str(error))
