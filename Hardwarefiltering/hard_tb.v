@@ -13,6 +13,7 @@ real coeffs [63:0];
 int samples [63:0];
 int length = 64;
 real reference;
+real scaling;
 
 
 initial begin
@@ -50,6 +51,16 @@ initial begin
         #1;
         $display("coefifcients[%d] = %d / %7.5f", i, int'(in), coeffs[i]);
     end
+
+    scaling = real'($random%511)/511/2;
+    //Load scaling factor
+    clk_coeff = 0;
+    //Random coefficient
+    in = int'(scaling *(1<<11));
+    #1;
+    clk_coeff = 1;
+    #1;
+
     clk_coeff = 0;
 
     //Populate random data array
@@ -63,6 +74,7 @@ initial begin
     for(int i = 0; i< length; i = i + 1) begin
         reference = reference + samples[i]*coeffs[i];
     end
+    reference = reference * scaling;
 
     //Load samples
     for (int i = 0; i< length; i = i + 1) begin
@@ -78,12 +90,15 @@ initial begin
 
     $display("actual = %d, reference %d", int'(out), int'(reference));
     $display("%d", (int'(out) < 0 ));
+    if (reference > 511 || reference < -511)begin
+        $display("Overflow in random test");
+    end else begin
     assert ((int'(out) <= int'(reference + 2)) && (int'(out) >= int'(reference - 2))) begin
             $display("Correct answer");
         end else begin
             $fatal;
         end
-
+    end
     end
     $display("passed all tests");
     $finish;

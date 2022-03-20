@@ -126,13 +126,22 @@ module DE10_LITE_Golden_Top(
 //=======================================================
 //  REG/WIRE declarations
 //=======================================================
-
+	logic [31:0] hard_inx;
+	logic [31:0] hard_outx;
+	logic [31:0] hard_iny;
+	logic [31:0] hard_outy;
+	logic [31:0] hard_inz;
+	logic [31:0] hard_outz;
+	logic [3:0] hard_control;
 
 
 
 //=======================================================
 //  Structural coding
 //=======================================================
+hard filterx(.reset(hard_control[2]), .clk_coeff(hard_control[1]), .clk_sample(hard_control[0]), .in(hard_inx), .out(hard_outx));
+hard filtery(.reset(hard_control[2]), .clk_coeff(hard_control[1]), .clk_sample(hard_control[0]), .in(hard_iny), .out(hard_outy));
+//hard filterz(.reset(hard_control[2]), .clk_coeff(hard_control[1]), .clk_sample(hard_control[0]), .in(hard_inz), .out(hard_outz));
 
 snake u0 (
         .clk_clk                           (MAX10_CLK2_50),                           //                        clk.clk
@@ -168,7 +177,18 @@ snake u0 (
 		.hex2_external_connection_export   (HEX2),   //   hex2_external_connection.export
 		.hex3_external_connection_export   (HEX3),   //   hex3_external_connection.export
 		.hex4_external_connection_export   (HEX4),   //   hex4_external_connection.export
-		.hex5_external_connection_export   (HEX5)    //   hex5_external_connection.export
+		.hex5_external_connection_export   (HEX5),    //   hex5_external_connection.export
+		
+
+		.hardware_clocks_external_connection_export         (hard_control),          //  hardware_clocks_external_connection.export
+		.hardware_in_x_external_connection_export           (hard_outx),           //    hardware_in_x_external_connection.export
+		.hardware_out_x_external_connection_export          (hard_inx),          //   hardware_out_x_external_connection.export
+		.hardware_in_y_external_connection_export           (hard_outy),           //    hardware_in_y_external_connection.export
+		.hardware_out_y_external_connection_export          (hard_iny),          //   hardware_out_y_external_connection.export
+		.hardware_in_z_external_connection_export           (hard_outz),           //    hardware_in_z_external_connection.export
+		.hardware_out_z_external_connection_export          (hard_inz)           //   hardware_out_z_external_connection.export
+	
 	 );
+	 
 
 endmodule

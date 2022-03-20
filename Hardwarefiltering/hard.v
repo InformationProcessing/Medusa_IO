@@ -7,7 +7,7 @@ module hard(
     output logic signed  [31:0] out
 );
 
-logic signed [31:0] coefficients [63:0];
+logic signed [31:0] coefficients [64:0];
 logic signed [31:0] samples [63:0];
 
 //Addition layers
@@ -17,10 +17,12 @@ logic signed[31:0] layer3 [15:0];
 logic signed [31:0] layer4 [7:0];
 logic signed [31:0] layer5 [3:0];
 logic signed [31:0] layer6 [1:0];
+logic signed [31:0] layer7 ;
+logic signed [31:0] scaled;
 
 logic [31:0] sample0, sample1, sample2, sample3;
 logic [31:0] coeff0, coeff1, coeff2, coeff3;
-logic [31:0] layer11, layer12, layer13, layer14, layer21, layer22, layer31;
+logic [31:0] layer11, layer12, layer13, layer14, layer21, layer22, layer31, scalecoeff, unscaledout;
 
 
 always @(posedge clk_coeff) begin
@@ -89,8 +91,9 @@ always @(posedge clk_coeff) begin
 		coefficients[61] <= 0;
 		coefficients[62] <= 0;
 		coefficients[63] <= 0;
+		coefficients[64] <= 0;
 end else begin
-    	coefficients[63] <= in;
+    	coefficients[64] <= in;
 		coefficients[0] <= coefficients[1];
 		coefficients[1] <= coefficients[2];
 		coefficients[2] <= coefficients[3];
@@ -154,6 +157,7 @@ end else begin
 		coefficients[60] <= coefficients[61];
 		coefficients[61] <= coefficients[62];
 		coefficients[62] <= coefficients[63];
+		coefficients[63] <= coefficients[64];
 end
 end
 
@@ -441,8 +445,11 @@ always @(*) begin
 	layer6[0] = layer5[0] + layer5[1];
 	layer6[1] = layer5[2] + layer5[3];
 
+    scalecoeff = coefficients[64];
 
-    out = (layer6[0] + layer6[1]) >>> 11;
+    layer7 = layer6[0] + layer6[1];
+    unscaledout = layer7>>>11;
+    out = (layer7*coefficients[64]) >>> 22;
 
     coeff0 = coefficients[60];
     coeff1 = coefficients[61];
