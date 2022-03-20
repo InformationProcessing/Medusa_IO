@@ -312,30 +312,6 @@ class powerup:
             snakeAnnimation(p, "shadow")
             clock.after(int(200 / player.getspeed()), lambda: snakeAnnimation(player, "return"))
 
-
-def snakeAnnimation(p, animation):
-    if animation == "grow":
-        for j in range(len(p.snake)):
-            # if j%2==0: p.snake[j].configure(fill="blue")
-            # else: p.snake[j].configure(fill="red")
-            p.snake[j].configure(fill="red")
-    elif animation == "ultra_speed":
-        for j in range(len(p.snake)):
-            p.snake[j].configure(bg="#FFAC00")
-    elif animation == "slow_down":
-        for j in range(len(p.snake)):
-            p.snake[j].configure(bg="#9D67FF")
-    elif animation == "shadow":
-        for j in range(len(p.snake)):
-            if j % 2 == 0:
-                p.snake[j].configure(bg="grey")
-            else:
-                p.snake[j].configure(bg="white")
-    elif animation == "return":
-        for j in range(len(p.snake)):
-            p.snake[j].configure(bg="#FF00B7")
-
-
 class SharedPowerup:
     shared_power_upX = 0
     shared_power_upY = 0
@@ -380,10 +356,26 @@ class SharedPowerup:
 def snakeAnnimation(p, animation):
     if animation == "grow":
         for j in range(len(p.snake)):
+            if j%2==0: p.snake[j].configure(bg="#90caf9")
+            else: p.snake[j].configure(bg="#e91e62")
+    elif animation == "ultra_speed":
+        for j in range(len(p.snake)):
+            p.snake[j].configure(bg="#FFAC00")
+    elif animation == "slow_down":
+        for j in range(len(p.snake)):
+            p.snake[j].configure(bg="#9D67FF")
+    elif animation == "shadow":
+        for j in range(len(p.snake)):
             if j % 2 == 0:
-                p.snake[j].configure(bg="blue")
+                p.snake[j].configure(bg="grey")
             else:
-                p.snake[j].configure(bg="red")
+                p.snake[j].configure(bg="white")
+    elif animation == "grow":
+            for j in range(len(p.snake)):
+                if j % 2 == 0:
+                    p.snake[j].configure(bg="blue")
+                else:
+                    p.snake[j].configure(bg="red")
     elif animation == "return":
         for j in range(len(p.snake)):
             p.snake[j].configure(bg="#FF00B7")

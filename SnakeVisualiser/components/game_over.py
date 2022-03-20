@@ -1,5 +1,6 @@
 from tkinter import *
 from tkinter import ttk
+from turtle import width
 from components.global_leaderboard import GlobalLeaderboard
 from components.database_connection import update_score
 
@@ -33,21 +34,26 @@ class GameOver:
     def __init__(self, root, username="", score=0):
         self.root = root
 
-        self.game_over_frame = ttk.Frame(root, padding="3 3 12 12")
-        self.game_over_frame.grid(column=0, row=0, sticky=(N, W, E, S))
-        root.columnconfigure(0, weight=1)
-        root.rowconfigure(0, weight=1)
+        self.game_over_frame = ttk.Frame(root, padding="300 100")
 
-        game_over_label = ttk.Label(self.game_over_frame, text="Game over!")
-        game_over_label.grid(column=1, row=1, sticky=(N, W, E))
+        self.game_over_frame.grid(row=0, column=0)
+
+        self.main_frame = ttk.Frame(root, padding="360 130 0 0")
+        self.main_frame.grid(row=0, column=0)
+        self.logo = PhotoImage(file='SnakeVisualiser/assets/medusaLOGO.png')
+        ttk.Label(self.main_frame, image=self.logo, background='white').grid(row=0)
+
+
+        game_over_label = ttk.Label(self.main_frame, text="Game over!", background='white', padding="100 10 5 10", font=("Arial", 12), justify='center')
+        game_over_label.grid(column=0, row=1, sticky=(N, W, E))
         game_over_label.grid_configure(padx=5, pady=5)
 
-        username_label = ttk.Label(self.game_over_frame, text=f"Your name: {username}")
-        username_label.grid(column=1, row=2, sticky=(N, W, E))
+        username_label = ttk.Label(self.main_frame, text=f"Your name: {username}",background='white', padding="100 10 5 10", font=("Arial", 12), justify='center')
+        username_label.grid(column=0, row=2, sticky=(N, W, E))
         username_label.grid_configure(padx=5, pady=5)
 
-        score_label = ttk.Label(self.game_over_frame, text=f"Your score: {score}")
-        score_label.grid(column=1, row=3, sticky=(N, W, E))
+        score_label = ttk.Label(self.main_frame, text=f"Your score: {score}",background='white', padding="100 10 5 10", font=("Arial", 12), justify='center')
+        score_label.grid(column=0, row=3, sticky=(N, W, E))
         score_label.grid_configure(padx=5, pady=5)
 
         received_response = update_score(username, score, 0)
@@ -63,12 +69,13 @@ class GameOver:
                 if 'highestscore' in score:
                     self.leaderboard_highest_score.append(score)
 
-        self.leader_board_button = Button(root, text="Show global leaderboard",
-                                          command=self.__show_global_leader_board)
-        self.leader_board_button.grid(column=0, row=2, sticky=(W, E, S))
-        self.exit_game_button = Button(root, text="Exit game & close window",
-                                            command=self.root.quit)
-        self.exit_game_button.grid(column=2, row=2, sticky=(W, E, S))
+        self.leader_board_button = Button(self.main_frame, text="Show global leaderboard",
+                                          command=self.__show_global_leader_board, width=20, font=("Arial", 10),
+                                          bg="#e91e62", border=2, pady=14)
+        self.leader_board_button.grid(column=0, row=4, sticky=(N, S), pady=10)
+        self.exit_game_button = Button(self.main_frame, text="Exit game & close window", font=("Arial", 10),
+                                            command=self.root.quit, bg="#90caf9", border=2, pady=10, padx=10, width=22)
+        self.exit_game_button.grid(column=1, row=4, sticky=( E, S))
 
     def __show_global_leader_board(self):
         for widget in self.root.winfo_children():

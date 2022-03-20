@@ -23,6 +23,11 @@ class Score:
         for child in self.score_frame.winfo_children():
             child.grid_configure(padx=5, pady=5)
 
+        self.exit_game_button = Button(self.score_frame, text="Exit game & close window",
+                                         font=("Arial", 10), command=self.root.quit,  bg="#90caf9",
+                                         border=2, pady=10)
+        self.exit_game_button.grid(column=0, row=2, sticky=(E, S))
+
     def __create_score_list(self, scores):
         for idx, score in enumerate(scores):
             label = ttk.Label(self.score_frame, text=f"{idx + 1}. {score['player']} - {score['score']}")
