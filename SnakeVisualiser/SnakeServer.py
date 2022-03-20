@@ -98,7 +98,7 @@ while 1:
             f = open("snakecoordinates/" + client_number + ".txt", "w")
             f.write(msg1)
             f.close()
-            for i in range(5):
+            for i in range(6):
                 if i != int(client_number):
                     f = open("snakecoordinates/" + str(i) + ".txt", "r")
                     client_info = f.read()

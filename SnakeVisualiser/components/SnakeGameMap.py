@@ -46,22 +46,47 @@ class Snake:
         self.y = ycord
         for i in range(10):
             self.initaddblock(i)
-            
-    def initaddblock(self,i):
-        self.moveblocks.append([0,0])
-        block=tk.Canvas(canvas,width=10, height=10, bd=0, highlightthickness=0.5, highlightbackground="#870083", relief='ridge', bg="#FF00B7")
+
+    def initaddblock(self, i):
+        self.moveblocks.append([0, 0])
+        block = tk.Canvas(canvas, width=10, height=10, bd=0, highlightthickness=0.5, highlightbackground="#870083",
+                          relief='ridge', bg="#FF00B7")
         block.place(x=710, y=710)
         self.snake.append(block)
         self.snakeblockscoordX.append(self.x)
-        self.snakeblockscoordY.append(self.y-i*10)
+        self.snakeblockscoordY.append(self.y - i * 10)
 
-    def addblock(self,i):
-        self.moveblocks.append([0,0])
-        block=tk.Canvas(canvas,width=10, height=10, bd=0, highlightthickness=0.5, highlightbackground="#870083", relief='ridge', bg="#FF00B7")
-        block.place(x=710, y=710)
-        self.snake.append(block)
-        self.snakeblockscoordX.append(710)
-        self.snakeblockscoordY.append(710)
+    def addblock(self, i):
+        for x in range(0, i):
+            self.moveblocks.append([0, 0])
+            x_coords = [self.snakeblockscoordX[len(self.snakeblockscoordX) - 2],
+                        self.snakeblockscoordX[len(self.snakeblockscoordX) - 1]]
+            y_coords = [self.snakeblockscoordY[len(self.snakeblockscoordY) - 2],
+                        self.snakeblockscoordY[len(self.snakeblockscoordY) - 1]]
+            new_x_cord = x_coords[1]
+            new_y_cord = y_coords[1]
+            if x_coords[0] == x_coords[1]:
+                if y_coords[0] < y_coords[1]:
+                    new_y_cord = y_coords[1] + 10
+                else:
+                    new_y_cord = y_coords[1] - 10
+            else:
+                if x_coords[0] < x_coords[1]:
+                    new_x_cord = x_coords[1] + 10
+                else:
+                    new_x_cord = x_coords[1] - 10
+
+            if new_y_cord < 0:
+                new_y_cord += 710
+            if new_x_cord < 0:
+                new_x_cord += 710
+
+            block = tk.Canvas(canvas, width=10, height=10, bd=0, highlightthickness=0.5, highlightbackground="#870083",
+                              relief='ridge', bg="#FF00B7")
+            block.place(x=new_x_cord, y=new_y_cord)
+            self.snake.append(block)
+            self.snakeblockscoordX.append(new_x_cord)
+            self.snakeblockscoordY.append(new_y_cord)
         # print("initialise: ", i, "----",self.snakeblockscoordX[i], "- ",self.snakeblockscoordY[i])
 
     def widen(self):
@@ -267,7 +292,7 @@ class powerup:
                 p.teleport(new_x, new_y, j)
                 new_x = new_x - 10
         elif type == "grow":
-            p.addblock(len(p.snake) + 1)
+            p.addblock(1)
             p.adjustspeed(1)
             p.shadowCreated = False
             snakeAnnimation(p, "grow")
@@ -345,7 +370,8 @@ class SharedPowerup:
     def powerupType(self, p, type):
         if type == "Ultra-Power":
             p.adjustspeed(1)
-            p.addblock(len(p.snake) + 5)
+            print("should add 5 foods")
+            p.addblock(5)
             p.shadowCreated = False
             snakeAnnimation(p, "grow")
             clock.after(int(200 / player.getspeed()), lambda: snakeAnnimation(player, "return"))

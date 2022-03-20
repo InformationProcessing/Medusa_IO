@@ -6,17 +6,20 @@
   <component name="ChangeListManager">
     <list default="true" id="a592c02d-0639-4f2f-b0de-9351e3670891" name="Changes" comment="add game intro component that sets server and client parameters">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EC2/SnakeTCPServer.py" beforeDir="false" afterPath="$PROJECT_DIR$/EC2/SnakeTCPServer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SnakeTCPClient/New/Launcher1.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SnakeTCPClient/New/Launcher2.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SnakeTCPClient/New/SnakeTCPClient1.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SnakeTCPClient/New/SnakeTCPClient2.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SnakeTCPClient/New/client1.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SnakeTCPClient/New/client2.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SnakeTCPClient/client1.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SnakeTCPClient/client2.txt" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/SnakeVisualiser/SnakeServer.py" beforeDir="false" afterPath="$PROJECT_DIR$/SnakeVisualiser/SnakeServer.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SnakeVisualiser/components/SnakeGameMap.py" beforeDir="false" afterPath="$PROJECT_DIR$/SnakeVisualiser/components/SnakeGameMap.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SnakeVisualiser/snakecoordcleaner.py" beforeDir="false" afterPath="$PROJECT_DIR$/SnakeVisualiser/snakecoordcleaner.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SnakeVisualiser/snakecoordinates/0.txt" beforeDir="false" afterPath="$PROJECT_DIR$/SnakeVisualiser/snakecoordinates/0.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SnakeVisualiser/snakecoordinates/1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/SnakeVisualiser/snakecoordinates/1.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SnakeVisualiser/snakecoordinates/2.txt" beforeDir="false" afterPath="$PROJECT_DIR$/SnakeVisualiser/snakecoordinates/2.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SnakeVisualiser/snakecoordinates/3.txt" beforeDir="false" afterPath="$PROJECT_DIR$/SnakeVisualiser/snakecoordinates/3.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SnakeVisualiser/snakecoordinates/4.txt" beforeDir="false" afterPath="$PROJECT_DIR$/SnakeVisualiser/snakecoordinates/4.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SnakeVisualiser/snakecoordinates/5.txt" beforeDir="false" afterPath="$PROJECT_DIR$/SnakeVisualiser/snakecoordinates/5.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SnakeVisualiser/snakecoordinates/6.txt" beforeDir="false" afterPath="$PROJECT_DIR$/SnakeVisualiser/snakecoordinates/6.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
