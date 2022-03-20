@@ -11,8 +11,6 @@ class GameIntro:
 
         self.main_frame = ttk.Frame(root, padding=str(0.27 * root.winfo_screenwidth()) + " "
                                                  + str(0.1 * root.winfo_screenheight()), style="TFrame")
-        # self.main_frame.grid(row=0, column=0)
-        # ttk.Label(self.main_frame, text="Medusa IO", font=("Arial", 32)).grid(row=0)
 
         self.main_frame.grid(row=0, column=0)
         self.logo = PhotoImage(file='SnakeVisualiser/assets/medusaLOGO.png')

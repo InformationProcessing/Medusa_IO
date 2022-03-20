@@ -5,22 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a592c02d-0639-4f2f-b0de-9351e3670891" name="Changes" comment="add game intro component that sets server and client parameters">
+      <change afterPath="$PROJECT_DIR$/SnakeVisualiser/assets/medusaLOGO_small.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FPGAController/db/SnakeExperiment.db_info" beforeDir="false" afterPath="$PROJECT_DIR$/FPGAController/db/SnakeExperiment.db_info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FPGAController/workspace/.metadata/.log" beforeDir="false" afterPath="$PROJECT_DIR$/FPGAController/workspace/.metadata/.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FPGAController/workspace/.metadata/.plugins/org.eclipse.cdt.core/.log" beforeDir="false" afterPath="$PROJECT_DIR$/FPGAController/workspace/.metadata/.plugins/org.eclipse.cdt.core/.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FPGAController/workspace/.metadata/.plugins/org.eclipse.cdt.ui/global-build.log" beforeDir="false" afterPath="$PROJECT_DIR$/FPGAController/workspace/.metadata/.plugins/org.eclipse.cdt.ui/global-build.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FPGAController/workspace/.metadata/.plugins/org.eclipse.cdt.ui/snake2.build.log" beforeDir="false" afterPath="$PROJECT_DIR$/FPGAController/workspace/.metadata/.plugins/org.eclipse.cdt.ui/snake2.build.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FPGAController/workspace/.metadata/.plugins/org.eclipse.core.resources/.safetable/org.eclipse.core.resources" beforeDir="false" afterPath="$PROJECT_DIR$/FPGAController/workspace/.metadata/.plugins/org.eclipse.core.resources/.safetable/org.eclipse.core.resources" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FPGAController/workspace/.metadata/.plugins/org.eclipse.debug.ui/launchConfigurationHistory.xml" beforeDir="false" afterPath="$PROJECT_DIR$/FPGAController/workspace/.metadata/.plugins/org.eclipse.debug.ui/launchConfigurationHistory.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FPGAController/workspace/.metadata/.plugins/org.eclipse.e4.workbench/workbench.xmi" beforeDir="false" afterPath="$PROJECT_DIR$/FPGAController/workspace/.metadata/.plugins/org.eclipse.e4.workbench/workbench.xmi" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FPGAController/workspace/.metadata/version.ini" beforeDir="false" afterPath="$PROJECT_DIR$/FPGAController/workspace/.metadata/version.ini" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SnakeVisualiser/SnakeClient.py" beforeDir="false" afterPath="$PROJECT_DIR$/SnakeVisualiser/SnakeClient.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SnakeVisualiser/components_testing/main_fpga_testing.py" beforeDir="false" afterPath="$PROJECT_DIR$/SnakeVisualiser/components_testing/main_fpga_testing.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SnakeVisualiser/components/SnakeGameMap.py" beforeDir="false" afterPath="$PROJECT_DIR$/SnakeVisualiser/components/SnakeGameMap.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SnakeVisualiser/components/game_intro.py" beforeDir="false" afterPath="$PROJECT_DIR$/SnakeVisualiser/components/game_intro.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SnakeVisualiser/components/score.py" beforeDir="false" afterPath="$PROJECT_DIR$/SnakeVisualiser/components/score.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SnakeVisualiser/snakecoordinates/0.txt" beforeDir="false" afterPath="$PROJECT_DIR$/SnakeVisualiser/snakecoordinates/0.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SnakeVisualiser/snakecoordinates/1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/SnakeVisualiser/snakecoordinates/1.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SnakeVisualiser/snakecoordinates/2.txt" beforeDir="false" afterPath="$PROJECT_DIR$/SnakeVisualiser/snakecoordinates/2.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SnakeVisualiser/snakecoordinates/5.txt" beforeDir="false" afterPath="$PROJECT_DIR$/SnakeVisualiser/snakecoordinates/5.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,13 +48,16 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/SnakeVisualiser/SnakeClient.py" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/SnakeVisualiser/assets" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\vacla\Projects\Medusa_IO\SnakeVisualiser\assets" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\micha\Desktop\Medusa_IO\SnakeVisualiser" />
       <recent name="C:\Users\vacla\Projects\Medusa_IO\SnakeVisualiser\components" />
@@ -357,7 +351,7 @@
     <SUITE FILE_PATH="coverage/Medusa_IO$OOPSnake.coverage" NAME="OOPSnake Coverage Results" MODIFIED="1647435689280" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SnakeVisualiser" />
     <SUITE FILE_PATH="coverage/Medusa_IO$scrollable_testing.coverage" NAME="scrollable_testing Coverage Results" MODIFIED="1647556812354" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SnakeVisualiser/components_testing" />
     <SUITE FILE_PATH="coverage/Medusa_IO$Snake_Server.coverage" NAME="Snake Server Coverage Results" MODIFIED="1647784228378" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SnakeVisualiser" />
-    <SUITE FILE_PATH="coverage/Medusa_IO$main_fpga_testing.coverage" NAME="main_fpga_testing Coverage Results" MODIFIED="1647786164329" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SnakeVisualiser/components_testing" />
+    <SUITE FILE_PATH="coverage/Medusa_IO$main_fpga_testing.coverage" NAME="main_fpga_testing Coverage Results" MODIFIED="1647792528762" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SnakeVisualiser/components_testing" />
     <SUITE FILE_PATH="coverage/Medusa_IO$SnakeTCPClient2__1_.coverage" NAME="SnakeTCPClient2 (1) Coverage Results" MODIFIED="1647532156629" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SnakeVisualiser" />
     <SUITE FILE_PATH="coverage/Medusa_IO$game_intro_testing.coverage" NAME="game_intro_testing Coverage Results" MODIFIED="1647690942623" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SnakeVisualiser/components_testing" />
     <SUITE FILE_PATH="coverage/Medusa_IO$Snake_Client.coverage" NAME="Snake Client Coverage Results" MODIFIED="1647784254702" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />

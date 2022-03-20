@@ -8,13 +8,16 @@ class Score:
             scores = []
 
         self.root = root
+        self.logo = PhotoImage(file='SnakeVisualiser/assets/medusaLOGO_small.png')
+        self.logo_label = ttk.Label(root, image=self.logo, background='white')
+        self.logo_label.grid(column=0, row=0)
         self.score_text = StringVar()
-        score_label = ttk.Label(root, textvariable=self.score_text)
-        score_label.grid(column=0, row=0, sticky=(N, W))
+        score_label = ttk.Label(root, textvariable=self.score_text, background='white', font=("Arial", 12), padding="0 0 0 70")
+        score_label.grid(column=0, row=1, sticky=(N, W))
         score_label.grid_configure(padx=5, pady=5)
         self.score_text.set("Score: " + str(score))
-        self.score_frame = ttk.Frame(root, padding="3 3 12 12")
-        self.score_frame.grid(column=0, row=1, sticky=(N, W, E, S))
+        self.score_frame = ttk.Frame(root, padding="3 300 12 80")
+        self.score_frame.grid(column=0, row=2, sticky=(N, W, E, S))
         root.columnconfigure(0, weight=1)
         root.rowconfigure(0, weight=1)
 
@@ -29,10 +32,20 @@ class Score:
         self.exit_game_button.grid(column=0, row=2, sticky=(E, S))
 
     def __create_score_list(self, scores):
+        label = ttk.Label(self.score_frame, text="Local leaderboard", background='white',
+                          font=("Arial", 12))
+        label.grid(column=0, row=0, sticky=W)
+        label.grid_configure(padx=5, pady=5)
         for idx, score in enumerate(scores):
-            label = ttk.Label(self.score_frame, text=f"{idx + 1}. {score['player']} - {score['score']}")
-            label.grid(column=1, row=idx, sticky=W)
+            label = ttk.Label(self.score_frame, text=f"{idx + 1}. {score['player']} - {score['score']}", background='white', font=("Arial", 10))
+            label.grid(column=0, row=idx + 1, sticky=W)
             label.grid_configure(padx=5, pady=5)
+
+        self.exit_game_button = Button(self.score_frame, text="Exit game & close window",
+                                       font=("Arial", 10), command=self.root.quit, bg="#90caf9",
+                                       border=2, pady=10)
+        self.exit_game_button.grid(column=0, row=len(scores) + 1, sticky=(E, S))
+        self.exit_game_button.grid_configure(pady=10)
 
     def __clear_score_list(self):
         for widget in self.score_frame.winfo_children():

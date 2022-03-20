@@ -400,7 +400,8 @@ def show_game_over(username, score):
     mainframe.columnconfigure(0, weight=1)
     mainframe.rowconfigure(0, weight=1)
 
-    GameOver(game_over_frame, username, score)
+    game_over_widget = GameOver(game_over_frame, username, score)
+    return game_over_widget.get_player_position()
 
 
 def update_score(player_score, player_name, scores):
@@ -424,7 +425,7 @@ def init_game():
     time1 = ''
     clock = Label(root)
 
-    game_frame = ttk.Frame(mainframe, padding="3 3 12 12")
+    game_frame = ttk.Frame(mainframe, padding="180 60 12 12")
     game_frame.grid(column=0, row=0, sticky=(N, W, E, S))
     root.columnconfigure(0, weight=1)
     root.rowconfigure(0, weight=1)
