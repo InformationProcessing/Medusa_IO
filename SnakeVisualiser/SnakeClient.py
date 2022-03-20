@@ -193,7 +193,8 @@ def tick(player, found):
     for i in range(0, len(localFood.power_ups)):
         if (player.x == localFood.power_upsX[i]) and (player.y == localFood.power_upsY[i]):
             player.adjustspeed(1)
-            localFood.powerupType(player, localFood.power_ups[i][0])
+            print(localFood.power_ups[i])
+            localFood.powerupType(player, localFood.power_ups[i][1])
             clock.after(200, lambda: tick(player, FALSE))
             localFood.delete(i)
             food_collected_notification()

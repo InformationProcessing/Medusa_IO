@@ -38,7 +38,7 @@ class GameOver:
 
         self.game_over_frame.grid(row=0, column=0)
 
-        self.main_frame = ttk.Frame(root, padding="360 130 0 0")
+        self.main_frame = ttk.Frame(root, padding="360 120 0 0")
         self.main_frame.grid(row=0, column=0)
         self.logo = PhotoImage(file='SnakeVisualiser/assets/medusaLOGO.png')
         ttk.Label(self.main_frame, image=self.logo, background='white').grid(row=0)

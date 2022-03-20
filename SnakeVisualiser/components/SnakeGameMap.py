@@ -234,6 +234,27 @@ class Snake:
         return len(self.moveblocks) - DEFAULT_SNAKE_LENGTH
 
 
+def snakeAnnimation(p, animation):
+    if animation == "grow":
+        for j in range(len(p.snake)):
+            if j%2==0: p.snake[j].configure(bg="#90caf9")
+            else: p.snake[j].configure(bg="#e91e62")
+    elif animation == "ultra_speed":
+        for j in range(len(p.snake)):
+            p.snake[j].configure(bg="#FFAC00")
+    elif animation == "slow_down":
+        for j in range(len(p.snake)):
+            p.snake[j].configure(bg="#9D67FF")
+    elif animation == "shadow":
+        for j in range(len(p.snake)):
+            if j % 2 == 0:
+                p.snake[j].configure(bg="grey")
+            else:
+                p.snake[j].configure(bg="white")
+    elif animation == "return":
+        for j in range(len(p.snake)):
+            p.snake[j].configure(bg="#FF00B7")
+
 class powerup:
     power_ups = []
     power_upsX = []
@@ -283,7 +304,6 @@ class powerup:
         #     for j in range(len(p.snakeShadow)):
         #         p.teleportShadow(1000,1000,j)
         #     p.shadowCreated = False
-
         if type == "portal":
             new_x = random.randrange(30, 500, 10)
             new_y = random.randrange(20, 500, 10)
@@ -351,34 +371,6 @@ class SharedPowerup:
             p.shadowCreated = False
             snakeAnnimation(p, "grow")
             clock.after(int(200 / player.getspeed()), lambda: snakeAnnimation(player, "return"))
-
-
-def snakeAnnimation(p, animation):
-    if animation == "grow":
-        for j in range(len(p.snake)):
-            if j%2==0: p.snake[j].configure(bg="#90caf9")
-            else: p.snake[j].configure(bg="#e91e62")
-    elif animation == "ultra_speed":
-        for j in range(len(p.snake)):
-            p.snake[j].configure(bg="#FFAC00")
-    elif animation == "slow_down":
-        for j in range(len(p.snake)):
-            p.snake[j].configure(bg="#9D67FF")
-    elif animation == "shadow":
-        for j in range(len(p.snake)):
-            if j % 2 == 0:
-                p.snake[j].configure(bg="grey")
-            else:
-                p.snake[j].configure(bg="white")
-    elif animation == "grow":
-            for j in range(len(p.snake)):
-                if j % 2 == 0:
-                    p.snake[j].configure(bg="blue")
-                else:
-                    p.snake[j].configure(bg="red")
-    elif animation == "return":
-        for j in range(len(p.snake)):
-            p.snake[j].configure(bg="#FF00B7")
 
 
 allplayers = []
