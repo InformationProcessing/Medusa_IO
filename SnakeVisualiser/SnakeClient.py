@@ -212,6 +212,7 @@ def start_game(_server_ip, _server_port, _client_port, _username):
     server_port = _server_port
     client_port = _client_port
     username = _username
+    print("username: " + username)
 
     for child in root.winfo_children():
         child.destroy()
