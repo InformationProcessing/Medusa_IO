@@ -142,78 +142,81 @@ def food_collected_notification():
         print("Error with led flash: " + str(ex))
 
 def tick(player, found):
-    deleteblocks()
-    global time1
-    global food
-    global localFood
-    global otherplayer
-    global otherplayerblocks
-    global wefoundfood
-    global _x, _y, _r, _j
-    time2 = time.strftime('%H:%M:%S')
+    try:
+        deleteblocks()
+        global time1
+        global food
+        global localFood
+        global otherplayer
+        global otherplayerblocks
+        global wefoundfood
+        global _x, _y, _r, _j
+        time2 = time.strftime('%H:%M:%S')
 
-    snakes = sendCoord()
+        snakes = sendCoord()
 
-    scores = calculate_score_table(snakes, username)
-    player_score = player.calculate_score()
-    SnakeGameMap.update_score(player_score, username, scores)
-    fpga_communicator.write_hextext(str(player_score))
+        scores = calculate_score_table(snakes, username)
+        player_score = player.calculate_score()
+        SnakeGameMap.update_score(player_score, username, scores)
+        fpga_communicator.write_hextext(str(player_score))
 
-    if game_over:
-        game_over_notification()
-        player_position = SnakeGameMap.show_game_over(username, player_score)
-        fpga_communicator.write_ledflash("10000100001")
-        fpga_communicator.write_hextext("GAME_OVER_SCORE_" + str(player_score) + "_PLACE_" + str(player_position))
-        return
+        if game_over:
+            game_over_notification()
+            player_position = SnakeGameMap.show_game_over(username, player_score)
+            fpga_communicator.write_ledflash("10000100001")
+            fpga_communicator.write_hextext("GAME_OVER_SCORE_" + str(player_score) + "_PLACE_" + str(player_position))
+            return
 
-    array = []
-    for i in range(len(snakes)):
-        temparray = snakes[i]['blocks'].split(";")
-        for j in range(len(temparray)):
-            if len(temparray[j]) > 0:
-                array.append([temparray[j].split(",")[0], temparray[j].split(",")[1]])
-    otherplayer = [array]
+        array = []
+        for i in range(len(snakes)):
+            temparray = snakes[i]['blocks'].split(";")
+            for j in range(len(temparray)):
+                if len(temparray[j]) > 0:
+                    array.append([temparray[j].split(",")[0], temparray[j].split(",")[1]])
+        otherplayer = [array]
 
-    if time2 != time1:
-        time1 = time2
-        clock.config(text=time2)
-    if fpga_communicator.initialized:
-        acc_read = fpga_communicator.read_acc_proc()
-        if 75 < acc_read['x'] < 250 and not 75 <= acc_read['y'] <= 4021:
-            player.changedir('Left')
-        elif 3750 < acc_read['x'] < 4021 and not 75 <= acc_read['y'] <= 4021:
-            player.changedir('Right')
-        elif 3750 < acc_read['y'] < 4021 and not 75 <= acc_read['x'] <= 4021:
-            player.changedir('Up')
-        elif 75 < acc_read['y'] < 250 and not 75 <= acc_read['x'] <= 4021:
-            player.changedir('Down')
-    player.movesnake()
+        if time2 != time1:
+            time1 = time2
+            clock.config(text=time2)
+        if fpga_communicator.initialized:
+            acc_read = fpga_communicator.read_acc_proc()
+            if 75 < acc_read['x'] < 250 and not 75 <= acc_read['y'] <= 4021:
+                player.changedir('Left')
+            elif 3750 < acc_read['x'] < 4021 and not 75 <= acc_read['y'] <= 4021:
+                player.changedir('Right')
+            elif 3750 < acc_read['y'] < 4021 and not 75 <= acc_read['x'] <= 4021:
+                player.changedir('Up')
+            elif 75 < acc_read['y'] < 250 and not 75 <= acc_read['x'] <= 4021:
+                player.changedir('Down')
+        player.movesnake()
 
-    updateothers()
+        updateothers()
 
-    if (abs(player.x - food.shared_power_upX) < food.radius and abs(player.y - food.shared_power_upY) < food.radius):
-        player.adjustspeed(1)
-        food.powerupType(player, "Ultra-Power")
-        food.deleteShared()
-        food_collected_notification()
-        _x = random.randrange(30, 500, 10)
-        _y = random.randrange(20, 500, 10)
-        food.generateShared(_x, _y)
-        wefoundfood = 1
-
-    for i in range(0, len(localFood.power_ups)):
-        if (player.x == localFood.power_upsX[i]) and (player.y == localFood.power_upsY[i]):
+        if (abs(player.x - food.shared_power_upX) < food.radius and abs(player.y - food.shared_power_upY) < food.radius):
             player.adjustspeed(1)
-            print(localFood.power_ups[i])
-            localFood.powerupType(player, localFood.power_ups[i][1])
-            clock.after(200, lambda: tick(player, FALSE))
-            localFood.delete(i)
+            food.powerupType(player, "Ultra-Power")
+            food.deleteShared()
             food_collected_notification()
-            localFood.generate()
-            found = TRUE
-            break
+            _x = random.randrange(30, 500, 10)
+            _y = random.randrange(20, 500, 10)
+            food.generateShared(_x, _y)
+            wefoundfood = 1
 
-    if found == FALSE and not game_over: clock.after(int(100 / player.getspeed()), lambda: tick(player, FALSE))
+        for i in range(0, len(localFood.power_ups)):
+            if (player.x == localFood.power_upsX[i]) and (player.y == localFood.power_upsY[i]):
+                player.adjustspeed(1)
+                print(localFood.power_ups[i])
+                localFood.powerupType(player, localFood.power_ups[i][1])
+                clock.after(200, lambda: tick(player, FALSE))
+                localFood.delete(i)
+                food_collected_notification()
+                localFood.generate()
+                found = TRUE
+                break
+
+        if found == FALSE and not game_over: clock.after(int(100 / player.getspeed()), lambda: tick(player, FALSE))
+    except Exception as error:
+        print("Error in tick: " + str(error))
 
 
 def start_game(_server_ip, _server_port, _client_port, _username):

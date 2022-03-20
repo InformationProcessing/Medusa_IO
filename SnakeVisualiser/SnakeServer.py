@@ -7,17 +7,20 @@ client_number = input("Enter Client Number (0-5): ")
 
 
 def get_head(msg):
-    protocol_parts = msg.split("|")
-    head_str = None
-    if len(protocol_parts) > 1:
-        snake_blocks = protocol_parts[1].split(";")
-        if len(snake_blocks) > 1:
-            head_str = snake_blocks[0]
-    if head_str is not None:
-        head_cords = head_str.split(',')
-        if len(head_cords) > 1:
-            if head_cords[0].isnumeric() and head_cords[1].isnumeric():
-                return [int(head_cords[0]), int(head_cords[1])]
+    try:
+        protocol_parts = msg.split("|")
+        head_str = None
+        if len(protocol_parts) > 1:
+            snake_blocks = protocol_parts[1].split(";")
+            if len(snake_blocks) > 1:
+                head_str = snake_blocks[0]
+        if head_str is not None:
+            head_cords = head_str.split(',')
+            if len(head_cords) > 1:
+                if head_cords[0].isnumeric() and head_cords[1].isnumeric():
+                    return [int(head_cords[0]), int(head_cords[1])]
+    except Exception as error:
+        print("Error in get_head: " + str(error))
     return [-1, -1]
 
 
@@ -47,24 +50,29 @@ def get_coords_of_all_snakes():
 
 def convert_to_int_blocks(strng):
     snakes_blocks = []
-    array = strng.split(";")
+    try:
+        array = strng.split(";")
 
-    for i in range(len(array)):
-        blocks_str = array[i].split(',')
-        if len(blocks_str) > 1:
-            if blocks_str[0].isnumeric() and blocks_str[1].isnumeric():
-                snakes_blocks.append([int(blocks_str[0]), int(blocks_str[1])])
-
+        for i in range(len(array)):
+            blocks_str = array[i].split(',')
+            if len(blocks_str) > 1:
+                if blocks_str[0].isnumeric() and blocks_str[1].isnumeric():
+                    snakes_blocks.append([int(blocks_str[0]), int(blocks_str[1])])
+    except Exception as error:
+        print("Error in the convert_to_int_blocks: " + str(error))
     return snakes_blocks
 
 
 def check_collision(head, snakes_blocks):
-    if len(head) > 1:
-        if head[0] == -1 and head[1] == -1:
-            return False
-        for i in range(len(snakes_blocks)):
-            if abs(int(head[0]) - int(snakes_blocks[i][0])) < 5 and abs(int(head[1]) - int(snakes_blocks[i][1])) < 5:
-                return True
+    try:
+        if len(head) > 1:
+            if head[0] == -1 and head[1] == -1:
+                return False
+            for i in range(len(snakes_blocks)):
+                if abs(int(head[0]) - int(snakes_blocks[i][0])) < 5 and abs(int(head[1]) - int(snakes_blocks[i][1])) < 5:
+                    return True
+    except Exception as error:
+        print("Error in the getcoordsofallsnake: " + str(error))
     return False
 
 
@@ -93,18 +101,23 @@ while 1:
             f.close()
             msg_to_send = "dead"
         else:
-            f = open("snakecoordinates/" + client_number + ".txt", "w")
-            f.write(msg1)
-            f.close()
-            for i in range(6):
-                if i != int(client_number):
-                    f = open("snakecoordinates/" + str(i) + ".txt", "r")
-                    client_info = f.read()
-                    split_client_info = client_info.split("|")
-                    if not split_client_info[1] == "0,0;":
-                        msg_to_send = msg_to_send + client_info + "\n"
-                    f.close()
+            client_info = None
+            try:
+                f = open("snakecoordinates/" + client_number + ".txt", "w")
+                f.write(msg1)
+                f.close()
+                for i in range(6):
+                    if i != int(client_number):
+                        f = open("snakecoordinates/" + str(i) + ".txt", "r")
+                        while f.closed:
+                            f = open("snakecoordinates/" + str(i) + ".txt", "r")
+                        client_info = f.read()
+                        split_client_info = client_info.split("|")
+                        if not split_client_info[1] == "0,0;":
+                            msg_to_send = msg_to_send + client_info + "\n"
+                        f.close()
+            except Exception as error:
+                print("Error in else: " + str(error) + " client info: " + str(client_info))
         welcome_socket.sendto(msg_to_send.encode(), c1add)
     except Exception as error:
-        coords_str = ""
         print("Error in the tick: " + str(error))
