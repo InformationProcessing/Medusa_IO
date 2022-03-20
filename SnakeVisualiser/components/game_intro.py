@@ -39,14 +39,14 @@ class GameIntro:
         
 
     def play_button_pressed(self):
-        # server_ip = self.server_ip_entry.get()
-        # server_port = int(self.server_port_entry.get())
-        # client_port = int(self.client_port_entry.get())
-        # username = self.username_entry.get()
-        server_ip = "localhost"
-        server_port = 12000
-        client_port = 13000
-        username = "c"
+        server_ip = self.server_ip_entry.get()
+        server_port = int(self.server_port_entry.get())
+        client_port = int(self.client_port_entry.get())
+        username = self.username_entry.get()
+        # server_ip = "localhost"
+        # server_port = 12000
+        # client_port = 13000
+        # username = "c"
         haswhitespace = False
         for i in username:
             if i == " ": haswhitespace = True
