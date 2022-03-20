@@ -5,7 +5,7 @@ from tkinter import ttk
 class ScrollableFrame(ttk.Frame):
     def __init__(self, container, *args, **kwargs):
         super().__init__(container, *args, **kwargs)
-        canvas = tk.Canvas(self)
+        canvas = tk.Canvas(self, background="white", highlightcolor="#90caf9", highlightthickness=2)
         scrollbar = ttk.Scrollbar(self, orient="vertical", command=canvas.yview)
         self.scrollable_frame = ttk.Frame(canvas)
 
@@ -19,7 +19,6 @@ class ScrollableFrame(ttk.Frame):
         canvas.create_window((0, 0), window=self.scrollable_frame, anchor="nw")
 
         canvas.configure(yscrollcommand=scrollbar.set)
-        # canvas.grid_configure(padx=(0.43*self.scrollable_frame.winfo_screenwidth()), pady=(0.35*self.scrollable_frame.winfo_screenheight()))
 
         canvas.pack(side="left", fill="both", expand=True)
         scrollbar.pack(side="right", fill="y")
