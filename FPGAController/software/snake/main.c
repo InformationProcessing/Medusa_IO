@@ -220,7 +220,7 @@ void write_to_disp(char* str, int offset){
 	int second = 0;
 	int code;
 	int char_offset = 0;
-	int flag = 0;
+	int flag;
 
 	for(int i = 5; i>=0; i--){
 		if (second){
@@ -228,31 +228,14 @@ void write_to_disp(char* str, int offset){
 			write_char(code, i);
 			second = 0;
 			char_offset++;
+			 flag = 0;
 		}else{
 			second = 0;
-			if(offset !=0 && char_offset == 0 && !flag){
-				letter_to_hex(str[offset-1], &second);
-				if(second){
-					code = second_letter_to_hex(str[offset-1]);
-					write_char(code, i);
-					second = 0;
-					flag = 1;
-				}else{
-					second = 0;
-					code = letter_to_hex(str[offset+char_offset], &second);
-					write_char(code, i);
+			flag = 0;
+			code = letter_to_hex(str[offset+char_offset], &second);
+			write_char(code, i);
 
-					if(second == 0){char_offset++;}
-				}
-
-			}else{
-				second = 0;
-				flag = 0;
-				code = letter_to_hex(str[offset+char_offset], &second);
-				write_char(code, i);
-
-				if(second == 0){char_offset++;}
-			}
+			if(second == 0){char_offset++;}
 		}
 	}
 }
