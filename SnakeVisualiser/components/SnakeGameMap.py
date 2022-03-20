@@ -416,7 +416,8 @@ def show_game_over(username, score):
     mainframe.columnconfigure(0, weight=1)
     mainframe.rowconfigure(0, weight=1)
 
-    GameOver(game_over_frame, username, score)
+    game_over_widget = GameOver(game_over_frame, username, score)
+    return game_over_widget.get_player_position()
 
 
 def update_score(player_score, player_name, scores):

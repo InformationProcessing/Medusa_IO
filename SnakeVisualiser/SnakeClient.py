@@ -118,7 +118,6 @@ def coin_sound_wrapper():
     play(coin_sound)
 
 def food_collected_notification():
-
     try:
         proc = multiprocessing.Process(target=coin_sound_wrapper)
         proc.start()
@@ -150,9 +149,9 @@ def tick(player, found):
     fpga_communicator.write_hextext(str(player_score))
 
     if game_over:
-        SnakeGameMap.show_game_over(username, player_score)
+        player_position = SnakeGameMap.show_game_over(username, player_score)
         fpga_communicator.write_ledflash("10000100001")
-        fpga_communicator.write_hextext("GAME_OVER_SCORE_" + str(player_score))
+        fpga_communicator.write_hextext("GAME_OVER_SCORE_" + str(player_score) + "_PLACE_" + str(player_position))
         return
 
     array = []
