@@ -10,7 +10,13 @@ To run the project, following pip packages must be installed
 - `pydub`
 
 ## Setup
-In order run the game, firstly run the server by running the following command from the `SnakeVisualiser` directory.
+In order run the game, firstly clean coordinates of snakes from the previous game by running the following command in the `SnakeVisualiser` directory.
+
+````shell
+python3 snakecoordcleaner.py
+````
+
+Then run the server by executing the following command in the `SnakeVisualiser` directory.
 
 ````shell
 python3 SnakeServer.py
@@ -21,12 +27,6 @@ To run the game client, run the following command from the root diretory `Medusa
 ````shell
 python3 SnakeVisualiser/SnakeClient.py
 ````
-
-## Notes
-
-Working for one food only
-We are currently deleting all other foods
-Sometimes bugs and food no longer generates
 
 # Networking allocation UDP
 
@@ -49,9 +49,12 @@ In order to setup the networking on Windows go to Windows Defender Firewall with
 
 The following setup was introduced for each member of the team. 
 
-- Alex: inbound - 12000 (local main server); outbound - 514 (client side server)
-- Vaclav: inbound - 12010 (local main server); outbound - 515 (client side server)
-- James: inbound - 12020 (local main server); outbound - 516 (client side server)
+| Name   | IP address    | Inbound port | Outbound port |
+|--------|---------------|--------------|---------------|
+| Alex   | 192.168.0.101 | 12112        | 512           |
+| Vaclav | 192.168.0.100 | 12010        | 515           |
+| James  | 192.168.0.105 | 12020        | 516           |
+| Michal | 192.168.0.102 | 12080        | 518           |
 
 # Snake coordinates protocol
 
