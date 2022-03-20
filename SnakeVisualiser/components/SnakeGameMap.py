@@ -425,7 +425,7 @@ def init_game():
     time1 = ''
     clock = Label(root)
 
-    game_frame = ttk.Frame(mainframe, padding="3 3 12 12")
+    game_frame = ttk.Frame(mainframe, padding="180 60 12 12")
     game_frame.grid(column=0, row=0, sticky=(N, W, E, S))
     root.columnconfigure(0, weight=1)
     root.rowconfigure(0, weight=1)
