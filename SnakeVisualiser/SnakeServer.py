@@ -19,6 +19,11 @@ def getcoordsofallsnake():
             f = open("snakecoordinates/" + str(i) + ".txt", "r")
             coords = f.read().split("|")
             strng = strng + coords[1]
+        elif i==int(c):
+            f = open("snakecoordinates/"+str(i)+".txt","r")
+            coords = f.read().split("|")
+            length = len(coords[0].split(";")[0]) + len(coords[0].split(";")[1]) + 2
+            strng = strng + coords[0][length:]
 
     return strng
 
