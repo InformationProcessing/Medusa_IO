@@ -3,6 +3,7 @@ from tkinter import ttk
 from turtle import width
 from components.global_leaderboard import GlobalLeaderboard
 from components.database_connection import update_score
+from components.game_intro import GameIntro
 
 
 # TODO: detect that the string is cut and request the new message
@@ -88,8 +89,13 @@ class GameOver:
                                             command=self.__show_global_leader_board, width=20, font=("Arial", 10),
                                             bg="#e91e62", border=2, pady=14)
             self.leader_board_button.grid(column=0, row=4, sticky=(N, S), pady=10)
+        
         self.exit_game_button = Button(self.main_frame, text="Exit game & close window", font=("Arial", 10),
                                             command=self.root.quit, bg="#90caf9", border=2, pady=10, padx=10, width=22)
+        self.exit_game_button.grid(column=1, row=4, sticky=( E, S))
+
+        self.exit_game_button = Button(self.main_frame, text="Try again", font=("Arial", 10),
+                                            command=GameIntro.play_button_pressed, bg="#e91e62", border=2, pady=10, padx=10, width=22)
         self.exit_game_button.grid(column=1, row=4, sticky=( E, S))
 
     def __show_global_leader_board(self):

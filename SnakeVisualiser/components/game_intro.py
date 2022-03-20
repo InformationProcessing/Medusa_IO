@@ -1,6 +1,11 @@
+from shutil import unregister_unpack_format
 from tkinter import *
 from tkinter import ttk
 
+G_server_ip = ''
+G_server_port = ''
+G_client_port = ''
+G_username = ''
 
 class GameIntro:
     def __init__(self, root, start_game):
@@ -50,6 +55,11 @@ class GameIntro:
         self.exit_game_button.grid(column=1, row=4, sticky=(E, S))
 
     def play_button_pressed(self):
+        global G_server_ip
+        global G_server_port
+        global G_client_port
+        global G_username
+
         server_ip = self.server_ip_entry.get()
         server_port = int(self.server_port_entry.get())
         client_port = int(self.client_port_entry.get())
@@ -68,4 +78,8 @@ class GameIntro:
             self.error_label = ttk.Label(self.main_frame, text="Username cannot contain whitespace!", background='white', padding="0 10 5 10", font=("Arial", 10))
             self.error_label.grid(column=0, row=4)
         else:
-            self.start_game(server_ip, server_port, client_port, username)
+            G_server_ip = server_ip
+            G_server_port = server_port
+            G_client_port = client_port
+            G_username = username
+            self.start_game(G_server_ip, G_server_port, G_client_port, G_username)
