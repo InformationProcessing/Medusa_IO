@@ -1,6 +1,6 @@
-18:34:05 **** Build of configuration Nios II for project snake_bsp ****
+21:25:36 **** Incremental Build of configuration Nios II for project snake_bsp ****
 make all 
 [BSP build complete]
 
-18:34:06 Build Finished (took 1s.301ms)
+21:25:37 Build Finished (took 592ms)
 

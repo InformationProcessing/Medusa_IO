@@ -55,6 +55,8 @@ The following setup was introduced for each member of the team.
 | Vaclav | 192.168.0.100 | 12010        | 515           |
 | James  | 192.168.0.105 | 12020        | 516           |
 | Michal | 192.168.0.102 | 12080        | 518           |
+| Mathew | 192.168.0.104 | 12001        | 521           |
+| Charmaine | 192.168.0.103 | 12102        | 522           |
 
 # Snake coordinates protocol
 

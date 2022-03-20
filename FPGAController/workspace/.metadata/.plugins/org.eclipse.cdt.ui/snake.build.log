@@ -1,9 +1,9 @@
-18:34:07 **** Incremental Build of configuration Nios II for project snake ****
+21:25:37 **** Incremental Build of configuration Nios II for project snake ****
 make all 
 Info: Building ../snake_bsp/
 C:/intelFPGA_lite/18.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../snake_bsp/
 [BSP build complete]
 [snake build complete]
 
-18:34:09 Build Finished (took 1s.377ms)
+21:25:38 Build Finished (took 705ms)
 

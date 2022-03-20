@@ -117,8 +117,9 @@ while 1:
                             f = open("snakecoordinates/" + str(i) + ".txt", "r")
                         client_info = f.read()
                         split_client_info = client_info.split("|")
-                        if not split_client_info[1] == "0,0;":
-                            msg_to_send = msg_to_send + client_info + "\n"
+                        if len(split_client_info) > 1:
+                            if not split_client_info[1] == "0,0;":
+                                msg_to_send = msg_to_send + client_info + "\n"
                         f.close()
             except Exception as error:
                 print("Error in else: " + str(error) + " client info: " + str(client_info))

@@ -1447,3 +1447,48 @@ Info: Building ../snake_bsp/
 C:/intelFPGA_lite/18.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../snake_bsp/
 [BSP build complete]
 [snake build complete]
+19:39:06 **** Build of configuration Nios II for project snake ****
+make all 
+Info: Building ../snake_bsp/
+C:/intelFPGA_lite/18.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../snake_bsp/
+[BSP build complete]
+[snake build complete]
+19:39:12 **** Incremental Build of configuration Nios II for project snake_bsp ****
+make all 
+[BSP build complete]
+19:39:14 **** Incremental Build of configuration Nios II for project snake ****
+make all 
+Info: Building ../snake_bsp/
+C:/intelFPGA_lite/18.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../snake_bsp/
+[BSP build complete]
+[snake build complete]
+21:10:43 **** Build of configuration Nios II for project snake ****
+make all 
+Info: Building ../snake_bsp/
+C:/intelFPGA_lite/18.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../snake_bsp/
+[BSP build complete]
+[snake build complete]
+21:10:46 **** Incremental Build of configuration Nios II for project snake_bsp ****
+make all 
+[BSP build complete]
+21:10:47 **** Incremental Build of configuration Nios II for project snake ****
+make all 
+Info: Building ../snake_bsp/
+C:/intelFPGA_lite/18.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../snake_bsp/
+[BSP build complete]
+[snake build complete]
+21:25:34 **** Build of configuration Nios II for project snake ****
+make all 
+Info: Building ../snake_bsp/
+C:/intelFPGA_lite/18.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../snake_bsp/
+[BSP build complete]
+[snake build complete]
+21:25:36 **** Incremental Build of configuration Nios II for project snake_bsp ****
+make all 
+[BSP build complete]
+21:25:37 **** Incremental Build of configuration Nios II for project snake ****
+make all 
+Info: Building ../snake_bsp/
+C:/intelFPGA_lite/18.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../snake_bsp/
+[BSP build complete]
+[snake build complete]

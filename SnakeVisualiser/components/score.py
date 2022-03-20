@@ -26,10 +26,12 @@ class Score:
         for child in self.score_frame.winfo_children():
             child.grid_configure(padx=5, pady=5)
 
-        self.exit_game_button = Button(self.score_frame, text="Exit game & close window",
+        self.exit_button_frame = ttk.Frame(root, padding="0 0 0 50")
+        self.exit_button_frame.grid(column=0, row=3, sticky=(N, W, E, S))
+        self.exit_game_button = Button(self.exit_button_frame, text="Exit game & close window",
                                          font=("Arial", 10), command=self.root.quit,  bg="#90caf9",
                                          border=2, pady=10)
-        self.exit_game_button.grid(column=0, row=2, sticky=(E, S))
+        self.exit_game_button.grid(column=0, row=0, sticky=(W, S))
 
     def __create_score_list(self, scores):
         label = ttk.Label(self.score_frame, text="Local leaderboard", background='white',
@@ -41,11 +43,6 @@ class Score:
             label.grid(column=0, row=idx + 1, sticky=W)
             label.grid_configure(padx=5, pady=5)
 
-        self.exit_game_button = Button(self.score_frame, text="Exit game & close window",
-                                       font=("Arial", 10), command=self.root.quit, bg="#90caf9",
-                                       border=2, pady=10)
-        self.exit_game_button.grid(column=0, row=len(scores) + 1, sticky=(E, S))
-        self.exit_game_button.grid_configure(pady=10)
 
     def __clear_score_list(self):
         for widget in self.score_frame.winfo_children():
@@ -61,8 +58,6 @@ class Score:
                 scores.insert(i, player_record)
                 inserted = True
                 break
-            else:
-                scores[i]["score"]
 
         if not inserted:
             scores.insert(len(scores), player_record)

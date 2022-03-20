@@ -4,14 +4,27 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a592c02d-0639-4f2f-b0de-9351e3670891" name="Changes" comment="add game intro component that sets server and client parameters">
+    <list default="true" id="a592c02d-0639-4f2f-b0de-9351e3670891" name="Changes" comment="debug - add try and except to file reading">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SnakeVisualiser/SnakeClient.py" beforeDir="false" afterPath="$PROJECT_DIR$/SnakeVisualiser/SnakeClient.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FPGAController/SnakeExperiment.qws" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FPGAController/db/SnakeExperiment.db_info" beforeDir="false" afterPath="$PROJECT_DIR$/FPGAController/db/SnakeExperiment.db_info" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FPGAController/workspace/.metadata/.log" beforeDir="false" afterPath="$PROJECT_DIR$/FPGAController/workspace/.metadata/.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FPGAController/workspace/.metadata/.plugins/org.eclipse.cdt.core/.log" beforeDir="false" afterPath="$PROJECT_DIR$/FPGAController/workspace/.metadata/.plugins/org.eclipse.cdt.core/.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FPGAController/workspace/.metadata/.plugins/org.eclipse.cdt.ui/global-build.log" beforeDir="false" afterPath="$PROJECT_DIR$/FPGAController/workspace/.metadata/.plugins/org.eclipse.cdt.ui/global-build.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FPGAController/workspace/.metadata/.plugins/org.eclipse.cdt.ui/snake.build.log" beforeDir="false" afterPath="$PROJECT_DIR$/FPGAController/workspace/.metadata/.plugins/org.eclipse.cdt.ui/snake.build.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FPGAController/workspace/.metadata/.plugins/org.eclipse.cdt.ui/snake_bsp.build.log" beforeDir="false" afterPath="$PROJECT_DIR$/FPGAController/workspace/.metadata/.plugins/org.eclipse.cdt.ui/snake_bsp.build.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FPGAController/workspace/.metadata/.plugins/org.eclipse.core.resources/.root/.markers.snap" beforeDir="false" afterPath="$PROJECT_DIR$/FPGAController/workspace/.metadata/.plugins/org.eclipse.core.resources/.root/.markers.snap" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FPGAController/workspace/.metadata/.plugins/org.eclipse.core.resources/.safetable/org.eclipse.core.resources" beforeDir="false" afterPath="$PROJECT_DIR$/FPGAController/workspace/.metadata/.plugins/org.eclipse.core.resources/.safetable/org.eclipse.core.resources" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FPGAController/workspace/.metadata/.plugins/org.eclipse.e4.workbench/workbench.xmi" beforeDir="false" afterPath="$PROJECT_DIR$/FPGAController/workspace/.metadata/.plugins/org.eclipse.e4.workbench/workbench.xmi" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FPGAController/workspace/.metadata/version.ini" beforeDir="false" afterPath="$PROJECT_DIR$/FPGAController/workspace/.metadata/version.ini" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SnakeVisualiser/SnakeServer.py" beforeDir="false" afterPath="$PROJECT_DIR$/SnakeVisualiser/SnakeServer.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SnakeVisualiser/components/score.py" beforeDir="false" afterPath="$PROJECT_DIR$/SnakeVisualiser/components/score.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SnakeVisualiser/snakecoordinates/0.txt" beforeDir="false" afterPath="$PROJECT_DIR$/SnakeVisualiser/snakecoordinates/0.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SnakeVisualiser/snakecoordinates/1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/SnakeVisualiser/snakecoordinates/1.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SnakeVisualiser/snakecoordinates/2.txt" beforeDir="false" afterPath="$PROJECT_DIR$/SnakeVisualiser/snakecoordinates/2.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SnakeVisualiser/snakecoordinates/3.txt" beforeDir="false" afterPath="$PROJECT_DIR$/SnakeVisualiser/snakecoordinates/3.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SnakeVisualiser/snakecoordinates/4.txt" beforeDir="false" afterPath="$PROJECT_DIR$/SnakeVisualiser/snakecoordinates/4.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,6 +48,17 @@
       <filtered-out-file-type name="TAG" />
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$USER_HOME$/AppData/Local/Packages/PythonSoftwareFoundation.Python.3.9_qbz5n2kfra8p0/LocalCache/local-packages/Python39/site-packages/pydub/utils.py" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/SnakeVisualiser/snakecoordinates/5.txt" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/SnakeVisualiser/snakecoordinates/3.txt" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/SnakeVisualiser/snakecoordinates/2.txt" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/SnakeVisualiser/SnakeServer.py" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/SnakeVisualiser/snakecoordinates/1.txt" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/SnakeVisualiser/snakecoordinates/0.txt" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/SnakeVisualiser/snakecoordcleaner.py" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/SnakeVisualiser/components/score.py" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -261,7 +285,8 @@
       <workItem from="1647781059410" duration="365000" />
       <workItem from="1647781564567" duration="1905000" />
       <workItem from="1647801333314" duration="1334000" />
-      <workItem from="1647803100124" duration="1397000" />
+      <workItem from="1647803100124" duration="3502000" />
+      <workItem from="1647810466999" duration="2190000" />
     </task>
     <task id="LOCAL-00001" summary="fix(networking) - fix message propagation from one client to another">
       <created>1646925626350</created>
@@ -305,7 +330,14 @@
       <option name="project" value="LOCAL" />
       <updated>1647692317063</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="debug - add try and except to file reading">
+      <created>1647804643522</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1647804643522</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -331,7 +363,8 @@
     <MESSAGE value="add score update to each tick" />
     <MESSAGE value="integrate sending data to the database after the game ends" />
     <MESSAGE value="add game intro component that sets server and client parameters" />
-    <option name="LAST_COMMIT_MESSAGE" value="add game intro component that sets server and client parameters" />
+    <MESSAGE value="debug - add try and except to file reading" />
+    <option name="LAST_COMMIT_MESSAGE" value="debug - add try and except to file reading" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -358,7 +391,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/SnakeVisualiser/SnakeServer.py</url>
-          <line>129</line>
+          <line>130</line>
           <option name="timeStamp" value="6" />
         </line-breakpoint>
       </breakpoints>
@@ -383,7 +416,7 @@
     <SUITE FILE_PATH="coverage/Medusa_IO$SnakeTCPClient1.coverage" NAME="SnakeTCPClient1 Coverage Results" MODIFIED="1647255953212" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SnakeVisualiser" />
     <SUITE FILE_PATH="coverage/Medusa_IO$OOPSnake.coverage" NAME="OOPSnake Coverage Results" MODIFIED="1647435689280" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SnakeVisualiser" />
     <SUITE FILE_PATH="coverage/Medusa_IO$scrollable_testing.coverage" NAME="scrollable_testing Coverage Results" MODIFIED="1647556812354" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SnakeVisualiser/components_testing" />
-    <SUITE FILE_PATH="coverage/Medusa_IO$Snake_Server.coverage" NAME="Snake Server Coverage Results" MODIFIED="1647803893644" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SnakeVisualiser" />
+    <SUITE FILE_PATH="coverage/Medusa_IO$Snake_Server.coverage" NAME="Snake Server Coverage Results" MODIFIED="1647812107395" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SnakeVisualiser" />
     <SUITE FILE_PATH="coverage/Medusa_IO$main_fpga_testing.coverage" NAME="main_fpga_testing Coverage Results" MODIFIED="1647792528762" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SnakeVisualiser/components_testing" />
     <SUITE FILE_PATH="coverage/Medusa_IO$SnakeTCPClient2__1_.coverage" NAME="SnakeTCPClient2 (1) Coverage Results" MODIFIED="1647532156629" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SnakeVisualiser" />
     <SUITE FILE_PATH="coverage/Medusa_IO$game_intro_testing.coverage" NAME="game_intro_testing Coverage Results" MODIFIED="1647690942623" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SnakeVisualiser/components_testing" />
