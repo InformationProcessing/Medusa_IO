@@ -58,13 +58,17 @@ class GameOver:
                 self.leaderboard_total_score.append(score)
 
         self.leaderboard_highest_score = []
-        for score in leaderboards[1]:
-            if 'highestscore' in score:
-                self.leaderboard_highest_score.append(score)
+        if (len(leaderboards) > 1):
+            for score in leaderboards[1]:
+                if 'highestscore' in score:
+                    self.leaderboard_highest_score.append(score)
 
         self.leader_board_button = Button(root, text="Show global leaderboard",
                                           command=self.__show_global_leader_board)
         self.leader_board_button.grid(column=0, row=2, sticky=(W, E, S))
+        self.exit_game_button = Button(root, text="Exit game & close window",
+                                            command=self.root.quit)
+        self.exit_game_button.grid(column=2, row=2, sticky=(W, E, S))
 
     def __show_global_leader_board(self):
         for widget in self.root.winfo_children():

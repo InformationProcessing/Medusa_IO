@@ -1,5 +1,6 @@
 from tkinter import *
 from tkinter import ttk
+from tkinter import messagebox
 
 
 class GameIntro:
@@ -28,15 +29,33 @@ class GameIntro:
         self.client_port_entry.grid(row=2, column=1)
         self.username_entry.grid(row=3, column=1)
 
+        def func(event):
+            print("You hit return.")
+            self.play_button_pressed()
+        self.root.bind('<Return>', func)
+
         self.play_button = Button(self.main_frame, text="Play!", command=self.play_button_pressed, width=10)
         self.play_button.grid(column=0, row=2, sticky=(N, W, E, S))
+        
 
     def play_button_pressed(self):
-        server_ip = self.server_ip_entry.get()
-        server_port = int(self.server_port_entry.get())
-        client_port = int(self.client_port_entry.get())
-        username = self.username_entry.get()
-        self.start_game(server_ip, server_port, client_port, username)
+        # server_ip = self.server_ip_entry.get()
+        # server_port = int(self.server_port_entry.get())
+        # client_port = int(self.client_port_entry.get())
+        # username = self.username_entry.get()
+        server_ip = "localhost"
+        server_port = 12000
+        client_port = 13000
+        username = "c"
+        haswhitespace = False
+        for i in username:
+            if i == " ": haswhitespace = True
+            
+        if (haswhitespace) or username == "":
+            ttk.Label(self.form_frame, text="Username needed or wrong format given!").grid(row=4)
+            username = self.username_entry.get()
+        else:
+            self.start_game(server_ip, server_port, client_port, username)
 # from tkinter import *
 # from tkinter import ttk
 
