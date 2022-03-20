@@ -87,8 +87,6 @@ while 1:
         head_cords = get_head(msg1)
         snakes_cords_str = get_coords_of_all_snakes()
         if check_collision(head_cords, convert_to_int_blocks(snakes_cords_str)):
-            collided = True
-        if collided:
             msg1 = name + "|0,0;|0,0,0,0,0"
             f = open("snakecoordinates/" + client_number + ".txt", "w")
             f.write(msg1)

@@ -131,7 +131,7 @@ int letter_to_hex(char in, int* second){
 		case '4':
 			return 0b10011001;
 		case '5':
-			return 0b10011001;
+			return 0b10010010;
 		case '6':
 			return 0b10000010;
 		case '7':
