@@ -35,6 +35,7 @@ game_over = False
 otherplayer = []
 otherplayerblocks = []
 coin_sound = AudioSegment.from_wav('SnakeVisualiser/assets/coinhit.wav')
+game_over_sound = AudioSegment.from_wav('SnakeVisualiser/assets/gameover.wav')
 
 
 def exit_handler():
@@ -117,6 +118,16 @@ def updateothers():
 def coin_sound_wrapper():
     play(coin_sound)
 
+def game_over_sound_wrapper():
+    play(game_over_sound)
+
+def game_over_notification():
+    try:
+        proc = multiprocessing.Process(target=game_over_sound_wrapper)
+        proc.start()
+    except Exception as ex:
+        print("Error with coin sound: " + str(ex))
+
 def food_collected_notification():
     try:
         proc = multiprocessing.Process(target=coin_sound_wrapper)
@@ -149,6 +160,7 @@ def tick(player, found):
     fpga_communicator.write_hextext(str(player_score))
 
     if game_over:
+        game_over_notification()
         player_position = SnakeGameMap.show_game_over(username, player_score)
         fpga_communicator.write_ledflash("10000100001")
         fpga_communicator.write_hextext("GAME_OVER_SCORE_" + str(player_score) + "_PLACE_" + str(player_position))

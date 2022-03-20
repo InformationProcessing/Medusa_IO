@@ -92,7 +92,7 @@ class GameOver:
         if hasattr(self, 'leaderboard_highest_score'):
             for x in range(0, len(self.leaderboard_highest_score)):
                 leaderboard_record = self.leaderboard_highest_score[x]
-                if hasattr(leaderboard_record, 'username'):
+                if 'username' in leaderboard_record:
                     if leaderboard_record['username'] == self.username:
                         return x + 1
             return len(self.leaderboard_highest_score)
