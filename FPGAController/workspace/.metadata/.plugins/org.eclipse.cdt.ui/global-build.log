@@ -791,3 +791,39 @@ Info: Building ../snake2_bsp/
 C:/intelFPGA_lite/18.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../snake2_bsp/
 [BSP build complete]
 [snake2 build complete]
+14:09:26 **** Build of configuration Nios II for project snake2 ****
+make all 
+Info: Building ../snake2_bsp/
+C:/intelFPGA_lite/18.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../snake2_bsp/
+[BSP build complete]
+[snake2 build complete]
+14:09:29 **** Incremental Build of configuration Nios II for project snake2 ****
+make all 
+Info: Building ../snake2_bsp/
+C:/intelFPGA_lite/18.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../snake2_bsp/
+[BSP build complete]
+[snake2 build complete]
+14:21:24 **** Build of configuration Nios II for project snake2 ****
+make all 
+Info: Building ../snake2_bsp/
+C:/intelFPGA_lite/18.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../snake2_bsp/
+[BSP build complete]
+[snake2 build complete]
+14:21:28 **** Incremental Build of configuration Nios II for project snake2 ****
+make all 
+Info: Building ../snake2_bsp/
+C:/intelFPGA_lite/18.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../snake2_bsp/
+[BSP build complete]
+[snake2 build complete]
+14:23:44 **** Build of configuration Nios II for project snake2 ****
+make all 
+Info: Building ../snake2_bsp/
+C:/intelFPGA_lite/18.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../snake2_bsp/
+[BSP build complete]
+[snake2 build complete]
+14:23:46 **** Incremental Build of configuration Nios II for project snake2 ****
+make all 
+Info: Building ../snake2_bsp/
+C:/intelFPGA_lite/18.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../snake2_bsp/
+[BSP build complete]
+[snake2 build complete]

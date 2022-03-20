@@ -1,12 +1,8 @@
 import tkinter as tk
 from tkinter import *
 import time
-import sys
 import random
-import os
 import socket
-import subprocess
-import sys
 import atexit
 from threading import Thread
 from pydub import AudioSegment
@@ -17,7 +13,7 @@ from components.fpga_communicator import FPGACommunicator
 import multiprocessing
 
 root = tk.Tk()
-# fpga_communicator = FPGACommunicator()
+fpga_communicator = FPGACommunicator()
 
 client_port = None
 server_ip = None
@@ -151,12 +147,12 @@ def tick(player, found):
     scores = calculate_score_table(snakes, username)
     player_score = player.calculate_score()
     SnakeGameMap.update_score(player_score, username, scores)
-    # fpga_communicator.write_hextext(str(player_score))
+    fpga_communicator.write_hextext(str(player_score))
 
     if game_over:
         SnakeGameMap.show_game_over(username, player_score)
-        # fpga_communicator.write_ledflash("10000100001")
-        # fpga_communicator.write_hextext("GAME_OVER_SCORE_" + str(player_score))
+        fpga_communicator.write_ledflash("10000100001")
+        fpga_communicator.write_hextext("GAME_OVER_SCORE_" + str(player_score))
         return
 
     array = []
@@ -214,7 +210,6 @@ def start_game(_server_ip, _server_port, _client_port, _username):
     server_port = _server_port
     client_port = _client_port
     username = _username
-    print("username: " + username)
 
     for child in root.winfo_children():
         child.destroy()
@@ -225,7 +220,6 @@ def start_game(_server_ip, _server_port, _client_port, _username):
     player = SnakeGameMap.player
     food = SnakeGameMap.sharedFood
     localFood = SnakeGameMap.localFood
-    # playerShadow = SnakeGameMap.snakeShadow
 
     SnakeGameMap.root.bind("<Key>", SnakeGameMap.kpress)
     tick(player, FALSE)
