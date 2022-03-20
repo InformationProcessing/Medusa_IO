@@ -1,22 +1,19 @@
 import tkinter as tk
 from tkinter import *
 import time
-import sys
 import random
-import os
 import socket
-import subprocess
-import sys
 import atexit
 from threading import Thread
 from pydub import AudioSegment
 from pydub.playback import play
 import components.SnakeGameMap as SnakeGameMap
 from components.game_intro import GameIntro
-# from components.fpga_communicator import FPGACommunicator
+from components.fpga_communicator import FPGACommunicator
+import multiprocessing
 
 root = tk.Tk()
-# fpga_communicator = FPGACommunicator()
+fpga_communicator = FPGACommunicator()
 
 client_port = None
 server_ip = None
@@ -46,8 +43,6 @@ def exit_handler():
     client_socket.bind(('', client_port))
     client_socket.sendto(msg.encode(), (server_ip, server_port))
 
-
-atexit.register(exit_handler)
 
 
 def mergearray(array1, array2):
@@ -119,19 +114,22 @@ def updateothers():
                                                      int(otherplayer[i][j][0]) + 10, int(otherplayer[i][j][1]) + 10,
                                                      fill='#C7FFFD'))
 
+def coin_sound_wrapper():
+    play(coin_sound)
 
 def food_collected_notification():
+
     try:
-        # t = Thread(target=fpga_communicator.write_ledflash, args=("101",), daemon=True)
+        proc = multiprocessing.Process(target=coin_sound_wrapper)
+        proc.start()
+    except Exception as ex:
+        print("Error with coin sound: " + str(ex))
+
+    try:
+        t = Thread(target=fpga_communicator.write_ledflash, args=("101",), daemon=True)
         t.start()
     except Exception as ex:
         print("Error with led flash: " + str(ex))
-
-    try:
-        t = Thread(target=play, args=(coin_sound,), daemon=True)
-        t.start()
-    except Exception as ex:
-        print("Error playing the sound: " + str(ex))
 
 def tick(player, found):
     deleteblocks()
@@ -149,12 +147,12 @@ def tick(player, found):
     scores = calculate_score_table(snakes, username)
     player_score = player.calculate_score()
     SnakeGameMap.update_score(player_score, username, scores)
-    # fpga_communicator.write_hextext(str(player_score))
+    fpga_communicator.write_hextext(str(player_score))
 
     if game_over:
         SnakeGameMap.show_game_over(username, player_score)
-        # fpga_communicator.write_ledflash("10000100001")
-        # fpga_communicator.write_hextext("GAME_OVER_SCORE_" + str(player_score))
+        fpga_communicator.write_ledflash("10000100001")
+        fpga_communicator.write_hextext("GAME_OVER_SCORE_" + str(player_score))
         return
 
     array = []
@@ -168,16 +166,16 @@ def tick(player, found):
     if time2 != time1:
         time1 = time2
         clock.config(text=time2)
-    # if fpga_communicator.initialized:
-    #     acc_read = fpga_communicator.read_acc_proc()
-    #     if 75 < acc_read['x'] < 250 and not 75 <= acc_read['y'] <= 4021:
-    #         player.changedir('Left')
-    #     elif 3750 < acc_read['x'] < 4021 and not 75 <= acc_read['y'] <= 4021:
-    #         player.changedir('Right')
-    #     elif 3750 < acc_read['y'] < 4021 and not 75 <= acc_read['x'] <= 4021:
-    #         player.changedir('Up')
-    #     elif 75 < acc_read['y'] < 250 and not 75 <= acc_read['x'] <= 4021:
-    #         player.changedir('Down')
+    if fpga_communicator.initialized:
+        acc_read = fpga_communicator.read_acc_proc()
+        if 75 < acc_read['x'] < 250 and not 75 <= acc_read['y'] <= 4021:
+            player.changedir('Left')
+        elif 3750 < acc_read['x'] < 4021 and not 75 <= acc_read['y'] <= 4021:
+            player.changedir('Right')
+        elif 3750 < acc_read['y'] < 4021 and not 75 <= acc_read['x'] <= 4021:
+            player.changedir('Up')
+        elif 75 < acc_read['y'] < 250 and not 75 <= acc_read['x'] <= 4021:
+            player.changedir('Down')
     player.movesnake()
 
     updateothers()
@@ -222,12 +220,12 @@ def start_game(_server_ip, _server_port, _client_port, _username):
     player = SnakeGameMap.player
     food = SnakeGameMap.sharedFood
     localFood = SnakeGameMap.localFood
-    # playerShadow = SnakeGameMap.snakeShadow
 
     SnakeGameMap.root.bind("<Key>", SnakeGameMap.kpress)
     tick(player, FALSE)
 
-
-game_intro = GameIntro(root, start_game)
-root.attributes("-fullscreen", True)
-root.mainloop()
+if __name__ == "__main__":
+    atexit.register(exit_handler)
+    game_intro = GameIntro(root, start_game)
+    root.attributes("-fullscreen", True)
+    root.mainloop()
