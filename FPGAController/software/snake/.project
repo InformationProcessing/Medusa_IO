@@ -3,7 +3,6 @@
 	<name>snake</name>
 	<comment></comment>
 	<projects>
-		<project>snake_bsp</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
