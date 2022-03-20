@@ -13,6 +13,13 @@ module snake (
 		input  wire [1:0]  button_external_connection_export,                  //           button_external_connection.export
 		input  wire        clk_clk,                                            //                                  clk.clk
 		output wire        clk_sdram_clk,                                      //                            clk_sdram.clk
+		output wire [3:0]  hardware_clocks_external_connection_export,         //  hardware_clocks_external_connection.export
+		input  wire [30:0] hardware_in_x_external_connection_export,           //    hardware_in_x_external_connection.export
+		input  wire [30:0] hardware_in_y_external_connection_export,           //    hardware_in_y_external_connection.export
+		input  wire [30:0] hardware_in_z_external_connection_export,           //    hardware_in_z_external_connection.export
+		output wire [30:0] hardware_out_x_external_connection_export,          //   hardware_out_x_external_connection.export
+		output wire [30:0] hardware_out_y_external_connection_export,          //   hardware_out_y_external_connection.export
+		output wire [30:0] hardware_out_z_external_connection_export,          //   hardware_out_z_external_connection.export
 		output wire [7:0]  hex0_external_connection_export,                    //             hex0_external_connection.export
 		output wire [7:0]  hex1_external_connection_export,                    //             hex1_external_connection.export
 		output wire [7:0]  hex2_external_connection_export,                    //             hex2_external_connection.export
@@ -33,7 +40,7 @@ module snake (
 		input  wire [9:0]  switch_external_connection_export                   //           switch_external_connection.export
 	);
 
-	wire         altpll_c0_clk;                                                                       // altpll:c0 -> [acc_timer:clk, accelerometer_spi:clk, button:clk, cpu:clk, hex0:clk, hex1:clk, hex2:clk, hex3:clk, hex4:clk, hex5:clk, hex_timer:clk, irq_mapper:clk, jtag_uart:clk, led:clk, mm_interconnect_0:altpll_c0_clk, rst_controller:clk, sdram:clk, switch:clk, sysid:clock, timer0:clk, timer1:clk, timer3:clk, timer4:clk, timer:clk, timestamp_timer:clk]
+	wire         altpll_c0_clk;                                                                       // altpll:c0 -> [acc_timer:clk, accelerometer_spi:clk, button:clk, cpu:clk, hardware_clocks:clk, hardware_in_x:clk, hardware_in_y:clk, hardware_in_z:clk, hardware_out_x:clk, hardware_out_y:clk, hardware_out_z:clk, hex0:clk, hex1:clk, hex2:clk, hex3:clk, hex4:clk, hex5:clk, hex_timer:clk, irq_mapper:clk, jtag_uart:clk, led:clk, mm_interconnect_0:altpll_c0_clk, rst_controller:clk, sdram:clk, switch:clk, sysid:clock, timer0:clk, timer1:clk, timer3:clk, timer4:clk, timer:clk, timestamp_timer:clk]
 	wire  [31:0] cpu_data_master_readdata;                                                            // mm_interconnect_0:cpu_data_master_readdata -> cpu:d_readdata
 	wire         cpu_data_master_waitrequest;                                                         // mm_interconnect_0:cpu_data_master_waitrequest -> cpu:d_waitrequest
 	wire         cpu_data_master_debugaccess;                                                         // cpu:debug_mem_slave_debugaccess_to_roms -> mm_interconnect_0:cpu_data_master_debugaccess
@@ -163,6 +170,32 @@ module snake (
 	wire   [2:0] mm_interconnect_0_acc_timer_s1_address;                                              // mm_interconnect_0:acc_timer_s1_address -> acc_timer:address
 	wire         mm_interconnect_0_acc_timer_s1_write;                                                // mm_interconnect_0:acc_timer_s1_write -> acc_timer:write_n
 	wire  [15:0] mm_interconnect_0_acc_timer_s1_writedata;                                            // mm_interconnect_0:acc_timer_s1_writedata -> acc_timer:writedata
+	wire         mm_interconnect_0_hardware_out_x_s1_chipselect;                                      // mm_interconnect_0:hardware_out_x_s1_chipselect -> hardware_out_x:chipselect
+	wire  [31:0] mm_interconnect_0_hardware_out_x_s1_readdata;                                        // hardware_out_x:readdata -> mm_interconnect_0:hardware_out_x_s1_readdata
+	wire   [1:0] mm_interconnect_0_hardware_out_x_s1_address;                                         // mm_interconnect_0:hardware_out_x_s1_address -> hardware_out_x:address
+	wire         mm_interconnect_0_hardware_out_x_s1_write;                                           // mm_interconnect_0:hardware_out_x_s1_write -> hardware_out_x:write_n
+	wire  [31:0] mm_interconnect_0_hardware_out_x_s1_writedata;                                       // mm_interconnect_0:hardware_out_x_s1_writedata -> hardware_out_x:writedata
+	wire  [31:0] mm_interconnect_0_hardware_in_x_s1_readdata;                                         // hardware_in_x:readdata -> mm_interconnect_0:hardware_in_x_s1_readdata
+	wire   [1:0] mm_interconnect_0_hardware_in_x_s1_address;                                          // mm_interconnect_0:hardware_in_x_s1_address -> hardware_in_x:address
+	wire         mm_interconnect_0_hardware_clocks_s1_chipselect;                                     // mm_interconnect_0:hardware_clocks_s1_chipselect -> hardware_clocks:chipselect
+	wire  [31:0] mm_interconnect_0_hardware_clocks_s1_readdata;                                       // hardware_clocks:readdata -> mm_interconnect_0:hardware_clocks_s1_readdata
+	wire   [1:0] mm_interconnect_0_hardware_clocks_s1_address;                                        // mm_interconnect_0:hardware_clocks_s1_address -> hardware_clocks:address
+	wire         mm_interconnect_0_hardware_clocks_s1_write;                                          // mm_interconnect_0:hardware_clocks_s1_write -> hardware_clocks:write_n
+	wire  [31:0] mm_interconnect_0_hardware_clocks_s1_writedata;                                      // mm_interconnect_0:hardware_clocks_s1_writedata -> hardware_clocks:writedata
+	wire  [31:0] mm_interconnect_0_hardware_in_y_s1_readdata;                                         // hardware_in_y:readdata -> mm_interconnect_0:hardware_in_y_s1_readdata
+	wire   [1:0] mm_interconnect_0_hardware_in_y_s1_address;                                          // mm_interconnect_0:hardware_in_y_s1_address -> hardware_in_y:address
+	wire         mm_interconnect_0_hardware_out_y_s1_chipselect;                                      // mm_interconnect_0:hardware_out_y_s1_chipselect -> hardware_out_y:chipselect
+	wire  [31:0] mm_interconnect_0_hardware_out_y_s1_readdata;                                        // hardware_out_y:readdata -> mm_interconnect_0:hardware_out_y_s1_readdata
+	wire   [1:0] mm_interconnect_0_hardware_out_y_s1_address;                                         // mm_interconnect_0:hardware_out_y_s1_address -> hardware_out_y:address
+	wire         mm_interconnect_0_hardware_out_y_s1_write;                                           // mm_interconnect_0:hardware_out_y_s1_write -> hardware_out_y:write_n
+	wire  [31:0] mm_interconnect_0_hardware_out_y_s1_writedata;                                       // mm_interconnect_0:hardware_out_y_s1_writedata -> hardware_out_y:writedata
+	wire         mm_interconnect_0_hardware_out_z_s1_chipselect;                                      // mm_interconnect_0:hardware_out_z_s1_chipselect -> hardware_out_z:chipselect
+	wire  [31:0] mm_interconnect_0_hardware_out_z_s1_readdata;                                        // hardware_out_z:readdata -> mm_interconnect_0:hardware_out_z_s1_readdata
+	wire   [1:0] mm_interconnect_0_hardware_out_z_s1_address;                                         // mm_interconnect_0:hardware_out_z_s1_address -> hardware_out_z:address
+	wire         mm_interconnect_0_hardware_out_z_s1_write;                                           // mm_interconnect_0:hardware_out_z_s1_write -> hardware_out_z:write_n
+	wire  [31:0] mm_interconnect_0_hardware_out_z_s1_writedata;                                       // mm_interconnect_0:hardware_out_z_s1_writedata -> hardware_out_z:writedata
+	wire  [31:0] mm_interconnect_0_hardware_in_z_s1_readdata;                                         // hardware_in_z:readdata -> mm_interconnect_0:hardware_in_z_s1_readdata
+	wire   [1:0] mm_interconnect_0_hardware_in_z_s1_address;                                          // mm_interconnect_0:hardware_in_z_s1_address -> hardware_in_z:address
 	wire         irq_mapper_receiver0_irq;                                                            // accelerometer_spi:irq -> irq_mapper:receiver0_irq
 	wire         irq_mapper_receiver1_irq;                                                            // jtag_uart:av_irq -> irq_mapper:receiver1_irq
 	wire         irq_mapper_receiver2_irq;                                                            // timer4:irq -> irq_mapper:receiver2_irq
@@ -174,7 +207,7 @@ module snake (
 	wire         irq_mapper_receiver8_irq;                                                            // hex_timer:irq -> irq_mapper:receiver8_irq
 	wire         irq_mapper_receiver9_irq;                                                            // acc_timer:irq -> irq_mapper:receiver9_irq
 	wire  [31:0] cpu_irq_irq;                                                                         // irq_mapper:sender_irq -> cpu:irq
-	wire         rst_controller_reset_out_reset;                                                      // rst_controller:reset_out -> [acc_timer:reset_n, accelerometer_spi:reset, button:reset_n, cpu:reset_n, hex0:reset_n, hex1:reset_n, hex2:reset_n, hex3:reset_n, hex4:reset_n, hex5:reset_n, hex_timer:reset_n, irq_mapper:reset, jtag_uart:rst_n, led:reset_n, mm_interconnect_0:cpu_reset_reset_bridge_in_reset_reset, rst_translator:in_reset, sdram:reset_n, switch:reset_n, sysid:reset_n, timer0:reset_n, timer1:reset_n, timer3:reset_n, timer4:reset_n, timer:reset_n, timestamp_timer:reset_n]
+	wire         rst_controller_reset_out_reset;                                                      // rst_controller:reset_out -> [acc_timer:reset_n, accelerometer_spi:reset, button:reset_n, cpu:reset_n, hardware_clocks:reset_n, hardware_in_x:reset_n, hardware_in_y:reset_n, hardware_in_z:reset_n, hardware_out_x:reset_n, hardware_out_y:reset_n, hardware_out_z:reset_n, hex0:reset_n, hex1:reset_n, hex2:reset_n, hex3:reset_n, hex4:reset_n, hex5:reset_n, hex_timer:reset_n, irq_mapper:reset, jtag_uart:rst_n, led:reset_n, mm_interconnect_0:cpu_reset_reset_bridge_in_reset_reset, rst_translator:in_reset, sdram:reset_n, switch:reset_n, sysid:reset_n, timer0:reset_n, timer1:reset_n, timer3:reset_n, timer4:reset_n, timer:reset_n, timestamp_timer:reset_n]
 	wire         rst_controller_reset_out_reset_req;                                                  // rst_controller:reset_req -> [cpu:reset_req, rst_translator:reset_req_in]
 	wire         rst_controller_001_reset_out_reset;                                                  // rst_controller_001:reset_out -> [altpll:reset, mm_interconnect_0:altpll_inclk_interface_reset_reset_bridge_in_reset_reset]
 
@@ -268,6 +301,74 @@ module snake (
 		.debug_mem_slave_write               (mm_interconnect_0_cpu_debug_mem_slave_write),       //                          .write
 		.debug_mem_slave_writedata           (mm_interconnect_0_cpu_debug_mem_slave_writedata),   //                          .writedata
 		.dummy_ci_port                       ()                                                   // custom_instruction_master.readra
+	);
+
+	snake_hardware_clocks hardware_clocks (
+		.clk        (altpll_c0_clk),                                   //                 clk.clk
+		.reset_n    (~rst_controller_reset_out_reset),                 //               reset.reset_n
+		.address    (mm_interconnect_0_hardware_clocks_s1_address),    //                  s1.address
+		.write_n    (~mm_interconnect_0_hardware_clocks_s1_write),     //                    .write_n
+		.writedata  (mm_interconnect_0_hardware_clocks_s1_writedata),  //                    .writedata
+		.chipselect (mm_interconnect_0_hardware_clocks_s1_chipselect), //                    .chipselect
+		.readdata   (mm_interconnect_0_hardware_clocks_s1_readdata),   //                    .readdata
+		.out_port   (hardware_clocks_external_connection_export)       // external_connection.export
+	);
+
+	snake_hardware_in_x hardware_in_x (
+		.clk      (altpll_c0_clk),                               //                 clk.clk
+		.reset_n  (~rst_controller_reset_out_reset),             //               reset.reset_n
+		.address  (mm_interconnect_0_hardware_in_x_s1_address),  //                  s1.address
+		.readdata (mm_interconnect_0_hardware_in_x_s1_readdata), //                    .readdata
+		.in_port  (hardware_in_x_external_connection_export)     // external_connection.export
+	);
+
+	snake_hardware_in_x hardware_in_y (
+		.clk      (altpll_c0_clk),                               //                 clk.clk
+		.reset_n  (~rst_controller_reset_out_reset),             //               reset.reset_n
+		.address  (mm_interconnect_0_hardware_in_y_s1_address),  //                  s1.address
+		.readdata (mm_interconnect_0_hardware_in_y_s1_readdata), //                    .readdata
+		.in_port  (hardware_in_y_external_connection_export)     // external_connection.export
+	);
+
+	snake_hardware_in_x hardware_in_z (
+		.clk      (altpll_c0_clk),                               //                 clk.clk
+		.reset_n  (~rst_controller_reset_out_reset),             //               reset.reset_n
+		.address  (mm_interconnect_0_hardware_in_z_s1_address),  //                  s1.address
+		.readdata (mm_interconnect_0_hardware_in_z_s1_readdata), //                    .readdata
+		.in_port  (hardware_in_z_external_connection_export)     // external_connection.export
+	);
+
+	snake_hardware_out_x hardware_out_x (
+		.clk        (altpll_c0_clk),                                  //                 clk.clk
+		.reset_n    (~rst_controller_reset_out_reset),                //               reset.reset_n
+		.address    (mm_interconnect_0_hardware_out_x_s1_address),    //                  s1.address
+		.write_n    (~mm_interconnect_0_hardware_out_x_s1_write),     //                    .write_n
+		.writedata  (mm_interconnect_0_hardware_out_x_s1_writedata),  //                    .writedata
+		.chipselect (mm_interconnect_0_hardware_out_x_s1_chipselect), //                    .chipselect
+		.readdata   (mm_interconnect_0_hardware_out_x_s1_readdata),   //                    .readdata
+		.out_port   (hardware_out_x_external_connection_export)       // external_connection.export
+	);
+
+	snake_hardware_out_x hardware_out_y (
+		.clk        (altpll_c0_clk),                                  //                 clk.clk
+		.reset_n    (~rst_controller_reset_out_reset),                //               reset.reset_n
+		.address    (mm_interconnect_0_hardware_out_y_s1_address),    //                  s1.address
+		.write_n    (~mm_interconnect_0_hardware_out_y_s1_write),     //                    .write_n
+		.writedata  (mm_interconnect_0_hardware_out_y_s1_writedata),  //                    .writedata
+		.chipselect (mm_interconnect_0_hardware_out_y_s1_chipselect), //                    .chipselect
+		.readdata   (mm_interconnect_0_hardware_out_y_s1_readdata),   //                    .readdata
+		.out_port   (hardware_out_y_external_connection_export)       // external_connection.export
+	);
+
+	snake_hardware_out_x hardware_out_z (
+		.clk        (altpll_c0_clk),                                  //                 clk.clk
+		.reset_n    (~rst_controller_reset_out_reset),                //               reset.reset_n
+		.address    (mm_interconnect_0_hardware_out_z_s1_address),    //                  s1.address
+		.write_n    (~mm_interconnect_0_hardware_out_z_s1_write),     //                    .write_n
+		.writedata  (mm_interconnect_0_hardware_out_z_s1_writedata),  //                    .writedata
+		.chipselect (mm_interconnect_0_hardware_out_z_s1_chipselect), //                    .chipselect
+		.readdata   (mm_interconnect_0_hardware_out_z_s1_readdata),   //                    .readdata
+		.out_port   (hardware_out_z_external_connection_export)       // external_connection.export
 	);
 
 	snake_hex0 hex0 (
@@ -519,6 +620,32 @@ module snake (
 		.cpu_debug_mem_slave_byteenable                                    (mm_interconnect_0_cpu_debug_mem_slave_byteenable),                                    //                                                      .byteenable
 		.cpu_debug_mem_slave_waitrequest                                   (mm_interconnect_0_cpu_debug_mem_slave_waitrequest),                                   //                                                      .waitrequest
 		.cpu_debug_mem_slave_debugaccess                                   (mm_interconnect_0_cpu_debug_mem_slave_debugaccess),                                   //                                                      .debugaccess
+		.hardware_clocks_s1_address                                        (mm_interconnect_0_hardware_clocks_s1_address),                                        //                                    hardware_clocks_s1.address
+		.hardware_clocks_s1_write                                          (mm_interconnect_0_hardware_clocks_s1_write),                                          //                                                      .write
+		.hardware_clocks_s1_readdata                                       (mm_interconnect_0_hardware_clocks_s1_readdata),                                       //                                                      .readdata
+		.hardware_clocks_s1_writedata                                      (mm_interconnect_0_hardware_clocks_s1_writedata),                                      //                                                      .writedata
+		.hardware_clocks_s1_chipselect                                     (mm_interconnect_0_hardware_clocks_s1_chipselect),                                     //                                                      .chipselect
+		.hardware_in_x_s1_address                                          (mm_interconnect_0_hardware_in_x_s1_address),                                          //                                      hardware_in_x_s1.address
+		.hardware_in_x_s1_readdata                                         (mm_interconnect_0_hardware_in_x_s1_readdata),                                         //                                                      .readdata
+		.hardware_in_y_s1_address                                          (mm_interconnect_0_hardware_in_y_s1_address),                                          //                                      hardware_in_y_s1.address
+		.hardware_in_y_s1_readdata                                         (mm_interconnect_0_hardware_in_y_s1_readdata),                                         //                                                      .readdata
+		.hardware_in_z_s1_address                                          (mm_interconnect_0_hardware_in_z_s1_address),                                          //                                      hardware_in_z_s1.address
+		.hardware_in_z_s1_readdata                                         (mm_interconnect_0_hardware_in_z_s1_readdata),                                         //                                                      .readdata
+		.hardware_out_x_s1_address                                         (mm_interconnect_0_hardware_out_x_s1_address),                                         //                                     hardware_out_x_s1.address
+		.hardware_out_x_s1_write                                           (mm_interconnect_0_hardware_out_x_s1_write),                                           //                                                      .write
+		.hardware_out_x_s1_readdata                                        (mm_interconnect_0_hardware_out_x_s1_readdata),                                        //                                                      .readdata
+		.hardware_out_x_s1_writedata                                       (mm_interconnect_0_hardware_out_x_s1_writedata),                                       //                                                      .writedata
+		.hardware_out_x_s1_chipselect                                      (mm_interconnect_0_hardware_out_x_s1_chipselect),                                      //                                                      .chipselect
+		.hardware_out_y_s1_address                                         (mm_interconnect_0_hardware_out_y_s1_address),                                         //                                     hardware_out_y_s1.address
+		.hardware_out_y_s1_write                                           (mm_interconnect_0_hardware_out_y_s1_write),                                           //                                                      .write
+		.hardware_out_y_s1_readdata                                        (mm_interconnect_0_hardware_out_y_s1_readdata),                                        //                                                      .readdata
+		.hardware_out_y_s1_writedata                                       (mm_interconnect_0_hardware_out_y_s1_writedata),                                       //                                                      .writedata
+		.hardware_out_y_s1_chipselect                                      (mm_interconnect_0_hardware_out_y_s1_chipselect),                                      //                                                      .chipselect
+		.hardware_out_z_s1_address                                         (mm_interconnect_0_hardware_out_z_s1_address),                                         //                                     hardware_out_z_s1.address
+		.hardware_out_z_s1_write                                           (mm_interconnect_0_hardware_out_z_s1_write),                                           //                                                      .write
+		.hardware_out_z_s1_readdata                                        (mm_interconnect_0_hardware_out_z_s1_readdata),                                        //                                                      .readdata
+		.hardware_out_z_s1_writedata                                       (mm_interconnect_0_hardware_out_z_s1_writedata),                                       //                                                      .writedata
+		.hardware_out_z_s1_chipselect                                      (mm_interconnect_0_hardware_out_z_s1_chipselect),                                      //                                                      .chipselect
 		.hex0_s1_address                                                   (mm_interconnect_0_hex0_s1_address),                                                   //                                               hex0_s1.address
 		.hex0_s1_write                                                     (mm_interconnect_0_hex0_s1_write),                                                     //                                                      .write
 		.hex0_s1_readdata                                                  (mm_interconnect_0_hex0_s1_readdata),                                                  //                                                      .readdata
