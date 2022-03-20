@@ -44,15 +44,23 @@ class Snake:
         self.x = xcord
         self.y = ycord
         for i in range(10):
-            self.addblock(i)
-
-    def addblock(self,i):
+            self.initaddblock(i)
+            
+    def initaddblock(self,i):
         self.moveblocks.append([0,0])
         block=tk.Canvas(canvas,width=10, height=10, bd=0, highlightthickness=0.5, highlightbackground="#870083", relief='ridge', bg="#FF00B7")
         block.place(x=710, y=710)
         self.snake.append(block)
         self.snakeblockscoordX.append(self.x)
         self.snakeblockscoordY.append(self.y-i*10)
+
+    def addblock(self,i):
+        self.moveblocks.append([0,0])
+        block=tk.Canvas(canvas,width=10, height=10, bd=0, highlightthickness=0.5, highlightbackground="#870083", relief='ridge', bg="#FF00B7")
+        block.place(x=710, y=710)
+        self.snake.append(block)
+        self.snakeblockscoordX.append(710)
+        self.snakeblockscoordY.append(710)
         # print("initialise: ", i, "----",self.snakeblockscoordX[i], "- ",self.snakeblockscoordY[i])
         
     def widen(self):
