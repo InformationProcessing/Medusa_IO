@@ -86,7 +86,7 @@ initial begin
         clk_sample = 0;
 
 
-        $display("Test %d / %d : actual = %d, reference %d", i, iterations, int'(out), int'(reference));
+        $display("Test %d / %d : Hardware = %d, Reference %d", i, iterations, int'(out), int'(reference));
         if (reference > 511 || reference < -511)begin
             $display("Invalid test, would cause overflow");
         end else begin
