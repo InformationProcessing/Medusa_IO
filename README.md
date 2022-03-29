@@ -1,6 +1,8 @@
 # Medusa_IO
 EIE2 InfoProcessing Coursework group 13
 
+https://youtu.be/ykUQqOHmgx0
+
 ## pip packages
 To run the project, following pip packages must be installed
 - `intel_jtag_uart`
